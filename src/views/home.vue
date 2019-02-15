@@ -6,12 +6,28 @@
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from '@/components/hello_world.vue'
 
 export default {
 	name: 'ViewHome',
+	routeOptions: {
+		path: '/',
+		name: 'home',
+		meta: {
+			label: 'Home',
+		},
+	},
 	components: {
 		HelloWorld,
 	},
+}
+
+
+
+export const store = {
+	state: {},
+	getters: {},
+	actions: {},
+	mutations: {},
 }
 </script>

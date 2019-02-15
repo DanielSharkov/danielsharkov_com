@@ -10,6 +10,24 @@
 
 
 
+<script>
+export default {
+	name: 'VueApp',
+}
+
+
+
+export const store = {
+	state: {},
+	getters: {},
+	actions: {},
+	mutations: {},
+}
+</script>
+
+
+
+
 <style lang="stylus">
 #app
 	font-family 'Avenir', Helvetica, Arial, sans-serif
