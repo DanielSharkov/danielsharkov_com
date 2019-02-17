@@ -33,8 +33,7 @@ if (App.store) extendStore(App.store)
 // Import route templates and the Vuex store fragmentally
 // Routes going to show up in the same order as the import list is ordered
 for (const filename of [
-	'home',
-	'about',
+	// Here views
 ]) {
 	const route = require(`@/views/${filename}.vue`)
 	if (route.store) extendStore(route.store)

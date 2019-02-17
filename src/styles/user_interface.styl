@@ -1,0 +1,288 @@
+// DEBUG
+.debug
+	.boundaries, &.boundaries
+		div, li, nav, header, footer
+			outline solid 1px #888 !important
+		a, button, input, textarea
+			outline dashed 1px #FF1DFF !important
+			outline-offset -2px !important
+		ul
+			background-color #F001
+			outline solid 1px #F00
+			outline-offset 1px
+		span, a, p, q, b, i, label,
+		h1, h2, h3, h4, h5, h6
+			position relative
+			outline dotted 1px #FF1DFF
+			background-color #FF1DFF10
+			&:not(i)
+				outline-offset -3px
+		span, a, p, q, b, i:not(.fas), label,
+		h1, h2, h3, h4, h5, h6
+			&:before, &:after
+				content ''
+				position absolute
+				background-color #FF1DFF
+			&:before
+				top calc(50% - .5px)
+				left 0
+				width 100%
+				height 1px
+			&:after
+				top 0
+				left calc(50% - .5px)
+				height 100%
+				width 1px
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,600,600i,700,700i,800,800i')
+
+@font-face
+	font-family 'Italico'
+	src url('assets/itc_charter.ttf')
+
+
+
+// Clear elements
+header, article, footer, nav, pre, code,
+div, input, button, textarea, svg, img, select,
+span, a, p, q, b, i, label
+	margin 0
+	padding 0
+
+header, article, footer, nav, pre, code,
+div, input, button, textarea, svg, img, select,
+span, a, p, q, b, i, label, ul, li
+h1, h2, h3, h4, h5, h6
+	transition var(--default-transition)
+	box-sizing border-box
+	background none
+	outline none
+	border none
+	&:before, &:after
+		margin 0
+		padding 0
+		transition var(--default-transition)
+		box-sizing border-box
+		background none
+		outline none
+		border none
+
+html, body
+	margin 0
+	padding 0
+	box-sizing border-box
+	background none
+	outline none
+	border none
+	&.lock-scroll
+		overflow hidden
+
+html, body, #app
+	min-height 100vh
+	width 100%
+	font-family var(--app-font)
+	background none
+	background-color var(--app-bg)
+
+a, button
+	text-decoration none
+	i.fa, i.fas, i.fab
+		&:before, &:after
+			color var(--app-header-fg)
+
+input, button, a, .qoute, .bold, label, .label,
+pre, code, textarea, .monospace, tt,
+strike, mark, u, .underline, strike, .strike,
+p, q, b, i, span
+	font var(--app-font-default)
+	line-height var(--app-line-height)
+	color var(--app-default-fg)
+	&.primary1
+		color var(--theme-primary)
+
+h1, h2, h3, h4, h5, h6, .label, label
+	line-height var(--app-line-height)
+	color var(--app-header-fg)
+
+pre, code
+	overflow auto
+
+h1
+	font var(--app-font-h1)
+h2
+	font var(--app-font-h2)
+h3
+	font var(--app-font-h3)
+h4
+	font var(--app-font-h4)
+h5
+	font var(--app-font-h5)
+h6
+	margin .5rem
+	font var(--app-font-h6)
+
+.thin-font, .thin-font > *
+	font-weight var(--app-font-weight-thin)
+.light-font, .light-font > *
+	font-weight var(--app-font-weight-light)
+.default-font, .default-font > *
+	font-weight var(--app-font-weight-default)
+.medium-font, .medium-font > *
+	font-weight var(--app-font-weight-medium)
+.bold-font, .bold-font > *
+	font-weight var(--app-font-weight-bold)
+.bolder-font, .bolder-font > *
+	font-weight var(--app-font-weight-bolder)
+
+p, .paragraph
+	margin-top .5rem
+	flex 0 0 auto
+
+i, .italic
+	font-family 'Italico'
+	font-style italic
+
+b, .bold
+	font-weight 700
+
+q, .quote
+	font-family 'Italico'
+	font-style italic
+	padding-left .25rem
+	opacity .5
+	&:before
+		content open-quote
+	&:after
+		content close-quote
+	&:before
+		position relative
+		top .6rem
+		right .15rem
+
+u, .underline
+	text-decoration underline
+.underline
+	&-dashed
+		text-decoration underline
+		text-decoration-style dashed
+	&-dotted
+		text-decoration underline
+		text-decoration-style dotted
+	&-wavy
+		text-decoration underline
+		text-decoration-style wavy
+
+strike, .strike
+	opacity .5
+	text-decoration line-through
+
+a.link
+	position relative
+	cursor pointer
+	text-decoration none
+	&:before
+		content ''
+		position absolute
+		left 0
+		display inline-block
+		height 100%
+		width 0
+		border-bottom solid .1rem
+		border-color inherit
+	> *
+		color inherit
+	&:hover, &:active, &:focus
+		&:before
+			width 100%
+
+a, q, .qoute, b, .bold, i, .italic
+	&.adapt-to-text
+		margin 0 .25rem
+
+.icon
+	color var(--app-header-fg)
+
+.flex
+	display flex
+	justify-content flex-start
+	align-content flex-start
+	align-items flex-start
+	&-row
+		flex-flow row wrap
+		&-nowrap
+			flex-flow row nowrap
+	&-column
+		flex-flow column wrap
+		&-nowrap
+			flex-flow column nowrap
+	.centered-content, &.centered-content
+		margin auto
+		justify-content center
+		align-content center
+		align-items center
+	.row-x-centered, &.row-x-centered
+		justify-content center
+	.row-y-centered, &.row-y-centered
+		&-content
+			align-content center
+			align-items center
+		&-items
+			align-items center
+	.column-x-centered, &.column-x-centered
+		&-content
+			align-content center
+			align-items center
+		&-items
+			align-items center
+	.column-y-centered, &.column-y-centered
+		justify-content center
+
+.hidden-input
+	position absolute
+	height 0
+	width 0
+	opacity 0
+	pointer-events none
+
+input[type="text"], textarea, select
+	padding .5rem
+	box-shadow 0 0 0 1px rgba(#000, .1)
+	border-radius 4px
+	&:hover
+		box-shadow 0 0 0 1px rgba(#000, .5)
+	&:focus
+		box-shadow:
+			0 0 0 1px var(--theme-primary),
+			0 0 0 4px var(--theme-primary-015)
+		border-color var(--theme-primary)
+
+#app
+	width 100%
+	flex-flow row wrap
+	background none
+	background-color var(--app-bg)
+	z-index 0
+	transition var(--default-transition)
+	#logo
+		fill var(--theme-primary)
+	select
+		cursor pointer
+	.viewport
+		min-height 100vh
+		padding 0 2rem 4rem 2rem
+		flex 1 1 100%
+		&.fixed-width
+			max-width 768px
+			margin 0 auto
+		&.no-padding
+			padding 0
+		.view-title
+			margin 0
+			padding 4rem 0
+			flex 1 1 100%
+		.selection
+			margin-bottom 2rem
+			> *:not(:last-child)
+				margin-right 1rem
