@@ -1,8 +1,13 @@
 <script>
 	import route from '../router'
 
-	const profilePicUrl = '/meMyselfAndI.jpg'
-	const professions = ['Software Engineer', 'FullStack WebDev', 'UX & UI Designer', 'Junior DevOp']
+	const profilePicUrl = '/me-myself-and-i.jpg'
+	const professions = [
+		'Software Engineer',
+		'FullStack WebDev',
+		'UX & UI Designer',
+		'Junior DevOp',
+	]
 	const socialMedia = [
 		{
 			alt: 'github',
