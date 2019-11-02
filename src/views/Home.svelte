@@ -107,7 +107,7 @@
 	<p>
 		Hi there! I'm an software engineer based on web apps as fullstack developer,
 		but more active in frontend than in the backend.
-		Svelte, Stylus, Vue.js, PWA & SPA are my tools go.
+		Svelte, Stylus, Vue.js, PWA & SPA are my tools to go.
 		As well I have already experienced about 5 years in UX & UI design.
 		Next stop: DevOps.
 	</p>
