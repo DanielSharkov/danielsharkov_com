@@ -64,7 +64,7 @@
 			line-height 2
 			.profession
 				font-size .8rem
-				color #c8c896
+				color #bebe82
 				&:not(:first-child):before
 					content ''
 					margin 0 .5rem

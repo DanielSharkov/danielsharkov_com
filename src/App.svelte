@@ -41,6 +41,7 @@
 		height 100%
 		width 100%
 		background-image url(/app-bg.jpg)
+		background-position center
 		background-size cover
 		opacity .1
 		pointer-events none
