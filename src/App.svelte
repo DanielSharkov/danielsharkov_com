@@ -77,7 +77,7 @@
 		</div>
 		<a
 			href='https://danielsharkov.github.io/beta_danielsharkov_com' id='DemoVersion'>
-			New demo version
+			New beta version
 		</a>
 	</div>
 </main>
