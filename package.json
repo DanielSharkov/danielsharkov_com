@@ -1,36 +1,23 @@
 {
   "name": "svelte-app",
-  "version": "1.0.1",
-  "devDependencies": {
-    "@danielsharkov/svelte-router": "^1.2.1",
-    "autoprefixer": "^9.6.0",
-    "cross-env": "^5.2.0",
-    "css-loader": "^2.1.1",
-    "mini-css-extract-plugin": "^0.6.0",
-    "postcss-loader": "^3.0.0",
-    "serve": "^11.0.0",
-    "style-loader": "^0.23.1",
-    "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.2",
-    "svelte": "^3.0.0",
-    "svelte-loader": "2.13.3",
-    "svelte-preprocess": "^2.14.0",
-    "webpack": "^4.30.0",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.3.1"
-  },
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
-    "dev": "webpack-dev-server --content-base public --open http://localhost:8080 --color --progress"
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public --no-clear"
   },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "rollup": "^2.47.0",
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-svelte": "^7.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "svelte": "^3.38.2"
   },
-  "browserslist": [
-    "last 2 version",
-    "not dead",
-    "iOS >= 9"
-  ]
+  "dependencies": {
+    "sirv-cli": "^1.0.11"
+  }
 }
