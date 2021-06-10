@@ -1,0 +1,504 @@
+<div id='Project_Details_Container'>
+	<div class='bg' transition:bgTrans/>
+	<div id='Project_Details_Modal' class='grid' transition:modalTrans class:no-about={project.about === null}>
+		<button class='close-modal' on:click={closeModal}>
+			<svg class='icon fill icon-medium' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 496.096 496.096'>
+				<path d='M259.41,247.998L493.754,13.654c3.123-3.124,3.123-8.188,0-11.312c-3.124-3.123-8.188-3.123-11.312,0L248.098,236.686 L13.754,2.342C10.576-0.727,5.512-0.639,2.442,2.539c-2.994,3.1-2.994,8.015,0,11.115l234.344,234.344L2.442,482.342 c-3.178,3.07-3.266,8.134-0.196,11.312s8.134,3.266,11.312,0.196c0.067-0.064,0.132-0.13,0.196-0.196L248.098,259.31 l234.344,234.344c3.178,3.07,8.242,2.982,11.312-0.196c2.995-3.1,2.995-8.016,0-11.116L259.41,247.998z'/>
+			</svg>
+		</button>
+		<div class='image-container flex flex-center'
+		class:no-image={ !project.cover }
+		class:dark-theme={ project.darkTheme }>
+			{#if project.cover}
+				<div class='light'>
+					{#if !$GlobalStore.projectImgLoad[project.id].light}
+					<div
+						class='thumb bg-cover'
+						style='background-image: url(/projects/{project.id}/thumbnail.jpg)'
+					/>
+					<div
+						class='thumb image'
+						style='background-image: url(/projects/{project.id}/thumbnail.jpg)'
+					/>
+					{/if}
+					{#if $GlobalStore.projectImgLoad[project.id].light}
+						<div
+							class='bg-cover'
+							style='background-image: url(/projects/{project.id}/cover.png)'
+						/>
+						<div
+							class='image'
+							style='background-image: url(/projects/{project.id}/cover.png)'
+						/>
+					{/if}
+				</div>
+				{#if project.darkTheme}
+					<div class='dark'>
+						{#if !$GlobalStore.projectImgLoad[project.id].dark}
+						<div
+							class='thumb bg-cover'
+							style='background-image: url(/projects/{project.id}/thumbnail_dark.jpg)'
+						/>
+						<div
+							class='thumb image'
+							style='background-image: url(/projects/{project.id}/thumbnail_dark.jpg)'
+						/>
+						{/if}
+						{#if $GlobalStore.projectImgLoad[project.id].dark}
+							<div
+								class='bg-cover'
+								style='background-image: url(/projects/{project.id}/cover_dark.png)'
+							/>
+							<div
+								class='image'
+								style='background-image: url(/projects/{project.id}/cover_dark.png)'
+							/>
+						{/if}
+					</div>
+				{/if}
+			{:else if project.about === null}
+				<svg class='no-image icon' fill='none' aria-hidden='true' focusable='false' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'>
+					<path d='M84.2922 34.7947L84.9993 35.5018L120.855 -0.353501L120.147 -1.06061L84.2922 34.7947Z' class='fill' opacity='.1'/>
+					<path d='M85.5569 84.9356L84.8498 85.6427L119.562 120.355L120.269 119.647L85.5569 84.9356Z' class='fill' opacity='.1'/>
+					<path d='M35.5018 84.9993L34.7947 84.2922L-0.0606959 119.148L0.646411 119.855L35.5018 84.9993Z' class='fill' opacity='.1'/>
+					<path d='M35.3523 36.1452L36.0594 35.4381L0.0606224 -0.560669L-0.646484 0.146438L35.3523 36.1452Z' class='fill' opacity='.1'/>
+					<path d='M89.5 46V77C89.5 77.8284 88.8284 78.5 88 78.5H32C31.1716 78.5 30.5 77.8284 30.5 77V46C30.5 45.1716 31.1716 44.5 32 44.5H44.6667C45.6759 44.5 46.5862 43.8932 46.9744 42.9615L49.6987 36.4231C49.9316 35.8641 50.4778 35.5 51.0833 35.5H53.5H60H66.5H68.9167C69.5222 35.5 70.0684 35.8641 70.3013 36.4231L73.0256 42.9615C73.4138 43.8932 74.3241 44.5 75.3333 44.5H88C88.8284 44.5 89.5 45.1716 89.5 46Z' opacity='.5' class='stroke'/>
+					<circle cx='60' cy='60' r='9.5' opacity='.5' class='stroke'/>
+				</svg>
+			{/if}
+		</div>
+		<div class='header grid gap-2'>
+			<div class='left-piece grid gap-1'>
+				<h1 class='name'>{ project.name }</h1>
+				<div class='used-technologies flex list gap-05'>
+					{#each project.usedTechnologies as techno}
+						<a href={technologies[techno].link} class='techno flex flex-center gap-05' target='_blank'>
+							<div
+								class='color'
+								style='background-color: {technologies[techno].color}'
+							/>
+							{#if technologies[techno].icon}
+								<svg class='logo'>
+									<title>{techno} Logo</title>
+									<use xlink:href='#LOGO_{techno}'/>
+								</svg>
+							{/if}
+							<span class='name'>
+								{ technologies[techno].name }
+							</span>
+						</a>
+					{/each}
+				</div>
+			</div>
+			<div class='right-piece flex' class:single-btn={ anyHeaderBtnActive }>
+				{#if project.codeUrl}
+					<a href={project.codeUrl} class='open-source-code flex flex-center gap-05' target='_blank'>
+						<svg class='icon fill icon-medium' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'>
+							<path d='M42.0439 53.512L17.2039 62.8L42.0439 72.088V79.576L8.85188 66.688V58.912L42.0439 46.024V53.512ZM68.2406 27.376H76.3046L52.5446 95.2H44.4806L68.2406 27.376ZM111.231 58.912V66.688L78.0394 79.576V72.088L102.879 62.8L78.0394 53.512V46.024L111.231 58.912Z'/>
+						</svg>
+						<span class='label'>Source code</span>
+					</a>
+				{/if}
+				{#if project.codeUrl === null}
+					<div class='closed-source flex flex-center gap-05'>
+						<svg class='icon stroke icon-default' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'>
+							<path d='M16.5 53C16.5 49.4101 19.4101 46.5 23 46.5H60H97C100.59 46.5 103.5 49.4101 103.5 53V97C103.5 100.59 100.59 103.5 97 103.5H23C19.4101 103.5 16.5 100.59 16.5 97V53Z' stroke-width='.5rem'/>
+							<path d='M78 45V33C78 23.0589 69.9411 15 60 15V15C50.0589 15 42 23.0589 42 33V45' stroke-width='.5rem'/>
+							<line x1='60' y1='67' x2='60' y2='83' stroke-width='.6rem' stroke-linecap='round' stroke-linejoin='round'/>
+						</svg>
+						<span class='label'>Closed source</span>
+					</div>
+				{/if}
+				{#if project.projectUrl !== null && project.projectUrl !== 'COMING_SOON'}
+					<a href={project.projectUrl} class='open-project flex flex-center gap-05' target='_blank'>
+						<div class='shine'/>
+						<span class='label'>Projekt öffnen</span>
+						<svg class='icon stroke icon-medium' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'>
+							<path d='M57.7778 25H35C29.4772 25 25 29.4772 25 35V85C25 90.5228 29.4772 95 35 95H85C90.5228 95 95 90.5228 95 85V62.2222' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
+							<path d='M105 15L60 60M105 15L105 45M105 15L75 15' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
+						</svg>
+					</a>
+				{:else if project.projectUrl === 'COMING_SOON'}
+					<div href={project.projectUrl} class='open-project-soon flex flex-center gap-05'>
+						<span class='label'>Bald verfügbar</span>
+						<svg class='icon stroke icon-medium' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'>
+							<circle cx='60' cy='60' r='53' stroke-width='.5rem'/>
+							<path d='M60 23V60L77 73' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
+						</svg>
+					</div>
+				{/if}
+			</div>
+		</div>
+		{#if project.about}
+			<div class='about' class:loading={ projectAbout !== null }>
+				{#if projectAbout !== null && !(projectAbout instanceof Error)}
+					<div class='rtf-content'>{@html renderedRTF}</div>
+				{:else}
+					<div class='placeholder' class:error-placeholder={projectAbout instanceof Error}>
+						<h1>Entschuldige, irgendwas ist schief gelaufen.</h1>
+						<hr class='h1-border'>
+						<p class='i'>_</p>
+						<h3>_</h3>
+						<p class='ii'>_</p>
+						<p class='iii'>_</p>
+					</div>
+				{/if}
+			</div>
+			<div class='footer flex flex-center-y'>
+				<button class='close flex-self-right' on:click={closeModal}>Schließen</button>
+			</div>
+		{/if}
+	</div>
+</div>
+
+<script lang='ts'>
+	import { createEventDispatcher } from 'svelte'
+	const dispatch = createEventDispatcher()
+	import { cubicInOut } from 'svelte/easing'
+	import { projects, technologies } from './database'
+	import Marked from 'marked'
+	import { GlobalStore } from './global_store'
+
+	const closeModal =()=> dispatch('close')
+
+	export let projectIndex: number
+	const project: Project = projects[projectIndex]
+
+	const bgTrans =()=> ({
+		duration: 500,
+		css: (t)=> `opacity: ${cubicInOut(t)}`,
+	})
+
+	const modalTrans =()=> ({
+		duration: 500,
+		css(t) {
+			t = cubicInOut(t)
+			return `opacity: ${t}; transform: translate(0, ${8 - 8 * t}rem);`
+		},
+	})
+
+	let renderedRTF = null
+	let projectAbout = null
+	async function fetchAbout() {
+		try {
+			const resp = await fetch(`/projects/${project.id}/about/de.md`)
+			if (resp.status !== 200) throw new Error('404')
+			const text = await resp.text()
+			projectAbout = text
+			renderedRTF = Marked(projectAbout, {
+				smartLists: true,
+			})
+			setTimeout(()=> {
+				for (const link of document.querySelectorAll('.rtf-content a')) {
+					link.setAttribute('target', '_blank')
+				}
+			})
+		} catch(err) {
+			setTimeout(()=> projectAbout = err, 1000)
+		}
+	}
+	if (project.about) fetchAbout()
+
+	$:anyHeaderBtnActive = (
+		project.codeUrl !== undefined && project.projectUrl === undefined ||
+		project.codeUrl === undefined && project.projectUrl !== undefined
+	)
+</script>
+
+<style>
+	#Project_Details_Container
+		z-index: 100
+		position: fixed
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		overflow-y: auto
+		@media screen and (min-width: 600px)
+			padding: 1rem
+		> .bg
+			z-index: -1
+			position: fixed
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			background-color: var(--overlay-bg)
+
+	#Project_Details_Modal
+		position: relative
+		width: 100%
+		min-height: 100%
+		background-color: var(--background-contrast)
+		grid-template-rows: auto auto 1fr
+		transform: translate3d(0,0,0)
+		@media screen and (min-width: 600px)
+			margin-bottom: 5rem
+			box-shadow: 0 0 10px var(--foreground-025)
+			border-radius: .5rem
+			background-color: var(--modal-bg)
+		> .close-modal
+			z-index: 100
+			position: absolute
+			top: 1rem
+			right: 1rem
+			padding: 1rem
+			background-color: var(--background)
+			border: solid 1px var(--foreground-025)
+			border-radius: 2rem
+			cursor: pointer
+			line-height: 1
+			&:hover
+				transform: scale(1.1)
+				border-color: var(--color-accent)
+				.icon.fill > *
+					fill: var(--color-accent)
+			&:active
+				transform: scale(0.95)
+		> .image-container
+			position: relative
+			height: 65vh
+			background-color: var(--foreground-0025)
+			border-bottom: solid 1px var(--foreground-005)
+			overflow: hidden
+			@media screen and (max-width: 600px)
+				height: 55vh
+			&.no-image
+				height: 5.5rem
+			> .light, > .dark, .image, .bg-cover
+				position: absolute
+				top: 0
+				left: 0
+				width: 100%
+				height: 100%
+				background-position: center
+				background-repeat: no-repeat
+				&.thumb
+					filter: blur(5px)
+				@media screen and (min-width: 600px)
+					border-radius: .5rem .5rem 0 0
+			.bg-cover
+				z-index: 1
+				background-size: cover
+				background-position: top
+				opacity: .1
+			.image
+				height: 90%
+				top: 5%
+				z-index: 3
+				filter: drop-shadow(0 0 20px rgba(#000,.15))
+				background-size: contain
+				@media screen and (max-width: 1000px)
+					height: 90%
+					width: 95%
+					left: 2.5%
+			.dark
+				background-color: #000
+			> .no-image
+				width: 25%
+				height: 25%
+		> .header
+			padding: 2rem
+			grid-template-columns: 1fr auto
+			@media screen and (max-width: 600px)
+				grid-template-columns: 1fr
+				padding: 1rem
+			> .right-piece
+				justify-content: flex-end
+				align-content: center
+				align-items: center
+				@media screen and (max-width: 600px)
+					display: grid
+					grid-template-columns: 1fr 1fr
+					grid-gap: .5rem
+					&.single-btn
+						grid-template-columns: 1fr
+			.used-technologies
+				.techno
+					z-index: 0
+					position: relative
+					padding: .25rem .75rem
+					line-height: 1
+					text-decoration: none
+					border-radius: 1rem
+					> .color
+						z-index: -1
+						position: absolute
+						top: 0
+						left: 0
+						width: 100%
+						height: 100%
+						border-radius: 1rem
+						opacity: .1
+					> .logo
+						height: 1.25rem
+						width: 1.25rem
+					> .name
+						font-size: .85rem
+					&:hover
+						transform: translate(0, -.25rem)
+						box-shadow: 0 3px 10px rgba(#000, .05)
+						> .color
+							opacity: .25
+			.open-project, .open-project-soon, .open-source-code
+				cursor: pointer
+				padding: .5rem 1rem
+				border-radius: 2rem
+				text-decoration: none
+				font-size: 1.15rem
+				@media screen and (max-width: 600px)
+					padding: .5rem
+					font-size: 1rem
+					flex-wrap: nowrap
+			.open-source-code
+				margin-right: 1rem
+				&:hover
+					background-color: var(--foreground-01)
+				&:not(:hover)
+					opacity: .75
+			.closed-source
+				margin-right: 2rem
+				opacity: .4
+			.closed-source, .open-source-code
+				@media screen and (max-width: 600px)
+					margin: 0
+			.open-project
+				position: relative
+				background-color: var(--color-accent)
+				color: #FFF
+				overflow: hidden
+				.icon.stroke > *
+					stroke: #FFF
+				.shine
+					position: absolute
+					left: 0
+					top: 0
+					height: 100%
+					width: 100%
+					background: rgb(#FFF)
+					background: -moz-linear-gradient(90deg, rgba(#FFF,0) 30%, rgba(#FFF,.15) 30%, rgba(#FFF,.15) 70%, rgba(#FFF,0) 70%)
+					background: -webkit-linear-gradient(90deg, rgba(#FFF,0) 30%, rgba(#FFF,.15) 30%, rgba(#FFF,.15) 70%, rgba(#FFF,0) 70%)
+					background: linear-gradient(90deg, rgba(#FFF,0) 30%, rgba(#FFF,.15) 30%, rgba(#FFF,.15) 70%, rgba(#FFF,0) 70%)
+					transform: skew(35deg) translate(-100%,0)
+				&:hover
+					box-shadow: 0 5px 20px var(--color-accent-025)
+					transform: scale(1.05)
+					.shine
+						transition-duration: 1s
+						transform: skew(35deg) translate(100%,0)
+			.open-project-soon
+				cursor: default
+				background-color: var(--foreground-01)
+		> .about
+			border-top: solid 1px var(--foreground-005)
+			border-bottom: solid 1px var(--foreground-005)
+			> .placeholder
+				pointer-events: none
+				user-select: none
+				h1, h3, p, .image
+					position: relative
+					margin-bottom: 1rem
+					background-color: var(--foreground-0025)
+					overflow: hidden
+					border-radius: .25rem
+					color: transparent
+					&:after
+						content: ''
+						position: absolute
+						top: 0
+						left: 0
+						width: 100%
+						height: 100%
+						background: transparent
+				h1
+					display: inline-block
+					margin: 0
+					padding: 0 .25rem
+					line-height: 1.25
+					font-weight: 300
+				.h1-border
+					width: 100%
+					margin: .25rem 0 1rem 0
+					border: solid var(--foreground-005)
+					border-width: 1px 0 0
+				h3
+					width: 25%
+					margin-top: 1.5rem
+					line-height: 1.25
+				p
+					&.i
+						width: 68%
+					&.ii
+						width: 85%
+					&.iii
+						width: 38%
+				&.error-placeholder
+					h1
+						color: var(--color-red)
+					h1, h3, p, .image
+						background-color: var(--color-red-01)
+						transition-duration: 1s
+				&:not(.error-placeholder)
+					h1, h3, p, .image
+						&:after
+							content: ''
+							position: absolute
+							top: 0
+							left: 0
+							width: 100%
+							height: 100%
+							animation: textLoading 2s linear infinite
+							background: transparent
+							background: -moz-linear-gradient(90deg, rgba(#FFF, 0) 0%, var(--placeholder-loading) 50%, rgba(#FFF, 0) 100%)
+							background: -webkit-linear-gradient(90deg, rgba(#FFF, 0) 0%, var(--placeholder-loading) 50%, rgba(#FFF, 0) 100%)
+							background: linear-gradient(90deg, rgba(#FFF, 0) 0%, var(--placeholder-loading) 50%, rgba(#FFF, 0) 100%)
+			> .rtf-content, > .placeholder, > .error-placeholder
+				max-width: 1000px
+				margin: auto
+				padding: 2rem
+				@media screen and (max-width: 1000px)
+					padding: 2rem 1rem
+			> .rtf-content
+				font-size: 1.15rem
+				@media screen and (max-width: 1000px)
+					font-size: 1rem
+		> .footer
+			padding: 2rem
+			@media screen and (max-width: 600px)
+				padding: 2rem 1rem
+			.close
+				padding: .5rem 2rem
+				border-radius: 1rem
+				font-size: 1.15rem
+				cursor: pointer
+				background-color: var(--foreground-005)
+				&:hover
+					transform: scale(1.05)
+					background-color: var(--foreground-015)
+		&.no-about
+			grid-template-rows: 1fr auto
+			margin-bottom: 0
+			> .image-container
+				height: auto
+
+	@media (prefers-color-scheme: light)
+		#Project_Details_Modal > .image-container .dark
+			display: none
+
+	@media (prefers-color-scheme: dark)
+		#Project_Details_Modal
+			box-shadow: 0 0 2px var(--foreground-05), 0 0 10px #000
+			> .image-container
+				.image
+					filter: drop-shadow(0 0 1px rgba(#FFF,.5)) drop-shadow(0 0 20px #000)
+				.bg-cover
+					opacity: .15
+				&.dark-theme .light
+					display: none
+	
+	@keyframes textLoading
+		from
+			transform: translate(125%, 0) skew(-45deg)
+		to
+			transform: translate(-125%, 0) skew(-45deg)
+</style>

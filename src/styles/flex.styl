@@ -1,0 +1,144 @@
+.flex
+	display: -webkit-flex
+	display: -ms-flexbox
+	display: flex
+	flex-direction: row
+	flex-wrap: wrap
+
+	&.nowrap
+		flex-wrap: nowrap
+	&-col
+		flex-direction: column
+
+	&-start
+		justify-content: flex-end
+	&-end
+		justify-content: flex-end
+
+	&-left
+		justify-content: flex-start
+		justify-items: flex-start
+	&-right
+		justify-content: flex-end
+		justify-items: flex-end
+
+	&-center
+		justify-content: center
+		align-content: center
+		align-items: center
+	&-center-y
+		align-content: center
+		align-items: center
+	&-center-x
+		justify-content: center
+
+	&-align-base
+		justify-content: baseline
+		align-content: baseline
+		align-items: baseline
+	&-align-base-y
+		align-content: baseline
+		align-items: baseline
+	&-align-base-x
+		justify-content: baseline
+
+	&-align-start
+		justify-content: flex-start
+		align-content: flex-start
+		align-items: flex-start
+	&-align-start-y
+		align-content: flex-start
+		align-items: flex-start
+	&-align-start-x
+		justify-content: flex-start
+
+	&-align-end
+		justify-content: flex-end
+		align-content: flex-end
+		align-items: flex-end
+	&-align-end-y
+		align-content: flex-end
+		align-items: flex-end
+	&-align-end-x
+		justify-content: flex-end
+
+	&-self
+		&-top
+			margin-bottom: auto
+		&-right
+			margin-left: auto
+		&-left
+			margin-right: auto
+		&-bottom
+			margin-top: auto
+
+	&-full-size
+		flex: 1 1 100%
+	&-full-size-fixed
+		flex: 0 0 100%
+
+	&-base-size
+		flex: 0 0 auto
+		&-grow
+			flex: 1 0 auto
+		&-shrink
+			flex: 0 1 auto
+		&-variable
+			flex: 1 1 auto
+
+	&.list
+		&:not(.flex-end):not(.flex-end-y)
+			&.gap-05
+				//margin-bottom: -.5rem
+				> *
+					margin-bottom: .5rem
+			&.gap-1
+				//margin-bottom: -1rem
+				> *
+					margin-bottom: 1rem
+			&.gap-15
+				//margin-bottom: -1.5rem
+				> *
+					margin-bottom: 1.5rem
+			&.gap-2
+				//margin-bottom: -2rem
+				> *
+					margin-bottom: 2rem
+
+		&.flex-end, &.flex-end-y
+			&.gap-05
+				//margin-top: -.5rem
+				> *
+					margin-top: .5rem
+			&.gap-1
+				//margin-top: -1rem
+				> *
+					margin-top: 1rem
+			&.gap-15
+				//margin-top: -1.5rem
+				> *
+					margin-top: 1.5rem
+			&.gap-2
+				//margin-top: -2rem
+				> *
+					margin-top: 2rem
+
+	&:not(.flex-end):not(.flex-end-x)
+		&.gap-05 > *:not(:last-child)
+			margin-right: .5rem
+		&.gap-1 > *:not(:last-child)
+			margin-right: 1rem
+		&.gap-15 > *:not(:last-child)
+			margin-right: 1.5rem
+		&.gap-2 > *:not(:last-child)
+			margin-right: 2rem
+
+	&.flex-end, &.flex-end-x
+		&.gap-05 > *:not(:first-child)
+			margin-left: .5rem
+		&.gap-1 > *:not(:first-child)
+			margin-left: 1rem
+		&.gap-15 > *:not(:first-child)
+			margin-left: 1.5rem
+		&.gap-2 > *:not(:first-child)
+			margin-left: 2rem

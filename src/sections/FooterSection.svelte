@@ -1,0 +1,13 @@
+<footer>
+	<p class='copyright'>Copyright &copy; Daniel Sharkov 2021. Alle Rechte vorbehalten.</p>
+</footer>
+
+<style>
+	footer
+		padding: 1rem
+	.copyright
+		text-align: center
+		color: var(--foreground-025)
+		@media screen and (max-width: 1000px)
+			font-size: .75rem
+</style>
