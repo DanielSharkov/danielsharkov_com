@@ -3,7 +3,7 @@
 	const dispatch = createEventDispatcher()
 	import { projects } from './database'
 	import { GlobalStore, ImageThumbKind } from './global_store'
-	import { vibrate } from './utils/vibrate'
+	import { vibrate } from './utils/misc'
 	export let projectIndex: number
 
 	let project: Project = projects[projectIndex]

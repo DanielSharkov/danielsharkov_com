@@ -2,7 +2,7 @@
 	import { cubicInOut } from 'svelte/easing'
 	import { GlobalStore } from '../global_store'
 	import { createEventDispatcher } from 'svelte'
-	import { vibrate, vibrateLink } from '../utils/vibrate'
+	import { vibrate, vibrateLink } from '../utils/misc'
 	const dispatch = createEventDispatcher()
 
 	const profilePicUrl: string = 'me-myself-and-i.jpg'

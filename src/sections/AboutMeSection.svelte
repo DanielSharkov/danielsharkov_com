@@ -1,7 +1,7 @@
 <section id='me-myself-and-i' class='grid'>
 	<div class='header'>
 		<h1 class='display-3'>Hallo, das bin ich!</h1>
-		<p>Ich bin nicht nur ein enthusiastischer Software Engineer. Hobbys</p>
+		<!-- <p>Ich bin nicht nur ein enthusiastischer Software Engineer. Hobbys</p> -->
 	</div>
 
 	<article>
@@ -95,7 +95,7 @@
 
 
 <script>
-	import { vibrate } from '../utils/vibrate'
+	import { vibrate } from '../utils/misc'
 </script>
 
 

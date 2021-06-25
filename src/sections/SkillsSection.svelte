@@ -65,7 +65,7 @@
 
 <script lang='ts'>
 	import { careerBegin, technologies } from '../database'
-	import { vibrateLink } from '../utils/vibrate'
+	import { vibrateLink } from '../utils/misc'
 
 	const currentYear: number = Number(new Date().getFullYear())
 

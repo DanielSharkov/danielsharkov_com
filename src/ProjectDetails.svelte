@@ -1,9 +1,9 @@
 <div id='Project_Details_Container'>
 	<div class='bg' transition:bgTrans/>
 	<div id='Project_Details_Modal' class='grid' transition:modalTrans class:no-about={project.about === null}>
-		<button class='close-modal' on:click={closeModal}>
-			<svg class='icon fill icon-medium' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 496.096 496.096'>
-				<path d='M259.41,247.998L493.754,13.654c3.123-3.124,3.123-8.188,0-11.312c-3.124-3.123-8.188-3.123-11.312,0L248.098,236.686 L13.754,2.342C10.576-0.727,5.512-0.639,2.442,2.539c-2.994,3.1-2.994,8.015,0,11.115l234.344,234.344L2.442,482.342 c-3.178,3.07-3.266,8.134-0.196,11.312s8.134,3.266,11.312,0.196c0.067-0.064,0.132-0.13,0.196-0.196L248.098,259.31 l234.344,234.344c3.178,3.07,8.242,2.982,11.312-0.196c2.995-3.1,2.995-8.016,0-11.116L259.41,247.998z'/>
+		<button class='close-modal flex flex-center' on:click={closeModal}>
+			<svg class='icon stroke icon-big' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 120 120'>
+				<path d='M10 110l50-50m0 0l50-50M60 60l50 50M60 60L10 10' stroke-width='.25rem' stroke-linecap='round' stroke-linejoin='round'/>
 			</svg>
 		</button>
 		<div class='image-container flex flex-center block-select'
@@ -98,7 +98,7 @@
 					{/each}
 				</div>
 			</div>
-			<div class='right-piece flex' class:single-btn={ anyHeaderBtnActive } class:no-btn={ noHeaderBtn }>
+			<div class='right-piece flex' class:single-btn={anyHeaderBtnActive} class:no-btn={noHeaderBtn}>
 				{#if project.codeUrl}
 					<a href={project.codeUrl} class='open-source-code flex flex-center gap-05' target='_blank' on:click={(e)=> vibrateLink(e)}>
 						<svg class='icon fill icon-medium' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -152,8 +152,70 @@
 					</div>
 				{/if}
 			</div>
-			<div class='footer flex flex-center-y'>
-				<button class='close flex-self-right' on:click={closeModal}>Schließen</button>
+			<div class='footer grid grid-center-y'>
+				<div class='share-post flex flex-center-y'>
+					<span class='label'>Teilen:</span>
+					<button
+					class='share-option flex flex-center gap-05 nowrap'
+					class:is-sharing={userIsSharingURL}
+					on:click={shareURL}>
+						<div class='status grid gap-05 grid-center-x' class:active={userIsSharingURL}>
+							<span class='label'>
+								{#if shareURLWasCanceled}
+									Etwas ist schief gelaufen
+								{:else if shareURLWasSuccess}
+									URL Kopiert
+								{:else}
+									Wird kopiert...
+								{/if}
+							</span>
+							<StatusIcon
+								loading={userIsSharingURL}
+								failed={shareURLWasCanceled}
+								succeeded={shareURLWasSuccess}
+							/>
+						</div>
+						<svg class='icon icon-default stroke' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'>
+							<path d='M34.2893 54.7108L19.0614 69.9387C10.6513 78.3489 10.6513 91.9844 19.0614 100.395C27.4716 108.805 41.1071 108.805 49.5173 100.395L64.7452 85.1667C73.1553 76.7565 73.1553 63.121 64.7452 54.7108M85.0491 64.8628L100.277 49.6348C108.687 41.2247 108.687 27.5891 100.277 19.179C91.8669 10.7688 78.2313 10.7688 69.8212 19.179L54.5932 34.4069C52.0762 36.924 50.3124 39.9091 49.302 43.0821C46.9364 50.5109 48.7001 58.9697 54.5932 64.8628' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
+						</svg>
+						<span class='label'>URL kopieren</span>
+					</button>
+					<button
+					class='share-option flex flex-center gap-05 nowrap'
+					class:is-sharing={userIsSharing}
+					on:click={shareThis}>
+						<div class='status grid gap-05 grid-center-x' class:active={userIsSharing}>
+							<span class='label'>
+								{#if shareNotSupported}
+									Dein Browser unterstützt leider diese Funktion nicht
+								{:else if shareWasCanceled}
+									Abgebrochen
+								{:else if shareWasSuccess}
+									Geteilt
+								{:else}
+									Wird geteilt...
+								{/if}
+							</span>
+							<StatusIcon
+								loading={userIsSharing}
+								failed={shareWasCanceled || shareNotSupported}
+								succeeded={shareWasSuccess}
+							/>
+						</div>
+						<svg class='icon stroke icon-default' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' fill='none'>
+							<path d='M45.25 40H35C29.4772 40 25 44.4772 25 50V100C25 105.523 29.4772 110 35 110H85C90.5229 110 95 105.523 95 100V50C95 44.4772 90.5229 40 85 40H74.75M60.5 10V70M60.5 10L77 26.5M60.5 10L44 26.5' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
+						</svg>
+						<span class='label'>Teilen mit...</span>
+					</button>
+					<!-- {#if isSharingSupported}
+					{/if} -->
+				</div>
+				<button class='close flex flex-center-y flex-self-right gap-1 nowrap' on:click={closeModal}>
+					<svg class='icon stroke icon-small' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 120 120'>
+						<path d='M10 110l50-50m0 0l50-50M60 60l50 50M60 60L10 10' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
+					</svg>
+					<span>Schließen</span>
+				</button>
 			</div>
 		{/if}
 	</div>
@@ -166,7 +228,8 @@
 	import { projects, technologies } from './database'
 	import Marked from 'marked'
 	import { GlobalStore } from './global_store'
-	import { vibrate, vibrateLink } from './utils/vibrate'
+	import { vibrate, vibrateLink, copyToClipboard } from './utils/misc'
+	import StatusIcon from './StatusIcon.svelte'
 
 	function closeModal() {
 		vibrate()
@@ -219,6 +282,103 @@
 	const noHeaderBtn = (
 		project.codeUrl === undefined && project.projectUrl === null
 	)
+
+	let userIsSharingURL = false
+	let shareURLWasCanceled = false
+	let shareURLWasSuccess = false
+	async function shareURL() {
+		if (userIsSharingURL) return
+		shareURLWasCanceled = false
+		shareURLWasSuccess = false
+		shareThisReset()
+
+		if (window.location?.href) {
+			userIsSharingURL = true
+			vibrate()
+			if (await copyToClipboard(window.location.href)) {
+				vibrate([0,500,200,100,50])
+				setTimeout(()=> {
+					shareURLWasSuccess = true
+					setTimeout(shareURLReset, 2000)
+				})
+			}
+			else {
+				vibrate([0,500,100,50,100])
+				setTimeout(()=> {
+					shareURLWasCanceled = true
+					setTimeout(shareURLReset, 2000)
+				})
+			}
+		}
+		else {
+			vibrate([0,500, 100,50,100, 200, 50,50,50,50,50,50,50,50,50])
+			userIsSharingURL = true
+			setTimeout(()=> {
+				shareURLWasCanceled = true
+				setTimeout(shareURLReset, 2000)
+			})
+		}
+	}
+	function shareURLReset() {
+		userIsSharingURL = false
+		setTimeout(()=> {
+			shareURLWasCanceled = false
+			shareURLWasSuccess = false
+		})
+	}
+
+	let userIsSharing = false
+	let shareWasCanceled = false
+	let shareNotSupported = false
+	let shareWasSuccess = false
+	function shareThis() {
+		if (userIsSharing) return
+		shareWasCanceled = false
+		shareWasSuccess = false
+		shareURLReset()
+
+		if (window.navigator?.share && window.location?.href) {
+			vibrate()
+			userIsSharing = true
+
+			navigator.share({
+				title: project.name + ' - A project by Daniel Sharkov',
+				url: window.location.href,
+			})
+			.then(() => {
+				vibrate([0,500,200,100,50])
+				setTimeout(()=> {
+					shareWasSuccess = true
+					setTimeout(shareThisReset, 2000)
+				})
+			})
+			.catch(()=> {
+				vibrate([0,500,100,50,100])
+				setTimeout(()=> {
+					shareWasCanceled = true
+					setTimeout(shareThisReset, 2000)
+				})
+			})
+		}
+		else {
+			vibrate([0,500, 100,50,100, 200, 50,50,50,50,50,50,50,50,50])
+			userIsSharing = true
+			setTimeout(()=> {
+				shareNotSupported = true
+				setTimeout(shareThisReset, 3000)
+			})
+		}
+	}
+	function shareThisReset() {
+		userIsSharing = false
+		setTimeout(()=> {
+			shareWasCanceled = false
+			shareNotSupported = false
+			shareWasSuccess = false
+		})
+	}
+
+	// const isSharingSupported = window.navigator?.share !== undefined
 </script>
 
 <style>
@@ -260,18 +420,19 @@
 			position: absolute
 			top: 1rem
 			right: 1rem
-			padding: 1rem
+			padding: .5rem
 			background-color: var(--background)
 			border: solid 1px var(--border-hard)
 			border-radius: 2rem
 			cursor: pointer
 			line-height: 1
-			transition: all var(--transition)
-			&:hover
+			transition: var(--transition)
+			transition-property: transform, box-shadow, color
+			&:hover, &:active
 				transform: scale(1.1)
 				border-color: var(--color-accent)
-				.icon.fill > *
-					fill: var(--color-accent)
+				.icon.stroke > *
+					stroke: var(--color-accent)
 			&:active
 				transform: scale(0.95)
 		> .image-container
@@ -286,7 +447,7 @@
 				min-height: auto
 				max-height: 55vh
 			&.no-image
-				height: 5.5rem
+				height: 4.5rem
 				min-height: unset
 			.bg-cover
 				position: absolute
@@ -301,11 +462,15 @@
 				@media screen and (min-width: 600px)
 					border-radius: .5rem .5rem 0 0
 			> .light, > .dark
-				width: 100%
-				height: 100%
+				top: 0
+				right: 0
+				bottom: 0
+				left: 0
 				padding: 1.5rem
+				@media screen and (min-width: 600px)
+					position: absolute
 				@media screen and (max-width: 600px)
-					padding: 5.5rem 1rem 2.5rem 1rem
+					padding: 5rem 1rem 2rem 1rem
 			.bg-cover
 				z-index: 1
 				background-size: cover
@@ -354,7 +519,8 @@
 					line-height: 1
 					text-decoration: none
 					border-radius: 1rem
-					transition: all var(--transition)
+					transition: var(--transition)
+					transition-property: transform, box-shadow, color
 					> .color
 						z-index: -1
 						position: absolute
@@ -393,7 +559,8 @@
 					flex-wrap: nowrap
 			.open-source-code
 				margin-right: 1rem
-				transition: all var(--transition)
+				transition: var(--transition)
+				transition-property: transform, box-shadow, color
 				&:hover
 					background-color: var(--foreground-01)
 				&:not(:hover)
@@ -411,7 +578,8 @@
 				background-color: var(--color-accent)
 				color: #FFF
 				overflow: hidden
-				transition: all var(--transition)
+				transition: var(--transition)
+				transition-property: transform, box-shadow, color
 				.icon.stroke > *
 					stroke: #FFF
 				.shine
@@ -425,7 +593,8 @@
 					background: -webkit-linear-gradient(90deg, rgba(#FFF,0) 30%, rgba(#FFF,.15) 30%, rgba(#FFF,.15) 70%, rgba(#FFF,0) 70%)
 					background: linear-gradient(90deg, rgba(#FFF,0) 30%, rgba(#FFF,.15) 30%, rgba(#FFF,.15) 70%, rgba(#FFF,0) 70%)
 					transform: skew(35deg) translate(-100%,0)
-					transition: all var(--transition)
+					transition: var(--transition)
+					transition-property: transform, box-shadow, color
 				&:hover
 					box-shadow:
 						0 0 1px var(--foreground-01),
@@ -482,9 +651,9 @@
 						width: 38%
 				&.error-placeholder
 					h1
-						color: var(--color-red)
+						color: var(--color-danger)
 					h1, h3, p, .image
-						background-color: var(--color-red-01)
+						background-color: var(--color-danger-01)
 						transition-duration: 1s
 				&:not(.error-placeholder)
 					h1, h3, p, .image
@@ -512,15 +681,92 @@
 					font-size: 1rem
 		> .footer
 			padding: 2rem
+			grid-template-columns: auto auto
+			justify-content: space-between
+			grid-gap: 1rem
 			@media screen and (max-width: 600px)
 				padding: 2rem 1rem
+				grid-template-columns: 1fr
+				grid-gap: 2rem
+			.share-post
+				> .label
+					margin-right: 1rem
+				.share-option
+					position: relative
+					padding: .5rem 1rem
+					background-color: var(--foreground-005)
+					border-radius: 2rem
+					transition: var(--transition)
+					transition-property: background-color, transform, box-shadow
+					cursor: pointer
+					font-size: 1rem
+					.status
+						z-index: 10
+						position: absolute
+						left: auto
+						bottom: 175%
+						margin: 0
+						padding: 1rem
+						background-color: var(--modal-bg)
+						box-shadow:
+							0 0 1px var(--foreground-015),
+							0 72px 10px -54px var(--foreground-01),
+							0 10px 30px -10px var(--foreground-025)
+						border-radius: .5rem
+						transition: var(--transition)
+						transition-property: opacity, transform
+						pointer-events: none
+						&:not(.active)
+							opacity: 0
+							transform: translate(0, 2rem)
+						> .label
+							font-weight: 600
+							font-size: .75rem
+						:global > .icon
+							width: 6rem
+							height: 6rem
+						&:before
+							content: ''
+							position: absolute
+							bottom: -2rem
+							border: solid 1rem transparent
+							border-top-color: var(--modal-bg)
+					&:not(:last-child)
+						margin-right: .5rem
+					&:hover, &:active, &.is-sharing
+						background-color: var(--color-accent)
+						transform: translate(0, -.25rem)
+						box-shadow:
+							0 0 1px var(--foreground-01),
+							0 10px 20px -10px var(--foreground-05)
+						> .label
+							color: #FFF
+						.icon.fill > *
+							fill: #FFF
+						.icon.stroke > *
+							stroke: #FFF
+					&.is-sharing
+						background-color: var(--foreground)
+						> .label
+							color: var(--background)
+						.icon.fill > *
+							fill: var(--background)
+						.icon.stroke > *
+							stroke: var(--background)
+				@media screen and (max-width: 600px)
+					> .label, .share-option
+						margin: 0
+						flex: 1 1 100%
+					.share-option
+						margin-top: 1rem
 			.close
-				padding: .5rem 2rem
-				border-radius: 1rem
+				padding: .5rem 1rem
+				border-radius: 2rem
 				font-size: 1.15rem
 				cursor: pointer
 				background-color: var(--foreground-005)
-				transition: all var(--transition)
+				transition: var(--transition)
+				transition-property: transform, box-shadow, color
 				&:hover
 					transform: scale(1.05)
 					background-color: var(--foreground-015)
@@ -542,28 +788,41 @@
 			> .image-container
 				.image
 					box-shadow:
-						0 -1px 1px var(--foreground-015),
+						0 -1px 1px var(--foreground-025),
 						0 1px 1px var(--background),
 						0 18px 30px -20px var(--foreground-05)
 				&.dark-theme .light
 					display: none
 			> .header
 				.used-technologies .techno
-					box-shadow: 0 0 1px var(--foreground-05)
+					box-shadow:
+						0 -1px 1px var(--foreground-025),
+						0 1px 1px var(--background-05)
 					> .color
 						opacity: .25
 					&:hover
 						box-shadow:
-							0 0 1px var(--foreground-05),
+							0 -1px 1px var(--foreground-025),
+							0 1px 1px var(--background-05),
 							0 10px 20px -10px var(--foreground-05)
 						> .color
 							opacity: .4
 				.open-source-code:hover
 					background-color: var(--foreground-015)
-			> .footer .close
-				background-color: var(--foreground-01)
-				&:hover
-					background-color: var(--foreground-025)
+			> .footer
+				.share-post .share-option
+					box-shadow:
+						0 -1px 1px var(--foreground-025),
+						0 1px 1px var(--background-05)
+					&:hover
+						box-shadow:
+							0 -1px 1px var(--foreground-025),
+							0 1px 1px var(--background-05),
+							0 10px 20px -10px var(--foreground-05)
+				.close
+					background-color: var(--foreground-01)
+					&:hover
+						background-color: var(--foreground-025)
 	
 	@keyframes textLoading
 		from

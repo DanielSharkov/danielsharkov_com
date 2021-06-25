@@ -34,7 +34,7 @@
 
 <script lang='ts'>
 	import { GlobalStore } from '../global_store'
-	import { vibrateLink } from '../utils/vibrate'
+	import { vibrateLink } from '../utils/misc'
 
 	let email: string = ''
 	let subject: string = ''

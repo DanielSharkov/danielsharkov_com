@@ -1,10 +1,15 @@
 type easeScrollingOptions = {
-	top:      number
-	duration: number
-	easing:   Function
+	top:       number
+	duration?: number
+	easing?:   Function
 }
 
-let isAutoScrolling = null
+const rAF = (
+	window.requestAnimationFrame ||
+	window.webkitRequestAnimationFrame ||
+	window.mozRequestAnimationFrame ||
+	function(callback) { window.setTimeout(callback, 1000 / 60) }
+)
 
 export default function easeScrolling(
 	el: HTMLElement, {
@@ -16,32 +21,25 @@ export default function easeScrolling(
 	if (!(el instanceof HTMLElement)) {
 		throw new Error('Invalid element provided')
 	}
-	const rAF = window.requestAnimationFrame
 	const toScroll = Number(top) - el.scrollTop
-	console.log(toScroll)
 	if (toScroll == 0) return
+
 	const scrollBegin = el.scrollTop
-	console.log(scrollBegin)
 	let _startTime = null
-	const thisAnim =(now)=> {
-		console.log('test')
-		if (_startTime == null) {
-			_startTime = now
-		}
+	rAF(_scrollAnim)
+
+	function _scrollAnim (now) {
+		if (_startTime == null) _startTime = now
+	
 		const frame = now - _startTime
 		const progress = 1 / Number(duration) * frame
 		const easedProgress = easing ? easing(progress) : progress
 		const result = scrollBegin + toScroll * easedProgress
+
 		if (Number(duration) - frame > 0) {
-			if (frame > 0) {
-				el.scrollTop = result
-			}
-			isAutoScrolling = rAF(thisAnim)
+			if (frame > 0) el.scrollTop = result
+			rAF(_scrollAnim)
 		}
-		else {
-			el.scrollTop = Number(top)
-			setTimeout(()=> isAutoScrolling = null)
-		}
+		else el.scrollTop = Number(top)
 	}
-	isAutoScrolling = rAF(thisAnim)
 }
