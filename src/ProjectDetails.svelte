@@ -14,21 +14,21 @@
 					{#if !$GlobalStore.projectImgLoad[project.id].light}
 					<div
 						class='thumb bg-cover'
-						style='background-image: url(/projects/{project.id}/thumbnail.jpg)'
+						style='background-image: url(projects/{project.id}/thumbnail.jpg)'
 					/>
 					<div
 						class='thumb image'
-						style='background-image: url(/projects/{project.id}/thumbnail.jpg)'
+						style='background-image: url(projects/{project.id}/thumbnail.jpg)'
 					/>
 					{/if}
 					{#if $GlobalStore.projectImgLoad[project.id].light}
 						<div
 							class='bg-cover'
-							style='background-image: url(/projects/{project.id}/cover.png)'
+							style='background-image: url(projects/{project.id}/cover.png)'
 						/>
 						<img
 							class='image'
-							src='/projects/{project.id}/cover.png'
+							src='projects/{project.id}/cover.png'
 							alt='{project.id} cover'
 						/>
 					{/if}
@@ -38,21 +38,21 @@
 						{#if !$GlobalStore.projectImgLoad[project.id].dark}
 						<div
 							class='thumb bg-cover'
-							style='background-image: url(/projects/{project.id}/thumbnail_dark.jpg)'
+							style='background-image: url(projects/{project.id}/thumbnail_dark.jpg)'
 						/>
 						<div
 							class='thumb image'
-							style='background-image: url(/projects/{project.id}/thumbnail_dark.jpg)'
+							style='background-image: url(projects/{project.id}/thumbnail_dark.jpg)'
 						/>
 						{/if}
 						{#if $GlobalStore.projectImgLoad[project.id].dark}
 							<div
 								class='bg-cover'
-								style='background-image: url(/projects/{project.id}/cover_dark.png)'
+								style='background-image: url(projects/{project.id}/cover_dark.png)'
 							/>
 							<img
 								class='image'
-								src='/projects/{project.id}/cover_dark.png'
+								src='projects/{project.id}/cover_dark.png'
 								alt='{project.id} dark cover'
 							/>
 						{/if}
@@ -193,7 +193,7 @@
 	let projectAbout = null
 	async function fetchAbout() {
 		try {
-			const resp = await fetch(`/projects/${project.id}/about/de.md`)
+			const resp = await fetch(`projects/${project.id}/about/de.md`)
 			if (resp.status !== 200) throw new Error('404')
 			const text = await resp.text()
 			projectAbout = text

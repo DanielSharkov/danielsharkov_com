@@ -30,7 +30,7 @@
 					{#if !$GlobalStore.projectImgLoad[project.id].dark}
 					<img
 						class='thumb'
-						src='/projects/{project.id}/thumbnail_dark.jpg'
+						src='projects/{project.id}/thumbnail_dark.jpg'
 						alt={`Daniel Sharkov's project ${project.name} dark thumbnail`}
 						on:load={()=> {
 							GlobalStore.thumbDone(project.id, ImageThumbKind.DARK)
@@ -40,7 +40,7 @@
 					{#if $GlobalStore.projectImgLoad[project.id].dark}
 						<img
 							class='image'
-							src='/projects/{project.id}/preview_dark.jpg'
+							src='projects/{project.id}/preview_dark.jpg'
 							alt={`Daniel Sharkov's project ${project.name} dark themed`}
 							on:load={lazyLoadedDark}
 						/>
@@ -51,7 +51,7 @@
 				{#if !$GlobalStore.projectImgLoad[project.id].light}
 					<img
 						class='thumb'
-						src='/projects/{project.id}/thumbnail.jpg'
+						src='projects/{project.id}/thumbnail.jpg'
 						alt={`Daniel Sharkov's project ${project.name} thumbnail`}
 						on:load={()=> {
 							GlobalStore.thumbDone(project.id, ImageThumbKind.LIGHT)
@@ -61,7 +61,7 @@
 				{#if $GlobalStore.projectImgLoad[project.id].light}
 					<img
 						class='image'
-						src='/projects/{project.id}/preview.jpg'
+						src='projects/{project.id}/preview.jpg'
 						alt={`Daniel Sharkov's project ${project.name}`}
 						on:load={lazyLoaded}
 					/>

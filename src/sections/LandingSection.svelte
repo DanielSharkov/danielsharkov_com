@@ -5,7 +5,7 @@
 	import { vibrate, vibrateLink } from '../utils/vibrate'
 	const dispatch = createEventDispatcher()
 
-	const profilePicUrl: string = '/me-myself-and-i.jpg'
+	const profilePicUrl: string = 'me-myself-and-i.jpg'
 	const professions: Array<string> = [
 		'Software Engineer', 'FullStack WebDev',
 		'UX & UI Designer', 'Junior DevOp',
@@ -69,7 +69,7 @@
 		</g>
 		<defs>
 			<pattern id='pattern0' patternContentUnits='objectBoundingBox' width='1' height='1'>
-				<image id='image0' width='1024' height='2146' xlink:href='/code-bg.png' transform='translate(-0.0478835) scale(0.00102516 0.000465983)'/>
+				<image id='image0' width='1024' height='2146' xlink:href='code-bg.png' transform='translate(-0.0478835) scale(0.00102516 0.000465983)'/>
 			</pattern>
 			<linearGradient id='paint0_linear' x1='108.668' y1='6.1376e-07' x2='178.511' y2='83.6924' gradientUnits='userSpaceOnUse'>
 				<stop/><stop offset='1' stop-color='#403828'/>
