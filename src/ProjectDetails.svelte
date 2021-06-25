@@ -6,11 +6,11 @@
 				<path d='M259.41,247.998L493.754,13.654c3.123-3.124,3.123-8.188,0-11.312c-3.124-3.123-8.188-3.123-11.312,0L248.098,236.686 L13.754,2.342C10.576-0.727,5.512-0.639,2.442,2.539c-2.994,3.1-2.994,8.015,0,11.115l234.344,234.344L2.442,482.342 c-3.178,3.07-3.266,8.134-0.196,11.312s8.134,3.266,11.312,0.196c0.067-0.064,0.132-0.13,0.196-0.196L248.098,259.31 l234.344,234.344c3.178,3.07,8.242,2.982,11.312-0.196c2.995-3.1,2.995-8.016,0-11.116L259.41,247.998z'/>
 			</svg>
 		</button>
-		<div class='image-container flex flex-center'
+		<div class='image-container flex flex-center block-select'
 		class:no-image={ !project.cover }
 		class:dark-theme={ project.darkTheme }>
 			{#if project.cover}
-				<div class='light'>
+				<div class='light flex flex-center'>
 					{#if !$GlobalStore.projectImgLoad[project.id].light}
 					<div
 						class='thumb bg-cover'
@@ -26,14 +26,15 @@
 							class='bg-cover'
 							style='background-image: url(/projects/{project.id}/cover.png)'
 						/>
-						<div
+						<img
 							class='image'
-							style='background-image: url(/projects/{project.id}/cover.png)'
+							src='/projects/{project.id}/cover.png'
+							alt='{project.id} cover'
 						/>
 					{/if}
 				</div>
 				{#if project.darkTheme}
-					<div class='dark'>
+					<div class='dark flex flex-center'>
 						{#if !$GlobalStore.projectImgLoad[project.id].dark}
 						<div
 							class='thumb bg-cover'
@@ -49,9 +50,10 @@
 								class='bg-cover'
 								style='background-image: url(/projects/{project.id}/cover_dark.png)'
 							/>
-							<div
+							<img
 								class='image'
-								style='background-image: url(/projects/{project.id}/cover_dark.png)'
+								src='/projects/{project.id}/cover_dark.png'
+								alt='{project.id} dark cover'
 							/>
 						{/if}
 					</div>
@@ -71,8 +73,8 @@
 			<div class='left-piece grid gap-1'>
 				<h1 class='name'>{ project.name }</h1>
 				<div class='used-technologies flex list gap-05'>
-					{#each project.usedTechnologies as techno}
-						<a href={technologies[techno].link} class='techno flex flex-center gap-05' target='_blank'>
+					{#each project.usedTechnologies as techno, idx}
+						<a href={technologies[techno].link} target='_blank' class='techno flex flex-center gap-05' on:click={vibrate}>
 							<div
 								class='color'
 								style='background-color: {technologies[techno].color}'
@@ -82,6 +84,12 @@
 									<title>{techno} Logo</title>
 									<use xlink:href='#LOGO_{techno}'/>
 								</svg>
+							{:else if technologies[techno].image}
+								<img
+									class='logo'
+									src='technologies/logo_{techno}.png'
+									alt='{techno} Logo'
+								/>
 							{/if}
 							<span class='name'>
 								{ technologies[techno].name }
@@ -90,9 +98,9 @@
 					{/each}
 				</div>
 			</div>
-			<div class='right-piece flex' class:single-btn={ anyHeaderBtnActive }>
+			<div class='right-piece flex' class:single-btn={ anyHeaderBtnActive } class:no-btn={ noHeaderBtn }>
 				{#if project.codeUrl}
-					<a href={project.codeUrl} class='open-source-code flex flex-center gap-05' target='_blank'>
+					<a href={project.codeUrl} class='open-source-code flex flex-center gap-05' target='_blank' on:click={(e)=> vibrateLink(e)}>
 						<svg class='icon fill icon-medium' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'>
 							<path d='M42.0439 53.512L17.2039 62.8L42.0439 72.088V79.576L8.85188 66.688V58.912L42.0439 46.024V53.512ZM68.2406 27.376H76.3046L52.5446 95.2H44.4806L68.2406 27.376ZM111.231 58.912V66.688L78.0394 79.576V72.088L102.879 62.8L78.0394 53.512V46.024L111.231 58.912Z'/>
 						</svg>
@@ -110,7 +118,7 @@
 					</div>
 				{/if}
 				{#if project.projectUrl !== null && project.projectUrl !== 'COMING_SOON'}
-					<a href={project.projectUrl} class='open-project flex flex-center gap-05' target='_blank'>
+					<a href={project.projectUrl} class='open-project flex flex-center gap-05' target='_blank' on:click={(e)=> vibrateLink(e)}>
 						<div class='shine'/>
 						<span class='label'>Projekt öffnen</span>
 						<svg class='icon stroke icon-medium' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -158,8 +166,12 @@
 	import { projects, technologies } from './database'
 	import Marked from 'marked'
 	import { GlobalStore } from './global_store'
+	import { vibrate, vibrateLink } from './utils/vibrate'
 
-	const closeModal =()=> dispatch('close')
+	function closeModal() {
+		vibrate()
+		dispatch('close')
+	}
 
 	export let projectIndex: number
 	const project: Project = projects[projectIndex]
@@ -199,9 +211,13 @@
 	}
 	if (project.about) fetchAbout()
 
-	$:anyHeaderBtnActive = (
+	const anyHeaderBtnActive = (
 		project.codeUrl !== undefined && project.projectUrl === undefined ||
 		project.codeUrl === undefined && project.projectUrl !== undefined
+	)
+
+	const noHeaderBtn = (
+		project.codeUrl === undefined && project.projectUrl === null
 	)
 </script>
 
@@ -220,23 +236,25 @@
 			z-index: -1
 			position: fixed
 			top: 0
+			right: 0
+			bottom: 0
 			left: 0
-			width: 100%
-			height: 100%
 			background-color: var(--overlay-bg)
 
 	#Project_Details_Modal
 		position: relative
-		width: 100%
+		right: 0
+		left: 0
 		min-height: 100%
-		background-color: var(--background-contrast)
+		background-color: var(--background)
 		grid-template-rows: auto auto 1fr
 		transform: translate3d(0,0,0)
 		@media screen and (min-width: 600px)
 			margin-bottom: 5rem
 			box-shadow: 0 0 10px var(--foreground-025)
 			border-radius: .5rem
-			background-color: var(--modal-bg)
+		@media screen and (max-width: 600px)
+			box-shadow: none !important
 		> .close-modal
 			z-index: 100
 			position: absolute
@@ -244,10 +262,11 @@
 			right: 1rem
 			padding: 1rem
 			background-color: var(--background)
-			border: solid 1px var(--foreground-025)
+			border: solid 1px var(--border-hard)
 			border-radius: 2rem
 			cursor: pointer
 			line-height: 1
+			transition: all var(--transition)
 			&:hover
 				transform: scale(1.1)
 				border-color: var(--color-accent)
@@ -257,15 +276,19 @@
 				transform: scale(0.95)
 		> .image-container
 			position: relative
-			height: 65vh
+			height: auto
+			min-height: 65vh
+			max-height: 65vh
 			background-color: var(--foreground-0025)
-			border-bottom: solid 1px var(--foreground-005)
+			border-bottom: solid 1px var(--border-soft)
 			overflow: hidden
 			@media screen and (max-width: 600px)
-				height: 55vh
+				min-height: auto
+				max-height: 55vh
 			&.no-image
 				height: 5.5rem
-			> .light, > .dark, .image, .bg-cover
+				min-height: unset
+			.bg-cover
 				position: absolute
 				top: 0
 				left: 0
@@ -277,21 +300,29 @@
 					filter: blur(5px)
 				@media screen and (min-width: 600px)
 					border-radius: .5rem .5rem 0 0
+			> .light, > .dark
+				width: 100%
+				height: 100%
+				padding: 1.5rem
+				@media screen and (max-width: 600px)
+					padding: 5.5rem 1rem 2.5rem 1rem
 			.bg-cover
 				z-index: 1
 				background-size: cover
 				background-position: top
 				opacity: .1
 			.image
-				height: 90%
-				top: 5%
+				height: auto
+				max-height: 100%
+				width: auto
+				max-width: 100%
+				margin: auto
 				z-index: 3
-				filter: drop-shadow(0 0 20px rgba(#000,.15))
+				box-shadow:
+					0 0 1px var(--foreground-01),
+					0 18px 30px -20px var(--foreground-05)
 				background-size: contain
-				@media screen and (max-width: 1000px)
-					height: 90%
-					width: 95%
-					left: 2.5%
+				border-radius: .5rem
 			.dark
 				background-color: #000
 			> .no-image
@@ -313,6 +344,8 @@
 					grid-gap: .5rem
 					&.single-btn
 						grid-template-columns: 1fr
+					&.no-btn
+						display: none
 			.used-technologies
 				.techno
 					z-index: 0
@@ -321,6 +354,7 @@
 					line-height: 1
 					text-decoration: none
 					border-radius: 1rem
+					transition: all var(--transition)
 					> .color
 						z-index: -1
 						position: absolute
@@ -330,14 +364,21 @@
 						height: 100%
 						border-radius: 1rem
 						opacity: .1
+						transition: var(--transition)
+						transition-property: opacity, background-color
 					> .logo
 						height: 1.25rem
 						width: 1.25rem
+					> img.logo
+						object-fit: contain
+						object-position: center
 					> .name
 						font-size: .85rem
 					&:hover
 						transform: translate(0, -.25rem)
-						box-shadow: 0 3px 10px rgba(#000, .05)
+						box-shadow:
+							0 0 1px var(--foreground-01),
+							0 10px 20px -10px var(--foreground-05)
 						> .color
 							opacity: .25
 			.open-project, .open-project-soon, .open-source-code
@@ -352,13 +393,16 @@
 					flex-wrap: nowrap
 			.open-source-code
 				margin-right: 1rem
+				transition: all var(--transition)
 				&:hover
 					background-color: var(--foreground-01)
 				&:not(:hover)
 					opacity: .75
 			.closed-source
 				margin-right: 2rem
-				opacity: .4
+				color: var(--foreground-025)
+				.icon.stroke > *
+					stroke: var(--foreground-025)
 			.closed-source, .open-source-code
 				@media screen and (max-width: 600px)
 					margin: 0
@@ -367,6 +411,7 @@
 				background-color: var(--color-accent)
 				color: #FFF
 				overflow: hidden
+				transition: all var(--transition)
 				.icon.stroke > *
 					stroke: #FFF
 				.shine
@@ -380,8 +425,11 @@
 					background: -webkit-linear-gradient(90deg, rgba(#FFF,0) 30%, rgba(#FFF,.15) 30%, rgba(#FFF,.15) 70%, rgba(#FFF,0) 70%)
 					background: linear-gradient(90deg, rgba(#FFF,0) 30%, rgba(#FFF,.15) 30%, rgba(#FFF,.15) 70%, rgba(#FFF,0) 70%)
 					transform: skew(35deg) translate(-100%,0)
+					transition: all var(--transition)
 				&:hover
-					box-shadow: 0 5px 20px var(--color-accent-025)
+					box-shadow:
+						0 0 1px var(--foreground-01),
+						0 5px 20px -10px var(--color-accent)
 					transform: scale(1.05)
 					.shine
 						transition-duration: 1s
@@ -390,8 +438,8 @@
 				cursor: default
 				background-color: var(--foreground-01)
 		> .about
-			border-top: solid 1px var(--foreground-005)
-			border-bottom: solid 1px var(--foreground-005)
+			border-top: solid 1px var(--border-soft)
+			border-bottom: solid 1px var(--border-soft)
 			> .placeholder
 				pointer-events: none
 				user-select: none
@@ -419,7 +467,7 @@
 				.h1-border
 					width: 100%
 					margin: .25rem 0 1rem 0
-					border: solid var(--foreground-005)
+					border: solid var(--border-soft)
 					border-width: 1px 0 0
 				h3
 					width: 25%
@@ -472,6 +520,7 @@
 				font-size: 1.15rem
 				cursor: pointer
 				background-color: var(--foreground-005)
+				transition: all var(--transition)
 				&:hover
 					transform: scale(1.05)
 					background-color: var(--foreground-015)
@@ -487,14 +536,34 @@
 
 	@media (prefers-color-scheme: dark)
 		#Project_Details_Modal
-			box-shadow: 0 0 2px var(--foreground-05), 0 0 10px #000
+			box-shadow:
+				0 0 2px var(--border-soft),
+				0 6px 20px var(--foreground-015)
 			> .image-container
 				.image
-					filter: drop-shadow(0 0 1px rgba(#FFF,.5)) drop-shadow(0 0 20px #000)
-				.bg-cover
-					opacity: .15
+					box-shadow:
+						0 -1px 1px var(--foreground-015),
+						0 1px 1px var(--background),
+						0 18px 30px -20px var(--foreground-05)
 				&.dark-theme .light
 					display: none
+			> .header
+				.used-technologies .techno
+					box-shadow: 0 0 1px var(--foreground-05)
+					> .color
+						opacity: .25
+					&:hover
+						box-shadow:
+							0 0 1px var(--foreground-05),
+							0 10px 20px -10px var(--foreground-05)
+						> .color
+							opacity: .4
+				.open-source-code:hover
+					background-color: var(--foreground-015)
+			> .footer .close
+				background-color: var(--foreground-01)
+				&:hover
+					background-color: var(--foreground-025)
 	
 	@keyframes textLoading
 		from

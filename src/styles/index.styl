@@ -15,7 +15,6 @@ html, body
 	border: none
 	outline: none
 
-
 main, header, article, footer, nav, div, input,
 button, textarea, svg, svg > *, span, a, p, small, form,
 q, b, i, label, section, h1, h2, h3, h4, h5, h6, img, ul, li,
@@ -27,7 +26,6 @@ dl, dt, dd, select, optgroup, pre, code
 	color inherit
 	outline: none
 	box-sizing: border-box
-	transition: all var(--transition)
 	&:before, &:after
 		margin: 0
 		padding: 0
@@ -36,12 +34,9 @@ dl, dt, dd, select, optgroup, pre, code
 		color inherit
 		outline: none
 		box-sizing: border-box
-		transition: all var(--transition)
-
 
 html, body, #app, main, header, article, footer
 	transition: none
-
 
 h1, h2, h3, h4, h5, h6
 	font-family: var(--font-stack-header)
@@ -49,52 +44,38 @@ h1, h2, h3, h4, h5, h6
 	font-weight: var(--font-weight-header)
 	line-height: var(--font-line-height-header)
 
-
 h1, .h1
-	font-size: 2.25rem
+	font-size: 3em
+	letter-spacing: .05em
 h2, .h2
-	font-size: 1.85rem
+	font-size: 2.5em
+	letter-spacing: .05em
 h3, .h3
-	font-size: 1.65rem
+	font-size: 2em
+	letter-spacing: .05em
 h4, .h4
-	font-size: 1.5rem
+	font-size: 1.75em
 h5, .h5
-	font-size: 1.25rem
+	font-size: 1.5em
 h6, .h6
-	font-size: 1.15rem
+	font-size: 1.3em
 
+@media screen and (max-width: 600px)
+	h1, .h1
+		font-size: 2.5em
+	h2, .h2
+		font-size: 2.25em
+	h3, .h3
+		font-size: 2em
+	h4, .h4
+		font-size: 1.75em
+	h5, .h5
+		font-size: 1.5em
+	h6, .h6
+		font-size: 1.3em
 
 p, textarea, .paragraph
 	line-height: var(--line-height)
-
-h1, h2, h3, h4, h5, h6, p, span, a
-	&.display-1
-		font-size: 6rem
-		letter-spacing: .2rem
-		font-weight: 300
-	&.display-2
-		font-size: 5rem
-		letter-spacing: .2rem
-		font-weight: 300
-	&.display-3
-		font-size: 4rem
-		letter-spacing: .2rem
-		font-weight: 300
-	&.display-3
-		font-size: 3rem
-		letter-spacing: .2rem
-		font-weight: 300
-	&.subtitle-1
-		font-size: 1.25rem
-	&.subtitle-2
-		font-size: 1.15rem
-	&.subtitle-3
-		font-size: 1rem
-	&.subtitle-4
-		font-size: 0.9rem
-	&.subtitle-5, &.subtitle-6
-		font-size: .75rem
-
 
 code
 	font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace
@@ -102,7 +83,6 @@ code
 
 pre
 	font-family: inherit
-
 
 .text-center
 	text-align: center
@@ -113,6 +93,8 @@ pre
 .text-justify
 	text-align: justify
 
+a.link:hover
+	color: var(--color-accent)
 
 [lock-scroll='true']
 	overflow: hidden !important
@@ -131,37 +113,29 @@ prefix($property, $value, $prefixes)
 		if $prefix is spec
 			{$property}: $value
 
-
 $user_select($value)
 	prefix('user-select', $value, moz ms webkit spec)
-
 
 button, .icon, .block-select
 	$user_select('none')
 
-
 .full-width
 	width: 100%
-
 
 .page-width
 	max-width: var(--page-width)
 	width: 100%
 	margin: 0 auto
 
-
 .page-wrapper
 	@extend .page-width
 	padding: 2rem 0 10rem 0
 
-
 b, strong
 	font-weight: $font-weight-body--bolder
 
-
 ul, ol
 	list-style: none
-
 
 $visually_hidden = @block {
 	position: absolute !important
@@ -177,10 +151,8 @@ $visually_hidden = @block {
 .hidden, .hide
 	display: none !important
 
-
 .visually-hidden
 	{$visually_hidden}
-
 
 .visibility-hidden
 	visibility: hidden

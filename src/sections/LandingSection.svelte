@@ -2,6 +2,7 @@
 	import { cubicInOut } from 'svelte/easing'
 	import { GlobalStore } from '../global_store'
 	import { createEventDispatcher } from 'svelte'
+	import { vibrate, vibrateLink } from '../utils/vibrate'
 	const dispatch = createEventDispatcher()
 
 	const profilePicUrl: string = '/me-myself-and-i.jpg'
@@ -10,14 +11,14 @@
 		'UX & UI Designer', 'Junior DevOp',
 	]
 
-	const randomBg: number = Math.max(1, Math.round(Math.random() * 3))
-
 	let showBigProfilePicture = false
 	const openBigProfilePicture =()=> {
+		vibrate()
 		GlobalStore.lockScroll('landing_big_profile_pic')
 		showBigProfilePicture = true
 	}
 	const closeBigProfilePicture =()=> {
+		vibrate()
 		showBigProfilePicture = false
 		GlobalStore.unlockScroll('landing_big_profile_pic')
 	}
@@ -83,7 +84,7 @@
 				transition:bigPicBgTrans
 			/>
 			<div
-				class='picture'
+				class='picture block-select'
 				style='background-image: url({profilePicUrl})'
 				transition:bigPicTrans
 			/>
@@ -93,23 +94,23 @@
 		<div class='header grid grid-center-y gap-2'>
 			<button
 			bind:this={ smallPictureEl }
-			class='picture'
+			class='picture block-select'
 			on:click={ openBigProfilePicture }
 			class:big-preview={ showBigProfilePicture }>
-				<img src={profilePicUrl} alt='Me, Myself and I'/>
+				<img class='block-select' src={profilePicUrl} alt='Me, Myself and I'/>
 			</button>
 			<div class='grid gap-05'>
 				<h1 class='name'>Daniel Sharkov</h1>
 				<div class='professions flex flex-center-y list gap-05'>
 					{#each professions as job, idx}
-						<span class='profession flex flex-center-y' style='animation-delay: {50+idx*100}ms'>
+						<span class='profession flex flex-center-y' style='animation-delay: {50 + idx * 100}ms'>
 							{job}
 						</span>
 					{/each}
 				</div>
 				<div class='social-media flex flex-center-y gap-1'>
 					{#each $GlobalStore.socialMedia as {name, url}, idx}
-						<a href={url} target='_blank' style='animation-delay: {50+idx*100}ms'>
+						<a href={url} target='_blank' style='animation-delay: {50 + idx * 100}ms' on:click={(e)=> vibrateLink(e)}>
 							<svg class='logo icon-big'>
 								<title>{name} Logo</title>
 								<use xlink:href='#LOGO_{name}'/>
@@ -157,6 +158,8 @@
 			padding: 3rem
 		@media screen and (max-width: 1000px)
 			padding: 1.5rem
+		@media screen and (max-width: 600px)
+			padding: 1rem 1rem 2rem 1rem
 
 	#LandingCodingBG
 		z-index: -1
@@ -166,7 +169,7 @@
 		width: 165vh
 		max-width: 100vw
 		pointer-events: none
-		// animation: codeBgInAnim var(--transition-easing) 1s backwards
+		animation: codeBgInAnim var(--transition-easing) 1.5s backwards
 		@media screen and (max-width: 1000px)
 			display: none
 
@@ -180,6 +183,8 @@
 		padding: 3rem
 		@media screen and (max-width: 1000px)
 			padding: 2rem
+		@media screen and (max-width: 600px)
+			padding: 1rem
 		> .bg
 			z-index: -1
 			position: absolute
@@ -192,22 +197,31 @@
 			width: 65vh
 			height: 100%
 			border-radius: .5rem
-			box-shadow: 0 6px 20px rgba(#000, .5)
+			box-shadow:
+				0 0 1px #000,
+				0 20px 40px -20px #000
 			background-color: var(--background)
 			background-position: center
 			background-repeat: no-repeat
 			background-size: cover
 			transform-origin: top left
+			@media screen and (max-width: 600px)
+				width: 100%
+				height: 65%
 
 	.contents
-		@media screen and (min-width: 1000px)
+		@media screen and (min-width: 1200px)
 			max-width: 75%
 			grid-gap: 3rem
-		@media screen and (max-width: 1000px)
+		@media screen and (max-width: 1200px)
+			max-width: 70%
+		@media screen and (max-width: 600px)
+			max-width: 100%
+		@media screen and (max-width: 1200px)
 			grid-gap: 1.5rem
 		.picture
 			cursor: pointer
-			// animation: pictureInAnim var(--transition-easing) 1s
+			animation: pictureInAnim var(--transition-easing) 1s
 			img
 				height: 12rem
 				width: 12rem
@@ -216,15 +230,18 @@
 				pointer-events: none
 				transition-duration: .5s
 				border-radius: 30%
-				box-shadow: 0 4px 10px rgba(#000, .1)
+				box-shadow:
+					0 0 1px var(--foreground-015),
+					0 14px 30px -14px var(--foreground-05)
 				background-color: var(--foreground-0025)
+				transform: translate3d(0,0,0)
 				@media screen and (max-width: 1000px)
 					margin: auto
-			&.big-preview
+			&.big-preview img
 				transition-duration: 600
 				opacity: 0
 				transform: translate(5rem, 1rem)
-			&:hover
+			&:hover img
 				transform: scale(1.1)
 				border-radius: 10%
 		> .header
@@ -234,12 +251,12 @@
 			font-weight: 300
 			font-size: 3rem
 			letter-spacing: .25rem
-			// animation: nameInAnim var(--transition-easing) 1s
+			animation: nameInAnim var(--transition-easing) 1s
 			@media screen and (max-width: 1000px)
 				font-size: 2.5rem
+				text-align: center
 			@media screen and (max-width: 500px)
 				font-size: 2.25rem
-				text-align: center
 		.professions
 			@media screen and (min-width: 1000px)
 				margin-left: .35rem
@@ -248,7 +265,8 @@
 				justify-items: center
 			.profession
 				color #b8a66a
-				// animation: professionInAnim var(--transition-easing) 1s alternate backwards
+				animation: professionInAnim var(--transition-easing) 1s alternate backwards
+				transition: all var(--transition)
 				&:not(:last-child):after
 					content: ''
 					margin-left: .5rem
@@ -267,19 +285,22 @@
 				padding: .5rem
 				opacity: .15
 				cursor: pointer
-				// animation: socialMediaInAnim var(--transition-easing) 1s alternate backwards
-				svg > *
-					fill: var(--foreground) !important
+				animation: socialMediaInAnim var(--transition-easing) 1s alternate backwards
+				transition: all var(--transition)
+				svg
+					pointer-events: none
+					> *
+						fill: var(--foreground) !important
 				&:hover
 					opacity: 1
-					transform: scale(1.15)
+					transform: scale(1.25)
 				@media screen and (max-width: 1000px)
 					&:not(:last-child)
 						margin-right: .5rem
 		.text-block
 			color: var(--foreground-075)
 			width: 100%
-			// animation: nameInAnim var(--transition-easing) 1.5s
+			animation: nameInAnim var(--transition-easing) 2s
 			@media screen and (min-width: 1200px)
 				max-width: 60%
 				font-size: 1.25rem
@@ -292,7 +313,7 @@
 			padding-left: 1rem
 		.question-list
 			.question-entry
-				// animation: questionsInAnim var(--transition-easing) 1s alternate backwards
+				animation: questionsInAnim var(--transition-easing) 1s alternate backwards
 				@media screen and (max-width: 1000px)
 					flex-wrap: nowrap
 					align-items: baseline
@@ -303,10 +324,13 @@
 				.question
 					padding: 1rem
 					border-radius: .5rem
-					box-shadow: 0 1px 8px var(--foreground-01)
+					box-shadow:
+						0 0 1px var(--foreground-01),
+						0 1px 3px var(--foreground-015)
 					cursor: pointer
 					text-decoration: none
 					line-height: 1.5
+					transition: all var(--transition)
 					@media screen and (min-width: 1000px)
 						font-size: 1.15rem
 					@media screen and (max-width: 1000px)
@@ -321,80 +345,78 @@
 						&:before, &:after
 							opacity: .5
 					&:hover
-						transform: scale(1.05) translate(1rem, 0)
-						box-shadow: 0 3px 16px var(--foreground-01)
+						transform: scale(1.05) translate(0, -.5rem)
+						box-shadow:
+							0 0 1px var(--foreground-015),
+							0 0 30px var(--foreground-005),
+							0 20px 30px -20px var(--foreground-05)
 						color: var(--color-accent)
+						@media screen and (max-width: 1000px)
+							transform: scale(1.025) translate(0, -.5rem)
 
 	@media (prefers-color-scheme: dark)
 		.contents .picture img
-			box-shadow: 0 0 2px var(--foreground-025), 0 4px 10px #000
-		nav .question-list .question-entry .question
-			background-color: var(--foreground-005)
 			box-shadow:
 				0 -1px 1px var(--foreground-015),
-				0 1px 8px #000
+				0 1px 1px var(--background),
+				0 14px 30px -12px var(--foreground-025)
+		nav .question-list .question-entry .question
+			background-color: var(--foreground-01)
+			box-shadow:
+				0 -1px 1px var(--foreground-015),
+				0 1px 1px var(--background-075),
+				0 3px 10px var(--foreground-01)
 			&:hover
 				box-shadow:
 					0 -1px 1px var(--foreground-015),
-					0 3px 16px #000
+					0 1px 1px var(--background-075),
+					0 20px 30px -20px var(--foreground-025)
 
 	@keyframes pictureInAnim
-		0% {
+		0%
 			opacity: 0
 			transform: translate(-2rem, -2rem)
-		}
-		100% {
+		100%
 			opacity: 1
 			transform: translate(0,0)
-		}
 
 	@keyframes nameInAnim
-		0% {
+		0%
 			opacity: 0
 			transform: translate(-2rem,0)
-		}
-		100% {
+		100%
 			opacity: 1
 			transform: translate(0,0)
-		}
 
 	@keyframes questionsInAnim
-		0% {
+		0%
 			opacity: 0
 			transform: translate(-10rem,0)
-		}
-		100% {
+		100%
 			opacity: 1
 			transform: translate(0,0)
-		}
 
 	@keyframes socialMediaInAnim
-		0% {
+		0%
 			opacity: 0
 			transform: translate(4rem,0)
-		}
-		100% {
+		100%
 			opacity: .15
 			transform: translate(0,0)
-		}
 
 	@keyframes professionInAnim
-		0% {
+		0%
 			opacity: 0
 			transform: translate(4rem,0)
-		}
-		100% {
+		100%
 			opacity: 1
 			transform: translate(0,0)
-		}
 
 	@keyframes codeBgInAnim
-		0% {
+		0%
 			opacity: 0
-			transform: translate(4rem,0)
-		}
-		100% {
+			transform: translate(10rem,0)
+		100%
 			opacity: 1
 			transform: translate(0,0)
-		}
 </style>

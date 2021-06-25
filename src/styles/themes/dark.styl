@@ -2,8 +2,9 @@
 	.only-light
 		display: none
 	html
-		$backgroundColor = #0F0F0F
+		$backgroundColor = #000
 		--background $backgroundColor
+		--background-095 rgba($backgroundColor, .95)
 		--background-085 rgba($backgroundColor, .85)
 		--background-075 rgba($backgroundColor, .75)
 		--background-05 rgba($backgroundColor, .5)
@@ -27,6 +28,9 @@
 		--foreground-01 rgba($foregroundColor, .1)
 		--foreground-005 rgba($foregroundColor, .05)
 		--foreground-0025 rgba($foregroundColor, .025)
+
+		--border-soft: var(--foreground-015)
+		--border-hard: var(--foreground-05)
 
 		--placeholder-loading: var(--foreground-005)
 

@@ -3,6 +3,7 @@
 	const dispatch = createEventDispatcher()
 	import { projects } from './database'
 	import { GlobalStore, ImageThumbKind } from './global_store'
+	import { vibrate } from './utils/vibrate'
 	export let projectIndex: number
 
 	let project: Project = projects[projectIndex]
@@ -11,26 +12,35 @@
 	let highResImgDarkDone = false
 	const lazyLoaded =()=> highResImgDone = true
 	const lazyLoadedDark =()=> highResImgDarkDone = true
+
+	function openThisProject() {
+		vibrate()
+		dispatch('open')
+	}
 </script>
 
-<button class='project grid' on:click={()=> dispatch('open')}>
-	<div class='preview'
+<button class='project grid' on:click={openThisProject} style='animation-delay: {1000 + projectIndex * 100}ms'>
+	<div class='preview block-select'
 	class:loaded={ highResImgDone }
 	class:loaded-dark={ highResImgDarkDone }
 	class:dark-theme={ project.darkTheme }>
 		{#if project.cover}
 			{#if project.darkTheme}
 				<div class='image-container dark'>
+					{#if !$GlobalStore.projectImgLoad[project.id].dark}
 					<img
 						class='thumb'
 						src='/projects/{project.id}/thumbnail_dark.jpg'
 						alt={`Daniel Sharkov's project ${project.name} dark thumbnail`}
-						on:load={GlobalStore.thumbDone(project.id, ImageThumbKind.DARK)}
+						on:load={()=> {
+							GlobalStore.thumbDone(project.id, ImageThumbKind.DARK)
+						}}
 					/>
+					{/if}
 					{#if $GlobalStore.projectImgLoad[project.id].dark}
 						<img
 							class='image'
-							src='/projects/{project.id}/cover_dark.png'
+							src='/projects/{project.id}/preview_dark.jpg'
 							alt={`Daniel Sharkov's project ${project.name} dark themed`}
 							on:load={lazyLoadedDark}
 						/>
@@ -38,18 +48,20 @@
 				</div>
 			{/if}
 			<div class='image-container light'>
-				<img
-					class='thumb'
-					src='/projects/{project.id}/thumbnail.jpg'
-					alt={`Daniel Sharkov's project ${project.name} thumbnail`}
-					on:load={()=> {
-						GlobalStore.thumbDone(project.id, ImageThumbKind.LIGHT)
-					}}
-				/>
+				{#if !$GlobalStore.projectImgLoad[project.id].light}
+					<img
+						class='thumb'
+						src='/projects/{project.id}/thumbnail.jpg'
+						alt={`Daniel Sharkov's project ${project.name} thumbnail`}
+						on:load={()=> {
+							GlobalStore.thumbDone(project.id, ImageThumbKind.LIGHT)
+						}}
+					/>
+				{/if}
 				{#if $GlobalStore.projectImgLoad[project.id].light}
 					<img
 						class='image'
-						src='/projects/{project.id}/cover.png'
+						src='/projects/{project.id}/preview.jpg'
 						alt={`Daniel Sharkov's project ${project.name}`}
 						on:load={lazyLoaded}
 					/>
@@ -78,31 +90,29 @@
 		position: relative
 		border-radius: .5rem
 		box-shadow:
-			0 0 1px var(--foreground-01),
-			0 3px 8px var(--foreground-01)
+			0 0 1px var(--foreground-015),
+			0 2px 4px var(--foreground-015)
 		align-content: start
 		text-align: left
 		-webkit-appearance: unset
 		overflow: hidden
 		cursor: pointer
 		background-color: var(--background)
+		transition: all var(--transition)
 		> .preview
 			z-index: 0
 			position: relative
 			width: 100%
-			height: 16rem
 			background-color: var(--foreground-0025)
 			overflow: hidden
 			border-radius: .5rem
 			@media screen and (min-width: 1600px)
-				height: 16rem
+				height: 14rem
 			@media screen and (max-width: 1600px)
 				height: 15rem
 			@media screen and (max-width: 1200px)
 				height: 14rem
 			@media screen and (max-width: 600px)
-				height: 10rem
-			@media screen and (max-width: 400px)
 				height: 7rem
 			>  div
 				width: 100%
@@ -125,50 +135,57 @@
 				object-fit: cover
 				object-position: center
 				border-radius: .5rem .5rem 0 0
+				transition: opacity var(--transition)
+				@media screen and (min-width: 1200px)
+					opacity: .75
 			> .no-image svg
 				height: 6rem
 				width: 6rem
-			&.loaded .light .thumb,
-			&.loaded-dark .dark .thumb
-				opacity: 0
 		> .contents
 			z-index: 1
 			position: absolute
 			bottom: 0
 			left: 0
-			width: 100%
+			right: 0
 			padding: 1rem
-			border-top: solid 1px var(--foreground-005)
-			background-color: var(--background)
-			transform: translate3d(0, 100%, 0)
+			background-color: var(--background-095)
+			box-shadow: 0 0 6px var(--foreground-005)
 			border-radius: 0 0 .5rem .5rem
+			transition: all var(--transition)
+			transform: translate(0, 100%)
 			> .name
 				display: block
 				font-size: 1rem
 		&:hover
-			transform: translate(0,-.5rem) scale(1.025)
+			transform: translate(0, -1rem) scale(1.05)
 			box-shadow:
 				0 0 1px var(--foreground-015),
-				0 6px 20px var(--foreground-015)
+				0 26px 40px -26px var(--foreground-05)
+			> .preview img
+				opacity: 1
 			> .contents
 				transform: translate(0,0)
 
 @media (prefers-color-scheme: light)
 	.project > .preview > .dark
 		display: none
+		visibility: hidden
 
 @media (prefers-color-scheme: dark)
 	.project
-		background-color: var(--foreground-005)
+		background-color: #111
 		box-shadow:
-			0 0 1px var(--foreground-05),
-			0 3px 10px #000
+			0 -1px 1px var(--foreground-015),
+			0 1px 1px var(--background),
+			0 3px 10px var(--foreground-01)
 		> .preview.dark-theme > .light
 			display: none
+			visibility: hidden
 		> .contents
-			border-color: var(--foreground-025)
+			background-color: rgba(#151515, .95)
 		&:hover
 			box-shadow:
-				0 0 1px var(--foreground-05),
-				0 6px 20px #000
+				0 -1px 1px var(--foreground-015),
+				0 1px 1px var(--background),
+				0 26px 40px -26px var(--foreground-025)
 </style>

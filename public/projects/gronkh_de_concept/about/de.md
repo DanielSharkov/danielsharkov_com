@@ -13,13 +13,13 @@ Gronkh war ebenfalls ein ehemalig selbständiger Programmierer im Bereich Webent
 
 Die ersten Schritte fielen mir vorerst etwas schwer. Ich habe nämlich überlegt, was eigentlich die Seite an Information braucht, was sie ausmacht und welchen Sinn und Zweck sie hat. Nach einiger Zeit rum konzeptieren, hatte ich endlich das Konzept vor mir liegen, was mir am richtigsten schien und ich realisieren wollte. Um das Konzept zu erfassen, hatte ich viel danach recherchiert, welche Information dezentralisiert und oder unübersichtlich dargestellt werden, wie zum Beispiel die Google Spreadsheet Tabelle *[„GRONKH: VIDEOÜBERSICHT“](https://docs.google.com/spreadsheets/d/1Sfga9xS_Nqgh5MDSyZ1_oe_IwvYSLmSsWsAAtmo3Yk8/edit#gid=1561140183)*, welche Gronkh selbst bisher gepflegt hat und eventuell auch noch weiterhin selbst tut. Die Tabelle ist weitaus unübersicht und kaum interagierbar, da es schlichtweg eine einfache – wie man typisch nennt *Excell* – Tabelle ist, die etwas komplexer zu bedienen ist für einen Normalverbraucher.
 
-- ### **Let's play Archiv**
+- ### Let's play Archiv
 So war mein erstes Ziel klar: Es muss eine Seite sein, welche quasi als Archiv seiner Let's plays dienen soll, um eine schnellere und einfache bzw. Bildliche übersicht zu bieten.
-- ### **Neuigkeitenzentrale**
+- ### Neuigkeitenzentrale
 Desweiteren konnte ich aus seinen Streams auf Twitch entnehmen, dass meistens eine Nachricht auf seinem Twitter account nicht jeden erreichte, so dachte ich an eine *„Neuigkeitenzentrale“*, welche nämlich die zuletztveröffentlichten Nachrichten zentralisiert auf der Gronkh.de anzeigen soll.
-- ### **Kalender**
+- ### Kalender
 Auch wichtig und interessant war der Gedanke eines Kalenders, welcher geplante Streams, Gewinnspiele, real-life Events und sonstige wichtige Termine überblicklich und ebenfalls nämlich zentralisiert festhält, da überlicherweise solche Daten auf sozialen Medien geteilt wurden bzw. bisher noch werden *(stand Mai 2021)*, wo es aber sehr kaotisch von verschiedenten Nachrichten wimmelt und dazu noch Nachrichten mit Planänderungen, die ein Normalverbraucher nicht einfach nachvollziehen kann und deswegen auch häufig die Leute in seinen Streams die ein und die selbe Frage desöfteren wiederholt stellen.
-- ### **FAQ**
+- ### FAQ
 Apropo Fragen stellen: Die Leute fragen nicht nur nach Plänen im Kalender nach, sondern sehr viele andere Fragen die ebenfalls wiederholt gestellt werden. Dazu hatte ich mir eine Art FAQ überlegt, wo der Nutzer auf der Gronkh.de nach seiner Frage suchen und die schnell seine Antwort erhalten kann. Um bei „heißen“ bzw. Trand-fragen nicht suchen zu müssen, sollten bereits auf der Startseite der FAQ Seite einige Fragen aufgelistet sein. Die Antworten bzw. die Information zu den Fragen, sollten von Mitarbeitern über eine Adminoberfläche gepflegt werden können.
 
 # Realisierung

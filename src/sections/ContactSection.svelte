@@ -2,7 +2,7 @@
 	<h1>Du möchtest mich gerne erreichen?</h1>
 	<div class='social-media flex flex-center-y gap-1'>
 		{#each $GlobalStore.socialMedia as {name, url}, idx}
-			<a href={url} target='_blank' style='animation-delay: {50+idx*50}ms'>
+			<a href={url} target='_blank' style='animation-delay: {50+idx*50}ms' on:click={(e)=> vibrateLink(e)}>
 				<svg class='logo icon-big'>
 					<title>{name} Logo</title>
 					<use xlink:href='#LOGO_{name}'/>
@@ -34,6 +34,7 @@
 
 <script lang='ts'>
 	import { GlobalStore } from '../global_store'
+	import { vibrateLink } from '../utils/vibrate'
 
 	let email: string = ''
 	let subject: string = ''
@@ -64,11 +65,14 @@
 			padding: .5rem
 			opacity: .35
 			cursor: pointer
-			svg > *
-				fill: var(--foreground) !important
+			transition: all var(--transition)
+			svg
+				pointer-events: none
+				> *
+					fill: var(--foreground) !important
 			&:hover
 				opacity: 1
-				transform: scale(1.15)
+				transform: scale(1.25)
 			@media screen and (max-width: 1000px)
 				&:not(:last-child)
 					margin-right: .5rem

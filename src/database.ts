@@ -1,71 +1,168 @@
+export const careerBegin: number = 2012
+
+export enum TechnologyType {
+	Software = 0,
+	Language,
+	Framework,
+	Library,
+}
+
 export type Technology = {
-	name:   string
-	color:  string
-	icon:   boolean
-	link:   string
+	name:       string
+	color:      string
+	icon?:      boolean
+	link:       string
+	image?:     boolean
+	type:       TechnologyType
+	// careerSpan = begin Year, end Year or Null (stil using)
+	careerSpan: Array<[number, number|null]>
 }
 export type TechnologyList = { [key: string]: Technology }
 
 export const technologies: TechnologyList = {
 	Svelte: {
 		name: 'Svelte', color: '#FF3E00', icon: true,
+		type: TechnologyType.Framework,
 		link: 'https://svelte.dev',
-	},
-	VueJS: {
-		name: 'Vue.js', color: '#4DBA87', icon: true,
-		link: 'https://vuejs.org',
-	},
-	SVG: {
-		name: 'SVG', color: '#FFB13B', icon: true,
-		link: 'https://developer.mozilla.org/en-US/docs/Web/SVG',
-	},
-	Stylus: {
-		name: 'Stylus', color: '#FF6347', icon: true,
-		link: 'https://stylus-lang.com',
-	},
-	Docker: {
-		name: 'Docker', color: '#0091E2', icon: true,
-		link: 'https://www.docker.com/company',
-	},
-	Nginx: {
-		name: 'Nginx', color: '#009639', icon: true,
-		link: 'https://nginx.org/en/',
+		careerSpan: [
+			[2018, null],
+		],
 	},
 	TypeScript: {
 		name: 'TypeScript', color: '#007ACC', icon: true,
+		type: TechnologyType.Language,
 		link: 'https://www.typescriptlang.org',
+		careerSpan: [
+			[2019, null],
+		],
 	},
 	JavaScript: {
 		name: 'JavaScript', color: '#F0DB4F', icon: true,
+		type: TechnologyType.Language,
 		link: 'https://www.javascript.com',
+		careerSpan: [
+			[2013, null],
+		],
+	},
+	VueJS: {
+		name: 'Vue.js', color: '#4DBA87', icon: true,
+		type: TechnologyType.Framework,
+		link: 'https://vuejs.org',
+		careerSpan: [
+			[2016, null],
+		],
 	},
 	Golang: {
 		name: 'Golang', color: '#01ADD8', icon: true,
+		type: TechnologyType.Language,
 		link: 'https://golang.org',
+		careerSpan: [
+			[2016, null],
+		],
 	},
-	Liquid: {
-		name: 'Liquid', color: '#000099', icon: true,
-		link: 'https://shopify.github.io/liquid/',
+	SVG: {
+		name: 'SVG', color: '#FFB13B', icon: true,
+		type: TechnologyType.Language,
+		link: 'https://developer.mozilla.org/en-US/docs/Web/SVG',
+		careerSpan: [
+			[2018, null],
+		],
 	},
-	Figma: {
-		name: 'Figma', color: '#0ACF83', icon: true,
-		link: 'https://www.figma.com',
+	Docker: {
+		name: 'Docker', color: '#0091E2', icon: true,
+		type: TechnologyType.Software,
+		link: 'https://www.docker.com/company',
+		careerSpan: [
+			[2018, null],
+		],
 	},
-	PowerDirector15: {
-		name: 'Power Director 15', color: '#402E77', icon: false,
-		link: 'https://de.cyberlink.com/products/powerdirector-video-editing-software/overview_de_DE.html',
+	Nginx: {
+		name: 'Nginx', color: '#009639', icon: true,
+		type: TechnologyType.Software,
+		link: 'https://nginx.org/en/',
+		careerSpan: [
+			[2018, null],
+		],
 	},
-	GIMP: {
-		name: 'GIMP', color: '#615A48', icon: false,
-		link: 'https://www.gimp.org',
+	Stylus: {
+		name: 'Stylus', color: '#FF6347', icon: true,
+		type: TechnologyType.Language,
+		link: 'https://stylus-lang.com',
+		careerSpan: [
+			[2018, null],
+		],
+	},
+	SASS_SCSS: {
+		name: 'SASS / SCSS', color: '#cf659a', icon: true,
+		type: TechnologyType.Language,
+		link: 'https://sass-lang.com/',
+		careerSpan: [
+			[2019, null],
+		],
+	},
+	LESS: {
+		name: 'LESS', color: '#1d365d', image: true,
+		type: TechnologyType.Language,
+		link: 'https://lesscss.org/',
+		careerSpan: [
+			[2019, 2020],
+		],
 	},
 	HTML: {
 		name: 'HTML5', color: '#EC652B', icon: true,
+		type: TechnologyType.Language,
 		link: 'https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5',
+		careerSpan: [
+			[careerBegin, null],
+		],
 	},
 	CSS: {
 		name: 'CSS3', color: '#1F60AA', icon: true,
+		type: TechnologyType.Language,
 		link: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+		careerSpan: [
+			[careerBegin, null],
+		],
+	},
+	Liquid: {
+		name: 'Liquid', color: '#000099', icon: true,
+		type: TechnologyType.Language,
+		link: 'https://shopify.github.io/liquid/',
+		careerSpan: [
+			[2019, null],
+		],
+	},
+	Shopify: {
+		name: 'Shopify', color: '#96bf46', icon: true,
+		type: TechnologyType.Software,
+		link: 'https://www.shopify.de/',
+		careerSpan: [
+			[2019, null],
+		],
+	},
+	Figma: {
+		name: 'Figma', color: '#0ACF83', icon: true,
+		type: TechnologyType.Software,
+		link: 'https://www.figma.com',
+		careerSpan: [
+			[2015, null],
+		],
+	},
+	PowerDirector15: {
+		name: 'Power Director 15', color: '#402E77', image: true,
+		type: TechnologyType.Software,
+		link: 'https://de.cyberlink.com/products/powerdirector-video-editing-software/overview_de_DE.html',
+		careerSpan: [
+			[2016, 2018],
+		],
+	},
+	GIMP: {
+		name: 'GIMP', color: '#615A48', image: true,
+		type: TechnologyType.Software,
+		link: 'https://www.gimp.org',
+		careerSpan: [
+			[careerBegin, null],
+		],
 	},
 }
 
@@ -206,7 +303,8 @@ export const projects: Array<Project> = [
 			{ name: 'Figma UX&UI Design', url: 'https://www.figma.com/file/KqzYEiazPpaj1bfXC2FzZ7/Shop-skribble' },
 		],
 		usedTechnologies: [
-			'JavaScript', 'Liquid', 'Stylus', 'SVG', 'Figma',
+			'JavaScript', 'Liquid', 'Shopify', 'Stylus', 'SVG', 'Figma',
+			'SASS_SCSS',
 		],
 		about: true,
 	},
@@ -280,3 +378,11 @@ export const projects: Array<Project> = [
 		about: true,
 	},
 ]
+
+export type T_projectByID = { [key: string]: number }
+export const projectsIndexByID: T_projectByID = {}
+for (const p in projects) projectsIndexByID[projects[p].id] = Number(p)
+
+export function getProjectByID(id) {
+	return projects[projectsIndexByID[id]]
+}
