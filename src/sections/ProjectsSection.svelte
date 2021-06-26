@@ -35,8 +35,15 @@
 		GlobalStore.lockScroll('projects_section_modal')
 	}
 
-	if (window.history?.state?.project_id) {
-		openProject(projectsIndexByID[window.history.state.project_id])
+	if (window.location?.search) {
+		for (
+			const qrs of window.location.search
+				.substring(1, window.location.search.length)
+				.split('&')
+		) {
+			let q = qrs.split('=')
+			if (q[0] == 'project') openProject(projectsIndexByID[q[1]])
+		}
 	}
 </script>
 

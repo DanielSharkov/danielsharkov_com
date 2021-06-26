@@ -214,7 +214,7 @@
 					<svg class='icon stroke icon-small' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 120 120'>
 						<path d='M10 110l50-50m0 0l50-50M60 60l50 50M60 60L10 10' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
 					</svg>
-					<span>Schließen</span>
+					<span class='label'>Schließen</span>
 				</button>
 			</div>
 		{/if}
@@ -381,6 +381,12 @@
 	// const isSharingSupported = window.navigator?.share !== undefined
 </script>
 
+
+
+<svelte:window on:hashchange={closeModal} on:popstate={closeModal}/>
+
+
+
 <style>
 	#Project_Details_Container
 		z-index: 100
@@ -499,6 +505,8 @@
 			@media screen and (max-width: 600px)
 				grid-template-columns: 1fr
 				padding: 1rem
+			> .left-piece .name
+				letter-spacing: 0
 			> .right-piece
 				justify-content: flex-end
 				align-content: center
@@ -607,6 +615,7 @@
 				cursor: default
 				background-color: var(--foreground-01)
 		> .about
+			min-height: 25vh
 			border-top: solid 1px var(--border-soft)
 			border-bottom: solid 1px var(--border-soft)
 			> .placeholder
@@ -700,17 +709,20 @@
 					transition-property: background-color, transform, box-shadow
 					cursor: pointer
 					font-size: 1rem
+					@media screen and (max-width: 600px)
+						margin-right: 0 !important
+						padding: 1rem
 					.status
 						z-index: 10
 						position: absolute
 						left: auto
-						bottom: 175%
+						bottom: 150%
 						margin: 0
 						padding: 1rem
 						background-color: var(--modal-bg)
 						box-shadow:
 							0 0 1px var(--foreground-015),
-							0 72px 10px -54px var(--foreground-01),
+							0 70px 10px -54px var(--foreground-01),
 							0 10px 30px -10px var(--foreground-025)
 						border-radius: .5rem
 						transition: var(--transition)
@@ -766,10 +778,23 @@
 				cursor: pointer
 				background-color: var(--foreground-005)
 				transition: var(--transition)
-				transition-property: transform, box-shadow, color
+				transition-property: transform, box-shadow, color, background-color
 				&:hover
-					transform: scale(1.05)
-					background-color: var(--foreground-015)
+					background-color: var(--modal-bg)
+					transform: translate(0, -.25rem)
+					box-shadow:
+						0 0 1px var(--foreground-01),
+						0 10px 20px -10px var(--foreground-05)
+				&:active
+					background-color: var(--color-accent)
+					transform: translate(0, -.15rem)
+					box-shadow:
+						0 0 1px var(--foreground-01),
+						0 8px 14px -10px var(--foreground-05)
+					.label
+						color: #FFF
+					.icon.stroke > *
+						stroke: #FFF
 		&.no-about
 			grid-template-rows: 1fr auto
 			margin-bottom: 0
@@ -810,7 +835,7 @@
 				.open-source-code:hover
 					background-color: var(--foreground-015)
 			> .footer
-				.share-post .share-option
+				.close, .share-post .share-option
 					box-shadow:
 						0 -1px 1px var(--foreground-025),
 						0 1px 1px var(--background-05)
@@ -819,10 +844,6 @@
 							0 -1px 1px var(--foreground-025),
 							0 1px 1px var(--background-05),
 							0 10px 20px -10px var(--foreground-05)
-				.close
-					background-color: var(--foreground-01)
-					&:hover
-						background-color: var(--foreground-025)
 	
 	@keyframes textLoading
 		from
