@@ -9,7 +9,7 @@ Schach macht spaß und ist vor allem spannend. Während ich meine Ausbildung bei
 
 Es hat mir keine Ruhe gegeben, dass ich das Schach-Spiel so „hässlich“ implementiert hatte. Damit meine ich, dass man nicht einmal eine Art Schachbrett vor sich hatte, auf der üblicherweise die Figuren zu sehen sind. So bekam ich die Motivation und Inspiration ein Schach-Spiel nochmals für mich selbst zu programmieren, welches diesmal in eine Web-App werden soll. Da ich zu der Zeit Urlaub hatte und nach Laggo Maggiore in Italien zum ausruhen verreist bin, habe ich mir während dem Nichts-tun die Zeit dafür genommen.
 
-![Laggo Maggiore captured by Daniel Sharkov](/projects/svelte_chess/media/laggo_maggiore.jpeg)
+![Laggo Maggiore captured by Daniel Sharkov](projects/svelte_chess/media/laggo_maggiore.jpeg)
 
 # „From Scratch“
 

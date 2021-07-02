@@ -8,7 +8,7 @@ Genauso wie beim vorherigen Projekt hab ich diesem freiwillig gestellt, um diese
 
 Das damals und wahrscheinlich noch bis heute erhalte Logo weist aus meiner Sicht einige kleine Macken auf, wie die sehr feine Linie bei dem "D", welche in der miniatur Darstellung wie ein kleiner Fehler aussieht, da die Bildschirme der meisten Nutzer nur FullHD (1920x1080) sind.
 
-![Official Logo of Company](/projects/logo_redesign_proposal/media/eod_official_logo.png)
+![Official Logo of Company](projects/logo_redesign_proposal/media/eod_official_logo.png)
 
 Auch ein Problem was ich darin sah, dass das Logo ein Rasterbild ist, welches nicht auf verschiedene Display-Größen skaliert. Es bringt nämlich große Vorteile, unteranderem, dass das Logo für verschiedenste Displayauflösungen nicht mehr angepasst werden muss.
 
@@ -16,17 +16,17 @@ Auch ein Problem was ich darin sah, dass das Logo ein Rasterbild ist, welches ni
 
 Ganz begeistert begann ich also erstmal meine Kreativität freien lauf zu lassen und erstellete all meine Gedanken in [Figma](https://figma.com) direkt als Vektoren. Mir kamen viele Ideen in den Sinn, auch schreckliche, ehrlich gesagt. Und somit kam folgendes zustande:
 
-![Logo ideas](/projects/logo_redesign_proposal/media/eod-logo-ideas.svg)
+![Logo ideas](projects/logo_redesign_proposal/media/eod-logo-ideas.svg)
 
 Als ich mir nach etlichen Iterationen sicher war, welche Variante mir direkt in's Auge fiel, nahm ich diese und erstellte eine seriöse Darstellung meines Vorschlags:
 
-![Logo proposal](/projects/logo_redesign_proposal/media/eod-logo-proposal.svg)
+![Logo proposal](projects/logo_redesign_proposal/media/eod-logo-proposal.svg)
 
 # Erweiterte Version
 
 Zum schluss, quasi als Kirsche zur Sahne, pfeilte ich noch eine selbst animierte Variante des Logos, welche eigentlich nur einmal vorwärts abspielt. Doch um Ihnen/Dir eine Möglichkeit zu bieten, es mehrmals beziehungsweise unendliche Male anschauen, erstellte ich eine unendlich abspielende Version davon:
 
-![Animated logo](/projects/logo_redesign_proposal/media/eod-logo-animated_infinite.svg)
+![Animated logo](projects/logo_redesign_proposal/media/eod-logo-animated_infinite.svg)
 
 # Fazit
 

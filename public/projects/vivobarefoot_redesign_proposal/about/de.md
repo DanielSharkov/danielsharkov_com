@@ -11,4 +11,4 @@ Man hätte das ganze bereits bestehende System, mit so einigen Zeilen an Code, k
 Mein Konzept scheiterte sozusagen, doch die Zeit war nicht unnötig investiert. Ich lernte nämlich, dass man eine schöne Idee bzw. ein Redesign haben kann und es sogar sehr gut sein könnte, doch der Aufwand muss berücksichtigt werden, ob es nun rentabel ist alles komplett von Anfang an zu überarbeiten.
 
 Hier ein Vergleich zum meinem Design *(Live-Design stand 31 Mai 2021)*:
-![Vivobarefoot Live-Design 31 May 2021](/projects/vivobarefoot_redesign_proposal/media/vivobarefoot_31_may_2021.png)
+![Vivobarefoot Live-Design 31 May 2021](projects/vivobarefoot_redesign_proposal/media/vivobarefoot_31_may_2021.png)
