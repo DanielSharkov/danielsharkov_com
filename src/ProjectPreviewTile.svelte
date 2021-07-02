@@ -135,9 +135,6 @@
 				object-fit: cover
 				object-position: center
 				border-radius: .5rem .5rem 0 0
-				transition: opacity var(--transition)
-				@media screen and (min-width: 1200px)
-					opacity: .75
 			> .no-image svg
 				height: 6rem
 				width: 6rem
@@ -161,8 +158,6 @@
 			box-shadow:
 				0 0 1px var(--foreground-015),
 				0 26px 40px -26px var(--foreground-05)
-			> .preview img
-				opacity: 1
 			> .contents
 				transform: translate(0,0)
 

@@ -4,15 +4,17 @@
 	import { projects, projectsIndexByID } from '../database'
 	import ProjectPreviewTile from '../ProjectPreviewTile.svelte'
 
+	function _resetURL() {
+		window.history.pushState(null, '', (
+			window.location.protocol + '//' +
+			window.location.host +
+			window.location.pathname
+		))
+	}
+
 	let clickedProject = null
 	function closeProject() {
-		if (window.history?.pushState) {
-			window.history.pushState(null, '', (
-				window.location.protocol + '//' +
-				window.location.host +
-				window.location.pathname
-			))
-		}
+		if (window.history?.pushState) _resetURL()
 		GlobalStore.unlockScroll('projects_section_modal')
 		clickedProject = null
 	}
@@ -42,7 +44,9 @@
 				.split('&')
 		) {
 			let q = qrs.split('=')
-			if (q[0] == 'project') openProject(projectsIndexByID[q[1]])
+			if (q[0] == 'project' && projectsIndexByID[q[1]]) {
+				openProject(projectsIndexByID[q[1]])
+			} else _resetURL()
 		}
 	}
 </script>

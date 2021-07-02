@@ -170,10 +170,9 @@
 				position: relative
 				top: -.15rem
 				width: 100%
-				height: 2px
 				margin-bottom: 1rem
 				> .period
-					height: .15rem
+					height: .2rem
 					box-shadow: 0 1px 10px var(--foreground-015)
 
 	@media (prefers-color-scheme: dark)

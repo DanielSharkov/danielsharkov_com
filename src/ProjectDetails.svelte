@@ -446,9 +446,12 @@
 			height: auto
 			min-height: 65vh
 			max-height: 65vh
-			background-color: var(--foreground-0025)
+			background-color: var(--foreground-005)
 			border-bottom: solid 1px var(--border-soft)
 			overflow: hidden
+			border-radius: inherit
+			border-bottom-left-radius: 0
+			border-bottom-right-radius: 0
 			@media screen and (max-width: 600px)
 				min-height: auto
 				max-height: 55vh
@@ -493,7 +496,7 @@
 					0 0 1px var(--foreground-01),
 					0 18px 30px -20px var(--foreground-05)
 				background-size: contain
-				border-radius: .5rem
+				border-radius: .25rem
 			.dark
 				background-color: #000
 			> .no-image
@@ -568,7 +571,7 @@
 			.open-source-code
 				margin-right: 1rem
 				transition: var(--transition)
-				transition-property: transform, box-shadow, color
+				transition-property: opacity, background-color
 				&:hover
 					background-color: var(--foreground-01)
 				&:not(:hover)

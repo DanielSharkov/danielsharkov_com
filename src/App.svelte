@@ -193,6 +193,30 @@
 			<path d='M62.5 45.8l-3.8 11.3s-3.3-1.8-7.4-1.8c-6 0-6.3 3.8-6.3 4.7 0 5.2 13.4 7.1 13.4 19.2 0 9.5-6 15.6-14.1 15.6-9.8 0-14.8-6-14.8-6L32 80s5.1 4.4 9.5 4.4c2.8 0 4-2.2 4-3.8 0-6.7-11-7-11-18 0-9.4 6.6-18.4 20.1-18.4 5.2 0 7.8 1.5 7.8 1.5' fill='#fff'/>
 		</svg>
 	</symbol>
+	<symbol id='LOGO_d3js'>
+		<svg viewBox='0 0 96 91'>
+			<clipPath id='d3js-clip'>
+				<path d='M0,0h7.75a45.5,45.5 0 1 1 0,91h-7.75v-20h7.75a25.5,25.5 0 1 0 0,-51h-7.75zm36.2510,0h32a27.75,27.75 0 0 1 21.331,45.5a27.75,27.75 0 0 1 -21.331,45.5h-32a53.6895,53.6895 0 0 0 18.7464,-20h13.2526a7.75,7.75 0 1 0 0,-15.5h-7.75a53.6895,53.6895 0 0 0 0,-20h7.75a7.75,7.75 0 1 0 0,-15.5h-13.2526a53.6895,53.6895 0 0 0 -18.7464,-20z'></path>
+			</clipPath>
+			<linearGradient id='d3js-gradient-1' gradientUnits='userSpaceOnUse' x1='7' y1='64' x2='50' y2='107'>
+				<stop offset='0' stop-color='#f9a03c'></stop>
+				<stop offset='1' stop-color='#f7974e'></stop>
+			</linearGradient>
+			<linearGradient id='d3js-gradient-2' gradientUnits='userSpaceOnUse' x1='2' y1='-2' x2='87' y2='84'>
+				<stop offset='0' stop-color='#f26d58'></stop>
+				<stop offset='1' stop-color='#f9a03c'></stop>
+			</linearGradient>
+			<linearGradient id='d3js-gradient-3' gradientUnits='userSpaceOnUse' x1='45' y1='-10' x2='108' y2='53'>
+				<stop offset='0' stop-color='#b84e51'></stop>
+				<stop offset='1' stop-color='#f68e48'></stop>
+			</linearGradient>
+			<g clip-path='url(#d3js-clip)'>
+				<path d='M-100,-102m-27,0v300h300z' fill='url(#d3js-gradient-1)'></path>
+				<path d='M-100,-102m27,0h300v300z' fill='url(#d3js-gradient-3)'></path>
+				<path d='M-100,-102l300,300' fill='none' stroke='url(#d3js-gradient-2)' stroke-width='40'></path>
+			</g>
+		</svg>
+	</symbol>
 </svg>
 
 <link href='https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap' rel='stylesheet'>
@@ -234,8 +258,6 @@
 		position: absolute
 		width: 0
 		height: 0
-		display: none
-		visibility: hidden
 
 	#app
 		position: relative

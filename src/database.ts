@@ -124,6 +124,14 @@ export const technologies: TechnologyList = {
 			[careerBegin, null],
 		],
 	},
+	d3js: {
+		name: 'D3.js', color: '#f89d42', icon: true,
+		type: TechnologyType.Library,
+		link: 'https://d3js.org/',
+		careerSpan: [
+			[2020, null],
+		],
+	},
 	Liquid: {
 		name: 'Liquid', color: '#000099', icon: true,
 		type: TechnologyType.Language,
@@ -187,7 +195,8 @@ export const projects: Array<Project> = [
 	{
 		name: `DanielSharkov.com`,
 		id: 'danielsharkov_com',
-		cover: true, darkTheme: true,
+		cover: true,
+		darkTheme: true,
 		projectUrl: null,
 		codeUrl: 'https://github.com/DanielSharkov/danielsharkov_com',
 		usedTechnologies: [
@@ -197,10 +206,11 @@ export const projects: Array<Project> = [
 		about: true,
 	},
 	{
-		name: `Orgly`,
-		id: 'orgly',
-		cover: true, darkTheme: true,
-		projectUrl: 'COMING_SOON',//'https://danielsharkov.github.io/orgly',
+		name: `Organisations Graph`,
+		id: 'org_graph',
+		cover: true,
+		darkTheme: true,
+		projectUrl: null,
 		codeUrl: null,
 		usedTechnologies: [
 			'Svelte', 'SVG', 'TypeScript', 'Golang',
@@ -211,7 +221,8 @@ export const projects: Array<Project> = [
 	{
 		name: `Timetabler`,
 		id: 'timetabler',
-		cover: true, darkTheme: true,
+		cover: true,
+		darkTheme: true,
 		projectUrl: 'COMING_SOON',//'https://danielsharkov.github.io/timetabler',
 		codeUrl: null,
 		usedTechnologies: [
@@ -223,7 +234,8 @@ export const projects: Array<Project> = [
 	{
 		name: `CoWo Space`,
 		id: 'cowo_space',
-		cover: true, darkTheme: false,
+		cover: true,
+		darkTheme: false,
 		projectUrl: 'COMING_SOON',//'https://danielsharkov.github.io/cowo-space',
 		codeUrl: 'https://github.com/DanielSharkov/cowo-space',
 		usedTechnologies: [
@@ -234,7 +246,8 @@ export const projects: Array<Project> = [
 	{
 		name: `Svelte Chess`,
 		id: 'svelte_chess',
-		cover: true, darkTheme: false,
+		cover: true,
+		darkTheme: false,
 		projectUrl: 'https://danielsharkov.github.io/svelte-chess',
 		codeUrl: 'https://github.com/DanielSharkov/svelte-chess',
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'Figma'],
@@ -243,7 +256,8 @@ export const projects: Array<Project> = [
 	{
 		name: `Pattern Visualizer`,
 		id: 'pattern_visualizer',
-		cover: true, darkTheme: true,
+		cover: true,
+		darkTheme: true,
 		projectUrl: 'https://danielsharkov.github.io/PatternVisualizer/',
 		codeUrl: 'https://github.com/DanielSharkov/PatternVisualizer',
 		usedTechnologies: ['Svelte'],
@@ -252,7 +266,8 @@ export const projects: Array<Project> = [
 	{
 		name: `Svelte Router`,
 		id: 'svelte_router',
-		cover: false, darkTheme: false,
+		cover: false,
+		darkTheme: false,
 		projectUrl: 'https://www.npmjs.com/package/@danielsharkov/svelte-router',
 		codeUrl: 'https://github.com/danielsharkov/svelte-router',
 		usedTechnologies: ['Svelte', 'JavaScript'],
@@ -273,7 +288,7 @@ export const projects: Array<Project> = [
 		id: 'infocenter',
 		cover: true,
 		darkTheme: true,
-		projectUrl: 'COMING_SOON',//'https://danielsharkov.github.io/eod_infocenter',
+		projectUrl: null,//'https://danielsharkov.github.io/eod_infocenter',
 		codeUrl: null,
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG'],
 		about: true,
@@ -343,10 +358,10 @@ export const projects: Array<Project> = [
 	},
 	{
 		name: `Einsteiger Doku für Webentwickler`,
-		id: 'eod_evernote_documentation',
+		id: 'dev_documentation',
 		cover: true,
 		darkTheme: true,
-		projectUrl: 'https://www.evernote.com/shard/s464/sh/2aa8d157-bd73-443f-a6b8-d08b23397f16/b563ceee5b357bf0d5c83b6c8495978b',
+		projectUrl: null,
 		usedTechnologies: [],
 		about: true,
 	},
