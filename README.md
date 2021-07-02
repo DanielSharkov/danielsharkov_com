@@ -1,1 +1,0 @@
-# [danielsharkov.com](https://danielsharkov.com)

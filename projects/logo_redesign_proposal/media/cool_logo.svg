@@ -1,0 +1,33 @@
+<svg width="140" height="140" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<style>
+		@keyframes moveCircle {
+			from {transform: translate(0%)}
+			50% {transform: translate(-50%, 50%)}
+			to {transform: translate(0%)}
+		}
+		@keyframes rotate {
+			from {transform: rotate(0deg)}
+			to {transform: rotate(360deg)}
+		}
+		#background {
+			fill: #434460;
+			transform: rotate(0deg);
+			transform-origin: center;
+			animation: rotate linear 30s infinite;
+		}
+		#rectangle {
+			fill: #fafafa;
+			transform: rotate(0deg);
+			transform-origin: center;
+			animation: rotate cubic-bezier(.68,-.55,.27,1.55) 2s infinite;
+		}
+		#circle {
+			fill: #fafafa;
+			transform: translate(0%);
+			animation: moveCircle cubic-bezier(.65,.05,.36,1) 1.5s infinite;
+		}
+	</style>
+	<path id="background" d="M20 20h100v100H20z"/>
+	<path id="rectangle" d="M30 66h72c4 0 8 4 8 8H38c-4 0-8-4-8-8z"/>
+	<path id="circle" fill-rule="evenodd" clip-rule="evenodd" d="M105 40a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0-2a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+</svg>
