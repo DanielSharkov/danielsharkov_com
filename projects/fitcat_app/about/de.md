@@ -2,7 +2,7 @@
 App-Demo auch bald verfügbar...
 
 In Zusammenarbeit mit:
-- [Elena Sdobnov](https://t.me/elenanike)
+- [Elena Sdobnova](https://t.me/elenanike)
 - [Roman Scharkov](https://github.com/romshark)
 - [Ilya Sdobnov](https://www.linkedin.com/in/ilya-sdobnov-18a669137/)
 
