@@ -63,7 +63,7 @@
 		</p>
 		<div class='game-container grid grid-center grid-1'>
 			<a class='image-container tilt-left' href='https://lifeisstrange.square-enix-games.com/' target='_blank' on:click={vibrate}>
-				<img src='http://static3.gamespot.com/uploads/scale_medium/1197/11970954/2830331-image.jpeg' alt='Life is Strange danielsharkov.com'>
+				<img src='life_is_strange.jpg' alt='Life is Strange danielsharkov.com'>
 			</a>
 			<div class='content'>
 				<h3><a class='link' href='https://lifeisstrange.square-enix-games.com/' target='_blank'>
@@ -80,7 +80,7 @@
 		</div>
 		<div class='game-container grid grid-center grid-1'>
 			<a class='image-container tilt-right' href='https://www.minecraft.net/' target='_blank' on:click={vibrate}>
-				<img src='https://www.minecraft.net/content/dam/games/minecraft/key-art/Games_Subnav_Minecraft-300x465.jpg' alt='Minecraft danielsharkov.com'>
+				<img src='minecraft.jpg' alt='Minecraft danielsharkov.com'>
 			</a>
 			<div class='content'>
 				<h3><a class='link' href='https://www.minecraft.net/' target='_blank'>

@@ -44,11 +44,11 @@
 	})
 
 	const questions: object = {
-		'projects': 'Was hast du bereits geschaffen?',
-		'skills': 'Welche (programmier-) Sprachen sprichst du? (Fertigkeiten)',
-		'worked-with': 'Wo hast du bereits gearbeitet?',
-		'me-myself-and-i': 'Erzähl mir ein wenig über dich?',
-		'get-in-touch': 'I würde dich gerne kontaktieren.',
+		'projects': 'An welchen Projekten arbeitest du oder welche hast du bereits geschaffen?',
+		'skills': 'Was ist dein Programmierer-Stack? (Fertigkeiten)',
+		// 'worked-with': 'Wo hast du bereits gearbeitet?',
+		'me-myself-and-i': 'Erzähl mir ein wenig über dich.',
+		'get-in-touch': 'Ich würde dich gerne kontaktieren.',
 	}
 </script>
 

@@ -107,7 +107,7 @@
 			overflow: hidden
 			border-radius: .5rem
 			@media screen and (min-width: 1600px)
-				height: 14rem
+				height: 22rem
 			@media screen and (max-width: 1600px)
 				height: 15rem
 			@media screen and (max-width: 1200px)

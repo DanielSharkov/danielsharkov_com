@@ -164,6 +164,14 @@ export const technologies: TechnologyList = {
 			[2016, 2018],
 		],
 	},
+	OBS: {
+		name: 'Open Broadcaster Software', color: '#151515', icon: true,
+		type: TechnologyType.Software,
+		link: 'https://obsproject.com/',
+		careerSpan: [
+			[2016, null],
+		],
+	},
 	GIMP: {
 		name: 'GIMP', color: '#615A48', image: true,
 		type: TechnologyType.Software,
@@ -380,7 +388,7 @@ export const projects: Array<Project> = [
 		cover: true,
 		darkTheme: false,
 		projectUrl: 'https://youtu.be/uWZoT4Nvd3I',
-		usedTechnologies: ['PowerDirector15', 'GIMP'],
+		usedTechnologies: ['PowerDirector15', 'GIMP', 'OBS'],
 		about: true,
 	},
 	{
@@ -389,7 +397,7 @@ export const projects: Array<Project> = [
 		cover: true,
 		darkTheme: false,
 		projectUrl: 'https://www.youtube.com/watch?v=ix7fj1-SOps',
-		usedTechnologies: ['PowerDirector15', 'GIMP'],
+		usedTechnologies: ['PowerDirector15', 'GIMP', 'OBS'],
 		about: true,
 	},
 ]

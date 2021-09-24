@@ -2,7 +2,7 @@
 	<div class='section-header'>
 		<h1 class='display-3'>Fertigkeiten</h1>
 		<p class='subtitle'>
-			Sprachen die ich spreche und Technologien ich kenne und benutze mit einem Zeitstrahl dargestellt.
+			Programmiersprachen die ich spreche und Technologien die ich kenne und benutze - in einem Zeitstrahl dargestellt, seit wann ich damit angefangen habe.
 		</p>
 	</div>
 	<ul class='technologies grid'>
@@ -11,9 +11,7 @@
 				<div class='period'/>
 			{/each}
 		</div>
-		<div class='header flex flex-align-end-y' on:sticky-change={ (e)=> {
-			console.log(e)
-		}}>
+		<div class='header flex flex-align-end-y'>
 			{#each Array(currentYear - careerBegin + 1) as _, idx}
 				<span class='period flex flex-center'>{careerBegin + idx}</span>
 			{/each}
