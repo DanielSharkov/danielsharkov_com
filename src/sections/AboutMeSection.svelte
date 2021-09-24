@@ -9,7 +9,7 @@
 	</article> -->
 
 	<article class='designe'>
-		<h2 class='article-title'>Design</h2>
+		<h2 class='article-title'>Designer</h2>
 		<p>
 			Es macht mir Spaß User Experience Designes zu entwerfen und
 			gibt mir dazu die Hoffnung auf bessere Anwendungen für Menschen.

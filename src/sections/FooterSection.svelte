@@ -7,7 +7,7 @@
 		padding: 1rem
 	.copyright
 		text-align: center
-		color: var(--foreground-025)
+		color: var(--foreground-05)
 		@media screen and (max-width: 1000px)
 			font-size: .75rem
 </style>
