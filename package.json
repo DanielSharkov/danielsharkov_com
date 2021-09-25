@@ -9,27 +9,27 @@
     "validate": "svelte-check"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^18.0.0",
-    "@rollup/plugin-node-resolve": "^11.2.1",
-    "@rollup/plugin-typescript": "^8.2.1",
-    "@tsconfig/svelte": "^1.0.10",
-    "autoprefixer": "^10.2.5",
-    "marked": "^2.0.3",
-    "postcss": "^8.2.10",
-    "postcss-load-config": "^3.0.1",
-    "rollup": "^2.45.2",
+    "@rollup/plugin-commonjs": "^20.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "@rollup/plugin-typescript": "^8.2.5",
+    "@tsconfig/svelte": "^2.0.1",
+    "autoprefixer": "^10.3.5",
+    "marked": "^3.0.4",
+    "postcss": "^8.3.8",
+    "postcss-load-config": "^3.1.0",
+    "rollup": "^2.57.0",
     "rollup-plugin-css-only": "^3.1.0",
-    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-svelte": "^7.1.0",
     "rollup-plugin-terser": "^7.0.2",
-    "stylus": "^0.54.8",
-    "svelte": "^3.37.0",
-    "svelte-check": "^1.4.0",
-    "svelte-preprocess": "^4.7.2",
-    "tslib": "^2.2.0",
-    "typescript": "^4.2.4"
+    "stylus": "^0.55.0",
+    "svelte": "^3.43.0",
+    "svelte-check": "^2.2.6",
+    "svelte-preprocess": "^4.9.5",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.3"
   },
   "dependencies": {
-    "sirv-cli": "^1.0.11"
+    "sirv-cli": "^1.0.14"
   }
 }
