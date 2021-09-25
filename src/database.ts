@@ -286,7 +286,7 @@ export const projects: Array<Project> = [
 		id: 'dgraph_graphql_go_svelte',
 		cover: false,
 		darkTheme: false,
-		projectUrl: 'https://dgraph_go.danielsharkov.com',
+		projectUrl: null,
 		codeUrl: 'https://github.com/DanielSharkov/dgraph_graphql_go_svelte',
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG'],
 		about: true,
