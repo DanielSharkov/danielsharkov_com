@@ -100,6 +100,10 @@
 		cursor: pointer
 		background-color: var(--background)
 		transition: all var(--transition)
+		@media screen and (min-width: 2000px)
+			box-shadow:
+				0 0 1px var(--foreground-015),
+				0 3px 6px var(--foreground-015)
 		> .preview
 			z-index: 0
 			position: relative

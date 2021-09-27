@@ -154,6 +154,8 @@
 		overflow: hidden
 		@media screen and (min-width: 1000px)
 			padding: 3rem
+		@media screen and (min-width: 1400px)
+			min-height: 75%
 		@media screen and (max-width: 1000px)
 			padding: 1.5rem
 		@media screen and (max-width: 600px)

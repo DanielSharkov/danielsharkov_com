@@ -409,6 +409,8 @@
 		overflow-y: auto
 		@media screen and (min-width: 600px)
 			padding: 1rem
+		@media screen and (min-width: 1400px)
+			padding: 2rem
 		> .bg
 			z-index: -1
 			position: fixed
@@ -423,6 +425,8 @@
 		right: 0
 		left: 0
 		min-height: 100%
+		max-width: 1500px
+		margin: auto
 		background-color: var(--background)
 		grid-template-rows: auto auto 1fr
 		transform: translate3d(0,0,0)
@@ -430,6 +434,11 @@
 			margin-bottom: 5rem
 			box-shadow: 0 0 10px var(--foreground-025)
 			border-radius: .5rem
+		@media screen and (min-width: 1400px)
+			margin-bottom: 10rem
+			box-shadow: 0 0 20px var(--foreground-025)
+		@media screen and (min-width: 1400px)
+			margin-bottom: 15rem
 		@media screen and (max-width: 600px)
 			box-shadow: none !important
 		> .close-modal
