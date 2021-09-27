@@ -1,15 +1,15 @@
 <section id='get-in-touch' class='auto-height grid grid-center'>
 	<h1>Du möchtest mich gerne erreichen?</h1>
-	<div class='social-media flex flex-center-y gap-1'>
+	<ul role='listbox' class='social-media flex flex-center-y gap-1'>
 		{#each $GlobalStore.socialMedia as {name, url}, idx}
-			<a href={url} target='_blank' style='animation-delay: {50+idx*50}ms' on:click={(e)=> vibrateLink(e)}>
+			<a href={url} target='_blank' role='listitem' style='animation-delay: {50+idx*50}ms' on:click={(e)=> vibrateLink(e)}>
 				<svg class='logo icon-big'>
 					<title>{name} Logo</title>
 					<use xlink:href='#LOGO_{name}'/>
 				</svg>
 			</a>
 		{/each}
-	</div>
+	</ul>
 	<div class='formular grid gap-1' valid-form={validForm}>
 		<div class='currently-unavailable flex flex-center'>
 			<span>Derzeit nur durch Soziale Medien kontaktierbar. 👆</span>
@@ -51,7 +51,8 @@
 	section
 		padding: 6rem 2rem
 		background-color: #FA8BFF
-		background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%)
+		background-image: -webkit-linear-gradient(45deg, #FA8BFF, #2BD2FF, #2BFF88)
+		background-image: linear-gradient(45deg, #FA8BFF, #2BD2FF, #2BFF88)
 		@media screen and (max-width: 1000px)
 			padding: 6rem 1.5rem
 
@@ -126,7 +127,8 @@
 	@media (prefers-color-scheme: dark)
 		section
 			background-color: #FF3CAC
-			background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%)
+			background-image: -webkit-linear-gradient(225deg, #44ffb1, #FF3CAC, #784BA0, #2B86C5)
+			background-image: linear-gradient(225deg, #44ffb1, #FF3CAC, #784BA0, #2B86C5)
 		.formular
 			box-shadow: 0 -1px 1px rgba(#fff, .1), 0 6px 20px rgba(#000, .75)
 			input, textarea

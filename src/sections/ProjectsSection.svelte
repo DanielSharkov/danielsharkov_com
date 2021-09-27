@@ -57,7 +57,7 @@
 
 <section id='projects'>
 	<h1 class='display-3'>Projekte</h1>
-	<div class='projects grid'>
+	<div class='projects grid' role='feed'>
 		{#each projects as _, pIdx}
 			<ProjectPreviewTile
 				projectIndex={ pIdx }

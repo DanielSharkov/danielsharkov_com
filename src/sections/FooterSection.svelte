@@ -1,5 +1,5 @@
 <footer>
-	<p class='copyright'>Copyright &copy; Daniel Sharkov 2021. Alle Rechte vorbehalten.</p>
+	<p class='copyright' role='contentinfo'>Copyright &copy; Daniel Sharkov 2021. Alle Rechte vorbehalten.</p>
 </footer>
 
 <style>

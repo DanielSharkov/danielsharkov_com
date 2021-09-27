@@ -165,7 +165,7 @@ export const technologies: TechnologyList = {
 		],
 	},
 	OBS: {
-		name: 'Open Broadcaster Software', color: '#151515', icon: true,
+		name: 'Open Broadcaster Software', color: '#333333', icon: true,
 		type: TechnologyType.Software,
 		link: 'https://obsproject.com/',
 		careerSpan: [
@@ -197,6 +197,7 @@ export type Project = {
 	otherLinks?:      Array<ProjectLink>
 	usedTechnologies: Array<String>
 	about:            boolean
+	gradient?:        Array<String>
 }
 
 export const projects: Array<Project> = [
@@ -212,6 +213,7 @@ export const projects: Array<Project> = [
 			'Docker', 'Nginx', 'Figma',
 		],
 		about: true,
+		gradient: ['#fcb6b6', '#f6df88'],
 	},
 	{
 		name: `Organisations Graph`,
@@ -225,6 +227,7 @@ export const projects: Array<Project> = [
 			'Stylus', 'Docker', 'Nginx', 'Figma',
 		],
 		about: true,
+		gradient: ['#1488CC', '#2B32B2'],
 	},
 	{
 		name: `Timetabler`,
@@ -238,6 +241,7 @@ export const projects: Array<Project> = [
 			'Docker', 'Nginx', 'Figma',
 		],
 		about: true,
+		gradient: ['#b5ffdd', '#65C7F7', '#0066ff'],
 	},
 	{
 		name: `CoWo Space`,
@@ -250,6 +254,7 @@ export const projects: Array<Project> = [
 			'Svelte', 'SVG', 'Stylus', 'Docker', 'Nginx', 'Figma',
 		],
 		about: true,
+		gradient: ['#FAACA8', '#DDD6F3'],
 	},
 	{
 		name: `Svelte Chess`,
@@ -260,6 +265,7 @@ export const projects: Array<Project> = [
 		codeUrl: 'https://github.com/DanielSharkov/svelte-chess',
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'Figma'],
 		about: true,
+		gradient: ['#093028', '#344740'],
 	},
 	{
 		name: `Pattern Visualizer`,
@@ -270,6 +276,7 @@ export const projects: Array<Project> = [
 		codeUrl: 'https://github.com/DanielSharkov/PatternVisualizer',
 		usedTechnologies: ['Svelte'],
 		about: true,
+		gradient: ['#f399d3', '#a7276e', '#2c9c88', '#713dc3', '#00bfff'],
 	},
 	{
 		name: `Svelte Router`,
@@ -280,6 +287,7 @@ export const projects: Array<Project> = [
 		codeUrl: 'https://github.com/danielsharkov/svelte-router',
 		usedTechnologies: ['Svelte', 'JavaScript'],
 		about: true,
+		gradient: ['#ffc73e', '#ff6505'],
 	},
 	{
 		name: `Dgraph-GraphQL-Go-Svelte`,
@@ -290,6 +298,7 @@ export const projects: Array<Project> = [
 		codeUrl: 'https://github.com/DanielSharkov/dgraph_graphql_go_svelte',
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG'],
 		about: true,
+		gradient: ['#0062ff', '#cbf6ff'],
 	},
 	{
 		name: `Infocenter`,
@@ -300,6 +309,7 @@ export const projects: Array<Project> = [
 		codeUrl: null,
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG'],
 		about: true,
+		gradient: ['#a1c4fd', '#c2e9fb']
 	},
 	{
 		name: `FitCat App`,
@@ -313,6 +323,7 @@ export const projects: Array<Project> = [
 		],
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'Nginx', 'Figma'],
 		about: true,
+		gradient: ['#ffffff', '#63d0ff', '#ffffff', '#ffdd7d', '#ffffff'],
 	},
 	{
 		name: `Shopify Cyber-Theme`,
@@ -330,6 +341,7 @@ export const projects: Array<Project> = [
 			'SASS_SCSS',
 		],
 		about: true,
+		gradient: ['#1F1C2C', '#928DAB'],
 	},
 	{
 		name: `Vivobarefoot Redesign Proposal`,
@@ -340,6 +352,7 @@ export const projects: Array<Project> = [
 		codeUrl: 'https://github.com/DanielSharkov/vivobarefoot_redesign_proposal',
 		usedTechnologies: ['HTML', 'CSS', 'JavaScript'],
 		about: true,
+		gradient: ['#a02828', '#ff5b5b'],
 	},
 	{
 		name: `Gronkh.de Konzept`,
@@ -353,6 +366,7 @@ export const projects: Array<Project> = [
 		],
 		usedTechnologies: ['VueJS', 'Stylus'],
 		about: true,
+		gradient: ['#ff51ea', '#fe9840', '#42ffc2', '#b870fa', '#54ff32'],
 	},
 	{
 		name: `Chrome Redesign Inspiration`,
@@ -363,6 +377,7 @@ export const projects: Array<Project> = [
 		codeUrl: 'https://codepen.io/DanielSharkov/pen/gvZgQN',
 		usedTechnologies: ['VueJS', 'Stylus'],
 		about: true,
+		gradient: ['#08AEEA', '#2AF598'],
 	},
 	{
 		name: `Einsteiger Doku für Webentwickler`,
@@ -372,6 +387,7 @@ export const projects: Array<Project> = [
 		projectUrl: null,
 		usedTechnologies: [],
 		about: true,
+		gradient: ['#08AEEA', '#2AF598'],
 	},
 	{
 		name: `Logo Redesign Proposal`,
@@ -381,6 +397,7 @@ export const projects: Array<Project> = [
 		projectUrl: null,
 		usedTechnologies: ['Figma', 'SVG'],
 		about: true,
+		gradient: ['#FA8BFF', '#2BD2FF', '#2BFF88'],
 	},
 	{
 		name: `"Lost Santos" Series Teaser`,
@@ -390,6 +407,7 @@ export const projects: Array<Project> = [
 		projectUrl: 'https://youtu.be/uWZoT4Nvd3I',
 		usedTechnologies: ['PowerDirector15', 'GIMP', 'OBS'],
 		about: true,
+		gradient: ['#a7a5a4', '#695747'],
 	},
 	{
 		name: `"BRT" Video`,

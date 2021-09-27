@@ -178,7 +178,7 @@
 			> .header
 				box-shadow: 0 14px 20px -12px var(--foreground-015)
 			> .techno > .time-span > .period
-				box-shadow: 0 1px 10px var(--foreground-05)
+				box-shadow: 0 1px 10px var(--foreground-025)
 
 	@media screen and (max-width: 1000px)
 		.section-header

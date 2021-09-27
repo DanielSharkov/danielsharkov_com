@@ -19,8 +19,9 @@
 	}
 </script>
 
-<button class='project grid' on:click={openThisProject} style='animation-delay: {1000 + projectIndex * 100}ms'>
+<button class='project grid' role='' on:click={openThisProject} style='animation-delay: {1000 + projectIndex * 100}ms'>
 	<div class='preview block-select'
+	role='img'
 	class:loaded={ highResImgDone }
 	class:loaded-dark={ highResImgDarkDone }
 	class:dark-theme={ project.darkTheme }>
@@ -106,8 +107,10 @@
 			background-color: var(--foreground-0025)
 			overflow: hidden
 			border-radius: .5rem
-			@media screen and (min-width: 1600px)
+			@media screen and (min-width: 2000px)
 				height: 22rem
+			@media screen and (max-width: 1800px)
+				height: 18rem
 			@media screen and (max-width: 1600px)
 				height: 15rem
 			@media screen and (max-width: 1200px)

@@ -1,14 +1,16 @@
 <div id='Project_Details_Container'>
 	<div class='bg' transition:bgTrans/>
-	<div id='Project_Details_Modal' class='grid' transition:modalTrans class:no-about={project.about === null}>
+	<div id='Project_Details_Modal' class='grid' role='article' transition:modalTrans class:no-about={project.about === null}>
 		<button class='close-modal flex flex-center' on:click={closeModal}>
 			<svg class='icon stroke icon-big' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 120 120'>
 				<path d='M10 110l50-50m0 0l50-50M60 60l50 50M60 60L10 10' stroke-width='.25rem' stroke-linecap='round' stroke-linejoin='round'/>
 			</svg>
 		</button>
 		<div class='image-container flex flex-center block-select'
+		role='img'
 		class:no-image={ !project.cover }
-		class:dark-theme={ project.darkTheme }>
+		class:dark-theme={ project.darkTheme }
+		style={customGradientBG}>
 			{#if project.cover}
 				<div class='light flex flex-center'>
 					{#if !$GlobalStore.projectImgLoad[project.id].light}
@@ -72,9 +74,9 @@
 		<div class='header grid gap-2'>
 			<div class='left-piece grid gap-1'>
 				<h1 class='name'>{ project.name }</h1>
-				<div class='used-technologies flex list gap-05'>
+				<div class='used-technologies flex list gap-05' role='listbox'>
 					{#each project.usedTechnologies as techno, idx}
-						<a href={technologies[techno].link} target='_blank' class='techno flex flex-center gap-05' on:click={vibrate}>
+						<a href={technologies[techno].link} target='_blank' role='listitem' class='techno flex flex-center gap-05' on:click={vibrate}>
 							<div
 								class='color'
 								style='background-color: {technologies[techno].color}'
@@ -100,7 +102,7 @@
 			</div>
 			<div class='right-piece flex' class:single-btn={anyHeaderBtnActive} class:no-btn={noHeaderBtn}>
 				{#if project.codeUrl}
-					<a href={project.codeUrl} class='open-source-code flex flex-center gap-05' target='_blank' on:click={(e)=> vibrateLink(e)}>
+					<a href={project.codeUrl} role='button' class='open-source-code flex flex-center gap-05' target='_blank' on:click={(e)=> vibrateLink(e)}>
 						<svg class='icon fill icon-medium' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'>
 							<path d='M42.0439 53.512L17.2039 62.8L42.0439 72.088V79.576L8.85188 66.688V58.912L42.0439 46.024V53.512ZM68.2406 27.376H76.3046L52.5446 95.2H44.4806L68.2406 27.376ZM111.231 58.912V66.688L78.0394 79.576V72.088L102.879 62.8L78.0394 53.512V46.024L111.231 58.912Z'/>
 						</svg>
@@ -118,7 +120,7 @@
 					</div>
 				{/if}
 				{#if project.projectUrl !== null && project.projectUrl !== 'COMING_SOON'}
-					<a href={project.projectUrl} class='open-project flex flex-center gap-05' target='_blank' on:click={(e)=> vibrateLink(e)}>
+					<a href={project.projectUrl} role='button' class='open-project flex flex-center gap-05' target='_blank' on:click={(e)=> vibrateLink(e)}>
 						<div class='shine'/>
 						<span class='label'>Projekt öffnen</span>
 						<svg class='icon stroke icon-medium' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -156,10 +158,11 @@
 				<div class='share-post flex flex-center-y'>
 					<span class='label'>Teilen:</span>
 					<button
+					role='button'
 					class='share-option flex flex-center gap-05 nowrap'
 					class:is-sharing={userIsSharingURL}
 					on:click={shareURL}>
-						<div class='status grid gap-05 grid-center-x' class:active={userIsSharingURL}>
+						<div class='status grid gap-05 grid-center-x' role='alert' class:active={userIsSharingURL}>
 							<span class='label'>
 								{#if shareURLWasCanceled}
 									Etwas ist schief gelaufen
@@ -181,10 +184,11 @@
 						<span class='label'>URL kopieren</span>
 					</button>
 					<button
+					role='button'
 					class='share-option flex flex-center gap-05 nowrap'
 					class:is-sharing={userIsSharing}
 					on:click={shareThis}>
-						<div class='status grid gap-05 grid-center-x' class:active={userIsSharing}>
+						<div class='status grid gap-05 grid-center-x' role='alert' class:active={userIsSharing}>
 							<span class='label'>
 								{#if shareNotSupported}
 									Dein Browser unterstützt leider diese Funktion nicht
@@ -210,7 +214,7 @@
 					<!-- {#if isSharingSupported}
 					{/if} -->
 				</div>
-				<button class='close flex flex-center-y flex-self-right gap-1 nowrap' on:click={closeModal}>
+				<button role='button' class='close flex flex-center-y flex-self-right gap-1 nowrap' on:click={closeModal}>
 					<svg class='icon stroke icon-small' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 120 120'>
 						<path d='M10 110l50-50m0 0l50-50M60 60l50 50M60 60L10 10' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
 					</svg>
@@ -378,6 +382,13 @@
 		})
 	}
 
+	$:customGradientBG = (
+		Array.isArray(project.gradient) ?
+			`background: -webkit-linear-gradient(125deg, ${project.gradient.join(',')});` +
+			`background: linear-gradient(125deg, ${project.gradient.join(',')});`
+		: ''
+	)
+
 	// const isSharingSupported = window.navigator?.share !== undefined
 </script>
 
@@ -433,12 +444,14 @@
 			cursor: pointer
 			line-height: 1
 			transition: var(--transition)
-			transition-property: transform, box-shadow, color
+			transition-property: transform, background-color, box-shadow, color
+			will-change: transform, background-color, box-shadow, color
 			&:hover, &:active
-				transform: scale(1.1)
-				border-color: var(--color-accent)
+				transform: scale(1.25)
+				background-color: var(--color-accent)
+				border-color: #fff
 				.icon.stroke > *
-					stroke: var(--color-accent)
+					stroke: #fff
 			&:active
 				transform: scale(0.95)
 		> .image-container
@@ -447,7 +460,7 @@
 			min-height: 65vh
 			max-height: 65vh
 			background-color: var(--foreground-005)
-			border-bottom: solid 1px var(--border-soft)
+			border-bottom: solid .25rem var(--background-025)
 			overflow: hidden
 			border-radius: inherit
 			border-bottom-left-radius: 0
@@ -498,7 +511,7 @@
 				background-size: contain
 				border-radius: .25rem
 			.dark
-				background-color: #000
+				background-color: var(--background-05)
 			> .no-image
 				width: 25%
 				height: 25%
@@ -532,6 +545,7 @@
 					border-radius: 1rem
 					transition: var(--transition)
 					transition-property: transform, box-shadow, color
+					will-change: transform, box-shadow, color
 					> .color
 						z-index: -1
 						position: absolute
@@ -543,6 +557,7 @@
 						opacity: .1
 						transition: var(--transition)
 						transition-property: opacity, background-color
+						will-change: opacity, background-color
 					> .logo
 						height: 1.25rem
 						width: 1.25rem
@@ -572,6 +587,7 @@
 				margin-right: 1rem
 				transition: var(--transition)
 				transition-property: opacity, background-color
+				will-change: opacity, background-color
 				&:hover
 					background-color: var(--foreground-01)
 				&:not(:hover)
@@ -591,6 +607,7 @@
 				overflow: hidden
 				transition: var(--transition)
 				transition-property: transform, box-shadow, color
+				will-change: transform, box-shadow, color
 				.icon.stroke > *
 					stroke: #FFF
 				.shine
@@ -606,6 +623,7 @@
 					transform: skew(35deg) translate(-100%,0)
 					transition: var(--transition)
 					transition-property: transform, box-shadow, color
+					will-change: transform, box-shadow, color
 				&:hover
 					box-shadow:
 						0 0 1px var(--foreground-01),
@@ -710,6 +728,7 @@
 					border-radius: 2rem
 					transition: var(--transition)
 					transition-property: background-color, transform, box-shadow
+					will-change: background-color, transform, box-shadow
 					cursor: pointer
 					font-size: 1rem
 					@media screen and (max-width: 600px)
@@ -730,6 +749,7 @@
 						border-radius: .5rem
 						transition: var(--transition)
 						transition-property: opacity, transform
+						will-change: opacity, transform
 						pointer-events: none
 						&:not(.active)
 							opacity: 0
@@ -782,6 +802,7 @@
 				background-color: var(--foreground-005)
 				transition: var(--transition)
 				transition-property: transform, box-shadow, color, background-color
+				will-change: transform, box-shadow, color, background-color
 				&:hover
 					background-color: var(--modal-bg)
 					transform: translate(0, -.25rem)
@@ -816,12 +837,15 @@
 			> .image-container
 				.image
 					box-shadow:
-						0 -1px 1px var(--foreground-025),
+						0 -1px 1px var(--background-025),
 						0 1px 1px var(--background),
-						0 18px 30px -20px var(--foreground-05)
+						0 18px 30px -20px var(--background-05)
 				&.dark-theme .light
 					display: none
+				.light
+					background-color: var(--background-05)
 			> .header
+				background-color: var(--foreground-005)
 				.used-technologies .techno
 					box-shadow:
 						0 -1px 1px var(--foreground-025),
@@ -838,6 +862,7 @@
 				.open-source-code:hover
 					background-color: var(--foreground-015)
 			> .footer
+				background-color: var(--foreground-005)
 				.close, .share-post .share-option
 					box-shadow:
 						0 -1px 1px var(--foreground-025),

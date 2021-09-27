@@ -53,7 +53,7 @@
 </script>
 
 
-<section id='LandingSection'>
+<section id='LandingSection' class='auto-height'>
 	<svg id='LandingCodingBG' viewBox='0 0 128 91' fill='none' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
 		<path d='M90.8928 20.304C81.5811 9.97438 97.7283 0 97.7283 0H128V87.8149C128 87.8149 85.4901 90.7668 93.308 73.0945C98.4599 61.4487 89.367 55.0853 97.217 40.3962C100.149 34.9103 99.1144 29.4244 90.8928 20.304Z' fill='url(#paint0_linear)'/>
 		<path d='M90.8928 20.304C81.5811 9.97438 97.7283 0 97.7283 0H128V87.8149C128 87.8149 85.4901 90.7668 93.308 73.0945C98.4599 61.4487 89.367 55.0853 97.217 40.3962C100.149 34.9103 99.1144 29.4244 90.8928 20.304Z' fill='url(#pattern0)'/>
@@ -108,16 +108,16 @@
 						</span>
 					{/each}
 				</div>
-				<div class='social-media flex flex-center-y gap-1'>
+				<ul role='listbox' class='social-media flex flex-center-y gap-1'>
 					{#each $GlobalStore.socialMedia as {name, url}, idx}
-						<a href={url} target='_blank' style='animation-delay: {50 + idx * 100}ms' on:click={(e)=> vibrateLink(e)}>
+						<a href={url} role='listitem' target='_blank' style='animation-delay: {50 + idx * 100}ms' on:click={(e)=> vibrateLink(e)}>
 							<svg class='logo icon-big'>
 								<title>{name} Logo</title>
 								<use xlink:href='#LOGO_{name}'/>
 							</svg>
 						</a>
 					{/each}
-				</div>
+				</ul>
 			</div>
 		</div>
 		<p class='text-block'>
@@ -126,14 +126,13 @@
 			5 Jahre Erfahrung in UX & UI Design machen mich zu einem hervorragenden vielseitigen Entwickler.
 		</p>
 		<nav>
-			<ul class='grid gap-1 question-list'>
+			<ul class='grid gap-1 question-list' role='list'>
 				{#each Object.keys(questions) as questID, idx}
-					<li class='question-entry flex flex-center-y gap-1' style='animation-delay: {50+idx*100}ms'>
+					<li role='listitem' class='question-entry flex flex-center-y nowrap gap-1' style='animation-delay: {50+idx*100}ms'>
 						<svg class='icon fill icon-default flex-base-size' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 512'>
 							<path d='M17.525 36.465l-7.071 7.07c-4.686 4.686-4.686 12.284 0 16.971L205.947 256 10.454 451.494c-4.686 4.686-4.686 12.284 0 16.971l7.071 7.07c4.686 4.686 12.284 4.686 16.97 0l211.051-211.05c4.686-4.686 4.686-12.284 0-16.971L34.495 36.465c-4.686-4.687-12.284-4.687-16.97 0z'/>
 						</svg>
-						<a
-						href='#{questID}'
+						<a href='#{questID}' role='button'
 						class='question flex flex-center-y'
 						on:click={ (e)=> {
 							e.preventDefault()
@@ -152,7 +151,6 @@
 
 <style lang='stylus'>
 	#LandingSection
-		min-height: 100%
 		overflow: hidden
 		@media screen and (min-width: 1000px)
 			padding: 3rem
@@ -170,7 +168,7 @@
 		max-width: 100vw
 		pointer-events: none
 		animation: codeBgInAnim var(--transition-easing) 1.5s backwards
-		@media screen and (max-width: 1000px)
+		@media screen and (max-width: 600px)
 			display: none
 
 	#BigProfilePicture
@@ -181,7 +179,7 @@
 		width: 100%
 		height: 100%
 		padding: 3rem
-		@media screen and (max-width: 1000px)
+		@media screen and (max-width: 600px)
 			padding: 2rem
 		@media screen and (max-width: 600px)
 			padding: 1rem
@@ -235,7 +233,7 @@
 					0 14px 30px -14px var(--foreground-05)
 				background-color: var(--foreground-0025)
 				transform: translate3d(0,0,0)
-				@media screen and (max-width: 1000px)
+				@media screen and (max-width: 600px)
 					margin: auto
 			&.big-preview img
 				transition-duration: 600
@@ -245,22 +243,22 @@
 				transform: scale(1.1)
 				border-radius: 10%
 		> .header
-			@media screen and (min-width: 1000px)
+			@media screen and (min-width: 600px)
 				grid-template-columns: auto 1fr
 		.name
 			font-weight: 300
 			font-size: 3rem
 			letter-spacing: .25rem
 			animation: nameInAnim var(--transition-easing) 1s
-			@media screen and (max-width: 1000px)
+			@media screen and (max-width: 600px)
 				font-size: 2.5rem
 				text-align: center
 			@media screen and (max-width: 500px)
 				font-size: 2.25rem
 		.professions
-			@media screen and (min-width: 1000px)
+			@media screen and (min-width: 600px)
 				margin-left: .35rem
-			@media screen and (max-width: 1000px)
+			@media screen and (max-width: 600px)
 				justify-content: center
 				justify-items: center
 			.profession
@@ -275,9 +273,9 @@
 					background-color: var(--foreground)
 					opacity: .15
 		.social-media
-			@media screen and (min-width: 1000px)
+			@media screen and (min-width: 600px)
 				margin-left: -.25rem
-			@media screen and (max-width: 1000px)
+			@media screen and (max-width: 600px)
 				justify-content: center
 				justify-items: center
 			> a
@@ -294,7 +292,7 @@
 				&:hover
 					opacity: 1
 					transform: scale(1.25)
-				@media screen and (max-width: 1000px)
+				@media screen and (max-width: 600px)
 					&:not(:last-child)
 						margin-right: .5rem
 		.text-block
@@ -309,17 +307,17 @@
 				max-width: 90%
 
 	nav
-		@media screen and (min-width: 1000px)
+		@media screen and (min-width: 600px)
 			padding-left: 1rem
 		.question-list
 			.question-entry
 				animation: questionsInAnim var(--transition-easing) 1s alternate backwards
-				@media screen and (max-width: 1000px)
+				@media screen and (max-width: 600px)
 					flex-wrap: nowrap
 					align-items: baseline
 				> .icon
 					opacity: .25
-					@media screen and (max-width: 1000px)
+					@media screen and (max-width: 600px)
 						margin-right: .5rem
 				.question
 					padding: 1rem
@@ -331,9 +329,9 @@
 					text-decoration: none
 					line-height: 1.5
 					transition: all var(--transition)
-					@media screen and (min-width: 1000px)
+					@media screen and (min-width: 600px)
 						font-size: 1.15rem
-					@media screen and (max-width: 1000px)
+					@media screen and (max-width: 600px)
 						flex: 1 1 auto
 					span
 						&:before
