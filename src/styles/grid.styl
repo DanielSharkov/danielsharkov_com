@@ -1,0 +1,91 @@
+.grid
+	display: grid
+	grid-template-columns: 100%
+
+	&.gap-05
+		gap: 0.5rem
+	&.gap-1
+		gap: 1rem
+	&.gap-15
+		gap: 1.5rem
+	&.gap-2
+		gap: 2rem
+
+	&.gap-row-05
+		grid-row-gap: 0.5rem
+	&.gap-row-1
+		grid-row-gap: 1rem
+	&.gap-row-15
+		grid-row-gap: 1.5rem
+	&.gap-row-2
+		grid-row-gap: 2rem
+
+	&.gap-col-05
+		grid-column-gap: 0.5rem
+	&.gap-col-1
+		grid-column-gap: 1rem
+	&.gap-col-15
+		grid-column-gap: 1.5rem
+	&.gap-col-2
+		grid-column-gap: 2rem
+
+	&-top
+		align-content: start
+		align-items: start
+	&-right
+		justify-content: end
+		justify-items: end
+	&-bottom
+		align-content: end
+		align-items: end
+	&-left
+		justify-content: start
+		justify-items: start
+	&-center
+		align-content: center
+		align-items: center
+		justify-content: center
+		justify-items: center
+	
+	&-content-top
+		align-content: start
+	&-content-right
+		justify-content: end
+	&-content-bottom
+		align-content: end
+	&-content-left
+		justify-content: start
+	&-content-center
+		align-content: center
+		justify-content: center
+
+	&-center-y
+		align-content: center
+		align-items: center
+	&-center-x
+		justify-content: center
+		justify-items: center
+
+for $i in (2..12)
+	.grid-{$i}
+		grid-template-columns: repeat($i, minmax(0, 1fr))
+
+@media (min-width: 1200px)
+	for $i in (2..12)
+		.grid-large-{$i}
+			grid-template-columns: repeat($i, minmax(0, 1fr))
+
+@media (max-width: 1200px)
+	for $i in (2..12)
+		.grid-normal-{$i}
+			grid-template-columns: repeat($i, minmax(0, 1fr))
+
+@media (max-width: 768px)
+	for $i in (2..12)
+		.grid-medium-{$i}
+			grid-template-columns: repeat($i, minmax(0, 1fr))
+
+@media (max-width: 425px)
+	for $i in (2..12)
+		.grid-small-{$i}
+			grid-template-columns: repeat($i, minmax(0, 1fr))

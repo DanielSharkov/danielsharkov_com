@@ -1,0 +1,68 @@
+html
+	$backgroundColor = #FFF
+	--background: $backgroundColor
+	--background-095: rgba($backgroundColor, .95)
+	--background-085: rgba($backgroundColor, .85)
+	--background-075: rgba($backgroundColor, .75)
+	--background-05: rgba($backgroundColor, .5)
+	--background-035: rgba($backgroundColor, .35)
+	--background-025: rgba($backgroundColor, .25)
+	--background-015: rgba($backgroundColor, .15)
+	--background-01: rgba($backgroundColor, .1)
+	--background-005: rgba($backgroundColor, .05)
+	--background-0025: rgba($backgroundColor, .025)
+
+	--background-contrast: #FFF
+
+	$foregroundColor = #000
+	--foreground: $foregroundColor
+	--foreground-085: rgba($foregroundColor, .85)
+	--foreground-075: rgba($foregroundColor, .75)
+	--foreground-05: rgba($foregroundColor, .5)
+	--foreground-035: rgba($foregroundColor, .35)
+	--foreground-025: rgba($foregroundColor, .25)
+	--foreground-015: rgba($foregroundColor, .15)
+	--foreground-01: rgba($foregroundColor, .1)
+	--foreground-005: rgba($foregroundColor, .05)
+	--foreground-0025: rgba($foregroundColor, .025)
+
+	--border-soft: var(--foreground-01)
+	--border-hard: var(--foreground-025)
+
+	--placeholder-loading: var(--background)
+
+	--overlay-bg: rgba(#000, .5)
+
+	--modal-bg: #FFF
+
+	--font-size-base 1rem
+	--line-height 1.5
+	--font-stack-body: -apple-system, BlinkMacSystemFont,
+		'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+		'Open Sans', 'Helvetica Neue', sans-serif
+
+	--font-weight-header 400
+
+	$colorAccent = #05F
+	--color-accent: $colorAccent
+	--color-accent-025: rgba($colorAccent, .25)
+	--color-accent-01: rgba($colorAccent, .1)
+
+	--color-orange: #990
+
+	--color-danger: #F55
+	--color-danger-01: rgba(#F55, .1)
+
+	--color-success: #5B5
+	--color-success-01: rgba(#5B5, .1)
+
+	--transition-duration: 300ms
+	--transition-easing: cubic-bezier(.22, .61, .36, 1)
+	--transition: var(--transition-duration) var(--transition-easing)
+
+	@media screen and (max-width: 1000px)
+		--font-size-base: .85rem
+
+@media (prefers-color-scheme: light)
+	.only-dark
+		display: none

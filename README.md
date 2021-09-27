@@ -1,1 +1,1 @@
-# [danielsharkov.com](https://danielsharkov.com)
+# [DanielSharkov.com](http://danielsharkov.com)

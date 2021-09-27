@@ -1,0 +1,39 @@
+@media (prefers-color-scheme: dark)
+	.only-light
+		display: none
+	html
+		$backgroundColor = #000
+		--background $backgroundColor
+		--background-095 rgba($backgroundColor, .95)
+		--background-085 rgba($backgroundColor, .85)
+		--background-075 rgba($backgroundColor, .75)
+		--background-05 rgba($backgroundColor, .5)
+		--background-035 rgba($backgroundColor, .35)
+		--background-025 rgba($backgroundColor, .25)
+		--background-015 rgba($backgroundColor, .15)
+		--background-01 rgba($backgroundColor, .1)
+		--background-005 rgba($backgroundColor, .05)
+		--background-0025 rgba($backgroundColor, .025)
+
+		--background-contrast: #000
+
+		$foregroundColor = #FFF
+		--foreground $foregroundColor
+		--foreground-085 rgba($foregroundColor, .85)
+		--foreground-075 rgba($foregroundColor, .75)
+		--foreground-05 rgba($foregroundColor, .5)
+		--foreground-035 rgba($foregroundColor, .35)
+		--foreground-025 rgba($foregroundColor, .25)
+		--foreground-015 rgba($foregroundColor, .15)
+		--foreground-01 rgba($foregroundColor, .1)
+		--foreground-005 rgba($foregroundColor, .05)
+		--foreground-0025 rgba($foregroundColor, .025)
+
+		--border-soft: var(--foreground-015)
+		--border-hard: var(--foreground-05)
+
+		--placeholder-loading: var(--foreground-005)
+
+		--overlay-bg: rgba(#000, .75)
+
+		--modal-bg: #151515
