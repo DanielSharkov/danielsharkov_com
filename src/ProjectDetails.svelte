@@ -191,7 +191,7 @@
 						<div class='status grid gap-05 grid-center-x' role='alert' class:active={userIsSharing}>
 							<span class='label'>
 								{#if shareNotSupported}
-									Dein Browser unterstützt leider diese Funktion nicht
+									Dein Browser unterstützt diese Funktion nicht
 								{:else if shareWasCanceled}
 									Abgebrochen
 								{:else if shareWasSuccess}
