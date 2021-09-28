@@ -113,9 +113,9 @@
 			border-radius: .5rem
 			@media screen and (min-width: 2000px)
 				height: 22rem
-			@media screen and (max-width: 1800px)
+			@media screen and (max-width: 2000px)
 				height: 18rem
-			@media screen and (max-width: 1600px)
+			@media screen and (max-width: 1800px)
 				height: 15rem
 			@media screen and (max-width: 1200px)
 				height: 14rem
