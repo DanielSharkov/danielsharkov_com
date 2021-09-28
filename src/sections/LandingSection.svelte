@@ -326,7 +326,7 @@
 					border-radius: .5rem
 					box-shadow:
 						0 0 1px var(--foreground-01),
-						0 1px 3px var(--foreground-015)
+						0 1px 5px var(--foreground-025)
 					cursor: pointer
 					text-decoration: none
 					line-height: 1.5
