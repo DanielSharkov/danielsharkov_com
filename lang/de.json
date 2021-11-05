@@ -66,6 +66,10 @@
 		}
 	},
 
+	"other_link": {
+		"figma": "Figma Designs"
+	},
+
 	"share": "Teilen",
 	"share_with": "Teilen mit...",
 	"share_not_supported": "Dein Browser unterstützt diese Funktion nicht",
