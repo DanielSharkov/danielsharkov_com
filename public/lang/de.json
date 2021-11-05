@@ -1,7 +1,8 @@
 {
 	"b_e_t_a": "Beta Version | 404 - Perfektion nicht gefunden",
 
-	"page_title": "Daniel Sharkov com",
+	"page_title": "Daniel Scharkov com",
+	"my_name": "Daniel Scharkov",
 	"about_me": "Hallo! Ich bin ein FullStack Software Engineer mit Fokus auf web app Front- & Backend Systeme. TypeScript, Svelte, Stylus, Vue.js, Go und viele weiter Werkzeuge sind Teil meines professionellen Arsenals. 5 Jahre Erfahrung in UX & UI Design machen mich zu einem hervorragenden vielseitigen Entwickler. Nächster halt: DevOps & darüber hinaus!",
 
 	"close": "Schließen",
@@ -84,7 +85,7 @@
 	"project_about_unavailable": "Derzeit gibt es keinen Artikel zu diesem Projekt. Doch sei gespannt, vielleicht gibt es schon sehr bald einen!",
 	"project_about_only_available_in": "Leider gibt es zu diesem Artikel noch keine Übersetzung auf Deutsch, jedoch kannst du folgende bereits vorhandene Übersetzungen lesen:",
 	"project_load_different_translation": "Andere Übersetzung laden",
-	"a_project_by": "{name} - ein Project von Daniel Sharkov",
+	"a_project_by": "{name} - ein Project von Daniel Scharkov",
 	"project": {
 		"danielsharkov_com": "DanielSharkov.com",
 		"org_graph": "Organisations Graph",
@@ -106,5 +107,5 @@
 		"black_russian_training_video": "\"BRT\" Video"
 	},
 
-	"copyright": "Copyright © {year} Daniel Sharkov Alle Rechte vorbehalten."
+	"copyright": "Copyright © {year} Daniel Scharkov Alle Rechte vorbehalten."
 }

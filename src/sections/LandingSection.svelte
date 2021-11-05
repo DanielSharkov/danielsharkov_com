@@ -158,7 +158,7 @@
 				<img class='block-select' src={profilePicSrc} alt='Me, Myself and I'/>
 			</button>
 			<div class='grid gap-05'>
-				<h1 class='name'>Daniel Sharkov</h1>
+				<h1 class='name'>{$_('my_name')}</h1>
 				<div class='professions flex flex-center-y list gap-05'>
 					{#each professions as pfsn, idx}
 						<span class='profession flex flex-center-y' style='animation-delay: {50 + idx * 100}ms'>
@@ -331,7 +331,7 @@
 			> a
 				display: inline-block
 				padding: .5rem
-				opacity: .15
+				opacity: .25
 				animation: socialMediaInAnim var(--transition-easing) 1s alternate backwards
 				transition: var(--transition)
 				transition-property: opacity, transform
@@ -424,7 +424,7 @@
 			opacity: 0
 			transform: translate(4rem,0)
 		100%
-			opacity: .15
+			opacity: .25
 			transform: translate(0,0)
 
 	@keyframes professionInAnim
