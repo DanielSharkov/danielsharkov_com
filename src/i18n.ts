@@ -50,7 +50,7 @@ class _i18n implements Readable<string> {
 	constructor() {
 		for (const lang of Object.keys(langMap)) {
 			register(lang, async ()=> {
-				const resp = await fetch(`/lang/${langMap[lang]}.json`)
+				const resp = await fetch(`lang/${langMap[lang]}.json`)
 				return await resp.json()
 			})
 		}
