@@ -347,7 +347,7 @@
 			{rel: 'apple-touch-icon', sizes: '256x256', href: 'logo/256x256.png'},
 			{rel: 'apple-touch-icon', sizes: '512x512', href: 'logo/512x512.png'},
 			{rel: 'fluid-icon', type: 'image/png', href: 'logo/512x512.png'},
-			{rel: 'manifest', href: '/manifest.json'},
+			{rel: 'manifest', href: 'manifest.json'},
 			{rel: 'mask-icon', href: 'logo/vector.svg', color: '#b8a66a'},
 		]}
 		additionalMetaTags={[
