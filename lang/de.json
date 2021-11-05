@@ -18,7 +18,7 @@
 			},
 			"question": {
 				"projects": "An welchen Projekten arbeitest du oder welche hast du bereits geschaffen?",
-				"skills": "Was ist dein Programmierer-Stack? (Fertigkeiten)",
+				"skills": "Was ist dein Tech-Stack? (Fertigkeiten)",
 				"worked-with": "Wo hast du bereits gearbeitet?",
 				"me-myself-and-i": "Erzähl mir ein wenig über dich.",
 				"get-in-touch": "Ich würde dich gerne kontaktieren."
@@ -57,12 +57,7 @@
 			}
 		},
 		"contact": {
-			"title": "Du möchtest mich gerne erreichen?",
-			"not_available": "Derzeit nur durch Soziale Medien kontaktierbar.",
-			"email": "Deine Email",
-			"subject": "Betreff",
-			"msg": "Nachricht",
-			"submit": "Versenden"
+			"title": "Du möchtest mich gerne erreichen?"
 		}
 	},
 

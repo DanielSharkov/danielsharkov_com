@@ -18,7 +18,7 @@
 			},
 			"question": {
 				"projects": "Which projects are you working on or have you ever done?",
-				"skills": "Whats your programmer stack? (skills)",
+				"skills": "Whats your tech stack? (skills)",
 				"worked-with": "In which companies have your already worked in?",
 				"me-myself-and-i": "Tell me something about you.",
 				"get-in-touch": "I would like to get in touch with you."
@@ -57,12 +57,7 @@
 			}
 		},
 		"contact": {
-			"title": "You would like to get in touch with me?",
-			"not_available": "Currently only reachable through social media.",
-			"email": "Your email",
-			"subject": "Subject",
-			"msg": "Message",
-			"submit": "Send"
+			"title": "You would like to get in touch with me?"
 		}
 	},
 
