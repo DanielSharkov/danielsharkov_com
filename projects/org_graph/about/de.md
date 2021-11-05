@@ -1,4 +1,4 @@
-# Beschreibung bald verfügbar...
+# Artikel schon bald verfügbar...
 
-## Kurze Zusammenfassung
+## Kurze Zusammenfassung:
 Graphen-Visualisierung eines Unternehmens zur besseren Übersicht und Organisation.
