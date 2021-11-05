@@ -1,5 +1,6 @@
 <svg
-class='icon' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'
+class='icon' viewBox='0 0 120 120' fill='none'
+aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'
 class:failed={failed}
 class:succeeded={succeeded}
 class:loading={loading && !failed && !succeeded}>
@@ -11,7 +12,7 @@ class:loading={loading && !failed && !succeeded}>
 			animation: none;
 		}
 		.circle-bg {
-			stroke: var(--foreground-005);
+			stroke: var(--font-base-clr-005);
 		}
 		.circle, .cross, .check {
 			transform-origin: center;
@@ -23,7 +24,7 @@ class:loading={loading && !failed && !succeeded}>
 			stroke-dashoffset: 0;
 			-webkit-animation: loadingCircle 3s infinite linear;
 			animation: loadingCircle 3s infinite linear;
-			stroke: var(--foreground-025);
+			stroke: var(--font-base-clr-025);
 		}
 		@keyframes loadingCircle {
 			0% {
@@ -41,20 +42,20 @@ class:loading={loading && !failed && !succeeded}>
 		}
 
 		svg.failed .circle-bg {
-			stroke: var(--color-danger-01)
+			stroke: var(--color-crit-01)
 		}
 		svg.failed .circle {
 			stroke-dasharray: 290;
 			stroke-dashoffset: 0;
 			-webkit-animation: failedCircle 1s linear;
 			animation: failedCircle 1s linear;
-			stroke: var(--color-danger);
+			stroke: var(--color-crit);
 		}
 		@keyframes failedCircle {
 			0% {
 				transform: rotate(0deg);
 				stroke-dashoffset: 0;
-				stroke: var(--foreground-01);
+				stroke: var(--font-base-clr-01);
 			}
 			50% {
 				transform: rotate(180deg);
@@ -63,13 +64,13 @@ class:loading={loading && !failed && !succeeded}>
 			100% {
 				transform: rotate(720deg);
 				stroke-dashoffset: 0;
-				stroke: var(--color-danger);
+				stroke: var(--color-crit);
 			}
 		}
 		svg.failed .cross_1 {
 			stroke-dasharray: 90;
 			stroke-dashoffset: 204;
-			stroke: var(--color-danger);
+			stroke: var(--color-crit);
 			-webkit-animation: cross_1 .75s both cubic-bezier(.22, .61, .36, 1);
 			animation: cross_1 .75s both cubic-bezier(.22, .61, .36, 1);
 			-webkit-animation-delay: .3s;
@@ -83,7 +84,7 @@ class:loading={loading && !failed && !succeeded}>
 		svg.failed .cross_2 {
 			stroke-dasharray: 93;
 			stroke-dashoffset: 212;
-			stroke: var(--color-danger);
+			stroke: var(--color-crit);
 			-webkit-animation: cross_2 .4s both cubic-bezier(.22, .61, .36, 1);
 			animation: cross_2 .4s both cubic-bezier(.22, .61, .36, 1);
 			-webkit-animation-delay: .55s;
@@ -109,7 +110,7 @@ class:loading={loading && !failed && !succeeded}>
 			0% {
 				transform: rotate(0deg);
 				stroke-dashoffset: 0;
-				stroke: var(--foreground-01);
+				stroke: var(--font-base-clr-01);
 			}
 			50% {
 				transform: rotate(180deg);

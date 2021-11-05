@@ -1,53 +1,40 @@
 <script type='ts'>
-	import ProjectDetails from '../ProjectDetails.svelte'
-	import { GlobalStore } from '../global_store'
-	import { projects, projectsIndexByID } from '../database'
-	import ProjectPreviewTile from '../ProjectPreviewTile.svelte'
+	import ProjectDetails from '../components/ProjectDetails.svelte'
+	import {GlobalStore} from '../global_store'
+	import {projects, projectsIndexByID} from '../database'
+	import ProjectPreviewTile from '../components/ProjectPreviewTile.svelte'
+	import {_} from 'svelte-i18n'
+	import {getQuery, removeQuery, setQuery} from '../utils/url_handler'
 
-	function _resetURL() {
-		window.history.pushState(null, '', (
-			window.location.protocol + '//' +
-			window.location.host +
-			window.location.pathname
-		))
-	}
+	const LockScroll_SectionModal = 'projects_section_modal'
 
 	let clickedProject = null
 	function closeProject() {
-		if (window.history?.pushState) _resetURL()
-		GlobalStore.unlockScroll('projects_section_modal')
+		if (clickedProject === null) return
+		removeQuery('project')
+		GlobalStore.unlockScroll(LockScroll_SectionModal)
 		clickedProject = null
 	}
+
 	function openProject(idx: number) {
 		clickedProject = idx
-		if (window.history?.pushState) {
-			window.history.pushState(
-				// State
-				{ 'project_id': projects[clickedProject].id },
-				// Title
-				projects[clickedProject].name,
-				( // New URL
-					window.location.protocol + '//' +
-					window.location.host +
-					window.location.pathname +
-					'?project=' + projects[clickedProject].id
-				),
-			)
-		}
-		GlobalStore.lockScroll('projects_section_modal')
+		setQuery(
+			'project', projects[clickedProject].id,
+			{
+				'project_id': projects[clickedProject].id,
+				'title': $_('project.' + projects[clickedProject].id),
+			},
+			$_('project.' + projects[clickedProject].id),
+		)
+		GlobalStore.lockScroll(LockScroll_SectionModal)
 	}
 
-	if (window.location?.search) {
-		for (
-			const qrs of window.location.search
-				.substring(1, window.location.search.length)
-				.split('&')
-		) {
-			let q = qrs.split('=')
-			if (q[0] == 'project' && projectsIndexByID[q[1]]) {
-				openProject(projectsIndexByID[q[1]])
-			} else _resetURL()
-		}
+	let queryProject = getQuery('project')
+	if (projectsIndexByID[queryProject]) {
+		openProject(projectsIndexByID[queryProject])
+	}
+	else {
+		removeQuery('project')
 	}
 </script>
 
@@ -56,12 +43,12 @@
 {/if}
 
 <section id='projects'>
-	<h1 class='display-3'>Projekte</h1>
+	<h1 class='display-3'>{$_('section.projects.title')}</h1>
 	<div class='projects grid' role='feed'>
 		{#each projects as _, pIdx}
 			<ProjectPreviewTile
-				projectIndex={ pIdx }
-				on:open={ ()=> openProject(pIdx) }
+				projectIndex={pIdx}
+				on:open={()=> openProject(pIdx)}
 			/>
 		{/each}
 	</div>

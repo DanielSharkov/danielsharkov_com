@@ -1,0 +1,65 @@
+span, a, q, p, i, b, label, input, textarea, button, em, strong
+	font-size: inherit
+
+span, input, button, a, q, .qoute, p, b, .bold, label, em, strong,
+pre, code, i, textarea, .monospace, tt,
+strike, mark, u, .underline, strike, .strike
+	font-family: inherit
+
+h1, h2, h3, h4, h5, h6
+	font-family: var(--font-heading-stack)
+	font-weight: var(--font-heading-weight)
+	line-height: var(--font-heading-line-height)
+	color: var(--font-heading-clr)
+
+h1, .h1
+	font-size: 3em
+	letter-spacing: .05em
+h2, .h2
+	font-size: 2.5em
+	letter-spacing: .05em
+h3, .h3
+	font-size: 2em
+	letter-spacing: .05em
+h4, .h4
+	font-size: 1.75em
+h5, .h5
+	font-size: 1.5em
+h6, .h6
+	font-size: 1.3em
+
+@media screen and (max-width: 600px)
+	h1, .h1
+		font-size: 2.5em
+	h2, .h2
+		font-size: 2.25em
+	h3, .h3
+		font-size: 2em
+	h4, .h4
+		font-size: 1.75em
+	h5, .h5
+		font-size: 1.5em
+	h6, .h6
+		font-size: 1.3em
+
+p, textarea, .paragraph
+	line-height: var(--font-base-line-height)
+
+code
+	font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace
+	font-size: 1rem
+
+pre
+	font-family: inherit
+
+.text-center
+	text-align: center
+.text-left
+	text-align: left
+.text-right
+	text-align: right
+.text-justify
+	text-align: justify
+
+a.link:hover
+	color: var(--color-accent)

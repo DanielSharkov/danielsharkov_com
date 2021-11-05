@@ -7,7 +7,6 @@
 		margin-top: 1.5rem
 		margin-bottom: 1rem
 		line-height: 1.25
-		color: var(--foreground)
 		letter-spacing: 0
 	h1
 		font-size: 2rem
@@ -22,7 +21,7 @@
 		font-size: .875rem
 	h6
 		font-size: .85rem
-		color: var(--foreground-05)
+		color: var(--font-heading-clr-05)
 	h4, h5, h6
 		font-weight: 400
 	hr
@@ -34,13 +33,13 @@
 		font-size: .85rem
 	code
 		border-radius: .25rem
-		background-color: var(--foreground-005)
+		background-color: var(--font-base-clr-005)
 	pre
 		margin-bottom: 1rem
 		padding: 1rem
 		border-radius: .5rem
 		overflow: auto
-		background-color: var(--foreground-0025)
+		background-color: var(--font-base-clr-0025)
 		line-height: 1.5
 		code
 			background: transparent
@@ -52,8 +51,6 @@
 	p
 		margin-bottom: 1rem
 		line-height: 1.75
-	p, ul
-		color: var(--foreground-075)
 	a
 		color: var(--color-accent)
 		&:not(:hover)
@@ -88,7 +85,13 @@
 			font-size: .8rem
 
 @media (prefers-color-scheme: dark)
+	.rtf-content a
+		color: #7396FF
+
+@media (prefers-contrast: more)
 	.rtf-content
-		a
-			color: #7396FF
+		code, pre
+			border: solid 1px var(--border-hard)
+		h1
+			color: var(--font-heading-clr)
 

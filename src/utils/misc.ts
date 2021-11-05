@@ -1,4 +1,4 @@
-function fallbackCopyToClipboard(data: string) {
+function fallbackCopyToClipboard(data: string): boolean {
 	const tempEl = document.createElement('textarea')
 	tempEl.value = data
 
@@ -20,7 +20,7 @@ function fallbackCopyToClipboard(data: string) {
 	}
 }
 
-export async function copyToClipboard(data: string) {
+export async function copyToClipboard(data: string): Promise<boolean> {
 	if (!window.navigator?.clipboard) return fallbackCopyToClipboard(data)
 
 	try {
@@ -31,22 +31,31 @@ export async function copyToClipboard(data: string) {
 	}
 }
 
-export function vibrate(duration?: number|number[]) {
+export function vibrate(duration?: number|number[]): void {
 	if (window.navigator?.vibrate) {
 		window.navigator.vibrate(duration ? duration : 1)
 	}
 }
 
-let _linkClickFirstVibrate = false
-export function vibrateLink(event, duration?: number|number[]) {
-	if (!_linkClickFirstVibrate) {
-		event.preventDefault()
-		_linkClickFirstVibrate = true
-		if (window.navigator?.vibrate) {
-			window.navigator.vibrate(duration ? duration : 1)
+export function vibrateLink(node, opts?: {duration?: number|number[]}) {
+	let _hasVibrated = false
+
+	function _click(event) {
+		if (!_hasVibrated) {
+			event.preventDefault()
+			_hasVibrated = true
+			vibrate(opts?.duration)
+			event.target.click()
 		}
-		event.target.click()
-	} else {
-		_linkClickFirstVibrate = false
+		else {
+			_hasVibrated = false
+		}
+	}
+	node.addEventListener('click', _click, {passive: false})
+
+	return {
+		destroy(): void {
+			node.removeEventListener('click', _click)
+		}
 	}
 }

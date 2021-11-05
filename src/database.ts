@@ -1,10 +1,12 @@
+import {Lang} from './i18n'
+
 export const careerBegin: number = 2012
 
 export enum TechnologyType {
-	Software = 0,
-	Language,
-	Framework,
-	Library,
+	Software = 'software',
+	Language = 'language',
+	Framework = 'framework',
+	Library = 'library',
 }
 
 export type Technology = {
@@ -17,7 +19,7 @@ export type Technology = {
 	// careerSpan = begin Year, end Year or Null (stil using)
 	careerSpan: Array<[number, number|null]>
 }
-export type TechnologyList = { [key: string]: Technology }
+export type TechnologyList = {[key: string]: Technology}
 
 export const technologies: TechnologyList = {
 	Svelte: {
@@ -188,21 +190,20 @@ type ProjectLink = {
 }
 
 export type Project = {
-	name:             string
 	id:               string
 	cover:            boolean
 	darkTheme:        boolean
 	projectUrl:       string|null
 	codeUrl?:         string|null
 	otherLinks?:      Array<ProjectLink>
-	usedTechnologies: Array<String>
+	usedTechnologies: Array<string>
 	about:            boolean
-	gradient?:        Array<String>
+	gradient?:        Array<string>
+	lang:             Array<Lang>
 }
 
 export const projects: Array<Project> = [
 	{
-		name: `DanielSharkov.com`,
 		id: 'danielsharkov_com',
 		cover: true,
 		darkTheme: true,
@@ -214,23 +215,9 @@ export const projects: Array<Project> = [
 		],
 		about: true,
 		gradient: ['#fcb6b6', '#f6df88'],
+		lang: [Lang.DE, Lang.EN],
 	},
 	{
-		name: `Organisations Graph`,
-		id: 'org_graph',
-		cover: true,
-		darkTheme: true,
-		projectUrl: null,
-		codeUrl: null,
-		usedTechnologies: [
-			'Svelte', 'SVG', 'TypeScript', 'Golang',
-			'Stylus', 'Docker', 'Nginx', 'Figma',
-		],
-		about: true,
-		gradient: ['#1488CC', '#2B32B2'],
-	},
-	{
-		name: `Timetabler`,
 		id: 'timetabler',
 		cover: true,
 		darkTheme: true,
@@ -242,9 +229,23 @@ export const projects: Array<Project> = [
 		],
 		about: true,
 		gradient: ['#b5ffdd', '#65C7F7', '#0066ff'],
+		lang: [Lang.DE, Lang.EN],
 	},
 	{
-		name: `CoWo Space`,
+		id: 'gronkh_de_concept',
+		cover: true,
+		darkTheme: true,
+		projectUrl: 'https://danielsharkov.github.io/gronkh_de_concept',
+		codeUrl: 'https://github.com/DanielSharkov/gronkh_de_concept',
+		otherLinks: [
+			{ name: 'Gronkh', url: 'https://gronkh.de' },
+		],
+		usedTechnologies: ['VueJS', 'Stylus'],
+		about: true,
+		gradient: ['#ff51ea', '#fe9840', '#42ffc2', '#b870fa', '#54ff32'],
+		lang: [Lang.DE],
+	},
+	{
 		id: 'cowo_space',
 		cover: true,
 		darkTheme: false,
@@ -255,9 +256,23 @@ export const projects: Array<Project> = [
 		],
 		about: true,
 		gradient: ['#FAACA8', '#DDD6F3'],
+		lang: [],
 	},
 	{
-		name: `Svelte Chess`,
+		id: 'org_graph',
+		cover: true,
+		darkTheme: true,
+		projectUrl: null,
+		codeUrl: null,
+		usedTechnologies: [
+			'Svelte', 'SVG', 'TypeScript', 'Golang',
+			'Stylus', 'Docker', 'Nginx', 'Figma',
+		],
+		about: true,
+		gradient: ['#1488CC', '#2B32B2'],
+		lang: [Lang.DE, Lang.EN],
+	},
+	{
 		id: 'svelte_chess',
 		cover: true,
 		darkTheme: false,
@@ -266,9 +281,9 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'Figma'],
 		about: true,
 		gradient: ['#093028', '#344740'],
+		lang: [Lang.DE, Lang.EN],
 	},
 	{
-		name: `Pattern Visualizer`,
 		id: 'pattern_visualizer',
 		cover: true,
 		darkTheme: true,
@@ -277,9 +292,9 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['Svelte'],
 		about: true,
 		gradient: ['#f399d3', '#a7276e', '#2c9c88', '#713dc3', '#00bfff'],
+		lang: [Lang.DE, Lang.EN],
 	},
 	{
-		name: `Svelte Router`,
 		id: 'svelte_router',
 		cover: false,
 		darkTheme: false,
@@ -288,9 +303,9 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['Svelte', 'JavaScript'],
 		about: true,
 		gradient: ['#ffc73e', '#ff6505'],
+		lang: [Lang.DE, Lang.EN],
 	},
 	{
-		name: `Dgraph-GraphQL-Go-Svelte`,
 		id: 'dgraph_graphql_go_svelte',
 		cover: false,
 		darkTheme: false,
@@ -299,9 +314,9 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG'],
 		about: true,
 		gradient: ['#0062ff', '#cbf6ff'],
+		lang: [Lang.DE, Lang.EN],
 	},
 	{
-		name: `Infocenter`,
 		id: 'infocenter',
 		cover: true,
 		darkTheme: true,
@@ -309,10 +324,10 @@ export const projects: Array<Project> = [
 		codeUrl: null,
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG'],
 		about: true,
-		gradient: ['#a1c4fd', '#c2e9fb']
+		gradient: ['#a1c4fd', '#c2e9fb'],
+		lang: [Lang.DE, Lang.EN],
 	},
 	{
-		name: `FitCat App`,
 		id: 'fitcat_app',
 		cover: true,
 		darkTheme: true,
@@ -324,9 +339,9 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'Nginx', 'Figma'],
 		about: true,
 		gradient: ['#ffffff', '#63d0ff', '#ffffff', '#ffdd7d', '#ffffff'],
+		lang: [Lang.DE, Lang.EN],
 	},
 	{
-		name: `Shopify Cyber-Theme`,
 		id: 'shopify_cyber_theme',
 		cover: true,
 		darkTheme: true,
@@ -342,9 +357,9 @@ export const projects: Array<Project> = [
 		],
 		about: true,
 		gradient: ['#1F1C2C', '#928DAB'],
+		lang: [Lang.DE, Lang.EN],
 	},
 	{
-		name: `Vivobarefoot Redesign Proposal`,
 		id: 'vivobarefoot_redesign_proposal',
 		cover: true,
 		darkTheme: false,
@@ -353,23 +368,9 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['HTML', 'CSS', 'JavaScript'],
 		about: true,
 		gradient: ['#a02828', '#ff5b5b'],
+		lang: [Lang.DE],
 	},
 	{
-		name: `Gronkh.de Konzept`,
-		id: 'gronkh_de_concept',
-		cover: true,
-		darkTheme: true,
-		projectUrl: 'https://danielsharkov.github.io/gronkh_de_concept',
-		codeUrl: 'https://github.com/DanielSharkov/gronkh_de_concept',
-		otherLinks: [
-			{ name: 'Gronkh', url: 'https://gronkh.de' },
-		],
-		usedTechnologies: ['VueJS', 'Stylus'],
-		about: true,
-		gradient: ['#ff51ea', '#fe9840', '#42ffc2', '#b870fa', '#54ff32'],
-	},
-	{
-		name: `Chrome Redesign Inspiration`,
 		id: 'chrome_redesign_inspiration',
 		cover: true,
 		darkTheme: true,
@@ -378,9 +379,9 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['VueJS', 'Stylus'],
 		about: true,
 		gradient: ['#08AEEA', '#2AF598'],
+		lang: [Lang.DE, Lang.EN],
 	},
 	{
-		name: `Einsteiger Doku für Webentwickler`,
 		id: 'dev_documentation',
 		cover: true,
 		darkTheme: true,
@@ -388,9 +389,9 @@ export const projects: Array<Project> = [
 		usedTechnologies: [],
 		about: true,
 		gradient: ['#08AEEA', '#2AF598'],
+		lang: [Lang.DE, Lang.EN],
 	},
 	{
-		name: `Logo Redesign Proposal`,
 		id: 'logo_redesign_proposal',
 		cover: true,
 		darkTheme: true,
@@ -398,9 +399,9 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['Figma', 'SVG'],
 		about: true,
 		gradient: ['#FA8BFF', '#2BD2FF', '#2BFF88'],
+		lang: [Lang.DE],
 	},
 	{
-		name: `"Lost Santos" Series Teaser`,
 		id: 'lost_santos_teaser',
 		cover: true,
 		darkTheme: false,
@@ -408,15 +409,16 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['PowerDirector15', 'GIMP', 'OBS'],
 		about: true,
 		gradient: ['#a7a5a4', '#695747'],
+		lang: [Lang.DE, Lang.EN],
 	},
 	{
-		name: `"BRT" Video`,
 		id: 'black_russian_training_video',
 		cover: true,
 		darkTheme: false,
 		projectUrl: 'https://www.youtube.com/watch?v=ix7fj1-SOps',
 		usedTechnologies: ['PowerDirector15', 'GIMP', 'OBS'],
 		about: true,
+		lang: [Lang.DE, Lang.EN],
 	},
 ]
 

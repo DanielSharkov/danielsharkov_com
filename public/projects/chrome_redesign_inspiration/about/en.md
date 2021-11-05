@@ -1,5 +1,4 @@
-# Description coming soon...
-Currently available in German 🇩🇪
+###### *Project implemented: February 2018*
 
-## Shortly summarized:
-A redesign inspiration for Google Chrome, but acually I just had fun.
+# There isn't much to tell...
+A redesign inspiration for Google Chrome hwo it would look like with the theme color meta tag property. Actually just a fun project.

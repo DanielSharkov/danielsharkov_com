@@ -1,0 +1,110 @@
+{
+	"b_e_t_a": "Beta Version | 404 - Perfection not found",
+
+	"page_title": "Daniel Sharkov com",
+	"about_me": "Hi there! I'm a fullstack software engineer focusing on web app frontend and backend systems. TypeScript, Svelte, Stylus, Vue.js, Go and many more tools are part of my professional arsenal. 5 years of experience in UX & UI design make me a great allround developer. Next stop: DevOps & beyond!",
+
+	"close": "Close",
+	"open": "Open",
+
+	"section": {
+		"landing": {
+			"profession": {
+				"software_engineer": "Software Engineer",
+				"fullstack_webdev": "FullStack Web-Dev.",
+				"ux_ui_designer": "UX & UI Designer",
+				"junior_devop": "Junior DevOp"
+			},
+			"question": {
+				"projects": "Which projects are you working on or have you ever done?",
+				"skills": "Whats your programmer stack? (skills)",
+				"worked-with": "In which companies have your already worked in?",
+				"me-myself-and-i": "Tell me something about you.",
+				"get-in-touch": "I would like to get in touch with you."
+			}
+		},
+		"projects": {
+			"title": "Projects"
+		},
+		"skills": {
+			"title": "Skills",
+			"description": "Programming languages which I speak in and technologies which I know and use - shown in a timeline, since when I started.",
+			"technology_type": {
+				"software": "Software",
+				"language": "Language",
+				"framework": "Framework",
+				"library": "Library"
+			}
+		},
+		"about_me": {
+			"title": "Hi there, that's me!",
+			"designer": {
+				"title": "Designer",
+				"block_1": "I love to draft user experience designs and the way it gives me hope for better software for people. Many times me and many other people had to experience bad designs, which are making a software degenerate into more work, where it actually should ease your work. It's an appreciation to see a human smiling because of a well designed UX.",
+				"block_2": "A beautiful user interface mustn't also not be off place, to provide the right mood related to the topic. Like when it's about more serious topics like finanzials, where you may have a more greyish color palette. Or having a more vibrant colorful look to provide a more relaxed and ease look of a entertaning software. That's why I also love designing user interfaces, by living out free creativity."
+			},
+			"gamer": {
+				"title": "Gamer",
+				"block_1": "I love video games – every one loves video games. Whether competitive versus an AI, online versus or in cohesion with other people, or even something relaxed to wind down and being creative. As of the beginning of my gamer life being yonger than 10 years old, I already knew that games aren't only just fun, they may also teach people.",
+				"block_2": "Whether it's the different language you are playing with. Or the user interface you are interacting with. Or the blind interaction-communication, where the game tries to tell the player something without using usual language and without interrupting the immersion, like if the player may interact with something in the game. Or feeling free to live out the creativity. Or the storyline, which may inspire you and or complement your life by a strong metaphor. And many many more reasons games offer.",
+				"block_3": "In my opinion games are exactly the right approach to teach prople in a thrilling and interactive manner. There are so many games out there that I personaly like and are generally great. It would be an overkill by listing them here all up, but here you got some:",
+				"game_lis": "is a beautiful masterpiece, which touches deeply your heart by showing you what feelings and emotions really are. The graphic style is picturesque in keeping with the story.",
+				"game_lis_cta": "For this game I can only recommend germans to watch Gronkh's let's play",
+				"game_mc": "is a sandbox game that provides you basic possibilities, where as you may create new infinite possibilities by them. Whether surviving or playing in creative, whether building a small house, an estate or a castle and whether calm and alone or together with friends. Your decide which your possibilities are, or aren't.",
+				"game_mc_qoute": "Too many people thought at the beginning of Minecraft, that you can't let's play it. I just did it.",
+				"game_mc_cta": "As in the previous recommendation I here can also only recommend germans to watch Gronkh's let's play"
+			}
+		},
+		"contact": {
+			"title": "You would like to get in touch with me?",
+			"not_available": "Currently only reachable through social media.",
+			"email": "Your email",
+			"subject": "Subject",
+			"msg": "Message",
+			"submit": "Send"
+		}
+	},
+
+	"share": "Share",
+	"share_with": "Share with...",
+	"share_not_supported": "Your browser doesn't support this feature.",
+	"share_canceled": "Canceled",
+	"shared": "Shared",
+	"sharing": "Sharing...",
+	"copy_url": "Copy URL",
+	"copy_url_failed": "Something went wrong.",
+	"copy_url_success": "URL copied",
+	"copy_url_inprocess": "Is being copied...",
+
+	"project_source_code": "Source code",
+	"project_closed_source": "Closed source",
+	"open_project": "Open project",
+	"project_coming_soon": "Coming soon",
+	"project_about_failed": "Excuse me, something went wrong.",
+	"project_about_unavailable": "There isn't any article for this project. But stay tuned, maybe it's coming out soon!",
+	"project_about_only_available_in": "Unfortunately there isn't an english translation for this article yet. But you may read theses following translations, which are already available:",
+	"project_load_different_translation": "Load different translation",
+	"a_project_by": "{name} - a project by Daniel Sharkov",
+	"project": {
+		"danielsharkov_com": "DanielSharkov.com",
+		"org_graph": "Oraganisation Graph",
+		"timetabler": "Timetabler",
+		"cowo_space": "CoWo Space",
+		"svelte_chess": "Svelte Chess",
+		"pattern_visualizer": "Pattern Visualizer",
+		"svelte_router": "Svelte Router",
+		"dgraph_graphql_go_svelte": "Dgraph-GraphQL-Go-Svelte",
+		"infocenter": "Infocenter",
+		"fitcat_app": "FitCat App",
+		"shopify_cyber_theme": "Shopify Cyber-Theme",
+		"vivobarefoot_redesign_proposal": "Vivobarefoot Redesign Proposal",
+		"gronkh_de_concept": "Gronkh.de Concept",
+		"chrome_redesign_inspiration": "Chrome Redesign Inspiration",
+		"dev_documentation": "Web-dev. Doc. for Amateurs",
+		"logo_redesign_proposal": "Logo Redesign Proposal",
+		"lost_santos_teaser": "\"Lost Santos\" Series Teaser",
+		"black_russian_training_video": "\"BRT\" Video"
+	},
+
+	"copyright": "Copyright © {year} Daniel Sharkov All Rights Reserved."
+}

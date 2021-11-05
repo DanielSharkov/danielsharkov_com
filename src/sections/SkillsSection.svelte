@@ -1,9 +1,7 @@
 <section id='skills' class='auto-height'>
 	<div class='section-header'>
-		<h1 class='display-3'>Fertigkeiten</h1>
-		<p class='subtitle'>
-			Programmiersprachen die ich spreche und Technologien die ich kenne und benutze - in einem Zeitstrahl dargestellt, seit wann ich damit angefangen habe.
-		</p>
+		<h1 class='display-3'>{$_('section.skills.title')}</h1>
+		<p class='subtitle'>{$_('section.skills.description')}</p>
 	</div>
 	<ul class='technologies grid'>
 		<div class='background-seperators flex'>
@@ -20,7 +18,7 @@
 			<li class='techno'>
 				<div class='header flex flex-center-y'>
 					{#if technologies[techno].icon}
-						<svg class='logo flex-base-size'>
+						<svg class='logo flex-base-size' aria-hidden='true' focusable='false' role='presentation'>
 							<title>{techno} Logo</title>
 							<use xlink:href='#LOGO_{techno}'/>
 						</svg>
@@ -38,13 +36,13 @@
 							{technologies[techno].name}
 						</span>
 						<span class='type flex-base-size'>
-							{technoName[technologies[techno].type]}
+							{$_('section.skills.technology_type.' + technologies[techno].type)}
 						</span>
 					</div>
-					<a class='link' href={technologies[techno].link} target='_blank' on:click={(e)=> vibrateLink(e)}>
-						<svg class='icon stroke icon-medium' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'>
-							<path d='M57.7778 25H35C29.4772 25 25 29.4772 25 35V85C25 90.5228 29.4772 95 35 95H85C90.5228 95 95 90.5228 95 85V62.2222' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
-							<path d='M105 15L60 60M105 15L105 45M105 15L75 15' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
+					<a class='link' href={technologies[techno].link} target='_blank' use:vibrateLink>
+						<svg class='icon stroke icon-medium' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none' xmlns='http://www.w3.org/2000/svg'>
+							<path d='M57.7778 25H35C29.4772 25 25 29.4772 25 35V85C25 90.5228 29.4772 95 35 95H85C90.5228 95 95 90.5228 95 85V62.2222' stroke-width='.5em' stroke-linecap='round' stroke-linejoin='round'/>
+							<path d='M105 15L60 60M105 15L105 45M105 15L75 15' stroke-width='.5em' stroke-linecap='round' stroke-linejoin='round'/>
 						</svg>
 					</a>
 				</div>
@@ -62,14 +60,11 @@
 </section>
 
 <script lang='ts'>
-	import { careerBegin, technologies } from '../database'
-	import { vibrateLink } from '../utils/misc'
+	import {_} from 'svelte-i18n'
+	import {careerBegin, technologies} from '../database'
+	import {vibrateLink} from '../utils/misc'
 
-	const currentYear: number = Number(new Date().getFullYear())
-
-	const technoName: Array<string> = [
-		'Software', 'Sprache', 'Framework', 'Bibliothek',
-	]
+	const currentYear = Number(new Date().getFullYear())
 
 	function technoCareerSpan(techno, [begin, end]) {
 		let endPos = currentYear - careerBegin + 1
@@ -84,15 +79,13 @@
 
 <style lang='stylus'>
 	#skills
-		margin-bottom: 4rem
+		margin-bottom: 4em
 
 	.section-header
 		max-width: 900px
-		margin: auto auto 1rem auto
+		margin: auto auto 1em auto
 		h1
 			margin-bottom: .25em
-		.subtitle
-			color: var(--foreground-05)
 	.technologies
 		position: relative
 		max-width: 900px
@@ -100,7 +93,7 @@
 		> .background-seperators
 			z-index: -1
 			position: absolute
-			top: 5rem
+			top: 5em
 			bottom: 0
 			left: 0
 			right: 0
@@ -110,54 +103,56 @@
 				top: 3.5
 			> .period
 				height: 100%
-				border-width: 0 0 0 1px
-				border-color: var(--foreground-015)
-				border-style: solid
+				border-left: solid 1px var(--font-base-clr-015)
 		> .header
 			z-index: 25
 			position: sticky
 			position: -webkit-sticky
-			top: 0
-			margin-bottom: 1rem
-			padding: 3rem 0 .5rem 0
-			background-color: var(--background-085)
+			top: -1px
+			margin-bottom: 1em
+			padding: 3em 0 .5em 0
+			background-color: var(--bg-clr-085)
 			justify-content: space-between
-			border-bottom: solid 1px var(--foreground-005)
-			box-shadow: 0 10px 10px -8px var(--foreground-005)
+			border-bottom: solid 1px var(--font-base-clr-005)
+			box-shadow: 0 10px 10px -8px var(--shadow-clr)
+			-webkit-backdrop-filter: blur(8px) saturate(3)
+			backdrop-filter: blur(8px) saturate(3)
+			color: var(--font-heading-clr)
 			@media screen and (max-width: 1000px)
-				padding: 1.5rem 0 .5rem 0
+				padding: 1.5em 0 .5em 0
 			.period
 				width: 1px
 				&:first-child, &:last-child
 					font-weight: 500
 					@media screen and (min-width: 1000px)
-						font-size: 1.25rem
+						font-size: 1.25em
 				&:not(:first-child):not(:last-child)
-					color: var(--foreground-075)
+					color: var(--font-base-clr-075)
 					@media screen and (max-width: 1000px)
-						font-size: .5rem
+						font-size: .5em
 		> .techno
 			> .header
-				padding: 1rem
-				background-color: var(--background)
-				border-bottom: dotted .15rem var(--foreground-01)
+				padding: 1em
+				background-color: var(--bg-clr)
+				border-bottom: dotted .1em var(--font-base-clr-025)
 				> .logo
-					width: 3rem
-					height: 3rem
-					margin-right: 1rem
+					width: 3em
+					height: 3em
+					margin-right: 1em
 				> img.logo
 					object-fit: contain
 					object-position: center
 				> .naming
 					> .name
 						display: block
-						color: var(--foreground-075)
-						margin-bottom: .25rem
+						color: var(--font-heading-clr)
+						margin-bottom: .25em
+						font-weight: 500
 					> .type
-						color: var(--foreground-025)
+						color: var(--font-base-clr-035)
 				> .link
-					margin-left: 1rem
-					padding: .5rem
+					margin-left: 1em
+					padding: .5em
 					transition: var(--transition)
 					transition-property: opacity
 					&:not(:hover)
@@ -166,29 +161,30 @@
 						stroke: var(--color-accent)
 			> .time-span
 				position: relative
-				top: -.15rem
+				top: -.15em
 				width: 100%
-				margin-bottom: 1rem
+				margin-bottom: 1em
 				> .period
-					height: .2rem
-					box-shadow: 0 1px 10px var(--foreground-015)
-
-	@media (prefers-color-scheme: dark)
-		.technologies
-			> .header
-				box-shadow: 0 14px 20px -12px var(--foreground-015)
-			> .techno > .time-span > .period
-				box-shadow: 0 1px 10px var(--foreground-025)
+					height: .2em
+					border-radius: 1em
+					box-shadow:
+						0 0 1px var(--bg-clr),
+						0 1px 10px var(--shadow-clr)
 
 	@media screen and (max-width: 1000px)
 		.section-header
-			padding: 1rem
+			padding: 1em
 		.technologies
-			padding: 0 1.5rem
+			padding: 0 1.5em
 			> .background-seperators
-				left: 1.5rem
-				right: 1.5rem
+				left: 1.5em
+				right: 1.5em
 			> .techno
 				> .header
-					padding: .5rem
+					padding: .5em
+
+	@media (prefers-contrast: more)
+		.technologies
+			> .header, > .techno
+				border-color: var(--border-hard)
 </style>

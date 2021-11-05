@@ -46,10 +46,6 @@ export default {
 			},
 			preprocess: sveltePreprocess({
 				sourceMap: !production,
-				defaults: {
-					style: 'stylus',
-					script: 'typescript'
-				},
 				postcss: {
 					plugins: [require('autoprefixer')()]
 				}

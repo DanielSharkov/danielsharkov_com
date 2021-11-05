@@ -1,4 +1,4 @@
-# Beschreibung bald verfügbar...
+###### *Projectumsetzung: Feburuar 2018*
 
-## Kurze Zusammenfassung:
-Eine redesing Inspiration zu Google Chrome. Eigentlich nur ein Spaß-Projekt.
+# Hierzu gibt's nicht viel zu erzählen...
+Eine redesing Inspiration zu Google Chrome wie es dem theme-color-meta-tag aussehen würde. Hauptsächlich ein Spaß-Projekt.
