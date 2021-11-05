@@ -83,7 +83,7 @@
 	"project_about_failed": "Tut mir leid, irgendetwas ist schief gelaufen.",
 	"project_about_unavailable": "Derzeit gibt es keinen Artikel zu diesem Projekt. Doch sei gespannt, vielleicht gibt es schon sehr bald einen!",
 	"project_about_only_available_in": "Leider gibt es zu diesem Artikel noch keine Übersetzung auf Deutsch, jedoch kannst du folgende bereits vorhandene Übersetzungen lesen:",
-	"project_load_different_translation": "Andere Übersetzung laden",
+	"project_load_different_translation": "Andere Übersetzung",
 	"a_project_by": "{name} - ein Project von Daniel Scharkov",
 	"project": {
 		"danielsharkov_com": "DanielSharkov.com",
