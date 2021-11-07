@@ -1,0 +1,111 @@
+{
+	"b_e_t_a": "Beta Version | 404 - Perfektion nicht gefunden",
+
+	"page_title": "Daniel Scharkov com",
+	"my_name": "Daniel Scharkov",
+	"about_me": "Hallo! Ich bin ein FullStack Software Engineer mit Fokus auf web app Front- & Backend Systeme. TypeScript, Svelte, Stylus, Vue.js, Go und viele weiter Werkzeuge sind Teil meines professionellen Arsenals. 5 Jahre Erfahrung in UX & UI Design machen mich zu einem hervorragenden vielseitigen Entwickler. Nächster halt: DevOps & darüber hinaus!",
+	"profile_pic_alt": "Me, Myself and I",
+
+	"close": "Schließen",
+	"open": "Öffnen",
+
+	"section": {
+		"landing": {
+			"profession": {
+				"software_engineer": "Software Engineer",
+				"fullstack_webdev": "FullStack Web-Dev.",
+				"ux_ui_designer": "UX & UI Designer",
+				"junior_devop": "Junior DevOp"
+			},
+			"question": {
+				"projects": "An welchen Projekten arbeitest du oder welche hast du bereits geschaffen?",
+				"skills": "Was ist dein Tech-Stack? (Fertigkeiten)",
+				"worked-with": "Wo hast du bereits gearbeitet?",
+				"about": "Erzähl mir ein wenig über dich.",
+				"contact": "Ich würde dich gerne kontaktieren."
+			}
+		},
+		"projects": {
+			"title": "Projekte"
+		},
+		"skills": {
+			"title": "Fertigkeiten",
+			"description": "Programmiersprachen die ich spreche und Technologien die ich kenne und benutze - in einem Zeitstrahl dargestellt, seit wann ich damit angefangen habe.",
+			"technology_type": {
+				"software": "Software",
+				"language": "Sprache",
+				"framework": "Framework",
+				"library": "Bibliothek"
+			}
+		},
+		"about_me": {
+			"title": "Hallo, das bin ich!",
+			"designer": {
+				"title": "Designer",
+				"block_1": "Es macht mir Spaß User Experience Designes zu entwerfen und gibt mir dazu die Hoffnung auf bessere Anwendungen für Menschen. Schon oft musste ich mich, wie auch viele andere Menschen, von Grund auf unverständlich gestalteten Anwendungen durchkämpfen, welche eigentlich eine Erleichterung der hauptsächlichen Arbeit sein sollen, jodoch zur weiteren Arbeit ausarten. Ein tolles Gefühl ist das Lächeln eines Menschen, durch eine saubere und verständliche UX Führung.",
+				"block_2": "Ein schönes User Interface darf auch nicht fehl am Platz sein, damit die Stimmung entsprechend zum Thema passt. Handelt es sich um etwas seriöses z.B. finanzen, so könnte man überwiegend Grautöne nutzen. Handelt es sich aber z.B. um was lockeres für die Freizeit & Unterhaltung, so verwendet man oft hellere Designs mit mehr Farbe, damit es sich für die Augen sanfter und heimlicher fühlt. Durch das ausleben der freien Kreativität, gefällt mir die Gestaltung verschiedenster UIs."
+			},
+			"gamer": {
+				"title": "Gamer",
+				"block_1": "Ich mag Spiele – jeder mag Spiele. Mal kompetitiv gegen den Computer, mal online mit oder gegen andere Menschen oder auch mal was sehr entspanntes und ruhiges zum runter kommen und oder kreativ sein. Schon von Anfang an, als ich noch jüngera als 10 war, wusste ich, dass Spiele nicht nur Spaß machen, sondern auch Dinge lehren können.",
+				"block_2": "Ob es die Sprache ist, welche man extra zum Lernen einstellt, ob es die Benutzeroberfläche ist, von der man sich für seine UX & UI Designs inspirieren lässt, oder ob es die blinde Interaktionskommunikation ist, in dem das Spiel versucht dem Spieler ohne übliche Sprache etwas zu sagen, um die Immersion nich zu zerstören, dass z.B. der Spieler mit etwas interagieren kann. Ob es die Kreativität ist, die man frei entfalten kann und Dinge ausprobiert, ob es die Gesichte ist, die einen ebenfalls inspirieren lässt, das Leben ergänzt oder auch einer sehr tiefgreifenden Metapher lehrt und viele mehr Gründ, was Spiele alles bieten.",
+				"block_3": "Spiele sind meiner Meinung nach genau der richtige Ansatz, um Menschen etwas auf eine spannende und interaktive Art und Weise zu lehren. Es gibt so viele Spiele, doch alle hier zu nennen, die ich persönlich mag oder allgemein äußerst gelungen sind, wäre ein echter Overkill. Aber hier zumindest einige davon:",
+				"game_lis": "ist ein wundervolles Meisterwerk, welches einem sehr tief in's Herz greif und zeigt was Gefühle und Emotionen überhaupt sind. Der Grafikstil ist passend zur Geschichte pittoresk.",
+				"game_lis_cta": "Da kann ich dir nur das Let's Play von Gronkh an's Herz legen",
+				"game_mc": "ist eine Sandbox die wenig bietet, jedoch die unendlichen Möglichkeiten einem selbst überlässt. Ob Überleben oder Kreativ sein, oder auch beides in einem, ob Haus, Anwesen oder Schloss und ob in Ruhe alleine oder gemeinsam mit Freunden vereint. Du selbst entscheidest, welche Möglichkeiten es dir bietet, oder auch nicht.",
+				"game_mc_qoute": "Sehr viele glaubten von Anfang an, dass man dieses Spiel nicht Let's Playen könnte. Ich hab es einfach getan.",
+				"game_mc_cta": "Auch hier liegt meine Empfehlung beim Let's Play von Gronkh"
+			}
+		},
+		"contact": {
+			"title": "Du möchtest mich gerne erreichen?"
+		}
+	},
+
+	"other_link": {
+		"figma": "Figma Designs"
+	},
+
+	"share": "Teilen",
+	"share_with": "Teilen mit...",
+	"share_not_supported": "Dein Browser unterstützt diese Funktion nicht",
+	"share_canceled": "Abgebrochen",
+	"shared": "Geteilt",
+	"sharing": "Wird geteilt...",
+	"copy_url": "URL kopieren",
+	"copy_url_failed": "Etwas ist schief gelaufen.",
+	"copy_url_success": "URL Kopiert",
+	"copy_url_inprocess": "Wird kopiert...",
+
+	"project_source_code": "Quellcode",
+	"project_closed_source": "Closed source",
+	"open_project": "Projekt öffnen",
+	"project_coming_soon": "Bald verfügbar",
+	"project_about_failed": "Tut mir leid, irgendetwas ist schief gelaufen.",
+	"project_about_unavailable": "Derzeit gibt es keinen Artikel zu diesem Projekt. Doch sei gespannt, vielleicht gibt es schon sehr bald einen!",
+	"project_about_only_available_in": "Leider gibt es zu diesem Artikel noch keine Übersetzung auf Deutsch, jedoch kannst du folgende bereits vorhandene Übersetzungen lesen:",
+	"project_load_different_translation": "Andere Übersetzung",
+	"a_project_by": "{name} - ein Project von Daniel Scharkov",
+	"project": {
+		"danielsharkov_com": "DanielSharkov.com",
+		"org_graph": "Organisations Graph",
+		"timetabler": "Timetabler",
+		"cowo_space": "CoWo Space",
+		"svelte_chess": "Svelte Schach",
+		"pattern_visualizer": "Mustervisualisierung",
+		"svelte_router": "Svelte Router",
+		"dgraph_graphql_go_svelte": "Dgraph-GraphQL-Go-Svelte",
+		"infocenter": "Infocenter",
+		"fitcat_app": "FitCat App",
+		"shopify_cyber_theme": "Shopify Cyber-Theme",
+		"vivobarefoot_redesign_proposal": "Vivobarefoot Redesign Vorschlag",
+		"gronkh_de_concept": "Gronkh.de Konzept",
+		"chrome_redesign_inspiration": "Chrome Redesign Inspiration",
+		"dev_documentation": "Webentwickler Doku. für Einsteiger",
+		"logo_redesign_proposal": "Logo Redesign Vorschlag",
+		"lost_santos_teaser": "\"Lost Santos\" Series Teaser",
+		"black_russian_training_video": "\"BRT\" Video"
+	},
+
+	"copyright": "Copyright © {year} Daniel Scharkov Alle Rechte vorbehalten."
+}

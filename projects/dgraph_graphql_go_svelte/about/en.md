@@ -1,4 +1,4 @@
-###### *Description composed: 1 July 2021*
+###### *Article composed: 1 July 2021*
 ###### *Project implemented: 2018*
 
 This strangly named project „Dgraph-GraphQL-Go-Svelte“ was a test. It's actually a frontend for the backend [dgraph-graphql-go](https://github.com/romshark/dgraph_graphql_go), which is also just a test project developed by [Roman Scharkov](https://github.com/romshark). It was more like a experience to me how to make a frontend communicating with a backend, but not only an expertise for the frontend developing aswell I gathered alot of useful expertise for backend developing, which actually helped me to understand better what a backend is and what is does, so I could apply all the used methodologies and some code written by [Roman Scharkov](https://github.com/romshark) to my current projects.

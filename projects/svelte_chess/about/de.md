@@ -1,4 +1,4 @@
-###### *Verfasst: 2 Juni 2021*
+###### *Artikel verfasst: 2 Juni 2021*
 ###### *Projektumsetung: Juli 2019*
 
 # Inspiration

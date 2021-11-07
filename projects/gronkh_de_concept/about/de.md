@@ -1,4 +1,4 @@
-###### *Verfasst: 1 Juni 2021 12:10*
+###### *Artikel verfasst: 1 Juni 2021 12:10*
 ###### *Projektumsetzung: 2018*
 
 # Was ist dieses „Gronkh“
@@ -35,6 +35,11 @@ Sobald ich den ersten Prototypen bereit hatte, hatte ich nun versucht Gronkh auf
 Leider bin ich nach einer Weile in der Chatliste von Gronkh untergegangen, weshalb er mir erstmal lange Zeit nicht geantwortet hat und letztendlich gar nicht mehr. Ich bereue nichts, nicht die Zeit, den Aufwand, die Mühe und auch nicht einmal die Tatsache, als ich ein Jahr später den Chat nochmal durchgelesen habe, was ich für ein amateur ich damals noch war 😃. Frustlos habe ich mit dem Kopf nach oben weiter gemacht wie zuvor. Weiter meine Fachrichtung studiert und nicht aufgegeben. Heute (stand Mai 2021) hat er schon ein-zwei Entwickler an Board. Vielleicht sollte ich meine Chance mal wieder nutzen, ihn irgendwie anzuschreiben und daraus was zu machen.
 
 Wie auch schon bei jedem Projekt, war das eine gut investierte Zeit, in der ich mich weiterentwickeln konnte und auch wenn es nur für eine kurze Weile andauerte, mit einem sehr tollen Menschen etwas persönlich chatten zu können.
+
+# Anmerkungen zur App Demo
+
+- Die App diente hauptsächlich nur als demo, weswegen die meisten Funktionen nur visuell hinzugefügt wurden, wie z.B. alle Suchen, die FAQ Seite und vieles weitere.
+- Sehr viele Bugs, aus dem selben Grund, dass es ist hauptsächlich nur eine Demo ist, welche ich auf die schnelle erstellte. Dazu noch, dass das Projekt schon etwas alt ist...
 
 # Update:
 
