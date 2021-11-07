@@ -32,7 +32,7 @@ class _GlobalStore implements Readable<T_GlobalStore> {
 		socialMedia: [
 			{name: 'GitHub',   url: 'https://github.com/DanielSharkov'},
 			{name: 'Codepen',  url: 'https://codepen.io/DanielSharkov'},
-			{name: 'Discord',  url: 'https://discordapp.com/invite/DMBS9xd'},
+			{name: 'Discord',  url: 'discord://discordapp.com/users/253168850969821184'},
 			{name: 'Telegram', url: 'https://t.me/danielsharkov'},
 			{name: 'Twitter',  url: 'https://twitter.com/Daniel_Sharkov'},
 			{name: 'Medium',   url: 'https://medium.com/@danielsharkov'},
@@ -75,6 +75,24 @@ class _GlobalStore implements Readable<T_GlobalStore> {
 			'change', this._moreContrastChanged.bind(this),
 			{passive: true},
 		)
+
+		const ua = window.navigator.userAgent
+		const isIPhone = (
+			/iP(ad|hone)/i.test(ua) && /WebKit/i.test(ua) &&
+			!ua.match(/CriOS/i)
+		)
+		const isIPad = (
+			/WebKit/i.test(ua) && navigator.maxTouchPoints &&
+			navigator.maxTouchPoints > 2
+		)
+		if (isIPhone || isIPad) {
+			this.#store.update((store)=> {
+				store.socialMedia.find(
+					(s) => s.name === 'Discord'
+				).url = 'https://discordapp.com/users/253168850969821184'
+				return store
+			})
+		}
 	}
 
 	lockScroll(id: string) {

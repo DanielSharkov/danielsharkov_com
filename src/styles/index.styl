@@ -150,13 +150,6 @@ main#App
 	width: 0
 	height: 0
 
-#AppLoader
-	position: fixed
-	top: 0
-	right: 0
-	bottom: 0
-	left: 0
-
 #AppLangSelect
 	z-index: 40
 	position: fixed
@@ -226,6 +219,13 @@ main#App
 			transform: translateY(.5em)
 
 #AppLoader, #InvalidLocaleSelect
+	position: fixed
+	top: 0
+	right: 0
+	bottom: 0
+	left: 0
+
+#AppLoader
 	background-color: #fff
 	@media (prefers-color-scheme: dark)
 		background-color: #000

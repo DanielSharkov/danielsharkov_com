@@ -1,7 +1,6 @@
 import {init, register, locale, getLocaleFromNavigator} from 'svelte-i18n'
-import {derived, Readable} from 'svelte/store'
-import {get as getStore} from 'svelte/store'
-import {setQuery} from './utils/url_handler'
+import {derived, Readable, writable, get as getStore, Writable} from 'svelte/store'
+import {getQuery, removeQuery, setQuery} from './utils/url_handler'
 
 export enum Locale {
 	DE = 'de',
@@ -31,18 +30,19 @@ export const DefaultLocale = LocaleList[0]
 
 const LOC_STORE_ID = 'DaSh_x097_locale'
 
-class _i18n implements Readable<string> {
-	public readonly subscribe = locale.subscribe
+class _i18n implements Readable<Locale> {
+	#store: Writable<Locale> = writable()
+	public readonly subscribe = this.#store.subscribe
 
-	private _syncLocalStore(state: string): void {
+	private _syncLocalStore(state: Locale): void {
 		if (localStorage) {
 			localStorage.setItem(LOC_STORE_ID, state)
 		}
 	}
 
-	private _readLocalStore(): string|null {
+	private _readLocalStore(): Locale|null {
 		if (localStorage) {
-			return localStorage.getItem(LOC_STORE_ID)
+			return localStorage.getItem(LOC_STORE_ID) as Locale
 		}
 		return null
 	}
@@ -54,16 +54,17 @@ class _i18n implements Readable<string> {
 				return await resp.json()
 			})
 		}
-		const locStore = this._readLocalStore()
+		let locStore = this._readLocalStore()
 		if (locStore === null) {
-			this._syncLocalStore(getStore(this))
+			locStore = getQuery('locale') as Locale
 		}
 
 		init({fallbackLocale: 'en'})
 
 		const navLocale = (
 			locStore ||
-			localeMap[getLocaleFromNavigator().toLowerCase()]
+			localeMap[getLocaleFromNavigator().toLowerCase()] ||
+			getLocaleFromNavigator().toLowerCase()
 		)
 		this.switch(navLocale as Locale)
 	}
@@ -72,12 +73,19 @@ class _i18n implements Readable<string> {
 		if (!LocaleList.includes(l) && localeMap[l]) {
 			l = localeMap[l]
 		}
+		this.#store.set(l)
 		locale.set(l)
 		document.documentElement.setAttribute('locale', l)
-		setQuery(
-			'locale', l,
-			window.history?.state, window.history?.state?.title, true,
-		)
+
+		if (!localStorage && LocaleList.includes(l)) {
+			setQuery(
+				'locale', l,
+				window.history?.state, window.history?.state?.title, true,
+			)
+		} else {
+			removeQuery('locale')
+		}
+
 		this._syncLocalStore(l)
 	}
 }
@@ -85,5 +93,9 @@ class _i18n implements Readable<string> {
 export const i18n = new _i18n
 
 export const isInvalidLocale = derived(
-	i18n, (s): boolean => !LocaleList.includes(s as Locale)
+	i18n, (s): boolean => {
+		const test = !LocaleList.includes(s as Locale)
+		console.log('is invalid locale: ', s, '->', LocaleList, '->', test)
+		return test
+	}
 )

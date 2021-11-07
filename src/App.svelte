@@ -264,7 +264,7 @@
 				<rect width='40' height='30' rx='6' fill='black'/>
 				<rect width='40' height='30' fill='url(#flag_en_db)'/>
 				<path d='M0 0H40L6 30H0V0Z' fill='url(#flag_en_us)'/>
-				<path d='M41 -1L5 31' stroke='#ffffff' stroke-width='3'/>
+				<path d='M41 -1L5 31' stroke='var(--bg-clr)' stroke-width='3'/>
 			</g>
 			<defs>
 				<pattern id='flag_en_db' patternContentUnits='objectBoundingBox' width='1' height='1'>
@@ -351,7 +351,7 @@
 		</svg>
 	</div>
 {:else if $isInvalidLocale}
-	<div id='InvalidLocaleSelect' class='flex flex-center-y gap-1'>
+	<div id='InvalidLocaleSelect' class='flex flex-center gap-1'>
 		{#each LocaleList as locale}
 			<button class='option flex nowrap flex-center-y gap-05' on:click={()=> i18n.switch(locale)}>
 				<svg class='flag icon icon-large' aria-hidden='true' focusable='false' role='presentation'>

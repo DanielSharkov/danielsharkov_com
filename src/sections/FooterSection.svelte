@@ -14,8 +14,8 @@
 	
 		<ul role='listbox' class='social-media flex flex-center gap-1'>
 			{#each $GlobalStore.socialMedia as {name, url}, idx}
-				<a href={url} target='_blank' role='listitem' style='animation-delay: {50 + idx * 50}ms' use:vibrateLink>
-					<svg class='logo icon-large' aria-hidden='true' focusable='false' role='presentation'>
+				<a href={url} target='_blank' class='flex flex-center' role='listitem' style='animation-delay: {50 + idx * 50}ms' use:vibrateLink>
+					<svg class='icon icon-large' aria-hidden='true' focusable='false' role='presentation'>
 						<title>{name}</title>
 						<use xlink:href='#LOGO_{name}'/>
 					</svg>
@@ -37,30 +37,44 @@
 		background-image: linear-gradient(45deg, #FA8BFF, #2BD2FF, #2BFF88)
 		grid-template-rows: 1fr auto
 		.get-in-touch
-			padding: 6em 2em
-			@media screen and (max-width: 1000px)
-				padding: 6em 1.5em
+			padding: 1.5em
 		.social-media
 			margin-top: 2em
-			padding: 1em
-			font-size: 1.25em
-			border-radius: 2em
-			@media screen and (max-width: 1000px)
-				padding: 1em 0
+			padding: .5em 1em 0 1em
+			font-size: 1.5em
+			border-radius: 1.5em
 			> a
-				display: inline-block
-				padding: .5em
+				position: relative
+				width: 3em
+				height: 3em
+				margin-bottom: .5em
 				transition: var(--transition)
-				transition-property: color, transform, margin
-				will-change: color, transform, margin
-				svg
+				transition-property: font-size, margin
+				will-change: font-size, margin
+				> svg
+					position: absolute
+					top: auto
+					left: auto
 					pointer-events: none
-				&:hover
-					margin: 0 1em
-					transform: scale(1.75)
-				@media screen and (max-width: 1000px)
-					&:not(:last-child)
+					transition: var(--transition)
+					transition-property: font-size
+					will-change: font-size
+				&:hover > svg
+					font-size: 2em
+				&:not(:last-child)
+					margin-right: .5em
+			&:hover > a:not(:hover) > svg
+				font-size: .75em
+			@media screen and (min-width: 800px)
+				> a:hover
+					margin-left: .5em
+					margin-right: .75em
+					&:last-child
+						margin-left: .5em
 						margin-right: .5em
+			@media screen and (max-width: 799px)
+				> a:hover > svg
+					font-size: 1.75em
 		.copyright
 			margin-top: auto
 			padding: .5em
