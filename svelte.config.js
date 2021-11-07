@@ -8,7 +8,7 @@ module.exports = {
 			sourceMap: true,
 			stylus: {includePaths: ['src']},
 			preprocess: {
-				plugins: [autoprefixer(), stlyus],
+				plugins: [autoprefixer()],
 			},
 		}),
 		postcss: {

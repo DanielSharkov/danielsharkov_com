@@ -69,16 +69,13 @@ class _i18n implements Readable<string> {
 	}
 
 	public switch(l: Locale): void {
-		console.log(l)
-		if (!LocaleList.includes(l)) {
-			if (typeof localeMap[l] === 'string') {
-				l = localeMap[l]
-			}
+		if (!LocaleList.includes(l) && localeMap[l]) {
+			l = localeMap[l]
 		}
 		locale.set(l)
 		document.documentElement.setAttribute('locale', l)
 		setQuery(
-			'locale', getStore(locale),
+			'locale', l,
 			window.history?.state, window.history?.state?.title, true,
 		)
 		this._syncLocalStore(l)

@@ -156,12 +156,6 @@ main#App
 	right: 0
 	bottom: 0
 	left: 0
-	background-color: #fff
-	@media (prefers-color-scheme: dark)
-		background-color: #000
-	.icon.loader
-		width: 6em
-		height: 6em
 
 #AppLangSelect
 	z-index: 10
@@ -220,6 +214,14 @@ main#App
 			opacity: 0
 			pointer-events: none
 			transform: translateY(-.5em)
+
+#AppLoader, #InvalidLocaleSelect
+	background-color: #fff
+	@media (prefers-color-scheme: dark)
+		background-color: #000
+	.icon.loader
+		width: 6em
+		height: 6em
 
 #InvalidLocaleSelect
 	font-size: 1.25em
