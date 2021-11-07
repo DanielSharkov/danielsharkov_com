@@ -10,9 +10,9 @@ module.exports = {
 			preprocess: {
 				plugins: [autoprefixer()],
 			},
+			postcss: {
+				plugins: [autoprefixer()],
+			},
 		}),
-		postcss: {
-			plugins: [autoprefixer()],
-		},
 	}),
 }

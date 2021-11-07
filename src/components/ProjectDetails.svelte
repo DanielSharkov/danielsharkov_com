@@ -465,7 +465,7 @@
 	import {cubicInOut} from 'svelte/easing'
 	import type {Project} from '../database'
 	import {projects, technologies} from '../database'
-	import Marked from 'marked'
+	import {marked} from 'marked'
 	import {GlobalStore} from '../global_store'
 	import {vibrate, vibrateLink, copyToClipboard} from '../utils/misc'
 	import StatusIcon from './StatusIcon.svelte'
@@ -497,7 +497,10 @@
 			duration: !reducedMotion && 500,
 			css(t) {
 				t = cubicInOut(t)
-				return `opacity: ${t}; transform: translate(0, ${8 - 8 * t}rem);`
+				return (
+					`opacity: ${t};` +
+					`transform: translate(0, ${8 - 8 * t}rem);`
+				)
 			},
 		}
 	}
@@ -525,7 +528,7 @@
 			if (resp.status !== 200) throw new Error('404')
 			const text = await resp.text()
 			projectAbout = text
-			renderedRTF = Marked(projectAbout, {
+			renderedRTF = marked.parse(projectAbout, {
 				smartLists: true,
 			})
 			setTimeout(()=> {
