@@ -93,9 +93,5 @@ class _i18n implements Readable<Locale> {
 export const i18n = new _i18n
 
 export const isInvalidLocale = derived(
-	i18n, (s): boolean => {
-		const test = !LocaleList.includes(s as Locale)
-		console.log('is invalid locale: ', s, '->', LocaleList, '->', test)
-		return test
-	}
+	i18n, (s): boolean => !LocaleList.includes(s as Locale)
 )
