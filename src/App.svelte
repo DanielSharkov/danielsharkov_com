@@ -366,7 +366,7 @@
 		title={$_('page_title')}
 		description={$_('about_me')}
 		additionalLinkTags={[
-			{rel: 'icon', href: 'favicon.ico'},
+			{rel: 'icon', href: 'favicon.png'},
 			{rel: 'apple-touch-icon', href: 'logo/64x64.png'},
 			{rel: 'apple-touch-icon', sizes: '128x128', href: 'logo/128x128.png'},
 			{rel: 'apple-touch-icon', sizes: '192x192', href: 'logo/192x192.png'},
