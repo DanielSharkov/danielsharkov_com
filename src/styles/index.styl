@@ -10,6 +10,7 @@ dl, dt, dd, select, optgroup, pre, code
 	outline: none
 	-webkit-box-sizing: border-box
 	box-sizing: border-box
+	transition: none
 	&:before, &:after
 		margin: 0
 		padding: 0
@@ -19,6 +20,7 @@ dl, dt, dd, select, optgroup, pre, code
 		outline: none
 		-webkit-box-sizing: border-box
 		box-sizing: border-box
+		transition: none
 
 [lock-scroll='true']
 	overflow: hidden !important
@@ -157,7 +159,7 @@ main#App
 	background-color: #fff
 	@media (prefers-color-scheme: dark)
 		background-color: #000
-	.icon
+	.icon.loader
 		width: 6em
 		height: 6em
 
@@ -166,6 +168,7 @@ main#App
 	position: fixed
 	top: 1em
 	right: 1em
+	animation: localeSelectIn var(--transition-easing) 1.5s alternate backwards
 	.selected
 		padding: .5em 1em
 		background-color: var(--fg-clr)
@@ -204,6 +207,8 @@ main#App
 				margin-right: .5em
 			&:hover
 				background-color: var(--font-base-clr-015)
+			&:active
+				background-color: var(--font-base-clr-025)
 			&.active
 				background-color: var(--color-accent)
 				color: #fff
@@ -216,6 +221,33 @@ main#App
 			pointer-events: none
 			transform: translateY(-.5em)
 
+#InvalidLocaleSelect
+	font-size: 1.25em
+	> .option
+		padding: .5em
+		border-radius: .5em
+		background-color: var(--fg-clr)
+		box-shadow: var(--shadow-1)
+		transition: var(--transition)
+		transition-property: background-color, box-shadow, color, transform
+		will-change: background-color, box-shadow, color, transform
+		&:hover
+			box-shadow: var(--shadow-3)
+			transform: translateY(-.25em)
+		&:active, &:focus
+			box-shadow: var(--shadow-1)
+			transform: translateY(.15em)
+			background-color: var(--color-accent)
+			color: #fff
+
+@keyframes localeSelectIn
+	0%
+		opacity: 0
+		transform: translate(-2em,0)
+	100%
+		opacity: 1
+		transform: translate(0,0)
+
 // Icons .......................................................................
 
 .icon
@@ -227,6 +259,11 @@ main#App
 		fill: var(--font-base-clr)
 	&.stroke > *, .stroke
 		stroke: var(--font-base-clr)
+	&.contrast
+		&.fill > *, .fill
+			fill: var(--font-heading-clr)
+		&.stroke > *, .stroke
+			stroke: var(--font-heading-clr)
 	&-tiny
 		width: .75em
 		height: .75em

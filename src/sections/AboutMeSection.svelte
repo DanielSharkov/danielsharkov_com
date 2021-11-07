@@ -1,6 +1,6 @@
-<section id='me-myself-and-i' class='grid'>
+<section class='grid'>
 	<div class='header'>
-		<h1 class='display-3'>{$_('section.about_me.title')}</h1>
+		<h1 id='about' class='display-3'>{$_('section.about_me.title')}</h1>
 	</div>
 
 	<!-- <article class='photography'>
@@ -67,7 +67,7 @@
 
 
 <style lang='stylus'>
-	#me-myself-and-i
+	section
 		padding: 2rem
 		grid-gap: 4rem
 		@media screen and (max-width: 600px)

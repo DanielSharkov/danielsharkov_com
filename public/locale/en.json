@@ -4,6 +4,7 @@
 	"page_title": "Daniel Sharkov com",
 	"my_name": "Daniel Sharkov",
 	"about_me": "Hi there! I'm a fullstack software engineer focusing on web app frontend and backend systems. TypeScript, Svelte, Stylus, Vue.js, Go and many more tools are part of my professional arsenal. 5 years of experience in UX & UI design make me a great allround developer. Next stop: DevOps & beyond!",
+	"profile_pic_alt": "Me, Myself and I",
 
 	"close": "Close",
 	"open": "Open",
@@ -18,10 +19,10 @@
 			},
 			"question": {
 				"projects": "Which projects are you working on or have you ever done?",
-				"skills": "Whats your programmer stack? (skills)",
+				"skills": "Whats your tech stack? (skills)",
 				"worked-with": "In which companies have your already worked in?",
-				"me-myself-and-i": "Tell me something about you.",
-				"get-in-touch": "I would like to get in touch with you."
+				"about": "Tell me something about you.",
+				"contact": "I would like to get in touch with you."
 			}
 		},
 		"projects": {
@@ -57,13 +58,12 @@
 			}
 		},
 		"contact": {
-			"title": "You would like to get in touch with me?",
-			"not_available": "Currently only reachable through social media.",
-			"email": "Your email",
-			"subject": "Subject",
-			"msg": "Message",
-			"submit": "Send"
+			"title": "You would like to get in touch with me?"
 		}
+	},
+
+	"other_link": {
+		"figma": "Figma Designs"
 	},
 
 	"share": "Share",
@@ -84,7 +84,7 @@
 	"project_about_failed": "Excuse me, something went wrong.",
 	"project_about_unavailable": "There isn't any article for this project. But stay tuned, maybe it's coming out soon!",
 	"project_about_only_available_in": "Unfortunately there isn't an english translation for this article yet. But you may read theses following translations, which are already available:",
-	"project_load_different_translation": "Load different translation",
+	"project_load_different_translation": "Different translation",
 	"a_project_by": "{name} - a project by Daniel Sharkov",
 	"project": {
 		"danielsharkov_com": "DanielSharkov.com",

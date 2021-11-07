@@ -14,7 +14,7 @@
 		'ux_ui_designer', 'junior_devop',
 	]
 	const questions = [
-		'projects', 'skills', 'me-myself-and-i', 'get-in-touch',
+		'projects', 'skills', 'about', 'contact',
 		// 'worked-with',
 	]
 
@@ -61,7 +61,7 @@
 					`opacity: ${t};` +
 					`transform: `+
 						`scale(${.9 + .1 * t}) `+
-						`translate(-${5 - 5 * t}rem, -${1 - t}rem);`
+						`translate(-${5 - 5 * t}em, -${1 - t}em);`
 				)
 			},
 		}
@@ -134,12 +134,12 @@
 			</linearGradient>
 		</defs>
 	</svg>
-		
+
 	{#if showBigProfilePicture}
 		<div id='BigProfilePicture' class='flex flex-center'>
 			<div
 				class='bg'
-				on:click={ closeBigProfilePicture }
+				on:click={closeBigProfilePicture}
 				transition:bigPicBgTrans
 			/>
 			<div
@@ -155,7 +155,7 @@
 			class='picture block-select'
 			on:click={openBigProfilePicture}
 			class:big-preview={showBigProfilePicture}>
-				<img class='block-select' src={profilePicSrc} alt='Me, Myself and I'/>
+				<img class='block-select' src={profilePicSrc} alt='{$_('profile_pic_alt')}'/>
 			</button>
 			<div class='grid gap-05'>
 				<h1 class='name'>{$_('my_name')}</h1>
@@ -202,13 +202,11 @@
 	#LandingSection
 		overflow: hidden
 		@media screen and (min-width: 1000px)
-			padding: 3rem
-		@media screen and (min-width: 1400px)
-			min-height: 75%
+			padding: 3em
 		@media screen and (max-width: 1000px)
-			padding: 1.5rem
+			padding: 1.5em
 		@media screen and (max-width: 600px)
-			padding: 1rem 1rem 2rem 1rem
+			padding: 1em 1em 2em 1em
 
 	#LandingCodingBG
 		z-index: -1
@@ -229,11 +227,11 @@
 		left: 0
 		width: 100%
 		height: 100%
-		padding: 3rem
+		padding: 3em
 		@media screen and (min-width: 600px)
-			padding: 2rem
+			padding: 2em
 		@media screen and (max-width: 599px)
-			padding: 1rem
+			padding: 1em
 		> .bg
 			z-index: -1
 			position: absolute
@@ -245,7 +243,7 @@
 		> .picture
 			width: 65vh
 			height: 100%
-			border-radius: .5rem
+			border-radius: .5em
 			box-shadow:
 				0 0 1px var(--shadow-ao-clr),
 				0 20px 40px -20px var(--shadow-hude-clr)
@@ -259,36 +257,37 @@
 				height: 65%
 
 	.contents
+		grid-gap: 1.5em
 		@media screen and (min-width: 1400px)
 			max-width: 75%
-			grid-gap: 3rem
+			grid-gap: 3em
 		@media screen and (min-width: 1200px)
 			max-width: 70%
-		@media screen and (max-width: 1200px)
+		@media screen and (max-width: 1199px)
 			max-width: 70%
 		@media screen and (max-width: 600px)
 			max-width: 100%
-		@media screen and (max-width: 1200px)
-			grid-gap: 1.5rem
 		.picture
 			animation: pictureInAnim var(--transition-easing) 1s
 			img
-				height: 12rem
-				width: 12rem
+				height: 12em
+				width: 12em
 				object-fit: cover
-				object-position: center
+				object-position: top
 				pointer-events: none
-				transition-duration: .5s
 				border-radius: 30%
 				box-shadow: var(--shadow-5)
 				background-color: var(--font-base-clr-0025)
 				transform: translate3d(0,0,0)
+				transition: .5s var(--transition-easing)
+				transition-property: transform, opacity, border-radius
+				will-change: transform, opacity, border-radius
 				@media screen and (max-width: 600px)
 					margin: auto
 			&.big-preview img
-				transition-duration: 600
+				transition-duration: .6s
 				opacity: 0
-				transform: translate(5rem, 3rem) scale(1.2)
+				transform: translate(5em, 3em) scale(1.2)
 			&:hover img
 				transform: scale(1.1)
 				border-radius: 10%
@@ -296,20 +295,17 @@
 			@media screen and (min-width: 600px)
 				grid-template-columns: auto 1fr
 		.name
-			font-weight: 400
-			font-size: 3rem
-			letter-spacing: .25rem
 			animation: nameInAnim var(--transition-easing) 1s
 			@media screen and (max-width: 900px)
-				font-size: 1.75rem
+				font-size: 1.75em
 			@media screen and (max-width: 600px)
-				font-size: 2.25rem
+				font-size: 2.25em
 				text-align: center
 			@media screen and (max-width: 500px)
-				font-size: 2.15rem
+				font-size: 2.15em
 		.professions
 			@media screen and (min-width: 600px)
-				margin-left: .35rem
+				margin-left: .35em
 			@media screen and (max-width: 599px)
 				justify-content: center
 				justify-items: center
@@ -318,20 +314,20 @@
 				animation: professionInAnim var(--transition-easing) 1s alternate backwards
 				&:not(:last-child):after
 					content: ''
-					margin-left: .5rem
-					width: 1rem
+					margin-left: .5em
+					width: 1em
 					height: 1px
 					background-color: var(--font-base-clr-01)
 		.social-media
 			@media screen and (min-width: 600px)
-				margin-left: -.25rem
+				margin-left: -.25em
 			@media screen and (max-width: 599px)
 				justify-content: center
 				justify-items: center
 			> a
 				display: inline-block
-				padding: .5rem
-				opacity: .25
+				padding: .5em
+				opacity: .5
 				animation: socialMediaInAnim var(--transition-easing) 1s alternate backwards
 				transition: var(--transition)
 				transition-property: opacity, transform
@@ -342,23 +338,23 @@
 						fill: var(--font-base-clr) !important
 				&:hover
 					opacity: 1
-					transform: scale(1.25)
+					transform: scale(1.5)
 				@media screen and (max-width: 600px)
 					&:not(:last-child)
-						margin-right: .5rem
+						margin-right: .5em
 		.text-block
 			width: 100%
 			animation: nameInAnim var(--transition-easing) 2s
 			@media screen and (min-width: 1200px)
 				max-width: 60%
-				font-size: 1.25rem
+				font-size: 1.25em
 				line-height: 1.5
 			@media screen and (min-width: 700px)
 				max-width: 90%
 
 	nav
 		@media screen and (min-width: 600px)
-			padding-left: 1rem
+			padding-left: 1em
 		.question-list
 			.question-entry
 				animation: questionsInAnim var(--transition-easing) 1s alternate backwards
@@ -369,36 +365,37 @@
 					&.stroke > *
 						stroke: var(--font-base-clr-01)
 					@media screen and (max-width: 600px)
-						margin-right: .5rem
+						margin-right: .5em
 				.question
-					padding: 1rem
-					border-radius: .5rem
+					padding: 1em
+					border-radius: 1em
 					box-shadow: var(--shadow-1)
 					text-decoration: none
 					line-height: 1.5
-					transition: var(--transition)
+					background-color: var(--fg-clr)
 					color: var(--font-heading-clr)
+					transition: var(--transition)
 					transition-property: box-shadow, transform, color
 					will-change: box-shadow, transform, color
-					background-color: var(--fg-clr)
 					@media screen and (min-width: 600px)
-						font-size: 1.15rem
+						font-size: 1.15em
 					@media screen and (max-width: 600px)
 						flex: 1 1 auto
 					> q
 						&:before, &:after
 							opacity: .5
 					&:hover
-						transform: scale(1.025) translate(0, -.5rem)
+						z-index: 10
+						transform: scale(1.025) translate(0, -.5em)
 						box-shadow: var(--shadow-5)
 						color: var(--color-accent)
 						@media screen and (max-width: 1000px)
-							transform: scale(1.025) translate(0, -.5rem)
+							transform: scale(1.025) translate(0, -.5em)
 
 	@keyframes pictureInAnim
 		0%
 			opacity: 0
-			transform: translate(-2rem, -2rem)
+			transform: translate(-2em, -2em)
 		100%
 			opacity: 1
 			transform: translate(0,0)
@@ -406,7 +403,7 @@
 	@keyframes nameInAnim
 		0%
 			opacity: 0
-			transform: translate(-2rem,0)
+			transform: translate(-2em,0)
 		100%
 			opacity: 1
 			transform: translate(0,0)
@@ -414,7 +411,7 @@
 	@keyframes questionsInAnim
 		0%
 			opacity: 0
-			transform: translate(-10rem,0)
+			transform: translate(-10em,0)
 		100%
 			opacity: 1
 			transform: translate(0,0)
@@ -422,15 +419,15 @@
 	@keyframes socialMediaInAnim
 		0%
 			opacity: 0
-			transform: translate(4rem,0)
+			transform: translate(4em,0)
 		100%
-			opacity: .25
+			opacity: .5
 			transform: translate(0,0)
 
 	@keyframes professionInAnim
 		0%
 			opacity: 0
-			transform: translate(4rem,0)
+			transform: translate(4em,0)
 		100%
 			opacity: 1
 			transform: translate(0,0)
@@ -438,7 +435,7 @@
 	@keyframes codeBgInAnim
 		0%
 			opacity: 0
-			transform: translate(10rem,0)
+			transform: translate(10em,0)
 		100%
 			opacity: 1
 			transform: translate(0,0)

@@ -1,4 +1,4 @@
-import {Lang} from './i18n'
+import {Locale} from './i18n'
 
 export const careerBegin: number = 2012
 
@@ -54,10 +54,10 @@ export const technologies: TechnologyList = {
 			[2016, null],
 		],
 	},
-	Golang: {
-		name: 'Golang', color: '#01ADD8', icon: true,
+	Go: {
+		name: 'Go', color: '#01ADD8', icon: true,
 		type: TechnologyType.Language,
-		link: 'https://golang.org',
+		link: 'https://go.dev',
 		careerSpan: [
 			[2016, null],
 		],
@@ -84,6 +84,30 @@ export const technologies: TechnologyList = {
 		link: 'https://nginx.org/en/',
 		careerSpan: [
 			[2018, null],
+		],
+	},
+	SQL: {
+		name: 'SQL', color: '#FFAB00', icon: true,
+		type: TechnologyType.Language,
+		link: 'https://en.wikipedia.org/wiki/SQL',
+		careerSpan: [
+			[2016, null],
+		],
+	},
+	PostgreSQL: {
+		name: 'PostgreSQL', color: '#336790', icon: true,
+		type: TechnologyType.Software,
+		link: 'https://www.postgresql.org/',
+		careerSpan: [
+			[2018, null],
+		],
+	},
+	VSC: {
+		name: 'VS Code', color: '#3B99D4', icon: true,
+		type: TechnologyType.Software,
+		link: 'https://code.visualstudio.com/',
+		careerSpan: [
+			[2016, null],
 		],
 	},
 	Stylus: {
@@ -199,7 +223,7 @@ export type Project = {
 	usedTechnologies: Array<string>
 	about:            boolean
 	gradient?:        Array<string>
-	lang:             Array<Lang>
+	locale:           Array<Locale>
 }
 
 export const projects: Array<Project> = [
@@ -210,12 +234,12 @@ export const projects: Array<Project> = [
 		projectUrl: null,
 		codeUrl: 'https://github.com/DanielSharkov/danielsharkov_com',
 		usedTechnologies: [
-			'Svelte', 'TypeScript', 'SVG', 'Stylus',
-			'Docker', 'Nginx', 'Figma',
+			'Svelte', 'TypeScript', 'SVG', 'Stylus', 'Docker', 'Nginx',
+			'Figma', 'VSC',
 		],
 		about: true,
 		gradient: ['#fcb6b6', '#f6df88'],
-		lang: [Lang.DE, Lang.EN],
+		locale: [Locale.DE, Locale.EN],
 	},
 	{
 		id: 'timetabler',
@@ -224,12 +248,12 @@ export const projects: Array<Project> = [
 		projectUrl: 'COMING_SOON',//'https://danielsharkov.github.io/timetabler',
 		codeUrl: null,
 		usedTechnologies: [
-			'Svelte', 'SVG', 'Golang', 'Stylus',
-			'Docker', 'Nginx', 'Figma',
+			'Svelte', 'SVG', 'Go', 'Stylus', 'Docker', 'Nginx', 'Figma',
+			'VSC', 'SQL', 'PostgreSQL',
 		],
 		about: true,
 		gradient: ['#b5ffdd', '#65C7F7', '#0066ff'],
-		lang: [Lang.DE, Lang.EN],
+		locale: [Locale.DE, Locale.EN],
 	},
 	{
 		id: 'gronkh_de_concept',
@@ -238,12 +262,12 @@ export const projects: Array<Project> = [
 		projectUrl: 'https://danielsharkov.github.io/gronkh_de_concept',
 		codeUrl: 'https://github.com/DanielSharkov/gronkh_de_concept',
 		otherLinks: [
-			{ name: 'Gronkh', url: 'https://gronkh.de' },
+			{ name: 'Gronkh.tv', url: 'https://gronkh.tv' },
 		],
-		usedTechnologies: ['VueJS', 'Stylus'],
+		usedTechnologies: ['VueJS', 'Stylus', 'VSC'],
 		about: true,
 		gradient: ['#ff51ea', '#fe9840', '#42ffc2', '#b870fa', '#54ff32'],
-		lang: [Lang.DE],
+		locale: [Locale.DE],
 	},
 	{
 		id: 'cowo_space',
@@ -252,11 +276,11 @@ export const projects: Array<Project> = [
 		projectUrl: 'COMING_SOON',//'https://danielsharkov.github.io/cowo-space',
 		codeUrl: 'https://github.com/DanielSharkov/cowo-space',
 		usedTechnologies: [
-			'Svelte', 'SVG', 'Stylus', 'Docker', 'Nginx', 'Figma',
+			'Svelte', 'SVG', 'Stylus', 'Docker', 'Nginx', 'Figma', 'VSC',
 		],
 		about: true,
 		gradient: ['#FAACA8', '#DDD6F3'],
-		lang: [],
+		locale: [],
 	},
 	{
 		id: 'org_graph',
@@ -265,12 +289,12 @@ export const projects: Array<Project> = [
 		projectUrl: null,
 		codeUrl: null,
 		usedTechnologies: [
-			'Svelte', 'SVG', 'TypeScript', 'Golang',
-			'Stylus', 'Docker', 'Nginx', 'Figma',
+			'Svelte', 'SVG', 'TypeScript', 'Go', 'Stylus', 'Docker',
+			'Nginx', 'Figma', 'VSC', 'SQL', 'PostgreSQL',
 		],
 		about: true,
 		gradient: ['#1488CC', '#2B32B2'],
-		lang: [Lang.DE, Lang.EN],
+		locale: [Locale.DE, Locale.EN],
 	},
 	{
 		id: 'svelte_chess',
@@ -278,10 +302,10 @@ export const projects: Array<Project> = [
 		darkTheme: false,
 		projectUrl: 'https://danielsharkov.github.io/svelte-chess',
 		codeUrl: 'https://github.com/DanielSharkov/svelte-chess',
-		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'Figma'],
+		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'Figma', 'VSC'],
 		about: true,
 		gradient: ['#093028', '#344740'],
-		lang: [Lang.DE, Lang.EN],
+		locale: [Locale.DE, Locale.EN],
 	},
 	{
 		id: 'pattern_visualizer',
@@ -289,10 +313,10 @@ export const projects: Array<Project> = [
 		darkTheme: true,
 		projectUrl: 'https://danielsharkov.github.io/PatternVisualizer/',
 		codeUrl: 'https://github.com/DanielSharkov/PatternVisualizer',
-		usedTechnologies: ['Svelte'],
+		usedTechnologies: ['Svelte', 'VSC'],
 		about: true,
 		gradient: ['#f399d3', '#a7276e', '#2c9c88', '#713dc3', '#00bfff'],
-		lang: [Lang.DE, Lang.EN],
+		locale: [Locale.DE, Locale.EN],
 	},
 	{
 		id: 'svelte_router',
@@ -300,10 +324,10 @@ export const projects: Array<Project> = [
 		darkTheme: false,
 		projectUrl: 'https://www.npmjs.com/package/@danielsharkov/svelte-router',
 		codeUrl: 'https://github.com/danielsharkov/svelte-router',
-		usedTechnologies: ['Svelte', 'JavaScript'],
+		usedTechnologies: ['Svelte', 'JavaScript', 'VSC'],
 		about: true,
 		gradient: ['#ffc73e', '#ff6505'],
-		lang: [Lang.DE, Lang.EN],
+		locale: [Locale.DE, Locale.EN],
 	},
 	{
 		id: 'dgraph_graphql_go_svelte',
@@ -311,10 +335,10 @@ export const projects: Array<Project> = [
 		darkTheme: false,
 		projectUrl: null,
 		codeUrl: 'https://github.com/DanielSharkov/dgraph_graphql_go_svelte',
-		usedTechnologies: ['Svelte', 'Stylus', 'SVG'],
+		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'VSC'],
 		about: true,
 		gradient: ['#0062ff', '#cbf6ff'],
-		lang: [Lang.DE, Lang.EN],
+		locale: [Locale.DE, Locale.EN],
 	},
 	{
 		id: 'infocenter',
@@ -322,10 +346,10 @@ export const projects: Array<Project> = [
 		darkTheme: true,
 		projectUrl: null,//'https://danielsharkov.github.io/eod_infocenter',
 		codeUrl: null,
-		usedTechnologies: ['Svelte', 'Stylus', 'SVG'],
+		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'VSC'],
 		about: true,
 		gradient: ['#a1c4fd', '#c2e9fb'],
-		lang: [Lang.DE, Lang.EN],
+		locale: [Locale.DE, Locale.EN],
 	},
 	{
 		id: 'fitcat_app',
@@ -334,12 +358,12 @@ export const projects: Array<Project> = [
 		projectUrl: 'COMING_SOON',//'https://danielsharkov.github.io/fitcat',
 		codeUrl: 'https://github.com/DanielSharkov/fitcat-frontend',
 		otherLinks: [
-			{ name: 'Figma UX&UI Design', url: '' },
+			{ name: 'other_link.figma', url: '' },
 		],
-		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'Nginx', 'Figma'],
+		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'Nginx', 'Figma', 'VSC'],
 		about: true,
 		gradient: ['#ffffff', '#63d0ff', '#ffffff', '#ffdd7d', '#ffffff'],
-		lang: [Lang.DE, Lang.EN],
+		locale: [Locale.DE, Locale.EN],
 	},
 	{
 		id: 'shopify_cyber_theme',
@@ -349,15 +373,15 @@ export const projects: Array<Project> = [
 		codeUrl: null,
 		// codeUrl: 'https://github.com/DanielSharkov/shopify-cyber_theme',
 		otherLinks: [
-			{ name: 'Figma UX&UI Design', url: 'https://www.figma.com/file/KqzYEiazPpaj1bfXC2FzZ7/Shop-skribble' },
+			{ name: 'other_link.figma', url: 'https://www.figma.com/file/KqzYEiazPpaj1bfXC2FzZ7/Shop-skribble' },
 		],
 		usedTechnologies: [
 			'JavaScript', 'Liquid', 'Shopify', 'Stylus', 'SVG', 'Figma',
-			'SASS_SCSS',
+			'SASS_SCSS', 'VSC',
 		],
 		about: true,
 		gradient: ['#1F1C2C', '#928DAB'],
-		lang: [Lang.DE, Lang.EN],
+		locale: [Locale.DE, Locale.EN],
 	},
 	{
 		id: 'vivobarefoot_redesign_proposal',
@@ -365,10 +389,10 @@ export const projects: Array<Project> = [
 		darkTheme: false,
 		projectUrl: 'https://danielsharkov.github.io/vivobarefoot_redesign_proposal',
 		codeUrl: 'https://github.com/DanielSharkov/vivobarefoot_redesign_proposal',
-		usedTechnologies: ['HTML', 'CSS', 'JavaScript'],
+		usedTechnologies: ['HTML', 'CSS', 'JavaScript', 'VSC'],
 		about: true,
 		gradient: ['#a02828', '#ff5b5b'],
-		lang: [Lang.DE],
+		locale: [Locale.DE],
 	},
 	{
 		id: 'chrome_redesign_inspiration',
@@ -376,10 +400,10 @@ export const projects: Array<Project> = [
 		darkTheme: true,
 		projectUrl: 'https://codepen.io/DanielSharkov/full/gvZgQN',
 		codeUrl: 'https://codepen.io/DanielSharkov/pen/gvZgQN',
-		usedTechnologies: ['VueJS', 'Stylus'],
+		usedTechnologies: ['VueJS', 'Stylus', 'VSC'],
 		about: true,
 		gradient: ['#08AEEA', '#2AF598'],
-		lang: [Lang.DE, Lang.EN],
+		locale: [Locale.DE, Locale.EN],
 	},
 	{
 		id: 'dev_documentation',
@@ -389,17 +413,17 @@ export const projects: Array<Project> = [
 		usedTechnologies: [],
 		about: true,
 		gradient: ['#08AEEA', '#2AF598'],
-		lang: [Lang.DE, Lang.EN],
+		locale: [Locale.DE, Locale.EN],
 	},
 	{
 		id: 'logo_redesign_proposal',
 		cover: true,
 		darkTheme: true,
 		projectUrl: null,
-		usedTechnologies: ['Figma', 'SVG'],
+		usedTechnologies: ['Figma', 'SVG', 'VSC'],
 		about: true,
 		gradient: ['#FA8BFF', '#2BD2FF', '#2BFF88'],
-		lang: [Lang.DE],
+		locale: [Locale.DE],
 	},
 	{
 		id: 'lost_santos_teaser',
@@ -409,7 +433,7 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['PowerDirector15', 'GIMP', 'OBS'],
 		about: true,
 		gradient: ['#a7a5a4', '#695747'],
-		lang: [Lang.DE, Lang.EN],
+		locale: [Locale.DE, Locale.EN],
 	},
 	{
 		id: 'black_russian_training_video',
@@ -418,7 +442,7 @@ export const projects: Array<Project> = [
 		projectUrl: 'https://www.youtube.com/watch?v=ix7fj1-SOps',
 		usedTechnologies: ['PowerDirector15', 'GIMP', 'OBS'],
 		about: true,
-		lang: [Lang.DE, Lang.EN],
+		locale: [Locale.DE, Locale.EN],
 	},
 ]
 

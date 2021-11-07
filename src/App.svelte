@@ -3,14 +3,13 @@
 	import AboutMeSection from './sections/AboutMeSection.svelte'
 	import ProjectsSection from './sections/ProjectsSection.svelte'
 	import SkillsSection from './sections/SkillsSection.svelte'
-	import ContactSection from './sections/ContactSection.svelte'
 	import FooterSection from './sections/FooterSection.svelte'
 	import {GlobalStore} from './global_store'
 	import EaseScrolling from './utils/ease_scrolling'
 	import {cubicInOut} from 'svelte/easing'
 	import {MetaTags} from 'svelte-meta-tags'
 	import {isLoading, _} from 'svelte-i18n'
-	import {i18n, LanguageList, LanguageName, LanguageFullName} from './i18n'
+	import {i18n, LocaleList, LocaleFullName, isInvalidLocale} from './i18n'
 
 	const pageScroll = {y: 0, x: 0}
 	function scrollingApp(e): void {
@@ -47,13 +46,13 @@
 <svelte:head>
 	<link rel='preconnect' href='https://fonts.googleapis.com'/>
 	<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin='true'/>
-	<link href='https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap' rel='stylesheet'>
-	<link href='https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap' rel='stylesheet'/>
+	<link href='https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700&display=swap' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700&display=swap' rel='stylesheet'/>
 </svelte:head>
 
 <svg id='AppIcons'>
 	<symbol id='LOGO_GitHub'>
-		<svg class='icon fill' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'>
+		<svg class='icon fill contrast' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'>
 			<path fill-rule='evenodd' clip-rule='evenodd' d='M60 11C32.3894 11 10 33.3844 10 61C10 83.0905 24.3265 101.833 44.1931 108.444C46.6919 108.907 47.6093 107.359 47.6093 106.039C47.6093 104.847 47.5629 100.908 47.5414 96.7298C33.6314 99.7544 30.6962 90.8304 30.6962 90.8304C28.4217 85.052 25.1446 83.5144 25.1446 83.5144C20.6081 80.4111 25.4865 80.4749 25.4865 80.4749C30.5074 80.8276 33.1511 85.6282 33.1511 85.6282C37.6106 93.2713 44.848 91.0614 47.7012 89.7839C48.1508 86.5531 49.4458 84.3465 50.8757 83.0979C39.77 81.8344 28.0955 77.5463 28.0955 58.3877C28.0955 52.9297 30.0487 48.4685 33.2472 44.967C32.728 43.7077 31.0166 38.6222 33.7324 31.7351C33.7324 31.7351 37.931 30.3921 47.4851 36.8611C51.4735 35.7533 55.7508 35.1977 60 35.1778C64.2492 35.1977 68.5298 35.7533 72.5257 36.8611C82.069 30.3921 86.2618 31.7351 86.2618 31.7351C88.9834 38.6222 87.272 43.7077 86.7528 44.967C89.9588 48.4685 91.8979 52.9297 91.8979 58.3877C91.8979 77.5927 80.201 81.8204 69.0672 83.0582C70.8606 84.6098 72.4586 87.6526 72.4586 92.3175C72.4586 99.0075 72.4015 104.392 72.4015 106.039C72.4015 107.37 73.3007 108.928 75.8351 108.438C95.6917 101.819 110 83.0839 110 61C110 33.3844 87.6139 11 60 11Z'/>
 			<path d='M28.9379 82.7884C28.8277 83.0377 28.4369 83.1122 28.0809 82.9416C27.7174 82.7777 27.5146 82.439 27.6321 82.1898C27.7398 81.9348 28.1306 81.8636 28.4932 82.0341C28.8559 82.1973 29.0629 82.5392 28.9379 82.7884Z'/>
 			<path d='M30.9634 85.0476C30.7249 85.2686 30.2579 85.166 29.9425 84.8166C29.6146 84.468 29.5541 84.001 29.7959 83.7775C30.0418 83.5564 30.4939 83.6599 30.8209 84.0085C31.1488 84.3612 31.2126 84.8232 30.9634 85.0476Z'/>
@@ -65,32 +64,32 @@
 		</svg>
 	</symbol>
 	<symbol id='LOGO_Codepen'>
-		<svg class='icon fill' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'>
+		<svg class='icon fill contrast' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'>
 			<path d='M108.103 41.1921L62.3996 10.7233C60.8396 9.76331 59.1748 9.75452 57.6006 10.7233L11.8973 41.1921C10.7254 41.9732 10 43.3685 10 44.7634V75.2321C10 76.6272 10.7254 78.0223 11.8975 78.8036L57.6007 109.277C59.1607 110.237 60.8256 110.245 62.3998 109.277L108.103 78.8036C109.275 78.0225 110.001 76.6272 110.001 75.2321V44.7634C110 43.3685 109.275 41.9732 108.103 41.1921V41.1921ZM64.2971 22.3301L97.9468 44.7634L82.9356 54.8082L64.2971 42.3638V22.3301ZM55.7033 22.3301V42.3638L37.0647 54.8082L22.0536 44.7634L55.7033 22.3301ZM18.5938 52.7992L29.3639 59.9979L18.5938 67.1965V52.7992ZM55.7033 97.6656L22.0536 75.2323L37.0647 65.1875L55.7033 77.6319V97.6656ZM60.0002 70.1541L44.8214 59.9979L60.0002 49.8416L75.1789 59.9979L60.0002 70.1541ZM64.2971 97.6656V77.6319L82.9356 65.1875L97.9468 75.2323L64.2971 97.6656ZM101.407 67.1965L90.6364 59.9979L101.407 52.7992V67.1965Z'/>
 		</svg>
 	</symbol>
 	<symbol id='LOGO_Discord'>
-		<svg class='icon fill' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'>
+		<svg class='icon fill contrast' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'>
 			<path d='M74.05 57.5C74.05 60.55 71.8 63.05 68.95 63.05C66.15 63.05 63.85 60.55 63.85 57.5C63.85 54.45 66.1 51.95 68.95 51.95C71.8 51.95 74.05 54.45 74.05 57.5ZM50.7 51.95C47.85 51.95 45.6 54.45 45.6 57.5C45.6 60.55 47.9 63.05 50.7 63.05C53.55 63.05 55.8 60.55 55.8 57.5C55.85 54.45 53.55 51.95 50.7 51.95ZM103.5 20.3V110C90.9035 98.8684 94.932 102.553 80.3 88.95L82.95 98.2H26.25C20.6 98.2 16 93.6 16 87.9V20.3C16 14.6 20.6 10 26.25 10H93.25C98.9 10 103.5 14.6 103.5 20.3ZM89.25 67.7C89.25 51.6 82.05 38.55 82.05 38.55C74.85 33.15 68 33.3 68 33.3L67.3 34.1C75.8 36.7 79.75 40.45 79.75 40.45C67.8729 33.9404 53.9211 33.9393 42.4 39C40.55 39.85 39.45 40.45 39.45 40.45C39.45 40.45 43.6 36.5 52.6 33.9L52.1 33.3C52.1 33.3 45.25 33.15 38.05 38.55C38.05 38.55 30.85 51.6 30.85 67.7C30.85 67.7 35.05 74.95 46.1 75.3C46.1 75.3 47.95 73.05 49.45 71.15C43.1 69.25 40.7 65.25 40.7 65.25C41.4355 65.7648 42.6484 66.4322 42.75 66.5C51.1895 71.2262 63.1773 72.7746 73.95 68.25C75.7 67.6 77.65 66.65 79.7 65.3C79.7 65.3 77.2 69.4 70.65 71.25C72.15 73.15 73.95 75.3 73.95 75.3C85 74.95 89.25 67.7 89.25 67.7V67.7Z'/>
 		</svg>
 	</symbol>
 	<symbol id='LOGO_Telegram'>
-		<svg class='icon fill' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'>
+		<svg class='icon fill contrast' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'>
 			<path d='M103.246 29.2578L90.0432 91.5234C89.0471 95.918 86.4494 97.0117 82.758 94.9414L62.6409 80.1172L52.9338 89.4531C51.8596 90.5273 50.9612 91.4258 48.8909 91.4258L50.3362 70.9375L87.6213 37.2461C89.2424 35.8008 87.2698 35 85.1018 36.4453L39.008 65.4687L19.1643 59.2578C14.8479 57.9102 14.7698 54.9414 20.0627 52.8711L97.6799 22.9687C101.274 21.6211 104.418 23.7695 103.246 29.2578V29.2578Z'/>
 		</svg>
 	</symbol>
 	<symbol id='LOGO_Twitter'>
-		<svg class='icon fill' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'>
+		<svg class='icon fill contrast' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'>
 			<path d='M99.7211 39.2411C99.7845 40.1294 99.7845 41.0179 99.7845 41.9061C99.7845 69 79.1628 100.218 41.4722 100.218C29.8604 100.218 19.0737 96.8554 10 91.0181C11.6498 91.2083 13.236 91.2718 14.9492 91.2718C24.5303 91.2718 33.3503 88.0358 40.3935 82.5155C31.3833 82.3251 23.8325 76.4241 21.2309 68.3021C22.5 68.4924 23.769 68.6193 25.1016 68.6193C26.9417 68.6193 28.7819 68.3654 30.495 67.9215C21.1041 66.0178 14.0608 57.7691 14.0608 47.8071V47.5534C16.7891 49.0763 19.962 50.028 23.3247 50.1548C17.8043 46.4745 14.1877 40.1929 14.1877 33.0862C14.1877 29.2791 15.2028 25.7893 16.9795 22.7436C27.0684 35.1801 42.2335 43.3019 59.2385 44.1903C58.9213 42.6675 58.7309 41.0813 58.7309 39.495C58.7309 28.2004 67.868 19 79.2259 19C85.1269 19 90.4568 21.4746 94.2005 25.4721C98.8324 24.5838 103.274 22.8705 107.208 20.5229C105.685 25.2819 102.449 29.2793 98.198 31.8172C102.322 31.3733 106.32 30.2309 110 28.6448C107.209 32.7055 103.719 36.3221 99.7211 39.2411V39.2411Z'/>
 		</svg>
 	</symbol>
 	<symbol id='LOGO_Medium'>
-		<svg class='icon fill' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'>
+		<svg class='icon fill contrast' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'>
 			<path d='M21.8462 36.1877C21.9702 34.968 21.4947 33.7482 20.5851 32.9212L11.2611 21.6746V20H40.246L62.6566 69.142L82.3589 20H110V21.6746L102.02 29.324C101.338 29.8408 100.986 30.7091 101.131 31.5568V87.79C100.986 88.6376 101.338 89.5059 102.02 90.0227L109.814 97.6721V99.3467H70.5954V97.6721L78.6789 89.8367C79.4645 89.0511 79.4645 88.803 79.4645 87.6039V42.1625L56.9919 99.202H53.9529L27.821 42.1625V80.3887C27.5936 82.0012 28.1311 83.6138 29.2681 84.7716L39.7705 97.5067V99.1813H10V97.5274L20.5024 84.7716C21.6188 83.6138 22.1356 81.9806 21.8462 80.3887V36.1877Z'/>
 		</svg>
 	</symbol>
 	<symbol id='LOGO_Quora'>
-		<svg class='icon fill' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'>
+		<svg class='icon fill contrast' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'>
 			<path d='M63.442 87.9756C59.9772 81.1561 55.9126 74.2681 47.9838 74.2681C46.468 74.2681 44.9544 74.5186 43.5649 75.153L40.8714 69.7618C44.1535 66.9462 49.4579 64.7135 56.2753 64.7135C66.8814 64.7135 72.3242 69.8225 76.6457 76.3435C79.2107 70.7758 80.4301 63.257 80.4301 53.9373C80.4301 30.6646 73.1519 18.7142 56.1504 18.7142C39.3973 18.7142 32.1586 30.6646 32.1586 53.9373C32.1586 77.088 39.3973 88.9148 56.1511 88.9148C58.8136 88.9148 61.2248 88.622 63.442 87.9756ZM67.5948 96.0978C63.9226 97.0822 60.0203 97.6255 56.1504 97.6255C33.8423 97.6255 12 79.8252 12 53.938C12 27.8038 33.8423 10 56.1504 10C78.8332 10 100.466 27.6768 100.466 53.9373C100.466 68.5445 93.6493 80.4151 83.7432 88.0878C86.9441 92.8835 90.2395 96.0688 94.8277 96.0688C99.8351 96.0688 101.855 92.199 102.193 89.1639H108.714C109.096 93.2053 107.074 110 88.848 110C77.8086 110 71.9721 103.602 67.5948 96.0978Z'/>
 		</svg>
 	</symbol>
@@ -172,10 +171,31 @@
 			<path d='M47.5763 77.0996C47.5763 79.8739 45.3568 82.0933 42.5826 82.0933C39.8083 82.0933 37.5889 79.8739 37.5889 77.0996V42.85C37.5889 40.1766 39.9596 38.0076 43.2383 38.0076C45.609 38.0076 48.3833 38.966 50.0479 41.0341L51.5611 42.85L72.4439 67.8184V42.9508C72.4439 40.1766 74.6633 37.9572 77.4375 37.9572C80.2118 37.9572 82.4312 40.1766 82.4312 42.9508V77.2005C82.4312 79.8739 80.0605 82.0429 76.7818 82.0429C74.4111 82.0429 71.6368 81.0845 69.9722 79.0164L47.5763 52.2825V77.0996Z' fill='white'/>
 		</svg>
 	</symbol>
-	<symbol id='LOGO_Golang'>
+	<symbol id='LOGO_Go'>
 		<svg viewBox='0 0 120 60' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'>
 			<path d='M17.5435 22.7021C17.3501 22.7021 17.3017 22.6054 17.3984 22.4603L18.4139 21.1547C18.5106 21.0096 18.7524 20.9129 18.9458 20.9129H36.2089C36.4023 20.9129 36.4507 21.058 36.3539 21.2031L35.5319 22.4603C35.4352 22.6054 35.1934 22.7504 35.0483 22.7504L17.5435 22.7021ZM10.2418 27.1508C10.0483 27.1508 9.99998 27.0541 10.0967 26.909L11.1122 25.6034C11.2089 25.4584 11.4507 25.3617 11.6441 25.3617H33.6944C33.8878 25.3617 33.9845 25.5067 33.9362 25.6518L33.5493 26.8123C33.5009 27.0058 33.3075 27.1025 33.1141 27.1025L10.2418 27.1508ZM21.9439 31.5996C21.7505 31.5996 21.7021 31.4545 21.7988 31.3094L22.4758 30.1005C22.5725 29.9555 22.7659 29.8104 22.9594 29.8104H32.6305C32.824 29.8104 32.9207 29.9555 32.9207 30.1489L32.824 31.3094C32.824 31.5029 32.6305 31.6479 32.4855 31.6479L21.9439 31.5996ZM72.1373 21.8317C69.0909 22.6054 67.0116 23.1856 64.0135 23.9593C63.2882 24.1528 63.2398 24.2011 62.6112 23.4758C61.8859 22.6537 61.3539 22.1218 60.3385 21.6383C57.2921 20.1392 54.3423 20.5744 51.5861 22.3636C48.2979 24.4913 46.6054 27.6344 46.6538 31.5512C46.7021 35.4197 49.3617 38.6112 53.1818 39.1431C56.47 39.5783 59.2263 38.4178 61.4023 35.9516C61.8375 35.4197 62.2244 34.8394 62.7079 34.1624H53.3752C52.3597 34.1624 52.118 33.5338 52.4565 32.7118C53.0851 31.2127 54.2456 28.6982 54.9226 27.441C55.0677 27.1508 55.4062 26.6673 56.1315 26.6673H73.7331C73.6363 27.9729 73.6363 29.2785 73.4429 30.5841C72.911 34.0657 71.6054 37.2572 69.4777 40.0619C65.9961 44.6557 61.4507 47.5087 55.6963 48.2824C50.9574 48.911 46.557 47.9922 42.6886 45.0909C39.1102 42.3829 37.0793 38.8046 36.5474 34.3559C35.9187 29.0851 37.4661 24.3462 40.6576 20.1876C44.0909 15.6905 48.6363 12.8375 54.1973 11.822C58.7427 11 63.0948 11.5319 67.0116 14.1914C69.5745 15.8839 71.412 18.205 72.6209 21.0096C72.911 21.4448 72.7176 21.6866 72.1373 21.8317Z' fill='#01ADD8'/>
 			<path d='M88.1432 48.5726C83.7428 48.4759 79.7293 47.2186 76.3444 44.3173C73.4914 41.8511 71.7022 38.708 71.1219 34.9846C70.2515 29.5204 71.7506 24.6848 75.0388 20.3811C78.5688 15.7389 82.8241 13.3212 88.5784 12.3057C93.5107 11.4353 98.1529 11.9188 102.36 14.7718C106.18 17.383 108.549 20.913 109.178 25.5552C110 32.0832 108.114 37.4024 103.617 41.9478C100.426 45.1877 96.5088 47.2186 92.0117 48.1374C90.7061 48.3792 89.4005 48.4275 88.1432 48.5726ZM99.6519 29.0368C99.6036 28.4082 99.6036 27.9246 99.5069 27.4411C98.6364 22.6538 94.2361 19.9459 89.6423 21.0097C85.1452 22.0252 82.2438 24.8782 81.18 29.4237C80.3096 33.1954 82.1471 37.0155 85.6287 38.5629C88.2883 39.7235 90.9479 39.5784 93.5107 38.2728C97.3308 36.2902 99.4101 33.1954 99.6519 29.0368Z' fill='#01ADD8'/>
+		</svg>
+	</symbol>
+	<symbol id='LOGO_VSC'>
+		<svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' focusable='false' role='presentation' viewBox='-11.9 -2 1003.9 995.6'>
+			<path d='M12 354s-24-17 5-41l67-59s19-21 40-3l619 469v225s-1 35-46 31z' fill='#2489ca'/>
+			<path d='M172 499 12 644s-16 12 0 34l74 67s18 19 44-2l169-129z' fill='#1070b3'/>
+			<path d='m452 500 293-223-2-224s-13-49-55-23L299 384z' fill='#0877b9'/>
+			<path d='M697 976c17 18 38 12 38 12l228-112c29-20 25-45 25-45V160c0-30-30-40-30-40L760 25c-43-27-71 5-71 5s36-27 54 23v887c0 7-2 13-4 18-5 10-17 20-44 16z' fill='#3c99d4'/>
+		</svg>
+	</symbol>
+	<symbol id='LOGO_PostgreSQL'>
+		<svg xmlns='http://www.w3.org/2000/svg' aria-hidden='true' focusable='false' role='presentation' viewBox='0 0 256 264' preserveAspectRatio='xMinYMin meet'>
+			<path d='M255 158a13 13 0 0 0-10.7-8.6c-2.5-.3-5.3-.2-8.6.5-5.8 1.2-10.1 1.6-13.3 1.7a255 255 0 0 0 27-64.2c9-34.7 4.2-50.5-1.4-57.6A77.5 77.5 0 0 0 185.6.4c-14-.2-26.2 2.5-32.5 4.5-6-1-12.3-1.6-19-1.7a61.7 61.7 0 0 0-33 8.1c-5.3-1.7-13.7-4.2-23.5-5.8-22.8-3.8-41.2-.9-54.7 8.7C6.6 25.7-.9 45.7.5 73.6c.4 9 5.4 36 13.2 61.5 4.5 14.7 9.3 27 14.2 36.3 7 13.4 14.6 21.2 23 24a22.6 22.6 0 0 0 22.4-4.8c1.1 1.4 2.7 2.7 4.7 4 2.6 1.6 5.7 3 8.9 3.8 11.3 2.8 22 2 31-1.9a581.5 581.5 0 0 1 .3 10.7A109.5 109.5 0 0 0 123 240c1.4 4.2 3.6 11 9.3 16.5 6 5.5 13.1 7.3 19.7 7.3 3.3 0 6.4-.5 9.2-1 9.8-2.2 21-5.4 29-16.9 7.6-10.8 11.4-27.2 12-53l.3-2 .1-1.4 1.8.2h.5c10 .4 22.2-1.7 29.7-5.2 6-2.7 25-12.8 20.5-26.3'/>
+			<path d='M238 160.7c-29.8 6.2-31.9-4-31.9-4 31.4-46.5 44.5-105.6 33.2-120.1C208.4-3 155 15.8 154 16.3h-.3a106 106 0 0 0-19.8-2 49 49 0 0 0-31.4 9.3S7-15.7 11.5 73.1c1 18.9 27 142.9 58.2 105.4 11.4-13.7 22.4-25.3 22.4-25.3 5.5 3.7 12 5.5 18.9 4.8l.5-.4c-.2 1.7 0 3.4.2 5.3-8 9-5.6 10.6-21.7 13.9-16.2 3.3-6.7 9.3-.5 10.8 7.6 2 25 4.6 36.8-12l-.4 2c3.1 2.5 5.3 16.3 5 29-.4 12.5-.7 21.1 1.8 27.8 2.5 6.8 5 22 26 17.4 17.7-3.7 26.8-13.5 28-29.9 1-11.6 3-9.8 3.2-20.2l1.6-5c1.9-15.7.3-20.7 11.2-18.4l2.6.2c8 .4 18.4-1.2 24.6-4 13.2-6.2 21-16.5 8-13.8' fill='#336791'/>
+			<path d='M108 81.5c-2.6-.3-5 0-6.3 1-.6.5-.9 1-1 1.5 0 1 .7 2.3 1.2 3 1.3 1.7 3.3 3 5.2 3.2h.9c3.2 0 6.2-2.5 6.4-4.3.4-2.4-3-4-6.3-4.4m88.8.1c-.3-1.8-3.6-2.4-6.6-2-3.1.5-6.1 1.9-5.9 3.7.2 1.5 2.8 3.9 5.8 3.9h.8c2-.3 3.6-1.6 4.3-2.4 1-1.1 1.7-2.4 1.6-3.2' fill='#FFF'/>
+			<path d='M247.8 160c-1.1-3.4-4.8-4.5-10.8-3.3-18 3.8-24.5 1.2-26.6-.4 14-21.3 25.5-47 31.7-71.1 3-11.4 4.6-22 4.7-30.6.1-9.5-1.5-16.4-4.8-20.7a70.4 70.4 0 0 0-56.9-26.5c-16.3-.2-30.2 4-32.8 5.2a82 82 0 0 0-18.6-2.4c-12.2-.2-22.9 2.7-31.7 8.7-3.8-1.4-13.6-4.8-25.7-6.7-20.9-3.4-37.5-.8-49.3 7.5-14.1 10-20.7 28-19.4 53.2.4 8.5 5.3 34.6 13 59.7 10 33 21 51.6 32.4 55.5 1.4.4 3 .7 4.6.7 4.2 0 9.4-1.9 14.7-8.3a529.8 529.8 0 0 1 20.3-23c4.5 2.5 9.5 3.8 14.6 4v.4a117.7 117.7 0 0 0-2.6 3.2c-3.5 4.4-4.2 5.4-15.5 7.7-3.3.7-11.8 2.4-12 8.4-.1 6.6 10.2 9.3 11.3 9.6 4.1 1 8 1.6 11.8 1.6 9 0 17-3 23.5-8.8-.2 23.4.8 46.4 3.6 53.4 2.3 5.8 7.9 19.8 25.6 19.8 2.6 0 5.5-.3 8.7-1 18.5-4 26.5-12.1 29.6-30.2 1.7-9.6 4.6-32.6 5.9-45 2.8.9 6.5 1.3 10.4 1.3 8.3 0 17.8-1.8 23.7-4.5 6.7-3.1 18.8-10.7 16.6-17.4zm-44.1-83.5c0 3.7-.6 7-1.1 10.5-.6 3.7-1.2 7.5-1.3 12.2-.2 4.5.4 9.2 1 13.8a49.2 49.2 0 0 1-2.2 28 36.5 36.5 0 0 1-2-4c-.5-1.2-1.7-3.4-3.3-6.3-6.4-11.5-21.4-38.4-13.7-49.3 2.2-3.3 8-6.7 22.6-4.9zm-17.6-61.7c21.3.4 38.2 8.4 50.1 23.7 9.2 11.7-1 65-30.1 111a171.3 171.3 0 0 0-1-1.2l-.3-.4c7.6-12.5 6-24.8 4.8-35.8-.6-4.5-1-8.7-1-12.7a90 90 0 0 1 1.3-11.3 71.6 71.6 0 0 0 1.3-16c-.5-5-6.3-20.2-18-33.8a81 81 0 0 0-28.6-21.5c5.5-1.2 13-2.2 21.5-2zm-119.4 161c-6 7-10 5.7-11.3 5.3-8.8-3-18.9-21.4-27.8-50.7A330.7 330.7 0 0 1 15 72.5C13.8 50 19.3 34.2 31.2 25.8c19.4-13.8 51.3-5.6 64.2-1.4l-.6.5c-21 21.3-20.5 57.6-20.5 59.8 0 .9 0 2 .2 3.7.3 6.1 1 17.5-.8 30.4-1.7 12 2 23.6 10.1 32a36.3 36.3 0 0 0 2.6 2.6 541 541 0 0 0-19.7 22.4zm22.5-30a31 31 0 0 1-8.2-26 157 157 0 0 0 .8-31.8v-2.3c3-2.7 17.2-10.3 27.4-8 4.6 1 7.4 4.2 8.6 9.6 6 28.1.8 39.9-3.4 49.3a91 91 0 0 0-2.4 5.6l-.6 1.5c-1.3 3.7-2.6 7.2-3.4 10.4-7 0-13.7-3-18.8-8.3zm1 37.9c-2-.5-3.8-1.4-4.9-2.1.9-.4 2.5-1 5.2-1.6 13.4-2.7 15.4-4.7 20-10.4 1-1.3 2.1-2.8 3.8-4.6 2.4-2.7 3.5-2.2 5.5-1.4 1.6.7 3.2 2.7 3.8 5 .3 1 .7 3-.5 4.6-9.4 13.1-23 13-32.9 10.5zm69.8 65c-16.3 3.4-22-4.9-25.9-14.4-2.4-6.2-3.6-33.9-2.8-64.5 0-.4 0-.8-.2-1.1a15.4 15.4 0 0 0-.4-2.2 15 15 0 0 0-8.1-9.7c-1.5-.6-4.2-1.7-7.5-1 .7-2.8 2-6 3.2-9.5l.6-1.5c.6-1.7 1.4-3.4 2.2-5.2 4.4-9.9 10.5-23.3 4-53.8-2.5-11.4-10.8-17-23.3-15.7A53.5 53.5 0 0 0 82 76.7c1-11.5 4.6-33 18-46.6a44.3 44.3 0 0 1 33.6-12.6 71.2 71.2 0 0 1 54.4 26c8.5 10 13 20.1 14.9 25.5-13.8-1.4-23.1 1.4-27.9 8.1-10.3 14.8 5.7 43.4 13.3 57.2 1.4 2.5 2.7 4.7 3 5.6a51 51 0 0 0 8.1 13l2 2.6c-4.2 1.2-11.7 4-11 17.8-.5 7-4.4 39.6-6.4 51-2.6 15.3-8.2 21-24 24.3zm68.1-78c-4.2 2-11.4 3.5-18.1 3.8-7.5.3-11.3-.9-12.2-1.6-.4-8.6 2.8-9.5 6.2-10.5l1.5-.5 1 .8c6 4 16.8 4.4 32 1.3h.1c-2 1.8-5.5 4.4-10.5 6.7z' fill='#FFF'/>
+		</svg>
+	</symbol>
+	<symbol id='LOGO_SQL'>
+		<svg viewBox='0 0 32 32' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'>
+			<path d='M17.7 19.9a2 2 0 0 1-.7.1h-1a2 2 0 0 1-2-2v-3c0-1.1.9-2 2-2h1a2 2 0 0 1 2 2v3c0 .5-.2 1-.5 1.3l.8.8-.7.7-1-1Zm-1-.9H16a1 1 0 0 1-1-1v-3c0-.6.4-1 1-1h1c.6 0 1 .4 1 1v3c0 .2 0 .4-.2.6l-1.4-1.4-.7.7 1 1.1ZM8 10a3 3 0 0 0-3 3v7a3 3 0 0 0 3 3h17a3 3 0 0 0 3-3v-7a3 3 0 0 0-3-3H8Zm2 3a2 2 0 1 0 0 4h1a1 1 0 1 1 0 2h-1a1 1 0 0 1-1-1H8c0 1.1.9 2 2 2h1a2 2 0 1 0 0-4h-1a1 1 0 1 1 0-2h1c.6 0 1 .5 1 1h1a2 2 0 0 0-2-2h-1Zm15 6v1h-5v-7h1v6h4Z' fill='#FFAB00' fill-rule='evenodd'/>
 		</svg>
 	</symbol>
 	<symbol id='LOGO_Stylus'>
@@ -260,80 +280,88 @@
 			</defs>
 		</svg>
 	</symbol>
-	<symbol id='ICON_USER'>
-		<svg class='icon stroke' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none' xmlns='http://www.w3.org/2000/svg'>
-			<path d='M103 107L103 96C103 82.1929 91.8068 71 77.9997 71H41.9995C28.1924 71 16.9995 82.1929 16.9995 96L16.9996 107' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/>
-			<circle cx='60' cy='34' r='21' stroke-width='4'/>
-		</svg>
-	</symbol>
 </svg>
 
 
 
-{#if $isLoading}
+{#if $isLoading || $isInvalidLocale}
 	<div id='AppLoader' class='flex flex-center'>
-		<svg class='icon fill' viewBox='0 0 100 100' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' preserveAspectRatio='xMidYMid'>
-			<g transform='rotate(0 50 50)'>
-				<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-					<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.9166666666666666s' repeatCount='indefinite'/>
-				</rect>
-			</g>
-			<g transform='rotate(30 50 50)'>
-				<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-					<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.8333333333333334s' repeatCount='indefinite'/>
-				</rect>
-			</g>
-			<g transform='rotate(60 50 50)'>
-				<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-					<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.75s' repeatCount='indefinite'/>
-				</rect>
-			</g>
-			<g transform='rotate(90 50 50)'>
-				<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-					<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.6666666666666666s' repeatCount='indefinite'/>
-				</rect>
-			</g>
-			<g transform='rotate(120 50 50)'>
-				<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-					<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.5833333333333334s' repeatCount='indefinite'/>
-				</rect>
-			</g>
-			<g transform='rotate(150 50 50)'>
-				<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-					<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.5s' repeatCount='indefinite'/>
-				</rect>
-			</g>
-			<g transform='rotate(180 50 50)'>
-				<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-					<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.4166666666666667s' repeatCount='indefinite'/>
-				</rect>
-			</g>
-			<g transform='rotate(210 50 50)'>
-				<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-					<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.3333333333333333s' repeatCount='indefinite'/>
-				</rect>
-			</g>
-			<g transform='rotate(240 50 50)'>
-				<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-					<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.25s' repeatCount='indefinite'/>
-				</rect>
-			</g>
-			<g transform='rotate(270 50 50)'>
-				<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-					<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.16666666666666666s' repeatCount='indefinite'/>
-				</rect>
-			</g>
-			<g transform='rotate(300 50 50)'>
-				<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-					<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.08333333333333333s' repeatCount='indefinite'/>
-				</rect>
-			</g>
-			<g transform='rotate(330 50 50)'>
-				<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-					<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='0s' repeatCount='indefinite'/>
-				</rect>
-			</g>
-		</svg>
+		{#if $isInvalidLocale}
+			<div id='InvalidLocaleSelect' class=' flex flex-center-y gap-1'>
+				{#each LocaleList as locale}
+					<button class='option flex nowrap flex-center-y gap-05' on:click={()=> i18n.switch(locale)}>
+						<svg class='flag icon icon-large' aria-hidden='true' focusable='false' role='presentation'>
+							<title>{LocaleFullName[locale]} Flag</title>
+							<use xlink:href='#FLAG_{locale}'/>
+						</svg>
+						<span class='label'>{LocaleFullName[locale]}</span>
+					</button>
+				{/each}
+			</div>
+		{:else}
+			<svg class='icon loader fill' viewBox='0 0 100 100' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' preserveAspectRatio='xMidYMid'>
+				<g transform='rotate(0 50 50)'>
+					<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+						<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.9166666666666666s' repeatCount='indefinite'/>
+					</rect>
+				</g>
+				<g transform='rotate(30 50 50)'>
+					<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+						<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.8333333333333334s' repeatCount='indefinite'/>
+					</rect>
+				</g>
+				<g transform='rotate(60 50 50)'>
+					<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+						<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.75s' repeatCount='indefinite'/>
+					</rect>
+				</g>
+				<g transform='rotate(90 50 50)'>
+					<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+						<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.6666666666666666s' repeatCount='indefinite'/>
+					</rect>
+				</g>
+				<g transform='rotate(120 50 50)'>
+					<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+						<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.5833333333333334s' repeatCount='indefinite'/>
+					</rect>
+				</g>
+				<g transform='rotate(150 50 50)'>
+					<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+						<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.5s' repeatCount='indefinite'/>
+					</rect>
+				</g>
+				<g transform='rotate(180 50 50)'>
+					<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+						<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.4166666666666667s' repeatCount='indefinite'/>
+					</rect>
+				</g>
+				<g transform='rotate(210 50 50)'>
+					<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+						<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.3333333333333333s' repeatCount='indefinite'/>
+					</rect>
+				</g>
+				<g transform='rotate(240 50 50)'>
+					<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+						<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.25s' repeatCount='indefinite'/>
+					</rect>
+				</g>
+				<g transform='rotate(270 50 50)'>
+					<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+						<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.16666666666666666s' repeatCount='indefinite'/>
+					</rect>
+				</g>
+				<g transform='rotate(300 50 50)'>
+					<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+						<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.08333333333333333s' repeatCount='indefinite'/>
+					</rect>
+				</g>
+				<g transform='rotate(330 50 50)'>
+					<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+						<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='0s' repeatCount='indefinite'/>
+					</rect>
+				</g>
+			</svg>
+		{/if}
 	</div>
 {:else}
 	<MetaTags
@@ -403,21 +431,21 @@
 					<path d='M10.72 12.464L8.62545 10.448L8.65818 10.432C10.0483 8.9241 11.0868 7.13894 11.7018 5.2H14.0909V3.6H8.36364V2H6.72727V3.6H1V5.2H10.1473C9.57977 6.78406 8.69529 8.24175 7.54545 9.488C6.79634 8.67616 6.15827 7.7726 5.64727 6.8H4.01091C4.61636 8.096 5.43455 9.344 6.46545 10.448L2.29273 14.464L3.45455 15.6L7.54545 11.6L10.0818 14.08L10.7036 12.464H10.72ZM15.3182 8.4H13.6818L10 18H11.6364L12.5527 15.6H16.4473L17.3636 18H19L15.3182 8.4V8.4ZM13.1745 14L14.5 10.528L15.8255 14H13.1745V14Z'/>
 				</svg>
 				<svg class='flag icon icon-large' aria-hidden='true' focusable='false' role='presentation'>
-					<title>{LanguageFullName[$i18n]}</title>
+					<title>{LocaleFullName[$i18n]}</title>
 					<use xlink:href='#FLAG_{$i18n}'/>
 				</svg>
 			</button>
 			<div class='options grid gap-05'>
-				{#each LanguageList as lang}
-					<button class='option flex nowrap flex-center-y gap-1' class:active={lang === $i18n} on:click={()=> {
-						i18n.switch(lang)
+				{#each LocaleList as locale}
+					<button class='option flex nowrap flex-center-y gap-1' class:active={locale === $i18n} on:click={()=> {
+						i18n.switch(locale)
 						closeLangSelect()
 					}}>
 						<svg class='flag icon icon-large' aria-hidden='true' focusable='false' role='presentation'>
-							<title>{LanguageFullName[lang]} Flag</title>
-							<use xlink:href='#FLAG_{lang}'/>
+							<title>{LocaleFullName[locale]} Flag</title>
+							<use xlink:href='#FLAG_{locale}'/>
 						</svg>
-						<span class='label'>{LanguageFullName[lang]}</span>
+						<span class='label'>{LocaleFullName[locale]}</span>
 					</button>
 				{/each}
 			</div>
@@ -426,9 +454,8 @@
 		<ProjectsSection/>
 		<SkillsSection/>
 		<AboutMeSection/>
-		<ContactSection/>
 		<FooterSection/>
 	</main>
 {/if}
 
-<style lang='stylus' src='./styles/index.styl' global='true'></style>
+<style lang='stylus' global>@import './styles/index.styl';</style>

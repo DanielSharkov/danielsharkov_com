@@ -294,8 +294,8 @@
 				object-position: center
 				border-radius: .5rem .5rem 0 0
 			> .no-image svg
-				height: 6rem
-				width: 6rem
+				height: 50%
+				width: 50%
 			.lazyloader
 				z-index: 10
 				position: absolute

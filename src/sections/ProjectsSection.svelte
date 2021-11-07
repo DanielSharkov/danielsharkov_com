@@ -42,8 +42,8 @@
 	<ProjectDetails on:close={closeProject} projectIndex={clickedProject}/>
 {/if}
 
-<section id='projects'>
-	<h1 class='display-3'>{$_('section.projects.title')}</h1>
+<section>
+	<h1 id='projects' class='display-3'>{$_('section.projects.title')}</h1>
 	<div class='projects grid' role='feed'>
 		{#each projects as _, pIdx}
 			<ProjectPreviewTile

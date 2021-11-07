@@ -36,20 +36,21 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		file: 'public/build/bundle.js',
 	},
 	plugins: [
 		svelte({
 			compilerOptions: {
 				// enable run-time checks when not in production
-				dev: !production
+				dev: !production,
 			},
 			preprocess: sveltePreprocess({
 				sourceMap: !production,
+				stylus: {includePaths: ['src']},
 				postcss: {
-					plugins: [require('autoprefixer')()]
-				}
-			})
+					plugins: [require('autoprefixer')()],
+				},
+			}),
 		}),
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
@@ -62,12 +63,12 @@ export default {
 		// https://github.com/rollup/plugins/tree/master/packages/commonjs
 		resolve({
 			browser: true,
-			dedupe: ['svelte']
+			dedupe: ['svelte'],
 		}),
 		commonjs(),
 		typescript({
 			sourceMap: !production,
-			inlineSources: !production
+			inlineSources: !production,
 		}),
 
 		// In dev mode, call `npm run start` once
@@ -80,9 +81,9 @@ export default {
 
 		// If we're building for production (npm run build
 		// instead of npm run dev), minify
-		production && terser()
+		production && terser(),
 	],
 	watch: {
-		clearScreen: false
-	}
+		clearScreen: false,
+	},
 };

@@ -240,6 +240,16 @@
 				</div>
 			</div>
 			<div class='right-piece flex' class:single-btn={anyHeaderBtnActive} class:no-btn={noHeaderBtn}>
+				{#if Array.isArray(project.otherLinks)}
+					{#each project.otherLinks as link}
+						<a href={link.url} role='button' class='other-link flex flex-center gap-05' target='_blank' use:vibrateLink>
+							<svg class='icon icon-default stroke' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none' xmlns='http://www.w3.org/2000/svg'>
+								<path d='M34.2893 54.7108L19.0614 69.9387C10.6513 78.3489 10.6513 91.9844 19.0614 100.395C27.4716 108.805 41.1071 108.805 49.5173 100.395L64.7452 85.1667C73.1553 76.7565 73.1553 63.121 64.7452 54.7108M85.0491 64.8628L100.277 49.6348C108.687 41.2247 108.687 27.5891 100.277 19.179C91.8669 10.7688 78.2313 10.7688 69.8212 19.179L54.5932 34.4069C52.0762 36.924 50.3124 39.9091 49.302 43.0821C46.9364 50.5109 48.7001 58.9697 54.5932 64.8628' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
+							</svg>
+							<span class='label'>{$_(link.name)}</span>
+						</a>
+					{/each}
+				{/if}
 				{#if project.codeUrl}
 					<a href={project.codeUrl} role='button' class='open-source-code flex flex-center gap-05' target='_blank' use:vibrateLink>
 						<svg class='icon fill icon-medium' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -282,8 +292,8 @@
 			<div class='about' class:loading={projectAbout !== null}>
 				<hr class='seperator top'/>
 				{#if projectAbout !== null && !(projectAbout instanceof Error)}
-					{#if project.lang.length > 1}
-						<div class='load-different-lang flex flex-center-y'>
+					{#if project.locale.length > 1}
+						<div class='load-different-locale flex flex-center-y'>
 							<div class='disclosure'>
 								<button class='loaded-translation flex nowrap flex-center-y gap-05' class:active={isSelectingDifferentTranslation} on:click={toggleDifferentTranslations}>
 									<svg class='icon icon-small fill' fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
@@ -296,14 +306,14 @@
 								</button>
 								{#if isSelectingDifferentTranslation}
 									<div class='options grid gap-05'>
-										{#each project.lang as lang}
-											{#if lang !== loadedAboutTranslation}
-												<button class='option flex nowrap flex-center-y gap-05' on:click={()=> selectDifferentTranslation(lang)}>
+										{#each project.locale as locale}
+											{#if locale !== loadedAboutTranslation}
+												<button class='option flex nowrap flex-center-y gap-05' on:click={()=> selectDifferentTranslation(locale)}>
 													<svg class='flag icon icon-large' aria-hidden='true' focusable='false' role='presentation'>
-														<title>{LanguageFullName[lang]} Flag</title>
-														<use xlink:href='#FLAG_{lang}'/>
+														<title>{LocaleFullName[locale]} Flag</title>
+														<use xlink:href='#FLAG_{locale}'/>
 													</svg>
-													<span class='label'>{LanguageFullName[lang]}</span>
+													<span class='label'>{LocaleFullName[locale]}</span>
 												</button>
 											{/if}
 										{/each}
@@ -315,20 +325,20 @@
 					<div class='rtf-content'>{@html renderedRTF}</div>
 				{:else if !aboutAvailableInCurrentLocale && !isLoadingAbout}
 					<div class='not-available-in-locale text-center grid grid-center'>
-						{#if project.lang.length < 1}
+						{#if project.locale.length < 1}
 							<p class='no-translations'>
 								{$_('project_about_unavailable')}
 							</p>
 						{:else}
 							<p>{$_('project_about_only_available_in')}</p>
 							<div class='options'>
-								{#each project.lang as lang}
-									<button class='option flex nowrap flex-center-y gap-05' on:click={()=> fetchAbout(lang)}>
+								{#each project.locale as locale}
+									<button class='option flex nowrap flex-center-y gap-05' on:click={()=> fetchAbout(locale)}>
 										<svg class='flag icon icon-large' aria-hidden='true' focusable='false' role='presentation'>
-											<title>{LanguageFullName[lang]} Flag</title>
-											<use xlink:href='#FLAG_{lang}'/>
+											<title>{LocaleFullName[locale]} Flag</title>
+											<use xlink:href='#FLAG_{locale}'/>
 										</svg>
-										<span class='label'>{LanguageFullName[lang]}</span>
+										<span class='label'>{LocaleFullName[locale]}</span>
 									</button>
 								{/each}
 							</div>
@@ -461,7 +471,7 @@
 	import StatusIcon from './StatusIcon.svelte'
 	import {MetaTags} from 'svelte-meta-tags'
 	import {_} from 'svelte-i18n'
-	import {i18n, Lang, LanguageFullName, LanguageList} from '../i18n'
+	import {i18n, Locale, LocaleFullName, LocaleList} from '../i18n'
 	import {get as getStore} from 'svelte/store'
 	import {LazyLoader, LazyLoadStatus} from '../utils/lazy_loader'
 
@@ -495,23 +505,23 @@
 	let renderedRTF = null
 	let projectAbout = null
 	let isLoadingAbout = false
-	let loadedAboutTranslation: Lang = null
+	let loadedAboutTranslation: Locale = null
 	let isSelectingDifferentTranslation = false
-	let aboutAvailableInCurrentLocale = project.lang.includes($i18n as Lang)
-	async function fetchAbout(lang?: Lang): Promise<void> {
-		if (typeof lang !== 'string') {
-			lang = $i18n as Lang
+	let aboutAvailableInCurrentLocale = project.locale.includes($i18n as Locale)
+	async function fetchAbout(locale?: Locale): Promise<void> {
+		if (typeof locale !== 'string') {
+			locale = $i18n as Locale
 		}
 
 		try {
 			renderedRTF = null
 			projectAbout = null
 			isLoadingAbout = true
-			if (!LanguageList.includes(lang)) {
-				throw new Error(`invalid lang (${lang}) provided`)
+			if (!LocaleList.includes(locale)) {
+				throw new Error(`invalid locale (${locale}) provided`)
 			}
 
-			const resp = await fetch(`projects/${project.id}/about/${lang}.md`)
+			const resp = await fetch(`projects/${project.id}/about/${locale}.md`)
 			if (resp.status !== 200) throw new Error('404')
 			const text = await resp.text()
 			projectAbout = text
@@ -522,7 +532,7 @@
 				for (const link of document.querySelectorAll('.rtf-content a')) {
 					link.setAttribute('target', '_blank')
 				}
-				loadedAboutTranslation = lang
+				loadedAboutTranslation = locale
 				isLoadingAbout = false
 			})
 		} catch(err) {
@@ -532,16 +542,16 @@
 			}, 1000)
 		}
 	}
-	if (project.about && project.lang.includes($i18n as Lang)) {
+	if (project.about && project.locale.includes($i18n as Locale)) {
 		fetchAbout()
 	}
 
 	function toggleDifferentTranslations(): void {
 		isSelectingDifferentTranslation = !isSelectingDifferentTranslation
 	}
-	function selectDifferentTranslation(lang: Lang): void {
+	function selectDifferentTranslation(locale: Locale): void {
 		isSelectingDifferentTranslation = false
-		fetchAbout(lang)
+		fetchAbout(locale)
 	}
 
 	let isCurrentDarkMode = getStore(GlobalStore).a11y.darkMode
@@ -746,9 +756,9 @@
 			position: absolute
 			top: 1rem
 			right: 1rem
-			padding: .5rem
+			padding: 1rem
 			background-color: var(--bg-clr)
-			border: solid 1px var(--border-hard)
+			border: solid 1px var(--font-base-clr)
 			box-shadow: var(--shadow-1)
 			border-radius: 2rem
 			line-height: 1
@@ -839,7 +849,7 @@
 				height: 25%
 		> .header
 			padding: 2rem
-			grid-template-columns: 1fr auto
+			grid-template-columns: 1fr minmax(auto, 45%)
 			@media screen and (max-width: 600px)
 				grid-template-columns: 1fr
 				padding: 1rem
@@ -849,6 +859,7 @@
 				justify-content: flex-end
 				align-content: center
 				align-items: center
+				gap: .5em
 				@media screen and (max-width: 600px)
 					display: grid
 					grid-template-columns: 1fr 1fr
@@ -896,7 +907,7 @@
 							0 10px 20px -10px var(--shadow-huge-clr)
 						> .color
 							opacity: .25
-			.open-project, .open-project-soon, .open-source-code
+			.open-project, .open-project-soon, .open-source-code, .other-link
 				padding: .5rem 1rem
 				border-radius: 2rem
 				text-decoration: none
@@ -906,8 +917,7 @@
 					padding: .5rem
 					font-size: 1rem
 					flex-wrap: nowrap
-			.open-source-code
-				margin-right: 1rem
+			.open-source-code, .other-link
 				transition: var(--transition)
 				transition-property: opacity, background-color
 				will-change: opacity, background-color
@@ -970,7 +980,7 @@
 					top: -2px
 				&.bot
 					bottom: -2px
-			> .load-different-lang
+			> .load-different-locale
 				width: 100%
 				max-width: 1000px
 				margin: auto
@@ -1023,10 +1033,9 @@
 							> .label
 								margin-right: .5em
 							&:hover
-								background-color: var(--font-base-clr-015)
+								background-color: var(--font-base-clr-01)
 							&:active
-								background-color: var(--color-accent)
-								color: #fff
+								background-color: var(--font-base-clr-025)
 			> .not-available-in-locale
 				width: 100%
 				height: 100%
@@ -1077,7 +1086,7 @@
 					margin: 0
 					padding: 0 .25rem
 					line-height: 1.25
-					font-weight: 300
+					font-size: 2.5em
 				.h1-border
 					width: 100%
 					margin: .25rem 0 1rem 0
@@ -1099,7 +1108,9 @@
 						color: var(--color-crit)
 					h1, h3, p, .image
 						background-color: var(--color-crit-01)
-						transition-duration: 1s
+						transition: 1s var(--transition-easing)
+						transition-property: background-color, color
+						will-change: background-color, color
 				&:not(.error-placeholder)
 					h1, h3, p, .image
 						&:after

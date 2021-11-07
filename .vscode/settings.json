@@ -1,0 +1,12 @@
+{
+    "i18n-ally.localesPaths": [
+        "public/lang"
+    ],
+    "i18n-ally.extract.ignoredByFiles": {
+        "src\\sections\\LandingSection.svelte": [
+            "opacity: ${t};",
+            "translate(-${5 - 5 * t}rem, -${1 - t}rem);"
+        ]
+    },
+    "i18n-ally.keystyle": "nested"
+}

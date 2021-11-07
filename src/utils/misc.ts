@@ -45,7 +45,7 @@ export function vibrateLink(node, opts?: {duration?: number|number[]}) {
 			event.preventDefault()
 			_hasVibrated = true
 			vibrate(opts?.duration)
-			event.target.click()
+			node.click()
 		}
 		else {
 			_hasVibrated = false

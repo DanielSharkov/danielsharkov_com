@@ -1,6 +1,6 @@
-<section id='skills' class='auto-height'>
+<section class='auto-height'>
 	<div class='section-header'>
-		<h1 class='display-3'>{$_('section.skills.title')}</h1>
+		<h1 id='skills' class='display-3'>{$_('section.skills.title')}</h1>
 		<p class='subtitle'>{$_('section.skills.description')}</p>
 	</div>
 	<ul class='technologies grid'>
@@ -39,7 +39,7 @@
 							{$_('section.skills.technology_type.' + technologies[techno].type)}
 						</span>
 					</div>
-					<a class='link' href={technologies[techno].link} target='_blank' use:vibrateLink>
+					<a href={technologies[techno].link} target='_blank' class='link flex flex-center' use:vibrateLink>
 						<svg class='icon stroke icon-medium' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none' xmlns='http://www.w3.org/2000/svg'>
 							<path d='M57.7778 25H35C29.4772 25 25 29.4772 25 35V85C25 90.5228 29.4772 95 35 95H85C90.5228 95 95 90.5228 95 85V62.2222' stroke-width='.5em' stroke-linecap='round' stroke-linejoin='round'/>
 							<path d='M105 15L60 60M105 15L105 45M105 15L75 15' stroke-width='.5em' stroke-linecap='round' stroke-linejoin='round'/>
@@ -78,7 +78,7 @@
 </script>
 
 <style lang='stylus'>
-	#skills
+	section
 		margin-bottom: 4em
 
 	.section-header
@@ -147,18 +147,23 @@
 						display: block
 						color: var(--font-heading-clr)
 						margin-bottom: .25em
-						font-weight: 500
 					> .type
 						color: var(--font-base-clr-035)
 				> .link
 					margin-left: 1em
 					padding: .5em
+					border-radius: .5em
 					transition: var(--transition)
-					transition-property: opacity
-					&:not(:hover)
-						opacity: .25
-					&:active .icon.stroke > *
-						stroke: var(--color-accent)
+					transition-property: opacity, background-color
+					will-change: opacity, background-color
+					&:not(:hover) .icon.stroke > *
+						stroke: var(--font-base-clr-05)
+					&:hover
+						background-color: var(--font-base-clr-015)
+					&:active
+						background-color: var(--color-accent-01)
+						.icon.stroke > *
+							stroke: var(--color-accent)
 			> .time-span
 				position: relative
 				top: -.15em
