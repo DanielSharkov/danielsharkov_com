@@ -852,7 +852,7 @@
 				height: 25%
 		> .header
 			padding: 2rem
-			grid-template-columns: 1fr minmax(auto, 45%)
+			grid-template-columns: auto auto
 			@media screen and (max-width: 600px)
 				grid-template-columns: 1fr
 				padding: 1rem
