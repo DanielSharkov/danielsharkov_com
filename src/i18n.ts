@@ -62,13 +62,14 @@ class _i18n implements Readable<string> {
 		init({fallbackLocale: 'en'})
 
 		const navLocale = (
-			localeMap[getLocaleFromNavigator().toLowerCase()] ||
-			locStore
+			locStore ||
+			localeMap[getLocaleFromNavigator().toLowerCase()]
 		)
 		this.switch(navLocale as Locale)
 	}
 
 	public switch(l: Locale): void {
+		console.log(l)
 		if (!LocaleList.includes(l)) {
 			if (typeof localeMap[l] === 'string') {
 				l = localeMap[l]
