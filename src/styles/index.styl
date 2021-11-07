@@ -125,8 +125,8 @@ main#App
 
 #BetaLabel
 	position: absolute
-	top: 1em
-	padding: .5em
+	top: .5em
+	padding: .25em .5em
 	border: solid .1em var(--color-complementary)
 	background-color: var(--bg-clr)
 	color: var(--color-complementary)
@@ -158,9 +158,8 @@ main#App
 	left: 0
 
 #AppLangSelect
-	z-index: 10
+	z-index: 40
 	position: fixed
-	top: 1em
 	right: 1em
 	animation: localeSelectIn var(--transition-easing) 1.5s alternate backwards
 	.selected
@@ -181,7 +180,6 @@ main#App
 					fill: #fff
 	.options
 		position: absolute
-		top: 0
 		right: 0
 		min-width: 100%
 		padding: .5em
@@ -206,14 +204,26 @@ main#App
 			&.active
 				background-color: var(--color-accent)
 				color: #fff
-	&.active
-		.selected
-			visibility: hidden
+	&.active .selected
+		visibility: hidden
 	&:not(.active)
 		.options
 			opacity: 0
 			pointer-events: none
+	@media screen and (min-width: 1200px)
+		top: 1em
+		right: 1em
+		.options
+			top: 0
+		&:not(.active) .options
 			transform: translateY(-.5em)
+	@media screen and (max-width: 1199px)
+		bottom: 1.5em
+		right: 1.5em
+		.options
+			bottom: 0
+		&:not(.active) .options
+			transform: translateY(.5em)
 
 #AppLoader, #InvalidLocaleSelect
 	background-color: #fff

@@ -124,12 +124,10 @@
 				width: 1px
 				&:first-child, &:last-child
 					font-weight: 500
-					@media screen and (min-width: 1000px)
-						font-size: 1.25em
 				&:not(:first-child):not(:last-child)
 					color: var(--font-base-clr-075)
 					@media screen and (max-width: 1000px)
-						font-size: .5em
+						font-size: .65em
 		> .techno
 			> .header
 				padding: 1em
@@ -181,12 +179,13 @@
 			padding: 1em
 		.technologies
 			padding: 0 1.5em
+			> .header
+				
 			> .background-seperators
 				left: 1.5em
 				right: 1.5em
-			> .techno
-				> .header
-					padding: .5em
+			> .techno > .header
+				padding: .5em
 
 	@media (prefers-contrast: more)
 		.technologies

@@ -25,7 +25,8 @@
 			duration: 1000,
 			easing: cubicInOut,
 		})
-		window.location.hash = sectionID.detail
+		// Remvoed due to scroll bug in iOS iPhone Safari
+		// window.location.hash = sectionID.detail
 	}
 
 	let selectingLang = false
