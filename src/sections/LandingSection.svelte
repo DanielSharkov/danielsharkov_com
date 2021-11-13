@@ -24,11 +24,13 @@
 
 	let showBigProfilePicture = false
 	const openBigProfilePicture =()=> {
+		if (showBigProfilePicture) return
 		vibrate()
 		GlobalStore.lockScroll('landing_big_profile_pic')
 		showBigProfilePicture = true
 	}
 	const closeBigProfilePicture =()=> {
+		if (!showBigProfilePicture) return
 		vibrate()
 		showBigProfilePicture = false
 		GlobalStore.unlockScroll('landing_big_profile_pic')
@@ -51,17 +53,31 @@
 		codingBgLazyloader.destroy()
 	})
 
+	const displayDesktop = window.matchMedia('screen and (min-width: 600px)')
+
 	function bigPicTrans(_, o?) {
 		const reducedMotion = $GlobalStore.a11y.reducedMotion
+		if (displayDesktop.matches) {
+			return {
+				duration: !reducedMotion && 500,
+				css(t) {
+					t = cubicInOut(t)
+					return (
+						`opacity: ${t};` +
+						`transform: `+
+							`scale(${.8 + .2 * t}) `+
+							`translate(-${10-10 * t}em, -${2-2 * t}em);`
+					)
+				},
+			}
+		}
 		return {
-			duration: !reducedMotion && 400,
+			duration: !reducedMotion && 500,
 			css(t) {
 				t = cubicInOut(t)
 				return (
 					`opacity: ${t};` +
-					`transform: `+
-						`scale(${.9 + .1 * t}) `+
-						`translate(-${5 - 5 * t}em, -${1 - t}em);`
+					`transform: scale(${.75 + .25 * t}) translateY(-${5-5 * t}em);`
 				)
 			},
 		}
@@ -74,6 +90,8 @@
 			css: (t)=> `opacity: ${cubicInOut(t)}`,
 		}
 	}
+
+	let socialMediaButtons: HTMLElement
 </script>
 
 
@@ -157,8 +175,10 @@
 			class:big-preview={showBigProfilePicture}>
 				<img class='block-select' src={profilePicSrc} alt='{$_('profile_pic_alt')}'/>
 			</button>
+
 			<div class='grid gap-05'>
 				<h1 class='name'>{$_('my_name')}</h1>
+
 				<div class='professions flex flex-center-y list gap-05'>
 					{#each professions as pfsn, idx}
 						<span class='profession flex flex-center-y' style='animation-delay: {50 + idx * 100}ms'>
@@ -166,19 +186,37 @@
 						</span>
 					{/each}
 				</div>
-				<ul role='listbox' class='social-media flex flex-center-y gap-1'>
-					{#each $GlobalStore.socialMedia as {name, url}, idx}
-						<a href={url} target='_blank' role='listitem' style='animation-delay: {50 + idx * 100}ms' use:vibrateLink>
-							<svg class='logo icon-big' aria-hidden='true' focusable='false' role='presentation'>
-								<title>{name}</title>
-								<use xlink:href='#LOGO_{name}'/>
-							</svg>
-						</a>
+
+				<ul bind:this={socialMediaButtons} tabindex='-1' role='listbox' class='social-media flex flex-center-y gap-1'>
+					{#each $GlobalStore.socialMedia as {name, app, url}, idx}
+						{#if app}
+							<button role='listitem'
+							class='btn flex flex-center'
+							style='animation-delay: {50 + idx * 100}ms'
+							on:click={()=> GlobalStore.openSocialModal(idx, socialMediaButtons)}>
+								<svg class='icon icon-big' aria-hidden='true' focusable='false' role='presentation'>
+									<title>{name}</title>
+									<use xlink:href='#LOGO_{name}'/>
+								</svg>
+							</button>
+						{:else}
+							<a href={url} target='_blank' role='listitem'
+							class='btn flex flex-center'
+							style='animation-delay: {50 + idx * 100}ms'
+							use:vibrateLink>
+								<svg class='logo icon-big' aria-hidden='true' focusable='false' role='presentation'>
+									<title>{name}</title>
+									<use xlink:href='#LOGO_{name}'/>
+								</svg>
+							</a>
+						{/if}
 					{/each}
 				</ul>
 			</div>
 		</div>
+
 		<p class='text-block'>{$_('about_me')}</p>
+
 		<nav>
 			<ul class='grid gap-1 question-list' role='list'>
 				{#each questions as questID, idx}
@@ -246,13 +284,14 @@
 			border-radius: .5em
 			box-shadow:
 				0 0 1px var(--shadow-ao-clr),
-				0 20px 40px -20px var(--shadow-hude-clr)
+				0 20px 40px -20px var(--shadow-huge-clr)
 			background-color: var(--bg-clr)
 			background-position: center
 			background-repeat: no-repeat
 			background-size: cover
 			transform-origin: top left
 			@media screen and (max-width: 600px)
+				transform-origin: top
 				width: 100%
 				height: 65%
 
@@ -284,13 +323,16 @@
 				will-change: transform, opacity, border-radius
 				@media screen and (max-width: 600px)
 					margin: auto
+			&:hover, &:focus
+				img
+					transform: scale(1.1)
+					border-radius: 10%
 			&.big-preview img
 				transition-duration: .6s
 				opacity: 0
-				transform: translate(5em, 3em) scale(1.2)
-			&:hover img
-				transform: scale(1.1)
-				border-radius: 10%
+				transform: translateY(6em) scale(1.25)
+				@media screen and (min-width: 600px)
+					transform: translate(5em, 3em) scale(1.2)
 		> .header
 			@media screen and (min-width: 600px)
 				grid-template-columns: auto 1fr
@@ -324,7 +366,7 @@
 			@media screen and (max-width: 599px)
 				justify-content: center
 				justify-items: center
-			> a
+			> .btn
 				display: inline-block
 				padding: .5em
 				opacity: .5
@@ -336,7 +378,7 @@
 					pointer-events: none
 					> *
 						fill: var(--font-base-clr) !important
-				&:hover
+				&:hover, &:focus
 					opacity: 1
 					transform: scale(1.5)
 				@media screen and (max-width: 600px)
@@ -373,10 +415,9 @@
 					text-decoration: none
 					line-height: 1.5
 					background-color: var(--fg-clr)
-					color: var(--font-heading-clr)
 					transition: var(--transition)
-					transition-property: box-shadow, transform, color
-					will-change: box-shadow, transform, color
+					transition-property: box-shadow, transform, color, background-color
+					will-change: box-shadow, transform, color, background-color
 					@media screen and (min-width: 600px)
 						font-size: 1.15em
 					@media screen and (max-width: 600px)
@@ -384,13 +425,17 @@
 					> q
 						&:before, &:after
 							opacity: .5
-					&:hover
+					&:hover, &:focus
 						z-index: 10
-						transform: scale(1.025) translate(0, -.5em)
 						box-shadow: var(--shadow-5)
-						color: var(--color-accent)
-						@media screen and (max-width: 1000px)
-							transform: scale(1.025) translate(0, -.5em)
+						background-color: var(--color-accent)
+						color: #fff
+						transform: scale(1.025) translate(0, -.5em)
+					&:hover:active
+						box-shadow: var(--shadow-0)
+						background-color: #27469b
+						color: #fff
+						transform: scale(0.99) translate(0, .15em)
 
 	@keyframes pictureInAnim
 		0%

@@ -1,5 +1,7 @@
 import {Readable, Writable, writable} from 'svelte/store'
-import type {SocialMediaItem} from './utils/types'
+import {vibrate} from './utils/misc'
+
+export type SocialMediaItem = {name: string, url: string, app?: string}
 
 type T_GlobalStore = {
 	a11y: {
@@ -12,6 +14,8 @@ type T_GlobalStore = {
 		stack: Array<string>
 	},
 	socialMedia: Array<SocialMediaItem>,
+	openedSocialModal: null|number
+	socialModalEl: HTMLElement
 }
 
 const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
@@ -30,14 +34,39 @@ class _GlobalStore implements Readable<T_GlobalStore> {
 			stack: [],
 		},
 		socialMedia: [
-			{name: 'GitHub',   url: 'https://github.com/DanielSharkov'},
-			{name: 'Codepen',  url: 'https://codepen.io/DanielSharkov'},
-			{name: 'Discord',  url: 'discord://discordapp.com/users/253168850969821184'},
-			{name: 'Telegram', url: 'https://t.me/danielsharkov'},
-			{name: 'Twitter',  url: 'https://twitter.com/Daniel_Sharkov'},
-			{name: 'Medium',   url: 'https://medium.com/@danielsharkov'},
-			{name: 'Quora',    url: 'https://quora.com/profile/Daniel-Sharkov-1'},
+			{
+				name: 'GitHub',
+				url: 'https://github.com/DanielSharkov',
+			},
+			{
+				name: 'Codepen',
+				url: 'https://codepen.io/DanielSharkov',
+			},
+			{
+				name: 'Discord',
+				url: 'https://discordapp.com/users/253168850969821184',
+				app: 'discord://discordapp.com/users/253168850969821184',
+			},
+			{
+				name: 'Telegram',
+				url: 'https://t.me/danielsharkov',
+				app: 'tg://t.me/danielsharkov',
+			},
+			{
+				name: 'Twitter',
+				url: 'https://twitter.com/Daniel_Sharkov',
+			},
+			{
+				name: 'Medium',
+				url: 'https://medium.com/@danielsharkov',
+			},
+			{
+				name: 'Quora',
+				url: 'https://quora.com/profile/Daniel-Sharkov-1',
+			},
 		],
+		openedSocialModal: null,
+		socialModalEl: null,
 	})
 	readonly subscribe = this.#store.subscribe
 
@@ -76,23 +105,15 @@ class _GlobalStore implements Readable<T_GlobalStore> {
 			{passive: true},
 		)
 
-		const ua = window.navigator.userAgent
-		const isIPhone = (
-			/iP(ad|hone)/i.test(ua) && /WebKit/i.test(ua) &&
-			!ua.match(/CriOS/i)
-		)
-		const isIPad = (
-			/WebKit/i.test(ua) && navigator.maxTouchPoints &&
-			navigator.maxTouchPoints > 2
-		)
-		if (isIPhone || isIPad) {
-			this.#store.update((store)=> {
-				store.socialMedia.find(
-					(s) => s.name === 'Discord'
-				).url = 'https://discordapp.com/users/253168850969821184'
-				return store
-			})
-		}
+		// const ua = window.navigator.userAgent
+		// const isIPhone = (
+		// 	/iP(ad|hone)/i.test(ua) && /WebKit/i.test(ua) &&
+		// 	!ua.match(/CriOS/i)
+		// )
+		// const isIPad = (
+		// 	/WebKit/i.test(ua) && navigator.maxTouchPoints &&
+		// 	navigator.maxTouchPoints > 2
+		// )
 	}
 
 	lockScroll(id: string) {
@@ -140,6 +161,41 @@ class _GlobalStore implements Readable<T_GlobalStore> {
 		})
 		if (err !== null) throw err
 		return true
+	}
+
+	private socialModalEl: HTMLElement
+	setSocialModalEl(el: HTMLElement): void {
+		this.#store.update((store)=> {
+			store.socialModalEl = el
+			return store
+		})
+	}
+
+	private socialButtonsEl: HTMLElement
+	openSocialModal(idx: number, socialButtonsEl?: HTMLElement): void {
+		vibrate()
+		this.#store.update((store)=> {
+			store.openedSocialModal = idx
+			return store
+		})
+		this.socialButtonsEl = socialButtonsEl
+		if (this.socialModalEl) {
+			this.socialModalEl.focus()
+		}
+		this.lockScroll('social_media_modal')
+	}
+
+	closeSocialModal(): void {
+		vibrate()
+		this.#store.update((store)=> {
+			store.openedSocialModal = null
+			return store
+		})
+		if (this.socialButtonsEl) {
+			this.socialButtonsEl.focus()
+		}
+		this.socialButtonsEl = undefined
+		this.unlockScroll('social_media_modal')
 	}
 }
 

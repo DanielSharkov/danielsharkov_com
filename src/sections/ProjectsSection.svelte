@@ -10,14 +10,16 @@
 
 	let clickedProject = null
 	function closeProject() {
-		if (clickedProject === null) return
+		if (clickedProject !== null) {
+			GlobalStore.unlockScroll(LockScroll_SectionModal)
+		}
 		removeQuery('project')
-		GlobalStore.unlockScroll(LockScroll_SectionModal)
 		clickedProject = null
 	}
 
 	function openProject(idx: number) {
 		clickedProject = idx
+		clickedProject = clickedProject
 		setQuery(
 			'project', projects[clickedProject].id,
 			{
@@ -38,27 +40,44 @@
 	}
 </script>
 
-{#if clickedProject !== null}
-	<ProjectDetails on:close={closeProject} projectIndex={clickedProject}/>
-{/if}
+<div id='ProjectDetailsContainer' class='modal-container' class:active={clickedProject !== null}>
+	{#if clickedProject !== null}
+		<ProjectDetails
+			bind:projectIndex={clickedProject}
+			on:close={closeProject}
+		/>
+	{/if}
+</div>
 
 <section>
 	<h1 id='projects' class='display-3'>{$_('section.projects.title')}</h1>
 	<div class='projects grid' role='feed'>
-		{#each projects as _, pIdx}
+		{#each projects as _, idx}
 			<ProjectPreviewTile
-				projectIndex={pIdx}
-				on:open={()=> openProject(pIdx)}
+				projectIndex={idx}
+				on:open={()=> openProject(idx)}
 			/>
 		{/each}
 	</div>
 </section>
 
 <style lang='stylus'>
+	#ProjectDetailsContainer
+		transition: .5s var(--transition-easing)
+		transition-property: background-color
+		will-change: background-color
+		@media screen and (min-width: 600px)
+			padding: 1rem
+		@media screen and (min-width: 1400px)
+			padding: 2rem
+		&.active
+			background-color: var(--overlay-bg)
+
 	h1
 		padding: 1rem 3rem 0 3rem
 		@media screen and (max-width: 600px)
 			padding: 1rem
+
 	.projects
 		margin-bottom: 4rem
 		@media screen and (min-width: 1600px)

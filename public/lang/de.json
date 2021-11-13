@@ -58,7 +58,9 @@
 			}
 		},
 		"contact": {
-			"title": "Du möchtest mich gerne erreichen?"
+			"title": "Du möchtest mich gerne erreichen?",
+			"social_open_app": "App direkt öffnen",
+			"social_open_link": "Link öffnen"
 		}
 	},
 

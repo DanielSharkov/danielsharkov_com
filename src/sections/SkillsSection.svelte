@@ -5,13 +5,17 @@
 	</div>
 	<ul class='technologies grid'>
 		<div class='background-seperators flex'>
-			{#each Array(currentYear - careerBegin + 1) as _}
+			{#each Array(yearsSinceCareerBegin) as _}
 				<div class='period'/>
 			{/each}
 		</div>
-		<div class='header flex flex-align-end-y'>
-			{#each Array(currentYear - careerBegin + 1) as _, idx}
-				<span class='period flex flex-center'>{careerBegin + idx}</span>
+		<div class='header flex flex-center-y'>
+			{#each Array(yearsSinceCareerBegin) as _, idx}
+				{#if showHeaderYear(idx)}
+					<span class='period flex flex-center'>{careerBegin + idx}</span>
+				{:else}
+					<span class='period placeholder'></span>
+				{/if}
 			{/each}
 		</div>
 		{#each Object.keys(technologies) as techno}
@@ -65,14 +69,24 @@
 	import {vibrateLink} from '../utils/misc'
 
 	const currentYear = Number(new Date().getFullYear())
+	const yearsSinceCareerBegin = currentYear - careerBegin + 1
 
 	function technoCareerSpan(techno, [begin, end]) {
-		let endPos = currentYear - careerBegin + 1
+		let endPos = yearsSinceCareerBegin
 		if (end !== null) endPos = endPos - (currentYear - end)
 		return (
 			`background-color: ${techno.color};` +
 			`grid-column-start: ${begin - careerBegin + 1};` +
 			`grid-column-end: ${endPos};`
+		)
+	}
+
+	function showHeaderYear(idx: number): boolean {
+		return (
+			idx === 0 || idx+1 === yearsSinceCareerBegin
+		) || (
+			(careerBegin + idx) % 5 === 0 &&
+			idx > 1 && idx < yearsSinceCareerBegin-2
 		)
 	}
 </script>
@@ -109,25 +123,26 @@
 			position: sticky
 			position: -webkit-sticky
 			top: -1px
-			margin-bottom: 1em
-			padding: 3em 0 .5em 0
+			margin: 0 -1.5em 1em -1.5em
+			padding: 3em 1.5em .5em 1.5em
 			background-color: var(--bg-clr-085)
 			justify-content: space-between
 			border-bottom: solid 1px var(--font-base-clr-005)
-			box-shadow: 0 10px 10px -8px var(--shadow-clr)
+			box-shadow: 0 20px 10px -20px var(--shadow-clr)
 			-webkit-backdrop-filter: blur(8px) saturate(3)
 			backdrop-filter: blur(8px) saturate(3)
 			color: var(--font-heading-clr)
-			@media screen and (max-width: 1000px)
-				padding: 1.5em 0 .5em 0
 			.period
 				width: 1px
 				&:first-child, &:last-child
 					font-weight: 500
 				&:not(:first-child):not(:last-child)
 					color: var(--font-base-clr-075)
-					@media screen and (max-width: 1000px)
-						font-size: .65em
+				@media screen and (max-width: 1000px)
+					font-size: .75em
+				&.placeholder
+					height: 1em
+					border-right: solid 1px var(--font-base-clr-025)
 		> .techno
 			> .header
 				padding: 1em
@@ -158,7 +173,7 @@
 						stroke: var(--font-base-clr-05)
 					&:hover
 						background-color: var(--font-base-clr-015)
-					&:active
+					&:active, &:focus
 						background-color: var(--color-accent-01)
 						.icon.stroke > *
 							stroke: var(--color-accent)

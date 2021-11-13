@@ -1,7 +1,7 @@
 # Article soon available...
 
 ## Shortly summarized:
-Basicly it's about the website you're currently visiting (if you maybe didn't notice :D). I'll tell you soon more about it.
+Basicly it's about the website you're currently visiting (if you maybe didn't notice 😃). I'll tell you soon more about it.
 
 ### Little tips - Cool features:
 - i18n Translation with automatic detection of the locale (EN or DE)

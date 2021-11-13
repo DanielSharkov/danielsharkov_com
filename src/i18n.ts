@@ -1,5 +1,5 @@
 import {init, register, locale, getLocaleFromNavigator} from 'svelte-i18n'
-import {derived, Readable, writable, get as getStore, Writable} from 'svelte/store'
+import {derived, Readable, writable, Writable} from 'svelte/store'
 import {getQuery, removeQuery, setQuery} from './utils/url_handler'
 
 export enum Locale {
@@ -50,13 +50,13 @@ class _i18n implements Readable<Locale> {
 	constructor() {
 		for (const l of Object.keys(localeMap)) {
 			register(l, async ()=> {
-				const resp = await fetch(`locale/${localeMap[l]}.json`)
+				const resp = await fetch(`lang/${localeMap[l]}.json`)
 				return await resp.json()
 			})
 		}
 		let locStore = this._readLocalStore()
 		if (locStore === null) {
-			locStore = getQuery('locale') as Locale
+			locStore = getQuery('lang') as Locale
 		}
 
 		init({fallbackLocale: 'en'})
@@ -75,15 +75,15 @@ class _i18n implements Readable<Locale> {
 		}
 		this.#store.set(l)
 		locale.set(l)
-		document.documentElement.setAttribute('locale', l)
+		document.documentElement.setAttribute('lang', l)
 
 		if (!localStorage && LocaleList.includes(l)) {
 			setQuery(
-				'locale', l,
+				'lang', l,
 				window.history?.state, window.history?.state?.title, true,
 			)
 		} else {
-			removeQuery('locale')
+			removeQuery('lang')
 		}
 
 		this._syncLocalStore(l)

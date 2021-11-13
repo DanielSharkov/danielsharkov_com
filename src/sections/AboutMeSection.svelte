@@ -108,14 +108,16 @@
 				border-radius: .1rem
 			&.tilt-left
 				transform: rotate(-4deg)
-				&:hover
+				&:hover, &:focus
 					transform: rotate(2deg) scale(1.1)
 			&.tilt-right
 				transform: rotate(4deg)
-				&:hover
+				&:hover, &:focus
 					transform: rotate(-2deg) scale(1.1)
-			&:hover
+			&:hover, &:focus
 				box-shadow: var(--shadow-0), 0 20px 30px -16px var(--shadow-huge-clr)
+		a:focus
+			color: var(--color-accent)
 		@media screen and (min-width: 1000px)
 			grid-template-columns: auto 1fr
 			grid-gap: 2rem

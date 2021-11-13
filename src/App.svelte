@@ -9,7 +9,8 @@
 	import {cubicInOut} from 'svelte/easing'
 	import {MetaTags} from 'svelte-meta-tags'
 	import {isLoading, _} from 'svelte-i18n'
-	import {i18n, LocaleList, LocaleFullName, isInvalidLocale} from './i18n'
+	import {i18n, LocaleList, LocaleFullName, isInvalidLocale, Locale} from './i18n'
+	import {modalBgAnim, socialModalAnim, vibrate} from './utils/misc'
 
 	const pageScroll = {y: 0, x: 0}
 	function scrollingApp(e): void {
@@ -30,26 +31,36 @@
 	}
 
 	let selectingLang = false
-	function closeLangSelect() {
+	function closeLangSelect(): void {
 		selectingLang = false
 	}
-	function openLangSelect() {
+	function openLangSelect(): void {
 		selectingLang = true
 	}
-	function toggleLangSelect() {
+	function toggleLangSelect(): void {
+		vibrate()
 		if (selectingLang) closeLangSelect()
 		else openLangSelect()
+	}
+	function selectLang(locale: Locale): void {
+		vibrate()
+		i18n.switch(locale)
+		closeLangSelect()
+	}
+
+	let socialModalContainer: HTMLElement
+	$:GlobalStore.setSocialModalEl(socialModalContainer)
+	$:selectedSocial = (
+		$GlobalStore.openedSocialModal !== null &&
+		$GlobalStore.socialMedia[$GlobalStore.openedSocialModal]
+	)
+
+	function closeSocialModal() {
+		GlobalStore.closeSocialModal()
 	}
 </script>
 
 
-
-<svelte:head>
-	<link rel='preconnect' href='https://fonts.googleapis.com'/>
-	<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin='true'/>
-	<link href='https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700&display=swap' rel='stylesheet'>
-	<link href='https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700&display=swap' rel='stylesheet'/>
-</svelte:head>
 
 <svg id='AppIcons'>
 	<symbol id='LOGO_GitHub'>
@@ -353,7 +364,7 @@
 {:else if $isInvalidLocale}
 	<div id='InvalidLocaleSelect' class='flex flex-center gap-1'>
 		{#each LocaleList as locale}
-			<button class='option flex nowrap flex-center-y gap-05' on:click={()=> i18n.switch(locale)}>
+			<button class='option flex nowrap flex-center-y gap-05' on:click={()=> selectLang(locale)}>
 				<svg class='flag icon icon-large' aria-hidden='true' focusable='false' role='presentation'>
 					<title>{LocaleFullName[locale]} Flag</title>
 					<use xlink:href='#FLAG_{locale}'/>
@@ -366,26 +377,6 @@
 	<MetaTags
 		title={$_('page_title')}
 		description={$_('about_me')}
-		additionalLinkTags={[
-			{rel: 'icon', href: 'favicon.png'},
-			{rel: 'apple-touch-icon', href: 'logo/64x64.png'},
-			{rel: 'apple-touch-icon', sizes: '128x128', href: 'logo/128x128.png'},
-			{rel: 'apple-touch-icon', sizes: '192x192', href: 'logo/192x192.png'},
-			{rel: 'apple-touch-icon', sizes: '256x256', href: 'logo/256x256.png'},
-			{rel: 'apple-touch-icon', sizes: '512x512', href: 'logo/512x512.png'},
-			{rel: 'fluid-icon', type: 'image/png', href: 'logo/512x512.png'},
-			{rel: 'manifest', href: 'manifest.json'},
-			{rel: 'mask-icon', href: 'logo/vector.svg', color: '#b8a66a'},
-		]}
-		additionalMetaTags={[
-			{name: 'theme-color', content: '#b8a66a'},
-			{name: 'msapplication-TileColor', content: '#b8a66a'},
-			{name: 'msapplication-navbutton-color', content: '#b8a66a'},
-			{name: 'apple-mobile-web-app-status-bar-style', content: '#b8a66a'},
-			{name: 'apple-touch-fullscreen', content: 'yes'},
-			{name: 'apple-mobile-web-app-capable', content: 'yes'},
-			{name: 'application-name', content: 'Daniel Sharkov com'},
-		]}
 		twitter={{
 			handle: '@Daniel_Sharkov',
 			site: '@Daniel_Sharkov',
@@ -424,7 +415,7 @@
 	reduced-motion={$GlobalStore.a11y.reducedMotion}
 	more-contrast={$GlobalStore.a11y.moreContrast}>
 		<span id='BetaLabel'>{$_('b_e_t_a')}</span>
-		<div id='AppLangSelect' class:active={selectingLang}>
+		<div id='AppLangSelect' class:active={selectingLang} tabindex={selectingLang ? 1:-1}>
 			<button class='selected gap-1 flex flex-center' on:click={toggleLangSelect}>
 				<svg class='icon icon-default fill' fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
 					<path d='M10.72 12.464L8.62545 10.448L8.65818 10.432C10.0483 8.9241 11.0868 7.13894 11.7018 5.2H14.0909V3.6H8.36364V2H6.72727V3.6H1V5.2H10.1473C9.57977 6.78406 8.69529 8.24175 7.54545 9.488C6.79634 8.67616 6.15827 7.7726 5.64727 6.8H4.01091C4.61636 8.096 5.43455 9.344 6.46545 10.448L2.29273 14.464L3.45455 15.6L7.54545 11.6L10.0818 14.08L10.7036 12.464H10.72ZM15.3182 8.4H13.6818L10 18H11.6364L12.5527 15.6H16.4473L17.3636 18H19L15.3182 8.4V8.4ZM13.1745 14L14.5 10.528L15.8255 14H13.1745V14Z'/>
@@ -436,10 +427,7 @@
 			</button>
 			<div class='options grid gap-05'>
 				{#each LocaleList as locale}
-					<button class='option flex nowrap flex-center-y gap-1' class:active={locale === $i18n} on:click={()=> {
-						i18n.switch(locale)
-						closeLangSelect()
-					}}>
+					<button class='option flex nowrap flex-center-y gap-1' tabindex={selectingLang ? 1:-1} class:active={locale === $i18n} on:click={()=> selectLang(locale)}>
 						<svg class='flag icon icon-large' aria-hidden='true' focusable='false' role='presentation'>
 							<title>{LocaleFullName[locale]} Flag</title>
 							<use xlink:href='#FLAG_{locale}'/>
@@ -449,11 +437,38 @@
 				{/each}
 			</div>
 		</div>
+
 		<LandingSection on:goToSection={goToSection}/>
 		<ProjectsSection/>
 		<SkillsSection/>
 		<AboutMeSection/>
 		<FooterSection/>
+
+		<div id='SocialModal'
+		bind:this={socialModalContainer}
+		tabindex='-1'
+		class='modal-container flex flex-center'
+		class:active={$GlobalStore.openedSocialModal !== null}>
+			{#if $GlobalStore.openedSocialModal !== null}
+				<div
+					class='modal-bg'
+					transition:modalBgAnim={250}
+					on:click={closeSocialModal}
+				/>
+				<div class='modal grid gap-05' transition:socialModalAnim>
+					<h1 class='name'>{selectedSocial.name}</h1>
+					<a href={selectedSocial.app} target='_blank' class='btn open-app flex flex-center'>
+						{$_('section.contact.social_open_app')}
+					</a>
+					<a href={selectedSocial.url} target='_blank' class='btn open-link flex flex-center'>
+						{$_('section.contact.social_open_link')}
+					</a>
+					<button class='btn close flex flex-center' on:click={closeSocialModal}>
+						{$_('close')}
+					</button>
+				</div>
+			{/if}
+		</div>
 	</main>
 {/if}
 

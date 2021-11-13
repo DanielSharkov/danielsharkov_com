@@ -1,430 +1,427 @@
-<div id='Project_Details_Container'>
-	<div class='bg' transition:bgTrans/>
-	<div id='Project_Details_Modal' class='grid' role='article' transition:modalTrans class:no-about={project.about === null}>
-		<button class='close-modal flex flex-center' on:click={closeModal}>
-			<svg class='icon stroke icon-big' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation'>
-				<path d='M10 110l50-50m0 0l50-50M60 60l50 50M60 60L10 10' stroke-width='.25rem' stroke-linecap='round' stroke-linejoin='round'/>
-			</svg>
-		</button>
-		<div class='image-container flex flex-center block-select'
-		role='img'
-		class:no-image={!project.cover}
-		class:dark-theme={project.darkTheme}
-		style={customGradientBG}>
-			{#if project.cover}
-				<div class='{$GlobalStore.a11y.darkMode ? 'dark':'light'} flex flex-center'>
-					{#if $GlobalStore.a11y.darkMode && project.darkTheme}
-						{#if $lazyloader.status === LazyLoadStatus.DONE}
-							<div
-								class='bg-cover'
-								style='background-image: url(projects/{project.id}/cover_dark.png)'
-							/>
-							<img
-								class='image'
-								src='projects/{project.id}/cover_dark.png'
-								alt='{project.id} cover'
-							/>
-						{:else}
-							<div
-								class='thumb bg-cover'
-								style='background-image: url(projects/{project.id}/thumbnail_dark.jpg)'
-							/>
-							<img
-								class='thumb image'
-								src='projects/{project.id}/thumbnail_dark.jpg'
-								alt='{project.id} dark thumbnail'
-							/>
-							<div class='lazyloader flex flex-center'>
-								{#if $lazyloader.status === LazyLoadStatus.LOADING}
-									<svg class='icon icon-load icon-large fill' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' preserveAspectRatio='xMidYMid'>
-										<g transform='rotate(0 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.9166666666666666s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(30 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.8333333333333334s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(60 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.75s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(90 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.6666666666666666s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(120 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.5833333333333334s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(150 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.5s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(180 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.4166666666666667s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(210 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.3333333333333333s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(240 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.25s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(270 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.16666666666666666s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(300 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.08333333333333333s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(330 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='0s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-									</svg>
-								{:else if $lazyloader.status === LazyLoadStatus.ERR}
-									<svg class='icon icon-error icon-large fill' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='none'>
-										<path d='M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z'/>
-									</svg>
-								{/if}
-							</div>
-						{/if}
+<div id='Project_Details_Modal' class='grid' role='article' transition:projectModalAnim class:no-about={project.about === null}>
+	<button class='close-modal flex flex-center' on:click={closeModal}>
+		<svg class='icon stroke icon-big' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation'>
+			<path d='M10 110l50-50m0 0l50-50M60 60l50 50M60 60L10 10' stroke-width='.25rem' stroke-linecap='round' stroke-linejoin='round'/>
+		</svg>
+	</button>
+	<div class='image-container flex flex-center block-select'
+	role='img'
+	class:no-image={!project.cover}
+	class:dark-theme={project.darkTheme}
+	style={customGradientBG}>
+		{#if project.cover}
+			<div class='{$GlobalStore.a11y.darkMode ? 'dark':'light'} flex flex-center'>
+				{#if lazyloader !== undefined && $GlobalStore.a11y.darkMode && project.darkTheme}
+					{#if $lazyloader.status === LazyLoadStatus.DONE}
+						<div
+							class='bg-cover'
+							style='background-image: url(projects/{project.id}/cover_dark.png)'
+						/>
+						<img
+							class='image'
+							src='projects/{project.id}/cover_dark.png'
+							alt='{project.id} cover'
+						/>
 					{:else}
-						{#if $lazyloader.status === LazyLoadStatus.DONE}
-							<div
-								class='bg-cover'
-								style='background-image: url(projects/{project.id}/cover.png)'
-							/>
-							<img
-								class='image'
-								src='projects/{project.id}/cover.png'
-								alt='{project.id} cover'
-							/>
-						{:else}
-							<div
-								class='thumb bg-cover'
-								style='background-image: url(projects/{project.id}/thumbnail.jpg)'
-							/>
-							<img
-								class='thumb image'
-								src='projects/{project.id}/thumbnail.jpg'
-								alt='{project.id} thumbnail'
-							/>
-							<div class='lazyloader flex flex-center'>
-								{#if $lazyloader.status === LazyLoadStatus.LOADING}
-									<svg class='icon icon-load icon-large fill' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' preserveAspectRatio='xMidYMid'>
-										<g transform='rotate(0 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.9166666666666666s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(30 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.8333333333333334s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(60 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.75s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(90 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.6666666666666666s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(120 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.5833333333333334s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(150 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.5s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(180 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.4166666666666667s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(210 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.3333333333333333s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(240 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.25s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(270 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.16666666666666666s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(300 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.08333333333333333s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-										<g transform='rotate(330 50 50)'>
-											<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
-												<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='0s' repeatCount='indefinite'/>
-											</rect>
-										</g>
-									</svg>
-								{:else if $lazyloader.status === LazyLoadStatus.ERR}
-									<svg class='icon icon-error icon-large fill' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='none'>
-										<path d='M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z'/>
-									</svg>
-								{/if}
-							</div>
-						{/if}
-					{/if}
-				</div>
-			{:else if project.about === null}
-				<svg class='no-image icon' fill='none' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'>
-					<path d='M84.2922 34.7947L84.9993 35.5018L120.855 -0.353501L120.147 -1.06061L84.2922 34.7947Z' class='fill' opacity='.1'/>
-					<path d='M85.5569 84.9356L84.8498 85.6427L119.562 120.355L120.269 119.647L85.5569 84.9356Z' class='fill' opacity='.1'/>
-					<path d='M35.5018 84.9993L34.7947 84.2922L-0.0606959 119.148L0.646411 119.855L35.5018 84.9993Z' class='fill' opacity='.1'/>
-					<path d='M35.3523 36.1452L36.0594 35.4381L0.0606224 -0.560669L-0.646484 0.146438L35.3523 36.1452Z' class='fill' opacity='.1'/>
-					<path d='M89.5 46V77C89.5 77.8284 88.8284 78.5 88 78.5H32C31.1716 78.5 30.5 77.8284 30.5 77V46C30.5 45.1716 31.1716 44.5 32 44.5H44.6667C45.6759 44.5 46.5862 43.8932 46.9744 42.9615L49.6987 36.4231C49.9316 35.8641 50.4778 35.5 51.0833 35.5H53.5H60H66.5H68.9167C69.5222 35.5 70.0684 35.8641 70.3013 36.4231L73.0256 42.9615C73.4138 43.8932 74.3241 44.5 75.3333 44.5H88C88.8284 44.5 89.5 45.1716 89.5 46Z' opacity='.5' class='stroke'/>
-					<circle cx='60' cy='60' r='9.5' opacity='.5' class='stroke'/>
-				</svg>
-			{/if}
-		</div>
-		<div class='header grid gap-2'>
-			<div class='left-piece grid gap-1'>
-				<h1 class='name'>{$_('project.' + project.id)}</h1>
-				<div class='used-technologies flex list gap-05' role='listbox'>
-					{#each project.usedTechnologies as techno}
-						<a href={technologies[techno].link} target='_blank' role='listitem' class='techno flex flex-center gap-05' use:vibrateLink>
-							<div
-								class='color'
-								style='background-color: {technologies[techno].color}'
-							/>
-							{#if technologies[techno].icon}
-								<svg class='logo' aria-hidden='true' focusable='false' role='presentation'>
-									<title>{techno} Logo</title>
-									<use xlink:href='#LOGO_{techno}'/>
+						<div
+							class='thumb bg-cover'
+							style='background-image: url(projects/{project.id}/thumbnail_dark.jpg)'
+						/>
+						<img
+							class='thumb image'
+							src='projects/{project.id}/thumbnail_dark.jpg'
+							alt='{project.id} dark thumbnail'
+						/>
+						<div class='lazyloader flex flex-center'>
+							{#if $lazyloader.status === LazyLoadStatus.LOADING}
+								<svg class='icon icon-load icon-large fill' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' preserveAspectRatio='xMidYMid'>
+									<g transform='rotate(0 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.9166666666666666s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(30 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.8333333333333334s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(60 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.75s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(90 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.6666666666666666s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(120 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.5833333333333334s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(150 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.5s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(180 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.4166666666666667s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(210 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.3333333333333333s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(240 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.25s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(270 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.16666666666666666s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(300 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.08333333333333333s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(330 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='0s' repeatCount='indefinite'/>
+										</rect>
+									</g>
 								</svg>
-							{:else if technologies[techno].image}
-								<img
-									class='logo'
-									src='technologies/logo_{techno}.png'
-									alt='{techno} Logo'
-								/>
+							{:else if $lazyloader.status === LazyLoadStatus.ERR}
+								<svg class='icon icon-error icon-large fill' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='none'>
+									<path d='M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z'/>
+								</svg>
 							{/if}
-							<span class='name'>
-								{technologies[techno].name}
-							</span>
-						</a>
-					{/each}
-				</div>
-			</div>
-			<div class='right-piece flex' class:single-btn={anyHeaderBtnActive} class:no-btn={noHeaderBtn}>
-				{#if Array.isArray(project.otherLinks)}
-					{#each project.otherLinks as link}
-						<a href={link.url} role='button' class='other-link flex flex-center gap-05' target='_blank' use:vibrateLink>
-							<svg class='icon icon-default stroke' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none' xmlns='http://www.w3.org/2000/svg'>
-								<path d='M34.2893 54.7108L19.0614 69.9387C10.6513 78.3489 10.6513 91.9844 19.0614 100.395C27.4716 108.805 41.1071 108.805 49.5173 100.395L64.7452 85.1667C73.1553 76.7565 73.1553 63.121 64.7452 54.7108M85.0491 64.8628L100.277 49.6348C108.687 41.2247 108.687 27.5891 100.277 19.179C91.8669 10.7688 78.2313 10.7688 69.8212 19.179L54.5932 34.4069C52.0762 36.924 50.3124 39.9091 49.302 43.0821C46.9364 50.5109 48.7001 58.9697 54.5932 64.8628' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
-							</svg>
-							<span class='label'>{$_(link.name)}</span>
-						</a>
-					{/each}
-				{/if}
-				{#if project.codeUrl}
-					<a href={project.codeUrl} role='button' class='open-source-code flex flex-center gap-05' target='_blank' use:vibrateLink>
-						<svg class='icon fill icon-medium' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none' xmlns='http://www.w3.org/2000/svg'>
-							<path d='M42.0439 53.512L17.2039 62.8L42.0439 72.088V79.576L8.85188 66.688V58.912L42.0439 46.024V53.512ZM68.2406 27.376H76.3046L52.5446 95.2H44.4806L68.2406 27.376ZM111.231 58.912V66.688L78.0394 79.576V72.088L102.879 62.8L78.0394 53.512V46.024L111.231 58.912Z'/>
-						</svg>
-						<span class='label'>{$_('project_source_code')}</span>
-					</a>
-				{/if}
-				{#if project.codeUrl === null}
-					<div class='closed-source flex flex-center gap-05'>
-						<svg class='icon stroke icon-default' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none' xmlns='http://www.w3.org/2000/svg'>
-							<path d='M16.5 53C16.5 49.4101 19.4101 46.5 23 46.5H60H97C100.59 46.5 103.5 49.4101 103.5 53V97C103.5 100.59 100.59 103.5 97 103.5H23C19.4101 103.5 16.5 100.59 16.5 97V53Z' stroke-width='.5rem'/>
-							<path d='M78 45V33C78 23.0589 69.9411 15 60 15V15C50.0589 15 42 23.0589 42 33V45' stroke-width='.5rem'/>
-							<line x1='60' y1='67' x2='60' y2='83' stroke-width='.6rem' stroke-linecap='round' stroke-linejoin='round'/>
-						</svg>
-						<span class='label'>{$_('project_closed_source')}</span>
-					</div>
-				{/if}
-				{#if project.projectUrl !== null && project.projectUrl !== 'COMING_SOON'}
-					<a href={project.projectUrl} role='button' class='open-project flex flex-center gap-05' target='_blank' use:vibrateLink>
-						<div class='shine'/>
-						<span class='label'>{$_('open_project')}</span>
-						<svg class='icon stroke icon-medium' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none' xmlns='http://www.w3.org/2000/svg'>
-							<path d='M57.7778 25H35C29.4772 25 25 29.4772 25 35V85C25 90.5228 29.4772 95 35 95H85C90.5228 95 95 90.5228 95 85V62.2222' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
-							<path d='M105 15L60 60M105 15L105 45M105 15L75 15' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
-						</svg>
-					</a>
-				{:else if project.projectUrl === 'COMING_SOON'}
-					<div href={project.projectUrl} class='open-project-soon flex flex-center gap-05'>
-						<span class='label'>{$_('project_coming_soon')}</span>
-						<svg class='icon stroke icon-medium' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none' xmlns='http://www.w3.org/2000/svg'>
-							<circle cx='60' cy='60' r='53' stroke-width='.5rem'/>
-							<path d='M60 23V60L77 73' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
-						</svg>
-					</div>
-				{/if}
-			</div>
-		</div>
-		{#if project.about}
-			<div class='about' class:loading={projectAbout !== null}>
-				<hr class='seperator top'/>
-				{#if projectAbout !== null && !(projectAbout instanceof Error)}
-					{#if project.locale.length > 1}
-						<div class='load-different-locale flex flex-center-y'>
-							<div class='disclosure'>
-								<button class='loaded-translation flex nowrap flex-center-y gap-05' class:active={isSelectingDifferentTranslation} on:click={toggleDifferentTranslations}>
-									<svg class='icon icon-small fill' fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-										<path d='M10.72 12.464L8.62545 10.448L8.65818 10.432C10.0483 8.9241 11.0868 7.13894 11.7018 5.2H14.0909V3.6H8.36364V2H6.72727V3.6H1V5.2H10.1473C9.57977 6.78406 8.69529 8.24175 7.54545 9.488C6.79634 8.67616 6.15827 7.7726 5.64727 6.8H4.01091C4.61636 8.096 5.43455 9.344 6.46545 10.448L2.29273 14.464L3.45455 15.6L7.54545 11.6L10.0818 14.08L10.7036 12.464H10.72ZM15.3182 8.4H13.6818L10 18H11.6364L12.5527 15.6H16.4473L17.3636 18H19L15.3182 8.4V8.4ZM13.1745 14L14.5 10.528L15.8255 14H13.1745V14Z'/>
-									</svg>
-									<span class='label'>{$_('project_load_different_translation')}</span>
-									<svg class='icon icon-small stroke' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'>
-										<path d='M18 39L60.4264 81.4264L102.853 39' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/>
-									</svg>
-								</button>
-								{#if isSelectingDifferentTranslation}
-									<div class='options grid gap-05'>
-										{#each project.locale as locale}
-											{#if locale !== loadedAboutTranslation}
-												<button class='option flex nowrap flex-center-y gap-05' on:click={()=> selectDifferentTranslation(locale)}>
-													<svg class='flag icon icon-large' aria-hidden='true' focusable='false' role='presentation'>
-														<title>{LocaleFullName[locale]} Flag</title>
-														<use xlink:href='#FLAG_{locale}'/>
-													</svg>
-													<span class='label'>{LocaleFullName[locale]}</span>
-												</button>
-											{/if}
-										{/each}
-									</div>
-								{/if}
-							</div>
 						</div>
 					{/if}
-					<div class='rtf-content'>{@html renderedRTF}</div>
-				{:else if !aboutAvailableInCurrentLocale && !isLoadingAbout}
-					<div class='not-available-in-locale text-center grid grid-center'>
-						{#if project.locale.length < 1}
-							<p class='no-translations'>
-								{$_('project_about_unavailable')}
-							</p>
-						{:else}
-							<p>{$_('project_about_only_available_in')}</p>
-							<div class='options'>
-								{#each project.locale as locale}
-									<button class='option flex nowrap flex-center-y gap-05' on:click={()=> fetchAbout(locale)}>
-										<svg class='flag icon icon-large' aria-hidden='true' focusable='false' role='presentation'>
-											<title>{LocaleFullName[locale]} Flag</title>
-											<use xlink:href='#FLAG_{locale}'/>
-										</svg>
-										<span class='label'>{LocaleFullName[locale]}</span>
-									</button>
-								{/each}
-							</div>
-						{/if}
-					</div>
-				{:else}
-					<div class='placeholder' class:error-placeholder={projectAbout instanceof Error}>
-						<h1>{$_('project_about_failed')}</h1>
-						<hr class='h1-border'>
-						<p class='i'>_</p>
-						<h3>_</h3>
-						<p class='ii'>_</p>
-						<p class='iii'>_</p>
-					</div>
-				{/if}
-				<hr class='seperator bot'/>
-			</div>
-			<div class='footer grid grid-center-y'>
-				<div class='share-post flex flex-center-y'>
-					<span class='label'>{$_('share')}:</span>
-					<button
-					role='button'
-					class='share-option flex flex-center gap-05 nowrap'
-					class:is-sharing={userIsSharingURL}
-					on:click={shareURL}>
-						<div class='status grid gap-05 grid-center-x' role='alert' class:active={userIsSharingURL}>
-							<span class='label'>
-								{#if shareURLWasCanceled}
-									{$_('copy_url_failed')}
-								{:else if shareURLWasSuccess}
-									{$_('copy_url_success')}
-								{:else}
-									{$_('copy_url_inprocess')}
-								{/if}
-							</span>
-							<StatusIcon
-								loading={userIsSharingURL}
-								failed={shareURLWasCanceled}
-								succeeded={shareURLWasSuccess}
-							/>
+				{:else if lazyloader !== undefined}
+					{#if $lazyloader.status === LazyLoadStatus.DONE}
+						<div
+							class='bg-cover'
+							style='background-image: url(projects/{project.id}/cover.png)'
+						/>
+						<img
+							class='image'
+							src='projects/{project.id}/cover.png'
+							alt='{project.id} cover'
+						/>
+					{:else}
+						<div
+							class='thumb bg-cover'
+							style='background-image: url(projects/{project.id}/thumbnail.jpg)'
+						/>
+						<img
+							class='thumb image'
+							src='projects/{project.id}/thumbnail.jpg'
+							alt='{project.id} thumbnail'
+						/>
+						<div class='lazyloader flex flex-center'>
+							{#if $lazyloader.status === LazyLoadStatus.LOADING}
+								<svg class='icon icon-load icon-large fill' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' preserveAspectRatio='xMidYMid'>
+									<g transform='rotate(0 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.9166666666666666s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(30 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.8333333333333334s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(60 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.75s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(90 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.6666666666666666s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(120 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.5833333333333334s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(150 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.5s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(180 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.4166666666666667s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(210 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.3333333333333333s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(240 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.25s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(270 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.16666666666666666s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(300 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='-0.08333333333333333s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+									<g transform='rotate(330 50 50)'>
+										<rect x='49' y='7' rx='0' ry='0' width='2' height='26'>
+											<animate attributeName='opacity' values='1;0' keyTimes='0;1' dur='1s' begin='0s' repeatCount='indefinite'/>
+										</rect>
+									</g>
+								</svg>
+							{:else if $lazyloader.status === LazyLoadStatus.ERR}
+								<svg class='icon icon-error icon-large fill' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='none'>
+									<path d='M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z'/>
+								</svg>
+							{/if}
 						</div>
+					{/if}
+				{/if}
+			</div>
+		{:else if project.about === null}
+			<svg class='no-image icon' fill='none' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'>
+				<path d='M84.2922 34.7947L84.9993 35.5018L120.855 -0.353501L120.147 -1.06061L84.2922 34.7947Z' class='fill' opacity='.1'/>
+				<path d='M85.5569 84.9356L84.8498 85.6427L119.562 120.355L120.269 119.647L85.5569 84.9356Z' class='fill' opacity='.1'/>
+				<path d='M35.5018 84.9993L34.7947 84.2922L-0.0606959 119.148L0.646411 119.855L35.5018 84.9993Z' class='fill' opacity='.1'/>
+				<path d='M35.3523 36.1452L36.0594 35.4381L0.0606224 -0.560669L-0.646484 0.146438L35.3523 36.1452Z' class='fill' opacity='.1'/>
+				<path d='M89.5 46V77C89.5 77.8284 88.8284 78.5 88 78.5H32C31.1716 78.5 30.5 77.8284 30.5 77V46C30.5 45.1716 31.1716 44.5 32 44.5H44.6667C45.6759 44.5 46.5862 43.8932 46.9744 42.9615L49.6987 36.4231C49.9316 35.8641 50.4778 35.5 51.0833 35.5H53.5H60H66.5H68.9167C69.5222 35.5 70.0684 35.8641 70.3013 36.4231L73.0256 42.9615C73.4138 43.8932 74.3241 44.5 75.3333 44.5H88C88.8284 44.5 89.5 45.1716 89.5 46Z' opacity='.5' class='stroke'/>
+				<circle cx='60' cy='60' r='9.5' opacity='.5' class='stroke'/>
+			</svg>
+		{/if}
+	</div>
+	<div class='header grid gap-2' bind:this={projectModalHeaderEl} tabindex='-1'>
+		<div class='left-piece grid gap-1'>
+			<h1 class='name'>{$_('project.' + project.id)}</h1>
+			<div class='used-technologies flex list gap-05' role='listbox'>
+				{#each project.usedTechnologies as techno}
+					<a href={technologies[techno].link} target='_blank' role='listitem' class='techno flex flex-center gap-05' use:vibrateLink>
+						<div
+							class='color'
+							style='background-color: {technologies[techno].color}'
+						/>
+						{#if technologies[techno].icon}
+							<svg class='logo' aria-hidden='true' focusable='false' role='presentation'>
+								<title>{techno} Logo</title>
+								<use xlink:href='#LOGO_{techno}'/>
+							</svg>
+						{:else if technologies[techno].image}
+							<img
+								class='logo'
+								src='technologies/logo_{techno}.png'
+								alt='{techno} Logo'
+							/>
+						{/if}
+						<span class='name'>
+							{technologies[techno].name}
+						</span>
+					</a>
+				{/each}
+			</div>
+		</div>
+		<div class='right-piece flex' class:single-btn={anyHeaderBtnActive} class:no-btn={noHeaderBtn}>
+			{#if Array.isArray(project.otherLinks)}
+				{#each project.otherLinks as link}
+					<a href={link.url} role='button' class='other-link flex flex-center gap-05' target='_blank' use:vibrateLink>
 						<svg class='icon icon-default stroke' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none' xmlns='http://www.w3.org/2000/svg'>
 							<path d='M34.2893 54.7108L19.0614 69.9387C10.6513 78.3489 10.6513 91.9844 19.0614 100.395C27.4716 108.805 41.1071 108.805 49.5173 100.395L64.7452 85.1667C73.1553 76.7565 73.1553 63.121 64.7452 54.7108M85.0491 64.8628L100.277 49.6348C108.687 41.2247 108.687 27.5891 100.277 19.179C91.8669 10.7688 78.2313 10.7688 69.8212 19.179L54.5932 34.4069C52.0762 36.924 50.3124 39.9091 49.302 43.0821C46.9364 50.5109 48.7001 58.9697 54.5932 64.8628' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
 						</svg>
-						<span class='label'>{$_('copy_url')}</span>
-					</button>
-					<button
-					role='button'
-					class='share-option flex flex-center gap-05 nowrap'
-					class:is-sharing={userIsSharing}
-					on:click={shareThis}>
-						<div class='status grid gap-05 grid-center-x' role='alert' class:active={userIsSharing}>
-							<span class='label'>
-								{#if shareNotSupported}
-									{$_('share_not_supported')}
-								{:else if shareWasCanceled}
-									{$_('share_canceled')}
-								{:else if shareWasSuccess}
-									{$_('shared')}
-								{:else}
-									{$_('sharing')}
-								{/if}
-							</span>
-							<StatusIcon
-								loading={userIsSharing}
-								failed={shareWasCanceled || shareNotSupported}
-								succeeded={shareWasSuccess}
-							/>
-						</div>
-						<svg class='icon stroke icon-default' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none'>
-							<path d='M45.25 40H35C29.4772 40 25 44.4772 25 50V100C25 105.523 29.4772 110 35 110H85C90.5229 110 95 105.523 95 100V50C95 44.4772 90.5229 40 85 40H74.75M60.5 10V70M60.5 10L77 26.5M60.5 10L44 26.5' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
-						</svg>
-						<span class='label'>{$_('share_with')}</span>
-					</button>
-					<!-- {#if isSharingSupported}
-					{/if} -->
-				</div>
-				<button role='button' class='close flex flex-center-y flex-self-right gap-1 nowrap' on:click={closeModal}>
-					<svg class='icon stroke icon-small' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation'>
-						<path d='M10 110l50-50m0 0l50-50M60 60l50 50M60 60L10 10' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
+						<span class='label'>{$_(link.name)}</span>
+					</a>
+				{/each}
+			{/if}
+			{#if project.codeUrl}
+				<a href={project.codeUrl} role='button' class='open-source-code flex flex-center gap-05' target='_blank' use:vibrateLink>
+					<svg class='icon fill icon-medium' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none' xmlns='http://www.w3.org/2000/svg'>
+						<path d='M42.0439 53.512L17.2039 62.8L42.0439 72.088V79.576L8.85188 66.688V58.912L42.0439 46.024V53.512ZM68.2406 27.376H76.3046L52.5446 95.2H44.4806L68.2406 27.376ZM111.231 58.912V66.688L78.0394 79.576V72.088L102.879 62.8L78.0394 53.512V46.024L111.231 58.912Z'/>
 					</svg>
-					<span class='label'>{$_('close')}</span>
-				</button>
-			</div>
-		{/if}
+					<span class='label'>{$_('project_source_code')}</span>
+				</a>
+			{/if}
+			{#if project.codeUrl === null}
+				<div class='closed-source flex flex-center gap-05'>
+					<svg class='icon stroke icon-default' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none' xmlns='http://www.w3.org/2000/svg'>
+						<path d='M16.5 53C16.5 49.4101 19.4101 46.5 23 46.5H60H97C100.59 46.5 103.5 49.4101 103.5 53V97C103.5 100.59 100.59 103.5 97 103.5H23C19.4101 103.5 16.5 100.59 16.5 97V53Z' stroke-width='.5rem'/>
+						<path d='M78 45V33C78 23.0589 69.9411 15 60 15V15C50.0589 15 42 23.0589 42 33V45' stroke-width='.5rem'/>
+						<line x1='60' y1='67' x2='60' y2='83' stroke-width='.6rem' stroke-linecap='round' stroke-linejoin='round'/>
+					</svg>
+					<span class='label'>{$_('project_closed_source')}</span>
+				</div>
+			{/if}
+			{#if project.projectUrl !== null && project.projectUrl !== 'COMING_SOON'}
+				<a href={project.projectUrl} role='button' class='open-project flex flex-center gap-05' target='_blank' use:vibrateLink>
+					<div class='shine'/>
+					<span class='label'>{$_('open_project')}</span>
+					<svg class='icon stroke icon-medium' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none' xmlns='http://www.w3.org/2000/svg'>
+						<path d='M57.7778 25H35C29.4772 25 25 29.4772 25 35V85C25 90.5228 29.4772 95 35 95H85C90.5228 95 95 90.5228 95 85V62.2222' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
+						<path d='M105 15L60 60M105 15L105 45M105 15L75 15' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
+					</svg>
+				</a>
+			{:else if project.projectUrl === 'COMING_SOON'}
+				<div href={project.projectUrl} class='open-project-soon flex flex-center gap-05'>
+					<span class='label'>{$_('project_coming_soon')}</span>
+					<svg class='icon stroke icon-medium' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none' xmlns='http://www.w3.org/2000/svg'>
+						<circle cx='60' cy='60' r='53' stroke-width='.5rem'/>
+						<path d='M60 23V60L77 73' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
+					</svg>
+				</div>
+			{/if}
+		</div>
 	</div>
+	{#if project.about}
+		<div class='about' class:loading={projectAbout !== null}>
+			<hr class='seperator top'/>
+			{#if projectAbout !== null && !(projectAbout instanceof Error)}
+				{#if project.locale.length > 1}
+					<div class='load-different-locale flex flex-center-y'>
+						<div class='disclosure'>
+							<button class='loaded-translation flex nowrap flex-center-y gap-05' class:active={isSelectingDifferentTranslation} on:click={toggleDifferentTranslations}>
+								<svg class='icon icon-small fill' fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+									<path d='M10.72 12.464L8.62545 10.448L8.65818 10.432C10.0483 8.9241 11.0868 7.13894 11.7018 5.2H14.0909V3.6H8.36364V2H6.72727V3.6H1V5.2H10.1473C9.57977 6.78406 8.69529 8.24175 7.54545 9.488C6.79634 8.67616 6.15827 7.7726 5.64727 6.8H4.01091C4.61636 8.096 5.43455 9.344 6.46545 10.448L2.29273 14.464L3.45455 15.6L7.54545 11.6L10.0818 14.08L10.7036 12.464H10.72ZM15.3182 8.4H13.6818L10 18H11.6364L12.5527 15.6H16.4473L17.3636 18H19L15.3182 8.4V8.4ZM13.1745 14L14.5 10.528L15.8255 14H13.1745V14Z'/>
+								</svg>
+								<span class='label'>{$_('project_load_different_translation')}</span>
+								<svg class='icon icon-small stroke' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'>
+									<path d='M18 39L60.4264 81.4264L102.853 39' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/>
+								</svg>
+							</button>
+							{#if isSelectingDifferentTranslation}
+								<div class='options grid gap-05'>
+									{#each project.locale as locale}
+										{#if locale !== loadedAboutTranslation}
+											<button class='option flex nowrap flex-center-y gap-05' on:click={()=> selectDifferentTranslation(locale)}>
+												<svg class='flag icon icon-large' aria-hidden='true' focusable='false' role='presentation'>
+													<title>{LocaleFullName[locale]} Flag</title>
+													<use xlink:href='#FLAG_{locale}'/>
+												</svg>
+												<span class='label'>{LocaleFullName[locale]}</span>
+											</button>
+										{/if}
+									{/each}
+								</div>
+							{/if}
+						</div>
+					</div>
+				{/if}
+				<div class='rtf-content'>{@html renderedRTF}</div>
+			{:else if !aboutAvailableInCurrentLocale && !isLoadingAbout}
+				<div class='not-available-in-locale text-center grid grid-center'>
+					{#if project.locale.length < 1}
+						<p class='no-translations'>
+							{$_('project_about_unavailable')}
+						</p>
+					{:else}
+						<p>{$_('project_about_only_available_in')}</p>
+						<div class='options flex list flex-center-y gap-1'>
+							{#each project.locale as locale}
+								<button class='option flex nowrap flex-center-y gap-05' on:click={()=> fetchAbout(locale)}>
+									<svg class='flag icon icon-large' aria-hidden='true' focusable='false' role='presentation'>
+										<title>{LocaleFullName[locale]} Flag</title>
+										<use xlink:href='#FLAG_{locale}'/>
+									</svg>
+									<span class='label'>{LocaleFullName[locale]}</span>
+								</button>
+							{/each}
+						</div>
+					{/if}
+				</div>
+			{:else}
+				<div class='placeholder' class:error-placeholder={projectAbout instanceof Error}>
+					<h1>{$_('project_about_failed')}</h1>
+					<hr class='h1-border'>
+					<p class='i'>_</p>
+					<h3>_</h3>
+					<p class='ii'>_</p>
+					<p class='iii'>_</p>
+				</div>
+			{/if}
+			<hr class='seperator bot'/>
+		</div>
+		<div class='footer grid grid-center-y'>
+			<div class='share-post flex flex-center-y'>
+				<span class='label'>{$_('share')}:</span>
+				<button
+				role='button'
+				class='share-option flex flex-center gap-05 nowrap'
+				class:is-sharing={userIsSharingURL}
+				on:click={shareURL}>
+					<div class='status grid gap-05 grid-center-x' role='alert' class:active={userIsSharingURL}>
+						<span class='label'>
+							{#if shareURLWasCanceled}
+								{$_('copy_url_failed')}
+							{:else if shareURLWasSuccess}
+								{$_('copy_url_success')}
+							{:else}
+								{$_('copy_url_inprocess')}
+							{/if}
+						</span>
+						<StatusIcon
+							loading={userIsSharingURL}
+							failed={shareURLWasCanceled}
+							succeeded={shareURLWasSuccess}
+						/>
+					</div>
+					<svg class='icon icon-default stroke' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none' xmlns='http://www.w3.org/2000/svg'>
+						<path d='M34.2893 54.7108L19.0614 69.9387C10.6513 78.3489 10.6513 91.9844 19.0614 100.395C27.4716 108.805 41.1071 108.805 49.5173 100.395L64.7452 85.1667C73.1553 76.7565 73.1553 63.121 64.7452 54.7108M85.0491 64.8628L100.277 49.6348C108.687 41.2247 108.687 27.5891 100.277 19.179C91.8669 10.7688 78.2313 10.7688 69.8212 19.179L54.5932 34.4069C52.0762 36.924 50.3124 39.9091 49.302 43.0821C46.9364 50.5109 48.7001 58.9697 54.5932 64.8628' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
+					</svg>
+					<span class='label'>{$_('copy_url')}</span>
+				</button>
+				<button
+				role='button'
+				class='share-option flex flex-center gap-05 nowrap'
+				class:is-sharing={userIsSharing}
+				on:click={shareThis}>
+					<div class='status grid gap-05 grid-center-x' role='alert' class:active={userIsSharing}>
+						<span class='label'>
+							{#if shareNotSupported}
+								{$_('share_not_supported')}
+							{:else if shareWasCanceled}
+								{$_('share_canceled')}
+							{:else if shareWasSuccess}
+								{$_('shared')}
+							{:else}
+								{$_('sharing')}
+							{/if}
+						</span>
+						<StatusIcon
+							loading={userIsSharing}
+							failed={shareWasCanceled || shareNotSupported}
+							succeeded={shareWasSuccess}
+						/>
+					</div>
+					<svg class='icon stroke icon-default' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none'>
+						<path d='M45.25 40H35C29.4772 40 25 44.4772 25 50V100C25 105.523 29.4772 110 35 110H85C90.5229 110 95 105.523 95 100V50C95 44.4772 90.5229 40 85 40H74.75M60.5 10V70M60.5 10L77 26.5M60.5 10L44 26.5' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
+					</svg>
+					<span class='label'>{$_('share_with')}</span>
+				</button>
+				<!-- {#if isSharingSupported}
+				{/if} -->
+			</div>
+			<button role='button' class='close flex flex-center-y flex-self-right gap-1 nowrap' on:click={closeModal}>
+				<svg class='icon stroke icon-small' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation'>
+					<path d='M10 110l50-50m0 0l50-50M60 60l50 50M60 60L10 10' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
+				</svg>
+				<span class='label'>{$_('close')}</span>
+			</button>
+		</div>
+	{/if}
 </div>
 
 
@@ -460,9 +457,8 @@
 
 
 <script lang='ts'>
-	import {createEventDispatcher, onDestroy} from 'svelte'
+	import {createEventDispatcher, onDestroy, onMount} from 'svelte'
 	const dispatch = createEventDispatcher()
-	import {cubicInOut} from 'svelte/easing'
 	import type {Project} from '../database'
 	import {projects, technologies} from '../database'
 	import {marked} from 'marked'
@@ -471,8 +467,8 @@
 	import StatusIcon from './StatusIcon.svelte'
 	import {MetaTags} from 'svelte-meta-tags'
 	import {_} from 'svelte-i18n'
+	import {projectModalAnim} from '../utils/misc'
 	import {i18n, Locale, LocaleFullName, LocaleList} from '../i18n'
-	import {get as getStore} from 'svelte/store'
 	import {LazyLoader, LazyLoadStatus} from '../utils/lazy_loader'
 
 	function closeModal(): void {
@@ -481,27 +477,29 @@
 	}
 
 	export let projectIndex: number
-	const project: Project = projects[projectIndex]
+	let _prevIdx = projectIndex
+	let project: Project = projects[projectIndex]
+	let projectModalHeaderEl: HTMLElement
 
-	function bgTrans(_, o?) {
-		const reducedMotion = getStore(GlobalStore).a11y.reducedMotion
-		return {
-			duration: !reducedMotion && 500,
-			css: (t)=> `opacity: ${cubicInOut(t)}`,
+	$:anyHeaderBtnActive = (
+		project.codeUrl !== undefined && project.projectUrl === undefined ||
+		project.codeUrl === undefined && project.projectUrl !== undefined
+	)
+
+	$:noHeaderBtn = (
+		project.codeUrl === undefined && project.projectUrl === null
+	)
+
+	$:if (projectIndex !== _prevIdx) {
+		project = projects[projectIndex]
+		project = project
+		_prevIdx = projectIndex
+		loadCover()
+		if (project.about && project.locale.includes($i18n as Locale)) {
+			fetchAbout()
 		}
-	}
-
-	function modalTrans(_, o?) {
-		const reducedMotion = getStore(GlobalStore).a11y.reducedMotion
-		return {
-			duration: !reducedMotion && 500,
-			css(t) {
-				t = cubicInOut(t)
-				return (
-					`opacity: ${t};` +
-					`transform: translate(0, ${8 - 8 * t}rem);`
-				)
-			},
+		else {
+			resetAbout()
 		}
 	}
 
@@ -510,7 +508,7 @@
 	let isLoadingAbout = false
 	let loadedAboutTranslation: Locale = null
 	let isSelectingDifferentTranslation = false
-	let aboutAvailableInCurrentLocale = project.locale.includes($i18n as Locale)
+	$:aboutAvailableInCurrentLocale = project.locale.includes($i18n as Locale)
 	async function fetchAbout(locale?: Locale): Promise<void> {
 		if (typeof locale !== 'string') {
 			locale = $i18n as Locale
@@ -542,11 +540,14 @@
 			setTimeout(()=> {
 				projectAbout = err
 				isLoadingAbout = false
-			}, 1000)
+			}, 1e3)
 		}
 	}
-	if (project.about && project.locale.includes($i18n as Locale)) {
-		fetchAbout()
+	function resetAbout() {
+		renderedRTF = null
+		projectAbout = null
+		isLoadingAbout = false
+		isSelectingDifferentTranslation = false
 	}
 
 	function toggleDifferentTranslations(): void {
@@ -557,7 +558,7 @@
 		fetchAbout(locale)
 	}
 
-	let isCurrentDarkMode = getStore(GlobalStore).a11y.darkMode
+	let isCurrentDarkMode = $GlobalStore.a11y.darkMode
 	let lazyloader: LazyLoader
 	function loadCover() {
 		if (!project.cover) return
@@ -569,7 +570,6 @@
 		}
 		lazyloader.load()
 	}
-	loadCover()
 	const unSubDarkModeWatcher = GlobalStore.subscribe((s)=> {
 		if (s.a11y.darkMode !== isCurrentDarkMode) {
 			isCurrentDarkMode = s.a11y.darkMode
@@ -577,19 +577,17 @@
 		}
 	})
 
+	onMount(()=> {
+		projectModalHeaderEl.focus()
+		if (project.about && project.locale.includes($i18n as Locale)) {
+			fetchAbout()
+		}
+		loadCover()
+	})
 	onDestroy(function() {
 		unSubDarkModeWatcher()
 		if (lazyloader && lazyloader.destroy) lazyloader.destroy()
 	})
-
-	const anyHeaderBtnActive = (
-		project.codeUrl !== undefined && project.projectUrl === undefined ||
-		project.codeUrl === undefined && project.projectUrl !== undefined
-	)
-
-	const noHeaderBtn = (
-		project.codeUrl === undefined && project.projectUrl === null
-	)
 
 	let userIsSharingURL = false
 	let shareURLWasCanceled = false
@@ -712,27 +710,6 @@
 
 
 <style lang='stylus'>
-	#Project_Details_Container
-		z-index: 100
-		position: fixed
-		top: 0
-		left: 0
-		width: 100%
-		height: 100%
-		overflow-y: auto
-		@media screen and (min-width: 600px)
-			padding: 1rem
-		@media screen and (min-width: 1400px)
-			padding: 2rem
-		> .bg
-			z-index: -1
-			position: fixed
-			top: 0
-			right: 0
-			bottom: 0
-			left: 0
-			background-color: var(--overlay-bg)
-
 	#Project_Details_Modal
 		position: relative
 		right: 0
@@ -768,7 +745,7 @@
 			transition: var(--transition)
 			transition-property: transform, background-color, box-shadow, color
 			will-change: transform, background-color, box-shadow, color
-			&:hover, &:active
+			&:hover, &:focus, &:active
 				transform: scale(1.25)
 				background-color: var(--color-accent)
 				border-color: #fff
@@ -845,7 +822,7 @@
 			.dark
 				background-color: var(--bg-clr-05)
 			&.no-image
-				height: 4.5rem
+				height: 6rem
 				min-height: unset
 			> .no-image
 				width: 25%
@@ -903,7 +880,7 @@
 						object-position: center
 					> .name
 						font-size: .85rem
-					&:hover
+					&:hover, &:focus
 						transform: translate(0, -.25rem)
 						box-shadow:
 							0 0 1px var(--shadow-ao-clr),
@@ -924,12 +901,12 @@
 				transition: var(--transition)
 				transition-property: opacity, background-color
 				will-change: opacity, background-color
-				&:hover
+				&:hover, &:focus
 					background-color: var(--font-base-clr-01)
-				&:not(:hover)
+				&:not(:hover):not(:focus)
 					opacity: .75
 			.closed-source
-				margin-right: 2rem
+				padding: 0 .5em
 				color: var(--font-base-clr-035)
 				.icon.stroke > *
 					stroke: var(--font-base-clr-025)
@@ -960,7 +937,7 @@
 					transition: var(--transition)
 					transition-property: transform, box-shadow, color
 					will-change: transform, box-shadow, color
-				&:hover
+				&:hover, &:focus
 					box-shadow:
 						0 0 1px var(--shadow-ao-clr),
 						0 5px 20px -10px var(--color-accent)
@@ -1002,7 +979,7 @@
 							margin-right: .5em
 						.icon
 							font-size: 1.25em
-						&:hover, &:active, &.active
+						&:hover, &:focus, &:active, &.active
 							background-color: var(--color-accent)
 							color: #fff
 							.icon
@@ -1035,14 +1012,14 @@
 							will-change: background-color, color
 							> .label
 								margin-right: .5em
-							&:hover
+							&:hover, &:focus
 								background-color: var(--font-base-clr-01)
 							&:active
 								background-color: var(--font-base-clr-025)
 			> .not-available-in-locale
 				width: 100%
 				height: 100%
-				padding: 2em 0
+				padding: 2em 1em
 				> p
 					max-width: 500px
 					margin-bottom: 1em
@@ -1058,7 +1035,7 @@
 						transition: var(--transition)
 						transition-property: background-color, box-shadow, color, transform
 						will-change: background-color, box-shadow, color, transform
-						&:hover
+						&:hover, &:focus
 							box-shadow: var(--shadow-3)
 							transform: translateY(-.25em)
 						&:active, &:focus
@@ -1072,7 +1049,7 @@
 				h1, h3, p, .image
 					position: relative
 					margin-bottom: 1rem
-					background-color: var(--font-base-clr-0025)
+					background-color: var(--font-base-clr-005)
 					overflow: hidden
 					border-radius: .25rem
 					color: transparent
@@ -1174,8 +1151,7 @@
 						background-color: var(--fg-clr)
 						box-shadow:
 							0 0 1px var(--shadow-ao-clr),
-							0 70px 10px -54px var(--shadow-big-clr),
-							0 10px 30px -10px var(--shadow-huge-clr)
+							0 10px 40px 0 var(--shadow-huge-clr)
 						border-radius: .5rem
 						transition: var(--transition)
 						transition-property: opacity, transform
@@ -1230,7 +1206,7 @@
 				transition: var(--transition)
 				transition-property: transform, box-shadow, color, background-color
 				will-change: transform, box-shadow, color, background-color
-				&:hover
+				&:hover, &:focus
 					background-color: var(--font-base-clr)
 					transform: translate(0, -.25rem)
 					box-shadow: var(--shadow-4)
@@ -1270,7 +1246,7 @@
 				.open-source-code:hover
 					background-color: var(--font-base-clr-015)
 			> .header, > .footer
-				background-color: var(--font-base-clr-01)
+				background-color: var(--font-base-clr-005)
 
 	@keyframes textLoading
 		from
