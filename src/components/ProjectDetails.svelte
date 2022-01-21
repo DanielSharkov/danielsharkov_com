@@ -402,7 +402,7 @@
 						</span>
 						<StatusIcon
 							loading={userIsSharing}
-							failed={shareWasCanceled || shareNotSupported}
+							failed={shareWasCanceled || shareNotSupported}
 							succeeded={shareWasSuccess}
 						/>
 					</div>
