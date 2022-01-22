@@ -100,7 +100,9 @@ hr.seperator
 @import '/src/styles/variables'
 
 body
-	-webkit-font-smoothing: antialiased
+	text-rendering: geometricPrecision
+	-webkit-font-smoothing: subpixel-antialiased
+	-moz-osx-font-smoothing: grayscale
 	-webkit-text-size-adjust: 100%
 	color: var(--font-base-clr)
 	font-size: var(--font-base-size)
@@ -112,6 +114,9 @@ html, body, main#App
 	height: 100%
 	background none
 	background-color: var(--bg-clr)
+
+html:focus-within
+	scroll-behavior: smooth
 
 main#App
 	z-index: 0
