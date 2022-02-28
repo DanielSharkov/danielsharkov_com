@@ -132,6 +132,7 @@
 			-webkit-backdrop-filter: blur(8px) saturate(3)
 			backdrop-filter: blur(8px) saturate(3)
 			color: var(--font-heading-clr)
+			contain: content
 			.period
 				width: 1px
 				&:first-child, &:last-child
@@ -144,6 +145,7 @@
 					height: 1em
 					border-right: solid 1px var(--font-base-clr-025)
 		> .techno
+			contain: content
 			> .header
 				padding: 1em
 				background-color: var(--bg-clr)
@@ -178,7 +180,6 @@
 						.icon.stroke > *
 							stroke: var(--color-accent)
 			> .time-span
-				position: relative
 				top: -.15em
 				width: 100%
 				margin-bottom: 1em

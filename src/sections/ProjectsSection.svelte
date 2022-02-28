@@ -80,6 +80,7 @@
 
 	.projects
 		margin-bottom: 4rem
+		contain: content
 		@media screen and (min-width: 1600px)
 			padding: 3rem
 			grid-template-columns: repeat(4, 1fr)

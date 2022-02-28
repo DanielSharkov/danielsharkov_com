@@ -261,15 +261,13 @@
 		transition: var(--transition)
 		transition-property: transform, box-shadow
 		will-change: transform, box-shadow
+		contain: content
 		@media screen and (min-width: 2000px)
 			box-shadow: var(--shadow-2)
 		> .preview
 			z-index: 0
-			position: relative
 			width: 100%
 			background-color: var(--font-base-clr-0025)
-			overflow: hidden
-			border-radius: .5rem
 			@media screen and (min-width: 2000px)
 				height: 22rem
 			@media screen and (max-width: 2000px)
@@ -302,7 +300,6 @@
 				object-position: center
 				border-radius: .5rem .5rem 0 0
 			> .no-image
-				position: relative
 				> .bg
 					z-index: -1
 					position: absolute

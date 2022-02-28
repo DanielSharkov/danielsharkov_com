@@ -59,6 +59,7 @@
 			padding: .5em 1em 0 1em
 			font-size: 1.5em
 			border-radius: 1.5em
+			contain: content
 			> .btn
 				position: relative
 				width: 3em

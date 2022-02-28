@@ -255,6 +255,7 @@
 		max-width: 100vw
 		pointer-events: none
 		animation: codeBgInAnim var(--transition-easing) 1.5s backwards
+		contain: content
 		@media screen and (max-width: 600px)
 			display: none
 
@@ -266,6 +267,7 @@
 		width: 100%
 		height: 100%
 		padding: 3em
+		contain: strict
 		@media screen and (min-width: 600px)
 			padding: 2em
 		@media screen and (max-width: 599px)
@@ -308,6 +310,7 @@
 			max-width: 100%
 		.picture
 			animation: pictureInAnim var(--transition-easing) 1s
+			contain: layout
 			img
 				height: 12em
 				width: 12em

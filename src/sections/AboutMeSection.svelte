@@ -86,7 +86,6 @@
 		margin-bottom: .75rem
 
 	.game-container
-		position: relative
 		.content
 			padding: 2rem
 			h3
@@ -103,6 +102,7 @@
 			border-radius: .15rem
 			line-height: 0
 			transition: all var(--transition)
+			contain: content
 			img
 				width: 8rem
 				border-radius: .1rem
