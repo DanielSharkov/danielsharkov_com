@@ -215,8 +215,8 @@ type ProjectLink = {
 
 export type Project = {
 	id:               string
-	cover:            boolean
-	darkTheme:        boolean
+	cover?:           boolean
+	darkTheme?:       boolean
 	projectUrl:       string|null
 	codeUrl?:         string|null
 	otherLinks?:      Array<ProjectLink>
@@ -272,7 +272,6 @@ export const projects: Array<Project> = [
 	{
 		id: 'cowo_space',
 		cover: true,
-		darkTheme: false,
 		projectUrl: 'COMING_SOON',//'https://danielsharkov.github.io/cowo-space',
 		codeUrl: 'https://github.com/DanielSharkov/cowo-space',
 		usedTechnologies: [
@@ -299,7 +298,6 @@ export const projects: Array<Project> = [
 	{
 		id: 'svelte_chess',
 		cover: true,
-		darkTheme: false,
 		projectUrl: 'https://danielsharkov.github.io/svelte-chess',
 		codeUrl: 'https://github.com/DanielSharkov/svelte-chess',
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'Figma', 'VSC'],
@@ -331,8 +329,6 @@ export const projects: Array<Project> = [
 	},
 	{
 		id: 'dgraph_graphql_go_svelte',
-		cover: false,
-		darkTheme: false,
 		projectUrl: null,
 		codeUrl: 'https://github.com/DanielSharkov/dgraph_graphql_go_svelte',
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'VSC'],
@@ -386,7 +382,6 @@ export const projects: Array<Project> = [
 	{
 		id: 'vivobarefoot_redesign_proposal',
 		cover: true,
-		darkTheme: false,
 		projectUrl: 'https://danielsharkov.github.io/vivobarefoot_redesign_proposal',
 		codeUrl: 'https://github.com/DanielSharkov/vivobarefoot_redesign_proposal',
 		usedTechnologies: ['HTML', 'CSS', 'JavaScript', 'VSC'],
@@ -428,7 +423,6 @@ export const projects: Array<Project> = [
 	{
 		id: 'lost_santos_teaser',
 		cover: true,
-		darkTheme: false,
 		projectUrl: 'https://youtu.be/uWZoT4Nvd3I',
 		usedTechnologies: ['PowerDirector15', 'GIMP', 'OBS'],
 		about: true,
@@ -438,7 +432,6 @@ export const projects: Array<Project> = [
 	{
 		id: 'black_russian_training_video',
 		cover: true,
-		darkTheme: false,
 		projectUrl: 'https://www.youtube.com/watch?v=ix7fj1-SOps',
 		usedTechnologies: ['PowerDirector15', 'GIMP', 'OBS'],
 		about: true,
