@@ -88,6 +88,9 @@
 	"project_about_only_available_in": "Leider gibt es zu diesem Artikel noch keine Übersetzung auf Deutsch, jedoch kannst du folgende bereits vorhandene Übersetzungen lesen:",
 	"project_load_different_translation": "Andere Übersetzung",
 	"a_project_by": "{name} - ein Project von Daniel Scharkov",
+	"project_article_written": "Artikelverfassung",
+	"project_implemented": "Projektimplementation",
+	"project_updated": "Projektaktualisierung",
 	"project": {
 		"danielsharkov_com": "DanielSharkov.com",
 		"org_graph": "Organisations Graph",

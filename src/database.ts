@@ -224,6 +224,9 @@ export type Project = {
 	about:            boolean
 	gradient?:        Array<string>
 	locale:           Array<Locale>
+	aboutWritten?:    Date
+	prjImpl?:         Date
+	prjUpdt?:         Date
 }
 
 export const projects: Array<Project> = [

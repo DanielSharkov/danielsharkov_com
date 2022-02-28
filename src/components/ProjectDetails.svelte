@@ -290,36 +290,60 @@
 		<div class='about' class:loading={projectAbout !== null}>
 			<hr class='seperator top'/>
 			{#if projectAbout !== null && !(projectAbout instanceof Error)}
-				{#if project.locale.length > 1}
-					<div class='load-different-locale flex flex-center-y'>
-						<div class='disclosure'>
-							<button class='loaded-translation flex nowrap flex-center-y gap-05' class:active={isSelectingDifferentTranslation} on:click={toggleDifferentTranslations}>
-								<svg class='icon icon-small fill' fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
-									<path d='M10.72 12.464L8.62545 10.448L8.65818 10.432C10.0483 8.9241 11.0868 7.13894 11.7018 5.2H14.0909V3.6H8.36364V2H6.72727V3.6H1V5.2H10.1473C9.57977 6.78406 8.69529 8.24175 7.54545 9.488C6.79634 8.67616 6.15827 7.7726 5.64727 6.8H4.01091C4.61636 8.096 5.43455 9.344 6.46545 10.448L2.29273 14.464L3.45455 15.6L7.54545 11.6L10.0818 14.08L10.7036 12.464H10.72ZM15.3182 8.4H13.6818L10 18H11.6364L12.5527 15.6H16.4473L17.3636 18H19L15.3182 8.4V8.4ZM13.1745 14L14.5 10.528L15.8255 14H13.1745V14Z'/>
-								</svg>
-								<span class='label'>{$_('project_load_different_translation')}</span>
-								<svg class='icon icon-small stroke' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'>
-									<path d='M18 39L60.4264 81.4264L102.853 39' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/>
-								</svg>
-							</button>
-							{#if isSelectingDifferentTranslation}
-								<div class='options grid gap-05'>
-									{#each project.locale as locale}
-										{#if locale !== loadedAboutTranslation}
-											<button class='option flex nowrap flex-center-y gap-05' on:click={()=> selectDifferentTranslation(locale)}>
-												<svg class='flag icon icon-large' aria-hidden='true' focusable='false' role='presentation'>
-													<title>{LocaleFullName[locale]} Flag</title>
-													<use xlink:href='#FLAG_{locale}'/>
-												</svg>
-												<span class='label'>{LocaleFullName[locale]}</span>
-											</button>
-										{/if}
-									{/each}
+				<div class='about-header grid gap-1'>
+					{#if project.locale.length > 1}
+						<div class='load-different-locale flex flex-center-y'>
+							<div class='disclosure'>
+								<button class='loaded-translation flex nowrap flex-center-y gap-05' class:active={isSelectingDifferentTranslation} on:click={toggleDifferentTranslations}>
+									<svg class='icon icon-small fill' fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
+										<path d='M10.72 12.464L8.62545 10.448L8.65818 10.432C10.0483 8.9241 11.0868 7.13894 11.7018 5.2H14.0909V3.6H8.36364V2H6.72727V3.6H1V5.2H10.1473C9.57977 6.78406 8.69529 8.24175 7.54545 9.488C6.79634 8.67616 6.15827 7.7726 5.64727 6.8H4.01091C4.61636 8.096 5.43455 9.344 6.46545 10.448L2.29273 14.464L3.45455 15.6L7.54545 11.6L10.0818 14.08L10.7036 12.464H10.72ZM15.3182 8.4H13.6818L10 18H11.6364L12.5527 15.6H16.4473L17.3636 18H19L15.3182 8.4V8.4ZM13.1745 14L14.5 10.528L15.8255 14H13.1745V14Z'/>
+									</svg>
+									<span class='label'>{$_('project_load_different_translation')}</span>
+									<svg class='icon icon-small stroke' viewBox='0 0 120 120' fill='none' xmlns='http://www.w3.org/2000/svg'>
+										<path d='M18 39L60.4264 81.4264L102.853 39' stroke-width='10' stroke-linecap='round' stroke-linejoin='round'/>
+									</svg>
+								</button>
+								{#if isSelectingDifferentTranslation}
+									<div class='options grid gap-05'>
+										{#each project.locale as locale}
+											{#if locale !== loadedAboutTranslation}
+												<button class='option flex nowrap flex-center-y gap-05' on:click={()=> selectDifferentTranslation(locale)}>
+													<svg class='flag icon icon-large' aria-hidden='true' focusable='false' role='presentation'>
+														<title>{LocaleFullName[locale]} Flag</title>
+														<use xlink:href='#FLAG_{locale}'/>
+													</svg>
+													<span class='label'>{LocaleFullName[locale]}</span>
+												</button>
+											{/if}
+										{/each}
+									</div>
+								{/if}
+							</div>
+						</div>
+					{/if}
+					{#if anyArticleMetaSet}
+						<div class='metadata flex list gap-05'>
+							{#if project.aboutWritten !== undefined}
+								<div class='flex'>
+									<span>{$_('project_article_written')}:</span>
+									<span>{$_date(project.aboutWritten, {format: 'long'})}</span>
+								</div>
+							{/if}
+							{#if project.prjImpl !== undefined}
+								<div class='flex'>
+									<span>{$_('project_implemented')}:</span>
+									<span>{$_date(project.prjImpl, {format: 'long'})}</span>
+								</div>
+							{/if}
+							{#if project.prjUpdt !== undefined}
+								<div class='flex'>
+									<span>{$_('project_updated')}:</span>
+									<span>{$_date(project.prjUpdt, {format: 'long'})}</span>
 								</div>
 							{/if}
 						</div>
-					</div>
-				{/if}
+					{/if}
+				</div>
 				<div class='rtf-content'>{@html renderedRTF}</div>
 			{:else if !aboutAvailableInCurrentLocale && !isLoadingAbout}
 				<div class='not-available-in-locale text-center grid grid-center'>
@@ -466,7 +490,7 @@
 	import {vibrate, vibrateLink, copyToClipboard} from '../utils/misc'
 	import StatusIcon from './StatusIcon.svelte'
 	import {MetaTags} from 'svelte-meta-tags'
-	import {_} from 'svelte-i18n'
+	import {_, date as _date} from 'svelte-i18n'
 	import {projectModalAnim} from '../utils/misc'
 	import {i18n, Locale, LocaleFullName, LocaleList} from '../i18n'
 	import {LazyLoader, LazyLoadStatus} from '../utils/lazy_loader'
@@ -480,6 +504,11 @@
 	let _prevIdx = projectIndex
 	let project: Project = projects[projectIndex]
 	let projectModalHeaderEl: HTMLElement
+	$:anyArticleMetaSet = (
+		project.aboutWritten !== undefined ||
+		project.prjImpl !== undefined ||
+		project.prjUpdt !== undefined
+	)
 
 	$:anyHeaderBtnActive = (
 		project.codeUrl !== undefined && project.projectUrl === undefined ||
@@ -710,6 +739,8 @@
 
 
 <style lang='stylus'>
+	$aboutContentWidth = 900px
+
 	#Project_Details_Modal
 		position: relative
 		right: 0
@@ -720,6 +751,7 @@
 		background-color: var(--bg-clr)
 		grid-template-rows: auto auto 1fr
 		transform: translate3d(0,0,0)
+		contain: content
 		@media screen and (min-width: 600px)
 			margin-bottom: 5rem
 			box-shadow: var(--shadow-2)
@@ -745,6 +777,7 @@
 			transition: var(--transition)
 			transition-property: transform, background-color, box-shadow, color
 			will-change: transform, background-color, box-shadow, color
+			contain: content
 			&:hover, &:focus, &:active
 				transform: scale(1.25)
 				background-color: var(--color-accent)
@@ -756,16 +789,15 @@
 				box-shadow: var(--shadow-0)
 				transform: scale(0.95)
 		> .image-container
-			position: relative
 			height: auto
 			min-height: 65vh
 			max-height: 65vh
 			background-color: var(--font-base-clr-005)
 			border-bottom: solid .25rem var(--bg-clr-025)
-			overflow: hidden
 			border-radius: inherit
 			border-bottom-left-radius: 0
 			border-bottom-right-radius: 0
+			contain: content
 			.lazyloader
 				z-index: 10
 				position: absolute
@@ -830,6 +862,7 @@
 		> .header
 			padding: 2rem
 			grid-template-columns: auto auto
+			contain: content
 			@media screen and (max-width: 600px)
 				grid-template-columns: 1fr
 				padding: 1rem
@@ -921,6 +954,7 @@
 				transition: var(--transition)
 				transition-property: transform, box-shadow, color
 				will-change: transform, box-shadow, color
+				contain: content
 				.icon.stroke > *
 					stroke: #FFF
 				.shine
@@ -951,22 +985,24 @@
 		> .about
 			position: relative
 			min-height: 25vh
+			contain: content
 			> .seperator
 				position: absolute
 				left: 0
 				right: 0
 				margin: 0
 				&.top
-					top: -2px
+					top: 0px
 				&.bot
-					bottom: -2px
-			> .load-different-locale
+					bottom: 0px
+			> .about-header
 				width: 100%
-				max-width: 1000px
+				max-width: $aboutContentWidth
 				margin: auto
-				padding: 1em
-				> .disclosure
+				padding: 2rem
+				> .load-different-locale > .disclosure
 					position: relative
+					contain: layout
 					> .loaded-translation
 						padding: .5em 1em
 						background-color: var(--fg-clr)
@@ -1016,6 +1052,21 @@
 								background-color: var(--font-base-clr-01)
 							&:active
 								background-color: var(--font-base-clr-025)
+				> .metadata
+					font-size: .85em
+					> div
+						border-radius: .5rem
+						border: solid 1px var(--font-base-clr-015)
+						box-shadow:
+							0 4px 10px -6px var(--shadow-clr),
+							var(--shadow-contrast)
+						> span
+							padding: .5em
+						> span:first-child
+							background-color: var(--font-base-clr-005)
+							border-radius: .5rem 0 0 .5rem
+						> span:last-child
+							color: var(--font-heading-clr)
 			> .not-available-in-locale
 				width: 100%
 				height: 100%
@@ -1051,6 +1102,7 @@
 					margin-bottom: 1rem
 					background-color: var(--font-base-clr-005)
 					overflow: hidden
+					contain: content
 					border-radius: .25rem
 					color: transparent
 					&:after
@@ -1106,7 +1158,7 @@
 							background: -webkit-linear-gradient(90deg, rgba(#FFF, 0) 0%, var(--placeholder-loading) 50%, rgba(#FFF, 0) 100%)
 							background: linear-gradient(90deg, rgba(#FFF, 0) 0%, var(--placeholder-loading) 50%, rgba(#FFF, 0) 100%)
 			> .rtf-content, > .placeholder, > .error-placeholder
-				max-width: 1000px
+				max-width: $aboutContentWidth
 				margin: auto
 				padding: 2rem
 				@media screen and (max-width: 1000px)
@@ -1123,6 +1175,7 @@
 			border-radius: inherit
 			border-top-left-radius: 0
 			border-top-right-radius: 0
+			contain: layout
 			@media screen and (max-width: 600px)
 				padding: 2rem 1rem
 				grid-template-columns: 1fr
@@ -1158,6 +1211,7 @@
 						will-change: opacity, transform
 						pointer-events: none
 						color: var(--font-heading-clr)
+						contain: layout
 						&:not(.active)
 							opacity: 0
 							transform: translate(0, 2rem)

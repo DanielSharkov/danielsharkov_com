@@ -88,6 +88,9 @@
 	"project_about_only_available_in": "Unfortunately there isn't an english translation for this article yet. But you may read theses following translations, which are already available:",
 	"project_load_different_translation": "Different translation",
 	"a_project_by": "{name} - a project by Daniel Sharkov",
+	"project_article_written": "Article written",
+	"project_implemented": "Project implementation",
+	"project_updated": "Last project update",
 	"project": {
 		"danielsharkov_com": "DanielSharkov.com",
 		"org_graph": "Oraganisation Graph",
