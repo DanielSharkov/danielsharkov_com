@@ -1,6 +1,3 @@
-###### *Artikel verfasst: 31 Mai 2021*
-###### *Projektumsetzung: Februar 2019*
-
 Nach meinem erfolgreichen Einstieg bei der EOD European Online Distribution GmbH 2018, war ich auch schon damals ein sehr begeisterter Softwareentwickler und Benutzererfahrung & Oberflächen Designer (UX&UI Design). Als ich einige Wochen im Unternehmen mich mit der Entwicklungsumgebung und den Produkten vertraut gemacht habe, kam mir ein Redesign für den Shop Vivobarefoot in den Sinn. Dieses Design fertigte ich dann in der Freizeit mit wenig Aufwand aber viel Inspiration durch einfaches HTML, CSS und ein wenig JavaScript, da es keinen fertigen funktionalen Onlineshop darstellen soll.
 
 # Fazit

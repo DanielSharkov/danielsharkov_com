@@ -1,6 +1,3 @@
-###### *Artikel verfasst: 1 Juni 2021 12:10*
-###### *Projektumsetzung: 2018*
-
 # Was ist dieses „Gronkh“
 
 Gronkh, oder auch meist Erik genannt *(Bürgerlich: Erik Range)*, ist wohl der liebste Mensch auf Erden, der viel Herz und Leidenschaft in sein Hobby steckt, welches er zu seiner Arbeit als „Let's player“ machte und auch schon seit längerem überwiegend als Streamer bei Twitch.tv ([twitch.tv/gronkh](https://twitch.tv/gronkh)) tätig ist *(stand Mai 2021)*. Ich verfolge ihn schon seit circa 2011, als ich noch jung war und er sein bekanntestes Let's play zu Minecraft machte ([Let's Play Minecraft #001 [Deutsch] [HD] - Alles auf Anfang](https://www.youtube.com/watch?v=DM52HxaLK-Y&t=366s)), welches ich mir unter anderem seiner anderen Formate auch angesehen habe. Lustig, schlau, charmant und viel mehr, sind die Merkmale welche Gronkh ausmachen.
