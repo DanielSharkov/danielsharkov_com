@@ -382,7 +382,6 @@
 			<div class='share-post flex flex-center-y'>
 				<span class='label'>{$_('share')}:</span>
 				<button
-				role='button'
 				class='share-option flex flex-center gap-05 nowrap'
 				class:is-sharing={userIsSharingURL}
 				on:click={shareURL}>
@@ -408,7 +407,6 @@
 					<span class='label'>{$_('copy_url')}</span>
 				</button>
 				<button
-				role='button'
 				class='share-option flex flex-center gap-05 nowrap'
 				class:is-sharing={userIsSharing}
 				on:click={shareThis}>
@@ -438,7 +436,7 @@
 				<!-- {#if isSharingSupported}
 				{/if} -->
 			</div>
-			<button role='button' class='close flex flex-center-y flex-self-right gap-1 nowrap' on:click={closeModal}>
+			<button class='close flex flex-center-y flex-self-right gap-1 nowrap' on:click={closeModal}>
 				<svg class='icon stroke icon-small' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation'>
 					<path d='M10 110l50-50m0 0l50-50M60 60l50 50M60 60L10 10' stroke-width='.5rem' stroke-linecap='round' stroke-linejoin='round'/>
 				</svg>

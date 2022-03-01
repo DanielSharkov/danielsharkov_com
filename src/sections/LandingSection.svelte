@@ -218,9 +218,9 @@
 		<p class='text-block'>{$_('about_me')}</p>
 
 		<nav>
-			<ul class='grid gap-1 question-list' role='list'>
+			<ul class='grid gap-1 question-list'>
 				{#each questions as questID, idx}
-					<li role='listitem' class='question-entry flex flex-center-y nowrap gap-1' style='animation-delay: {50+idx*100}ms'>
+					<li class='question-entry flex flex-center-y nowrap gap-1' style='animation-delay: {50+idx*100}ms'>
 						<svg class='icon stroke icon-default flex-base-size' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120' aria-hidden='true' focusable='false' role='presentation' fill='none'>
 							<path d='M39.2134 102.64L81.6398 60.2132L39.2134 17.7868' stroke-width='20' stroke-linecap='round' stroke-linejoin='round'/>
 						</svg>
