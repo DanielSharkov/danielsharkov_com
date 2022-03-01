@@ -85,7 +85,7 @@
 	"project_coming_soon": "Coming soon",
 	"project_about_failed": "Excuse me, something went wrong.",
 	"project_about_unavailable": "There isn't any article for this project. But stay tuned, maybe it's coming out soon!",
-	"project_about_only_available_in": "Unfortunately there isn't an english translation for this article yet. But you may read theses following translations, which are already available:",
+	"project_about_only_available_in": "Unfortunately there isn't an english translation for this article yet. Following translations are available:",
 	"project_load_different_translation": "Different translation",
 	"a_project_by": "{name} - a project by Daniel Sharkov",
 	"project_article_written": "Article written",
