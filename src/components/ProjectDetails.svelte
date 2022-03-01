@@ -491,7 +491,7 @@
 	import StatusIcon from './StatusIcon.svelte'
 	import {MetaTags} from 'svelte-meta-tags'
 	import {_, date as _date} from 'svelte-i18n'
-	import {projectModalAnim} from '../utils/misc'
+	import {projectModalAnim} from '../utils/transitions'
 	import {i18n, Locale, LocaleFullName, LocaleList} from '../i18n'
 	import {LazyLoader, LazyLoadStatus} from '../utils/lazy_loader'
 

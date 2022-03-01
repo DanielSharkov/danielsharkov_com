@@ -10,7 +10,8 @@
 	import {MetaTags} from 'svelte-meta-tags'
 	import {isLoading, _} from 'svelte-i18n'
 	import {i18n, LocaleList, LocaleFullName, isInvalidLocale, Locale} from './i18n'
-	import {modalBgAnim, socialModalAnim, vibrate} from './utils/misc'
+	import {modalBgAnim, socialModalAnim} from './utils/transitions'
+	import {vibrate} from './utils/misc'
 
 	const pageScroll = {y: 0, x: 0}
 	function scrollingApp(e): void {
@@ -409,7 +410,7 @@
 		}}
 	/>
 
-	<main id='App' bind:this={MainEl} role='main'
+	<main id='App' bind:this={MainEl}
 	on:scroll={scrollingApp}
 	lock-scroll={$GlobalStore.lockScroll.state}
 	reduced-motion={$GlobalStore.a11y.reducedMotion}
