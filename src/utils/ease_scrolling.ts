@@ -6,7 +6,9 @@ type easeScrollingOptions = {
 
 const rAF = (
 	window.requestAnimationFrame ||
+	/* @ts-ignore for legacy */
 	window.webkitRequestAnimationFrame ||
+	/* @ts-ignore for legacy */
 	window.mozRequestAnimationFrame ||
 	function(callback) { window.setTimeout(callback, 1000 / 60) }
 )
