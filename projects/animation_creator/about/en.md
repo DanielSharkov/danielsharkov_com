@@ -1,0 +1,1 @@
+[![Open App](projects/animation_creator/media/open_app.svg)](https://danielsharkov.github.io/animation-creator/)

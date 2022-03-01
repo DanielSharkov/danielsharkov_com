@@ -1,0 +1,7 @@
+Dieses Projekt ist die dritte Demonstration zur Bibliothek SvelteRouter, welche ich auch im jeweiligen Artikel auf dieser Webseite etwas erwähnt habe. Um als Demonstration das ganze nochmal zu toppen, erstellte ich aus Motivation und Interesse dieses weitere und bisher letzte Beispiel. Es simuliert einen Browser und zeigt, wie man mithilfe der Schnittstellen von SvelteRouter einen Browser mit Verlauf und Navigation erstellen kann. Die einzigen Seiten in diesem Browser, zwischen denen man wechseln kann, sind die zwei ersten Beispiel-Projekte. Sobald man auf den zwei Seiten sich rum-navigiert, kann man seinen Verlauf einsehen und auf einen Moment darin wieder zurückkehren.
+
+# Die Umsetzung
+Ganz so einfach wie es scheint war der Ansatz nicht. Erst habe ich mir überlegt, wie ich den Viewport implementieren soll. Die erste Idee war ein `<iFrame/>` dafür zu verwenden, was leider scheiterte, weil man sich in einem `<iFrame/>` nicht durch eine "Singe-Page-Application" navigieren kann, da es immer die URL direkt über das DNS anfragt, was letztendlich leider die App nochmals in sich selbst geladen hat, wenn man navigiert.
+
+# Fazit
+Es ist toll, wenn man sich manchmal die Zeit nimmt, um einfach mit Lust und Spaß Web-Anwendungen nicht bedingt zielführend zu programmieren. Durch dieses Projekt hab ich keinerlei neues Wissen erlangt, vielleicht nur etwas mehr Erfahrung, sonst aber hoffe ich, dass ich die Benutzer dieser Demo erstaunen, inspirieren, motivieren und sonst noch auf eine Art bereichern konnte.
