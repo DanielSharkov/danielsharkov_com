@@ -1,4 +1,4 @@
 # Article soon available...
 
 ## Shortly summarized:
-A timetable app for schools which shall improve the whole communication.
+A timetable app for schools which shall improve the overall communication.

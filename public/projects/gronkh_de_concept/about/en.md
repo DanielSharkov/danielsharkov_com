@@ -1,5 +1,3 @@
-###### *Project implemented: 2018*
-
 # Article soon available...
 Full description currently available in German 🇩🇪
 

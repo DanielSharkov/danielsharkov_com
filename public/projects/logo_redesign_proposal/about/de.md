@@ -1,6 +1,3 @@
-###### *Artikel verfasst: 31 Mai 2021*
-###### *Projektumsetzung: März 2019*
-
 Nach meinem erfolgreichen Einstieg bei der EOD European Online Distribution GmbH in 2018, war ich auch schon damals sehr begeistert an Benutzererfahrung und Oberflächen Design (UX&UI Design) sowohl als auch Logodesign. Eingie Zeit später, nach dem privaten Projekt "Vivobarefoot Redesign Proposal", circa erster quartal 2019, habe ich mich an diesem Projekt in meiner Freizeit gewidmet. Dieses Projekt handelt sich, um ein redesign Vorschlag für das Unternehmen, wie auch schon dem Titel zu entnehmen ist.
 Genauso wie beim vorherigen Projekt hab ich diesem freiwillig gestellt, um diese Erfahrung einmal gemacht zu haben.
 

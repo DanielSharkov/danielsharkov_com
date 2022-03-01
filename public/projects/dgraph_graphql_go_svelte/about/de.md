@@ -1,6 +1,3 @@
-###### *Beschreibung verfasst: 31 Mai 2021*
-###### *Projektumsetzung: 2018*
-
 Dieses komisch benannte Projekt „Dgraph-GraphQL-Go-Svelte“ ist ein test gewesen. Das Projekt diente als Frontend für das test Backend [dgraph-graphql-go](https://github.com/romshark/dgraph_graphql_go), welches von [Roman Scharkov](https://github.com/romshark) entwickelt wurde. Es diente unteranderem als sehr gute Erfahrung für mich. Nicht nur Frontend technisch habe ich dadurch wissen erlangt, auch Backend seitig schaute ich mir die angewendeten Methodiken und den Code an, was dabei half den Sinn eines Backends besser verstehen zu können.
 
 # Prioritäten

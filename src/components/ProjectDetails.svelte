@@ -330,19 +330,19 @@
 							{#if project.aboutWritten !== undefined}
 								<div class='flex'>
 									<span>{$_('project_article_written')}:</span>
-									<span>{$_date(project.aboutWritten, {format: 'long'})}</span>
+									<span>{$_date(project.aboutWritten, {month: 'long', year: 'numeric'})}</span>
 								</div>
 							{/if}
 							{#if project.prjImpl !== undefined}
 								<div class='flex'>
 									<span>{$_('project_implemented')}:</span>
-									<span>{$_date(project.prjImpl, {format: 'long'})}</span>
+									<span>{$_date(project.prjImpl, {month: 'long', year: 'numeric'})}</span>
 								</div>
 							{/if}
 							{#if project.prjUpdt !== undefined}
 								<div class='flex'>
 									<span>{$_('project_updated')}:</span>
-									<span>{$_date(project.prjUpdt, {format: 'long'})}</span>
+									<span>{$_date(project.prjUpdt, {month: 'long', year: 'numeric'})}</span>
 								</div>
 							{/if}
 						</div>

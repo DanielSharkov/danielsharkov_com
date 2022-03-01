@@ -1,6 +1,3 @@
-###### *Artikel verfasst: 2 Juni 2021*
-###### *Projektumsetung: Juli 2019*
-
 # Inspiration
 
 Schach macht spaß und ist vor allem spannend. Während ich meine Ausbildung bei der EOD European Online Distribution GmbH machte und die Walther-Rathenau-Schule besuchte, hatte ich einmal im Fach SAE (Software-Anwendungs-Entwicklung) als Klassenarbeit das Thema Schach-Spiel, wo ich mit dem Lehrer im Einzelgespräch das Spiel sehr simpel programmierte, genauer gesagt einfach nur das theoretische Brett mit den Feldern und das sehr simple Bewegen von Figuren, ohne Sinn und Logik. Es war nichts visuelles, nur Code der das Spiel theoretisch funktionieren ließ und statt bildliche Figuren einfache Buchstaben als Bezeichnung in die Konsole ausgab. Für meine Leistung erhielt ich eine glatte Eins.
