@@ -92,6 +92,7 @@
 	"project_implemented": "Project implementation",
 	"project_updated": "Last project update",
 	"project": {
+		"animation_creator": "Animation Creator",
 		"danielsharkov_com": "DanielSharkov.com",
 		"org_graph": "Oraganisation Graph",
 		"timetabler": "Timetabler",
