@@ -184,6 +184,8 @@
 				width: 100%
 				margin-bottom: 1em
 				> .period
+					position: relative
+					top: -2px
 					height: .2em
 					border-radius: 1em
 					box-shadow:
