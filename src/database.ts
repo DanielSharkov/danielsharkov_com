@@ -243,7 +243,7 @@ export const projects: Array<Project> = [
 		about: true,
 		gradient: ['#fcb6b6', '#f6df88'],
 		locale: [Locale.DE, Locale.EN],
-		prjImpl: new Date('Mai 2021'),
+		prjImpl: new Date('May 2021'),
 	},
 	{
 		id: 'timetabler',
@@ -355,7 +355,7 @@ export const projects: Array<Project> = [
 		about: true,
 		gradient: ['#f399d3', '#a7276e', '#2c9c88', '#713dc3', '#00bfff'],
 		locale: [Locale.DE, Locale.EN],
-		aboutWritten: new Date('31 Mai 2021'),
+		aboutWritten: new Date('31 May 2021'),
 		prjImpl: new Date('August 2019'),
 	},
 	{
@@ -367,7 +367,7 @@ export const projects: Array<Project> = [
 		about: true,
 		gradient: ['#FA8BFF', '#2BD2FF', '#2BFF88'],
 		locale: [Locale.DE],
-		aboutWritten: new Date('31 Mai 2021'),
+		aboutWritten: new Date('31 May 2021'),
 		prjImpl: new Date('March 2019'),
 	},
 	{
@@ -390,8 +390,8 @@ export const projects: Array<Project> = [
 		about: true,
 		gradient: ['#0062ff', '#cbf6ff'],
 		locale: [Locale.DE, Locale.EN],
-		aboutWritten: new Date('31 Mai 2021'),
-		prjImpl: new Date('Mai 2018'),
+		aboutWritten: new Date('31 May 2021'),
+		prjImpl: new Date('May 2018'),
 	},
 	{
 		id: 'infocenter',
@@ -403,7 +403,7 @@ export const projects: Array<Project> = [
 		about: true,
 		gradient: ['#a1c4fd', '#c2e9fb'],
 		locale: [Locale.DE, Locale.EN],
-		aboutWritten: new Date('31 Mai 2021'),
+		aboutWritten: new Date('31 May 2021'),
 		prjImpl: new Date('December 2018'),
 	},
 	{
@@ -416,7 +416,7 @@ export const projects: Array<Project> = [
 		about: true,
 		gradient: ['#ffffff', '#63d0ff', '#ffffff', '#ffdd7d', '#ffffff'],
 		locale: [Locale.DE, Locale.EN],
-		aboutWritten: new Date('31 Mai 2021'),
+		aboutWritten: new Date('31 May 2021'),
 		prjImpl: new Date('February 2019'),
 	},
 	{
@@ -447,7 +447,7 @@ export const projects: Array<Project> = [
 		about: true,
 		gradient: ['#a02828', '#ff5b5b'],
 		locale: [Locale.DE],
-		aboutWritten: new Date('31 Mai 2021'),
+		aboutWritten: new Date('31 May 2021'),
 		prjImpl: new Date('February 2019'),
 	},
 	{
