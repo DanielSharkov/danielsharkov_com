@@ -1317,4 +1317,8 @@
 			> .header .closed-source, > .header .open-project-soon,
 			> .footer button, > .footer a
 				border: solid 1px var(--border-hard) !important
+
+	@supports (-webkit-backdrop-filter: blur(0px))
+		#Project_Details_Modal > .image-container
+			position: relative
 </style>
