@@ -131,29 +131,6 @@ main#App
 main#App > section:not(#LandingSection)
 	contain: content
 
-#BetaLabel
-	position: absolute
-	top: .5em
-	padding: .25em .5em
-	border: solid .1em var(--color-complementary)
-	background-color: var(--bg-clr)
-	color: var(--color-complementary)
-	border-radius: .5em
-	contain: content
-	@media screen and (min-width: 1000px)
-		left: 50%
-		transform: translate(-50%,0)
-	@media screen and (max-width: 999px)
-		position: relative
-		display: block
-		top: 1em
-		left: 1em
-		margin-bottom: 1em
-		border-radius: 1em
-		width: calc(100% - 2em)
-		text-align: center
-		padding: .5em 1em
-
 #AppIcons
 	position: absolute
 	width: 0

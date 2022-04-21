@@ -415,7 +415,6 @@
 	lock-scroll={$GlobalStore.lockScroll.state}
 	reduced-motion={$GlobalStore.a11y.reducedMotion}
 	more-contrast={$GlobalStore.a11y.moreContrast}>
-		<span id='BetaLabel'>{$_('b_e_t_a')}</span>
 		<div id='AppLangSelect' class:active={selectingLang} tabindex={selectingLang ? 1:-1}>
 			<button class='selected gap-1 flex flex-center' on:click={toggleLangSelect}>
 				<svg class='icon icon-default fill' fill='none' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
