@@ -54,7 +54,7 @@ class _GlobalStore implements Readable<T_GlobalStore> {
 			},
 			{
 				name: 'Twitter',
-				url: 'https://twitter.com/Daniel_Sharkov',
+				url: 'https://twitter.com/DanielSharkov',
 			},
 			{
 				name: 'Medium',
