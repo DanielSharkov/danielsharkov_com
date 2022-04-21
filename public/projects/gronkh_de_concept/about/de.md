@@ -25,7 +25,7 @@ Zur Realisierung hatte ich Vue.js mit Webpack und Stylus verwendet, mit denen ic
 
 # Kontakt
 
-Sobald ich den ersten Prototypen bereit hatte, hatte ich nun versucht Gronkh auf irgendeine Weise zu kontaktieren. Mit nur einem Post auf Twitter hatte ich mein Glück ihn direkt zu erreichen ([Tweet öffnen](https://twitter.com/Daniel_Sharkov/status/995064806083309568)). Und so haben wir uns danach privat über dieses und ähnliche Themen unterhalten, unteranderem auch über andere Ideen die er hätte.
+Sobald ich den ersten Prototypen bereit hatte, hatte ich nun versucht Gronkh auf irgendeine Weise zu kontaktieren. Mit nur einem Post auf Twitter hatte ich mein Glück ihn direkt zu erreichen ([Tweet öffnen](https://twitter.com/DanielSharkov/status/995064806083309568)). Und so haben wir uns danach privat über dieses und ähnliche Themen unterhalten, unteranderem auch über andere Ideen die er hätte.
 
 # Fazit
 
