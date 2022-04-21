@@ -243,7 +243,7 @@ export const projects: Array<Project> = [
 		about: true,
 		gradient: ['#fcb6b6', '#f6df88'],
 		locale: [Locale.DE, Locale.EN],
-		prjImpl: new Date('May 2021'),
+		prjImpl: new Date('1 May 2021'),
 	},
 	{
 		id: 'timetabler',
@@ -258,8 +258,8 @@ export const projects: Array<Project> = [
 		about: true,
 		gradient: ['#b5ffdd', '#65C7F7', '#0066ff'],
 		locale: [Locale.DE, Locale.EN],
-		prjImpl: new Date('July 2019'),
-		prjUpdt: new Date('February 2022'),
+		prjImpl: new Date('1 July 2019'),
+		prjUpdt: new Date('1 February 2022'),
 	},
 	{
 		id: 'gronkh_de_concept',
@@ -275,7 +275,7 @@ export const projects: Array<Project> = [
 		gradient: ['#ff51ea', '#fe9840', '#42ffc2', '#b870fa', '#54ff32'],
 		locale: [Locale.DE],
 		aboutWritten: new Date('1 June 2021'),
-		prjImpl: new Date('March 2018'),
+		prjImpl: new Date('1 March 2018'),
 	},
 	{
 		id: 'org_graph',
@@ -290,7 +290,7 @@ export const projects: Array<Project> = [
 		about: true,
 		gradient: ['#1488CC', '#2B32B2'],
 		locale: [Locale.DE, Locale.EN],
-		prjImpl: new Date('December 2020'),
+		prjImpl: new Date('1 December 2020'),
 	},
 	{
 		id: 'svelte_chess',
@@ -302,7 +302,7 @@ export const projects: Array<Project> = [
 		gradient: ['#093028', '#344740'],
 		locale: [Locale.DE, Locale.EN],
 		aboutWritten: new Date('2 June 2021'),
-		prjImpl: new Date('July 2019'),
+		prjImpl: new Date('1 July 2019'),
 	},
 	{
 		id: 'svelte_router',
@@ -356,7 +356,7 @@ export const projects: Array<Project> = [
 		gradient: ['#f399d3', '#a7276e', '#2c9c88', '#713dc3', '#00bfff'],
 		locale: [Locale.DE, Locale.EN],
 		aboutWritten: new Date('31 May 2021'),
-		prjImpl: new Date('August 2019'),
+		prjImpl: new Date('1 August 2019'),
 	},
 	{
 		id: 'logo_redesign_proposal',
@@ -368,7 +368,7 @@ export const projects: Array<Project> = [
 		gradient: ['#FA8BFF', '#2BD2FF', '#2BFF88'],
 		locale: [Locale.DE],
 		aboutWritten: new Date('31 May 2021'),
-		prjImpl: new Date('March 2019'),
+		prjImpl: new Date('1 March 2019'),
 	},
 	{
 		id: 'cowo_space',
@@ -391,7 +391,7 @@ export const projects: Array<Project> = [
 		gradient: ['#0062ff', '#cbf6ff'],
 		locale: [Locale.DE, Locale.EN],
 		aboutWritten: new Date('31 May 2021'),
-		prjImpl: new Date('May 2018'),
+		prjImpl: new Date('1 May 2018'),
 	},
 	{
 		id: 'infocenter',
@@ -404,7 +404,7 @@ export const projects: Array<Project> = [
 		gradient: ['#a1c4fd', '#c2e9fb'],
 		locale: [Locale.DE, Locale.EN],
 		aboutWritten: new Date('31 May 2021'),
-		prjImpl: new Date('December 2018'),
+		prjImpl: new Date('1 December 2018'),
 	},
 	{
 		id: 'fitcat_app',
@@ -417,7 +417,7 @@ export const projects: Array<Project> = [
 		gradient: ['#ffffff', '#63d0ff', '#ffffff', '#ffdd7d', '#ffffff'],
 		locale: [Locale.DE, Locale.EN],
 		aboutWritten: new Date('31 May 2021'),
-		prjImpl: new Date('February 2019'),
+		prjImpl: new Date('1 February 2019'),
 	},
 	{
 		id: 'shopify_cyber_theme',
@@ -436,7 +436,7 @@ export const projects: Array<Project> = [
 		about: true,
 		gradient: ['#1F1C2C', '#928DAB'],
 		locale: [Locale.DE, Locale.EN],
-		prjImpl: new Date('November 2019'),
+		prjImpl: new Date('1 November 2019'),
 	},
 	{
 		id: 'vivobarefoot_redesign_proposal',
@@ -448,7 +448,7 @@ export const projects: Array<Project> = [
 		gradient: ['#a02828', '#ff5b5b'],
 		locale: [Locale.DE],
 		aboutWritten: new Date('31 May 2021'),
-		prjImpl: new Date('February 2019'),
+		prjImpl: new Date('1 February 2019'),
 	},
 	{
 		id: 'chrome_redesign_inspiration',
@@ -460,7 +460,7 @@ export const projects: Array<Project> = [
 		about: true,
 		gradient: ['#08AEEA', '#2AF598'],
 		locale: [Locale.DE, Locale.EN],
-		aboutWritten: new Date('July 2021'),
+		aboutWritten: new Date('1 July 2021'),
 		prjImpl: new Date('28 February 2018'),
 	},
 	{
@@ -472,7 +472,7 @@ export const projects: Array<Project> = [
 		about: true,
 		gradient: ['#08AEEA', '#2AF598'],
 		locale: [Locale.DE, Locale.EN],
-		prjImpl: new Date('December 2018'),
+		prjImpl: new Date('1 December 2018'),
 	},
 	{
 		id: 'lost_santos_teaser',
@@ -483,7 +483,7 @@ export const projects: Array<Project> = [
 		gradient: ['#a7a5a4', '#695747'],
 		locale: [Locale.DE, Locale.EN],
 		aboutWritten: new Date('July 2021'),
-		prjImpl: new Date('December 2016'),
+		prjImpl: new Date('1 December 2016'),
 	},
 	{
 		id: 'black_russian_training_video',
@@ -492,8 +492,8 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['PowerDirector15', 'GIMP', 'OBS'],
 		about: true,
 		locale: [Locale.DE, Locale.EN],
-		aboutWritten: new Date('July 2021'),
-		prjImpl: new Date('November 2018'),
+		aboutWritten: new Date('1 July 2021'),
+		prjImpl: new Date('1 November 2018'),
 	},
 ]
 
