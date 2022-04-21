@@ -20,15 +20,15 @@
 	}
 
 	let MainEl = null
-	async function goToSection(sectionID) {
+	async function goToSection({detail: sectionID}) {
 		if (MainEl === null) return
 		await EaseScrolling(MainEl, {
-			top: document.getElementById(sectionID.detail).offsetTop,
+			top: document.getElementById(sectionID).getBoundingClientRect().top,
 			duration: 1000,
 			easing: cubicInOut,
 		})
-		// Remvoed due to scroll bug in iOS iPhone Safari
-		// window.location.hash = sectionID.detail
+		// removed due to scroll bug in iOS iPhone Safari
+		// window.location.hash = sectionID
 	}
 
 	let selectingLang = false
