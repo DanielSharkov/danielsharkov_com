@@ -1,5 +1,6 @@
 import {init, register, locale, getLocaleFromNavigator} from 'svelte-i18n'
-import {derived, Readable, writable, Writable} from 'svelte/store'
+import type {Readable, Writable} from 'svelte/store'
+import {derived, writable} from 'svelte/store'
 import {getQuery, removeQuery, setQuery} from './utils/url_handler'
 
 export enum Locale {

@@ -1,4 +1,5 @@
-import {Readable, Writable, writable} from 'svelte/store'
+import type {Readable, Writable} from 'svelte/store'
+import {writable} from 'svelte/store'
 import {vibrate} from './utils/misc'
 
 export type SocialMediaItem = {name: string, url: string, app?: string}
