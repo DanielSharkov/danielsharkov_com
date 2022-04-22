@@ -32,7 +32,7 @@
 	}
 
 	let queryProject = getQuery('project')
-	if (projectsIndexByID[queryProject]) {
+	if (typeof projectsIndexByID[queryProject] === 'number') {
 		openProject(projectsIndexByID[queryProject])
 	}
 	else {
