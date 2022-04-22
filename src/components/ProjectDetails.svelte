@@ -452,36 +452,6 @@
 
 
 
-<MetaTags
-	openGraph={{
-		site_name: $_('page_title'),
-		url: `http://danielsharkov.com/?project=${project.id}`,
-		title: $_('page_title'),
-		description: $_('about_me'),
-		locale: $i18n,
-		profile: {
-			firstName: 'Daniel',
-			lastName: 'Scharkov',
-			username: 'DaSh_x097',
-		},
-		images: [{
-			url: `http://danielsharkov.com/projects/${project.id}/cover.png`,
-			width: 1920, height: 1200,
-			alt: `danielsharkov.com ${$_('project.' + project.id)} cover`
-		},{
-			url: `http://danielsharkov.com/projects/${project.id}/preview.png`,
-			width: 1024, height: 640,
-			alt: `danielsharkov.com ${$_('project.' + project.id)} preview`
-		},{
-			url: `http://danielsharkov.com/projects/${project.id}/thumbnail.png`,
-			width: 300, height: 188,
-			alt: `danielsharkov.com ${$_('project.' + project.id)} thumbnail`
-		}],
-	}}
-/>
-
-
-
 <script lang='ts'>
 	import {createEventDispatcher, onDestroy, onMount} from 'svelte'
 	const dispatch = createEventDispatcher()
@@ -491,7 +461,6 @@
 	import {GlobalStore} from '../global_store'
 	import {vibrate, vibrateLink, copyToClipboard} from '../utils/misc'
 	import StatusIcon from './StatusIcon.svelte'
-	import {MetaTags} from 'svelte-meta-tags'
 	import {_, date as _date} from 'svelte-i18n'
 	import {projectModalAnim} from '../utils/transitions'
 	import {i18n, Locale, LocaleFullName, LocaleList} from '../i18n'

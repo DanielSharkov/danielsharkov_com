@@ -7,7 +7,6 @@
 	import {GlobalStore} from './global_store'
 	import EaseScrolling from './utils/ease_scrolling'
 	import {cubicInOut} from 'svelte/easing'
-	import {MetaTags} from 'svelte-meta-tags'
 	import {isLoading, _} from 'svelte-i18n'
 	import {i18n, LocaleList, LocaleFullName, isInvalidLocale, Locale} from './i18n'
 	import {modalBgAnim, socialModalAnim} from './utils/transitions'
@@ -375,41 +374,6 @@
 		{/each}
 	</div>
 {:else}
-	<MetaTags
-		title={$_('page_title')}
-		description={$_('about_me')}
-		twitter={{
-			handle: '@Daniel_Sharkov',
-			site: '@Daniel_Sharkov',
-			cardType: 'summary_large_image'
-		}}
-		openGraph={{
-			site_name: $_('page_title'),
-			url: 'http://danielsharkov.com',
-			title: $_('page_title'),
-			description: $_('about_me'),
-			locale: $i18n,
-			profile: {
-				firstName: 'Daniel',
-				lastName: 'Scharkov',
-				username: 'DaSh_x097',
-			},
-			images: [{
-				url: 'http://danielsharkov.com/projects/danielsharkov_com/cover.png',
-				width: 1920, height: 1200,
-				alt: 'danielsharkov.com cover'
-			},{
-				url: 'http://danielsharkov.com/projects/danielsharkov_com/preview.png',
-				width: 1024, height: 640,
-				alt: 'danielsharkov.com preview'
-			},{
-				url: 'http://danielsharkov.com/projects/danielsharkov_com/thumbnail.png',
-				width: 300, height: 188,
-				alt: 'danielsharkov.com thumbnail'
-			}],
-		}}
-	/>
-
 	<main id='App' bind:this={MainEl}
 	on:scroll={scrollingApp}
 	lock-scroll={$GlobalStore.lockScroll.state}
