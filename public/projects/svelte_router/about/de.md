@@ -36,7 +36,7 @@ Dazu erstellte ich noch einen Banner für jegliche Dokumente wie die Readme bzw.
 Das Branding hab ich an den Stil von Svelte gehalten, so dass man diese Bibliothek direkt mit Svelte assoziiert.
 
 ### Animierte Version
-Um alles nochmals zu toppen — die Kirsche der Sahne aufzusetzen — erstellte ich eine animierte Version des Logos, mit ebenfalls wenig Aufwand, mithilfe meines anderen Projektes *["Animation Creator"](http://localhost:5000/?project=animation_creator)*.
+Um alles nochmals zu toppen — die Kirsche der Sahne aufzusetzen — erstellte ich eine animierte Version des Logos, mit ebenfalls wenig Aufwand, mithilfe meines anderen Projektes *["Animation Creator"](http://danielsharkov.github.io/danielsharkov_com/?project=animation_creator)*.
 
 ![SvelteRouter Logo infinit animation](projects/svelte_router/media/svelte-router-logo-anim-infinit.svg)
 
