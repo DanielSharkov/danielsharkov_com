@@ -36,25 +36,6 @@
 				"library": "Library"
 			}
 		},
-		"about_me": {
-			"title": "Hi there, that's me!",
-			"designer": {
-				"title": "Designer",
-				"block_1": "I love to draft user experience designs and the way it gives me hope for better software for people. Many times me and many other people had to experience bad designs, which are making a software degenerate into more work, where it actually should ease your work. It's an appreciation to see a human smiling because of a well designed UX.",
-				"block_2": "A beautiful user interface mustn't also not be off place, to provide the right mood related to the topic. Like when it's about more serious topics like finanzials, where you may have a more greyish color palette. Or having a more vibrant colorful look to provide a more relaxed and ease look of a entertaning software. That's why I also love designing user interfaces, by living out free creativity."
-			},
-			"gamer": {
-				"title": "Gamer",
-				"block_1": "I love video games – every one loves video games. Whether competitive versus an AI, online versus or in cohesion with other people, or even something relaxed to wind down and being creative. As of the beginning of my gamer life being yonger than 10 years old, I already knew that games aren't only just fun, they may also teach people.",
-				"block_2": "Whether it's the different language you are playing with. Or the user interface you are interacting with. Or the blind interaction-communication, where the game tries to tell the player something without using usual language and without interrupting the immersion, like if the player may interact with something in the game. Or feeling free to live out the creativity. Or the storyline, which may inspire you and or complement your life by a strong metaphor. And many many more reasons games offer.",
-				"block_3": "In my opinion games are exactly the right approach to teach prople in a thrilling and interactive manner. There are so many games out there that I personaly like and are generally great. It would be an overkill by listing them here all up, but here you got some:",
-				"game_lis": "is a beautiful masterpiece, which touches deeply your heart by showing you what feelings and emotions really are. The graphic style is picturesque in keeping with the story.",
-				"game_lis_cta": "For this game I can only recommend germans to watch Gronkh's let's play",
-				"game_mc": "is a sandbox game that provides you basic possibilities, where as you may create new infinite possibilities by them. Whether surviving or playing in creative, whether building a small house, an estate or a castle and whether calm and alone or together with friends. Your decide which your possibilities are, or aren't.",
-				"game_mc_qoute": "Too many people thought at the beginning of Minecraft, that you can't let's play it. I just did it.",
-				"game_mc_cta": "As in the previous recommendation I here can also only recommend germans to watch Gronkh's let's play"
-			}
-		},
 		"contact": {
 			"title": "You would like to get in touch with me?",
 			"social_open_app": "Open in App",
