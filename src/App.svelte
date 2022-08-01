@@ -1,6 +1,5 @@
 <script lang='ts'>
 	import LandingSection from './sections/LandingSection.svelte'
-	import AboutMeSection from './sections/AboutMeSection.svelte'
 	import ProjectsSection from './sections/ProjectsSection.svelte'
 	import SkillsSection from './sections/SkillsSection.svelte'
 	import FooterSection from './sections/FooterSection.svelte'
@@ -405,7 +404,6 @@
 		<LandingSection on:goToSection={goToSection}/>
 		<ProjectsSection/>
 		<SkillsSection/>
-		<AboutMeSection/>
 		<FooterSection/>
 
 		<div id='SocialModal'

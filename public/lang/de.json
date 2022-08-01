@@ -36,25 +36,6 @@
 				"library": "Bibliothek"
 			}
 		},
-		"about_me": {
-			"title": "Hallo, das bin ich!",
-			"designer": {
-				"title": "Designer",
-				"block_1": "Es macht mir Spaß User Experience Designes zu entwerfen und gibt mir dazu die Hoffnung auf bessere Anwendungen für Menschen. Schon oft musste ich mich, wie auch viele andere Menschen, von Grund auf unverständlich gestalteten Anwendungen durchkämpfen, welche eigentlich eine Erleichterung der hauptsächlichen Arbeit sein sollen, jodoch zur weiteren Arbeit ausarten. Ein tolles Gefühl ist das Lächeln eines Menschen, durch eine saubere und verständliche UX Führung.",
-				"block_2": "Ein schönes User Interface darf auch nicht fehl am Platz sein, damit die Stimmung entsprechend zum Thema passt. Handelt es sich um etwas seriöses z.B. finanzen, so könnte man überwiegend Grautöne nutzen. Handelt es sich aber z.B. um was lockeres für die Freizeit & Unterhaltung, so verwendet man oft hellere Designs mit mehr Farbe, damit es sich für die Augen sanfter und heimlicher fühlt. Durch das ausleben der freien Kreativität, gefällt mir die Gestaltung verschiedenster UIs."
-			},
-			"gamer": {
-				"title": "Gamer",
-				"block_1": "Ich mag Spiele – jeder mag Spiele. Mal kompetitiv gegen den Computer, mal online mit oder gegen andere Menschen oder auch mal was sehr entspanntes und ruhiges zum runter kommen und oder kreativ sein. Schon von Anfang an, als ich noch jüngera als 10 war, wusste ich, dass Spiele nicht nur Spaß machen, sondern auch Dinge lehren können.",
-				"block_2": "Ob es die Sprache ist, welche man extra zum Lernen einstellt, ob es die Benutzeroberfläche ist, von der man sich für seine UX & UI Designs inspirieren lässt, oder ob es die blinde Interaktionskommunikation ist, in dem das Spiel versucht dem Spieler ohne übliche Sprache etwas zu sagen, um die Immersion nich zu zerstören, dass z.B. der Spieler mit etwas interagieren kann. Ob es die Kreativität ist, die man frei entfalten kann und Dinge ausprobiert, ob es die Gesichte ist, die einen ebenfalls inspirieren lässt, das Leben ergänzt oder auch einer sehr tiefgreifenden Metapher lehrt und viele mehr Gründ, was Spiele alles bieten.",
-				"block_3": "Spiele sind meiner Meinung nach genau der richtige Ansatz, um Menschen etwas auf eine spannende und interaktive Art und Weise zu lehren. Es gibt so viele Spiele, doch alle hier zu nennen, die ich persönlich mag oder allgemein äußerst gelungen sind, wäre ein echter Overkill. Aber hier zumindest einige davon:",
-				"game_lis": "ist ein wundervolles Meisterwerk, welches einem sehr tief in's Herz greif und zeigt was Gefühle und Emotionen überhaupt sind. Der Grafikstil ist passend zur Geschichte pittoresk.",
-				"game_lis_cta": "Da kann ich dir nur das Let's Play von Gronkh an's Herz legen",
-				"game_mc": "ist eine Sandbox die wenig bietet, jedoch die unendlichen Möglichkeiten einem selbst überlässt. Ob Überleben oder Kreativ sein, oder auch beides in einem, ob Haus, Anwesen oder Schloss und ob in Ruhe alleine oder gemeinsam mit Freunden vereint. Du selbst entscheidest, welche Möglichkeiten es dir bietet, oder auch nicht.",
-				"game_mc_qoute": "Sehr viele glaubten von Anfang an, dass man dieses Spiel nicht Let's Playen könnte. Ich hab es einfach getan.",
-				"game_mc_cta": "Auch hier liegt meine Empfehlung beim Let's Play von Gronkh"
-			}
-		},
 		"contact": {
 			"title": "Du möchtest mich gerne erreichen?",
 			"social_open_app": "App direkt öffnen",
