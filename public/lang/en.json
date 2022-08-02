@@ -36,6 +36,14 @@
 				"library": "Library"
 			}
 		},
+		"about_me": {
+			"title": "Hi there, that's me!",
+			"designer": {
+				"title": "Designer",
+				"block_1": "I love to draft user experience designs and the way it gives me hope for better software for people. Many times me and many other people had to experience bad designs, which are making a software degenerate into more work, where it actually should ease your work. It's an appreciation to see a human smiling because of a well designed UX.",
+				"block_2": "A beautiful user interface mustn't also not be off place, to provide the right mood related to the topic. Like when it's about more serious topics like finanzials, where you may have a more greyish color palette. Or having a more vibrant colorful look to provide a more relaxed and ease look of a entertaning software. That's why I also love designing user interfaces, by living out free creativity."
+			}
+		},
 		"contact": {
 			"title": "You would like to get in touch with me?",
 			"social_open_app": "Open in App",

@@ -36,6 +36,14 @@
 				"library": "Bibliothek"
 			}
 		},
+		"about_me": {
+			"title": "Hallo, das bin ich!",
+			"designer": {
+				"title": "Designer",
+				"block_1": "Es macht mir Spaß User Experience Designes zu entwerfen und gibt mir dazu die Hoffnung auf bessere Anwendungen für Menschen. Schon oft musste ich mich, wie auch viele andere Menschen, von Grund auf unverständlich gestalteten Anwendungen durchkämpfen, welche eigentlich eine Erleichterung der hauptsächlichen Arbeit sein sollen, jodoch zur weiteren Arbeit ausarten. Ein tolles Gefühl ist das Lächeln eines Menschen, durch eine saubere und verständliche UX Führung.",
+				"block_2": "Ein schönes User Interface darf auch nicht fehl am Platz sein, damit die Stimmung entsprechend zum Thema passt. Handelt es sich um etwas seriöses z.B. finanzen, so könnte man überwiegend Grautöne nutzen. Handelt es sich aber z.B. um was lockeres für die Freizeit & Unterhaltung, so verwendet man oft hellere Designs mit mehr Farbe, damit es sich für die Augen sanfter und heimlicher fühlt. Durch das ausleben der freien Kreativität, gefällt mir die Gestaltung verschiedenster UIs."
+			}
+		},
 		"contact": {
 			"title": "Du möchtest mich gerne erreichen?",
 			"social_open_app": "App direkt öffnen",
