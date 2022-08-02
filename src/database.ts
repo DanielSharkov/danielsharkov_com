@@ -485,16 +485,6 @@ export const projects: Array<Project> = [
 		aboutWritten: new Date('July 2021'),
 		prjImpl: new Date('1 December 2016'),
 	},
-	{
-		id: 'black_russian_training_video',
-		cover: true,
-		projectUrl: 'https://www.youtube.com/watch?v=ix7fj1-SOps',
-		usedTechnologies: ['PowerDirector15', 'GIMP', 'OBS'],
-		about: true,
-		locale: [Locale.DE, Locale.EN],
-		aboutWritten: new Date('1 July 2021'),
-		prjImpl: new Date('1 November 2018'),
-	},
 ]
 
 export type T_projectByID = { [key: string]: number }
