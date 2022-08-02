@@ -149,7 +149,7 @@
 			> .header
 				padding: 1em
 				background-color: var(--bg-clr)
-				border-bottom: dotted .1em var(--font-base-clr-025)
+				border-bottom: dotted 2px var(--font-base-clr-015)
 				> .logo
 					width: 3em
 					height: 3em
@@ -185,9 +185,8 @@
 				margin-bottom: 1em
 				> .period
 					position: relative
-					top: -2px
-					height: .2em
-					border-radius: 1em
+					top: -3px
+					height: 3px
 					box-shadow:
 						0 0 1px var(--bg-clr),
 						0 1px 10px var(--shadow-clr)
@@ -197,8 +196,6 @@
 			padding: 1em
 		.technologies
 			padding: 0 1.5em
-			> .header
-				
 			> .background-seperators
 				left: 1.5em
 				right: 1.5em
