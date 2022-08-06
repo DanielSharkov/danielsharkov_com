@@ -39,14 +39,6 @@ export const socialMedia = [
 		name: 'Twitter',
 		url: 'https://twitter.com/DanielSharkov',
 	},
-	{
-		name: 'Medium',
-		url: 'https://medium.com/@danielsharkov',
-	},
-	{
-		name: 'Quora',
-		url: 'https://quora.com/profile/Daniel-Sharkov-1',
-	},
 ]
 
 const appThemeLocStoreID = 'danielsharkov_com'
