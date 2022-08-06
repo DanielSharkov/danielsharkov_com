@@ -1,70 +1,56 @@
-html
-	// Misc ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+rgbaVar(name, opa = 1)
+	s("rgba(var(%s), %s)", name, opa)
 
+:root
+	// Misc ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	--transition-duration: 300ms
 	--transition-easing: cubic-bezier(.22, .61, .36, 1)
 	--transition: var(--transition-duration) var(--transition-easing)
 
-	--preview-tile-content-bg: rgba(#fff, .95)
-	--placeholder-loading: var(--bg-clr)
+	--ghost-loader: var(--font-base-clr-01)
+
+	// Element indexing ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	--idx-modals: 75
+	--idx-loader: 100
 
 	// Back- & Foreground ::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	--page-bg-rgb: 245, 245, 245
+	--page-bg: rgbaVar(--page-bg-rgb)
+	--page-bg-085: rgbaVar(--page-bg-rgb, .85)
+	--page-bg-075: rgbaVar(--page-bg-rgb, .75)
+	--page-bg-05: rgbaVar(--page-bg-rgb, .5)
+	--page-bg-025: rgbaVar(--page-bg-rgb, .25)
 
-	--overlay-bg: rgba(#09090a, .5)
+	--box-bg-rgb: 255, 255, 255
+	--box-bg: rgbaVar(--box-bg-rgb)
 
-	$bgColor = #fff
-	--bg-clr: $bgColor
-	--bg-clr-095: rgba($bgColor, .95)
-	--bg-clr-085: rgba($bgColor, .85)
-	--bg-clr-075: rgba($bgColor, .75)
-	--bg-clr-05: rgba($bgColor, .5)
-	--bg-clr-035: rgba($bgColor, .35)
-	--bg-clr-025: rgba($bgColor, .25)
-	--bg-clr-015: rgba($bgColor, .15)
-	--bg-clr-01: rgba($bgColor, .1)
-	--bg-clr-005: rgba($bgColor, .05)
-	--bg-clr-0025: rgba($bgColor, .025)
-
-	$fgColor = #fff
-	--fg-clr: $fgColor
-	--fg-clr-085: rgba($fgColor, .85)
-	--fg-clr-075: rgba($fgColor, .75)
-	--fg-clr-05: rgba($fgColor, .5)
-	--fg-clr-035: rgba($fgColor, .35)
-	--fg-clr-025: rgba($fgColor, .25)
-	--fg-clr-015: rgba($fgColor, .15)
-	--fg-clr-01: rgba($fgColor, .1)
-	--fg-clr-005: rgba($fgColor, .05)
-	--fg-clr-0025: rgba($fgColor, .025)
+	--overlay-bg: rgba(#222, .6)
+	--preview-tile-content-bg: rgbaVar(--box-bg-rgb, .95)
+	--project-modal-bg: var(--box-bg)
 
 	// Shadow ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
 	/* --shadow-ao-clr = Shadow ambient occlusion color */
 	--shadow-ao-clr: rgba(#000, .2)
 	--shadow-clr: rgba(#000, .2)
 	--shadow-big-clr: rgba(#000, .2)
 	--shadow-huge-clr: rgba(#000, .3)
 	--shadow-contrast: 0 0 0
-	--shadow-0: 0 0 1px var(--shadow-ao-clr), 0 1px 2px var(--shadow-clr)
-	--shadow-1: 0 0 1px var(--shadow-ao-clr), 0 2px 5px var(--shadow-clr)
-	--shadow-2: 0 0 1px var(--shadow-ao-clr), 0 3px 10px var(--shadow-clr)
-	--shadow-3: 0 0 1px var(--shadow-ao-clr), 0 6px 16px var(--shadow-clr)
-	--shadow-4: 0 0 1px var(--shadow-ao-clr), 0 8px 20px var(--shadow-big-clr)
-	--shadow-5: 0 0 2px var(--shadow-ao-clr), 0 10px 28px var(--shadow-big-clr)
-	--shadow-6: 0 0 2px var(--shadow-ao-clr), 0 12px 36px var(--shadow-big-clr)
-	--shadow-7: 0 0 2px var(--shadow-ao-clr), 0 14px 40px var(--shadow-huge-clr)
-	--shadow-8: 0 0 2px var(--shadow-ao-clr), 0 20px 60px var(--shadow-huge-clr)
-	--shadow-9: 0 0 3px var(--shadow-ao-clr), 0 30px 80px var(--shadow-huge-clr)
+	--shadow-bevel: 0 0 0 transparent
+	--shadow-0: var(--shadow-bevel), 0 0 1px var(--shadow-ao-clr), 0 1px 2px var(--shadow-clr)
+	--shadow-1: var(--shadow-bevel), 0 0 1px var(--shadow-ao-clr), 0 2px 5px var(--shadow-clr)
+	--shadow-2: var(--shadow-bevel), 0 0 1px var(--shadow-ao-clr), 0 3px 10px var(--shadow-clr)
+	--shadow-3: var(--shadow-bevel), 0 0 1px var(--shadow-ao-clr), 0 6px 16px var(--shadow-clr)
+	--shadow-4: var(--shadow-bevel), 0 0 1px var(--shadow-ao-clr), 0 8px 20px var(--shadow-big-clr)
+	--shadow-5: var(--shadow-bevel), 0 0 2px var(--shadow-ao-clr), 0 10px 28px var(--shadow-big-clr)
+	--shadow-6: var(--shadow-bevel), 0 0 2px var(--shadow-ao-clr), 0 12px 36px var(--shadow-big-clr)
 
 	// Border ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
 	--border-soft: var(--font-clr-01)
 	--border-hard: var(--font-clr-025)
 	--seperator-top: solid 1px var(--font-base-clr-01)
 	--seperator-bot: none
 
 	// Font Base :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
 	--font-base-size: 1rem
 	--font-base-weight: 400
 	--font-base-line-height: 1.75
@@ -72,167 +58,90 @@ html
 		'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
 		'Open Sans', 'Helvetica Neue', sans-serif
 
-	$fontBaseClr = #454950
-	--font-base-clr: $fontBaseClr
-	--font-base-clr-085: rgba($fontBaseClr, .85)
-	--font-base-clr-075: rgba($fontBaseClr, .75)
-	--font-base-clr-05: rgba($fontBaseClr, .5)
-	--font-base-clr-035: rgba($fontBaseClr, .35)
-	--font-base-clr-025: rgba($fontBaseClr, .25)
-	--font-base-clr-015: rgba($fontBaseClr, .15)
-	--font-base-clr-02: rgba($fontBaseClr, .2)
-	--font-base-clr-01: rgba($fontBaseClr, .1)
-	--font-base-clr-005: rgba($fontBaseClr, .05)
-	--font-base-clr-0025: rgba($fontBaseClr, .025)
+	--font-base-clr-rgb: 69, 73, 80
+	--font-base-clr: rgbaVar(--font-base-clr-rgb)
+	--font-base-clr-075: rgbaVar(--font-base-clr-rgb, .75)
+	--font-base-clr-05: rgbaVar(--font-base-clr-rgb, .5)
+	--font-base-clr-035: rgbaVar(--font-base-clr-rgb, .35)
+	--font-base-clr-025: rgbaVar(--font-base-clr-rgb, .25)
+	--font-base-clr-015: rgbaVar(--font-base-clr-rgb, .15)
+	--font-base-clr-02: rgbaVar(--font-base-clr-rgb, .2)
+	--font-base-clr-01: rgbaVar(--font-base-clr-rgb, .1)
+	--font-base-clr-005: rgbaVar(--font-base-clr-rgb, .05)
+	--font-base-clr-0025: rgbaVar(--font-base-clr-rgb, .025)
+
+	@media screen and (max-width: 1000px)
+		--font-base-size: .9rem
 
 	// Font Heading ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
 	--font-heading-stack: var(--font-base-stack)
 	--font-heading-weight: 400
 	--font-heading-line-height: 1.25
 
-	$fontHeadingClr = #000
-	--font-heading-clr: $fontHeadingClr
-	--font-heading-clr-085: rgba($fontHeadingClr, .85)
-	--font-heading-clr-075: rgba($fontHeadingClr, .75)
-	--font-heading-clr-05: rgba($fontHeadingClr, .5)
-	--font-heading-clr-035: rgba($fontHeadingClr, .35)
-	--font-heading-clr-025: rgba($fontHeadingClr, .25)
-	--font-heading-clr-015: rgba($fontHeadingClr, .15)
-	--font-heading-clr-01: rgba($fontHeadingClr, .1)
-	--font-heading-clr-005: rgba($fontHeadingClr, .05)
-	--font-heading-clr-0025: rgba($fontHeadingClr, .025)
+	--font-heading-clr-rgb: 0, 0, 0
+	--font-heading-clr: rgbaVar(--font-heading-clr-rgb)
+	--font-heading-clr-05: rgbaVar(--font-heading-clr-rgb, .5)
 
 	// Color :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	--clr-accent-rgb: 0, 85, 255
+	--clr-accent: rgbaVar(--clr-accent-rgb)
+	--clr-accent-05: rgbaVar(--clr-accent-rgb, .5)
+	--clr-accent-025: rgbaVar(--clr-accent-rgb, .25)
+	--clr-accent-01: rgbaVar(--clr-accent-rgb, .1)
 
-	$colorAccent = #05F
-	--color-accent: $colorAccent
-	--color-accent-025: rgba($colorAccent, .25)
-	--color-accent-01: rgba($colorAccent, .1)
+	--clr-accent-dark-rgb: 39, 70, 155
+	--clr-accent-dark: rgbaVar(--clr-accent-dark-rgb)
 
-	$colorComplementary = #b8a66a
-	--color-complementary: $colorComplementary
+	--clr-complementary-rgb: 184, 166, 106
+	--clr-complementary: rgbaVar(--clr-complementary-rgb)
 
-	$colorCrit = #d50000
-	--color-crit: #F55
-	--color-crit-01: rgba(#F55, .1)
+	--clr-red-rgb: 213, 0, 0
+	--clr-red: rgbaVar(--clr-red-rgb)
+	--clr-red-01: rgbaVar(--clr-red-rgb, .1)
 
-	$colorSuccess = #4faf12
-	--color-success: $colorSuccess
-	--color-success-01: rgba($colorSuccess, .1)
-
-	@media screen and (max-width: 1000px)
-		--font-base-size: .85rem
-
-	@media (prefers-color-scheme: light)
-		.only-dark
-			display: none
+	--clr-green-rgb: 79, 175, 18
+	--clr-green: rgbaVar(--clr-green-rgb)
+	--clr-green-01: rgbaVar(--clr-green-rgb, .1)
 
 	@media (prefers-color-scheme: dark)
-		.only-light
-			display: none
+		--ghost-loader: var(--font-base-clr-01)
 
-		// Misc ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+		--page-bg-rgb: 15, 15, 15
+		--box-bg-rgb: 35, 35, 35
+		--overlay-bg: rgbaVar(--page-bg-rgb, .9)
+		--preview-tile-content-bg: rgbaVar(--page-bg-rgb, .95)
+		--project-modal-bg: var(--page-bg)
 
-		--preview-tile-content-bg: rgba(#16191d, .95)
-		--placeholder-loading: var(--font-base-clr-01)
-
-		// Back- & Foreground ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-		--overlay-bg: rgba(#000, .85)
-
-		$bgColor = #09090a
-		--bg-clr $bgColor
-		--bg-clr-095 rgba($bgColor, .95)
-		--bg-clr-085 rgba($bgColor, .85)
-		--bg-clr-075 rgba($bgColor, .75)
-		--bg-clr-05 rgba($bgColor, .5)
-		--bg-clr-035 rgba($bgColor, .35)
-		--bg-clr-025 rgba($bgColor, .25)
-		--bg-clr-015 rgba($bgColor, .15)
-		--bg-clr-01 rgba($bgColor, .1)
-		--bg-clr-005 rgba($bgColor, .05)
-		--bg-clr-0025 rgba($bgColor, .025)
-
-		$fgColor = #16191d
-		--fg-clr $fgColor
-		--fg-clr-085 rgba($fgColor, .85)
-		--fg-clr-075 rgba($fgColor, .75)
-		--fg-clr-05 rgba($fgColor, .5)
-		--fg-clr-035 rgba($fgColor, .35)
-		--fg-clr-025 rgba($fgColor, .25)
-		--fg-clr-015 rgba($fgColor, .15)
-		--fg-clr-01 rgba($fgColor, .1)
-		--fg-clr-005 rgba($fgColor, .05)
-		--fg-clr-0025 rgba($fgColor, .025)
-
-		// Font Base :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-		$fontBaseClr = #a7c0cd
-		--font-base-clr $fontBaseClr
-		--font-base-clr-085 rgba($fontBaseClr, .85)
-		--font-base-clr-075 rgba($fontBaseClr, .75)
-		--font-base-clr-05 rgba($fontBaseClr, .5)
-		--font-base-clr-035 rgba($fontBaseClr, .35)
-		--font-base-clr-025 rgba($fontBaseClr, .25)
-		--font-base-clr-02 rgba($fontBaseClr, .2)
-		--font-base-clr-015 rgba($fontBaseClr, .15)
-		--font-base-clr-01 rgba($fontBaseClr, .1)
-		--font-base-clr-005 rgba($fontBaseClr, .05)
-		--font-base-clr-0025 rgba($fontBaseClr, .025)
-
-		// Font Heading ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-		$fontHeadingClr = #fff
-		--font-heading-clr: $fontHeadingClr
-		--font-heading-clr-085: rgba($fontHeadingClr, .85)
-		--font-heading-clr-075: rgba($fontHeadingClr, .75)
-		--font-heading-clr-05: rgba($fontHeadingClr, .5)
-		--font-heading-clr-035: rgba($fontHeadingClr, .35)
-		--font-heading-clr-025: rgba($fontHeadingClr, .25)
-		--font-heading-clr-015: rgba($fontHeadingClr, .15)
-		--font-heading-clr-01: rgba($fontHeadingClr, .1)
-		--font-heading-clr-005: rgba($fontHeadingClr, .05)
-		--font-heading-clr-0025: rgba($fontHeadingClr, .025)
+		--font-base-clr-rgb: 167, 192, 205
+		--font-heading-clr-rgb: 255, 255, 255
 
 		// Shadow ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
 		/* --shadow-ao-clr = Shadow ambient occlusion color */
 		--shadow-ao-clr: #000
 		--shadow-clr: #000
 		--shadow-big-clr: #000
 		--shadow-huge-clr: #000
-		--shadow-0: 0 -1px 1px var(--font-base-clr-02), 0 1px 1px var(--font-base-clr-01), 0 0 1px var(--shadow-ao-clr), 0 1px 2px var(--shadow-clr)
-		--shadow-1: 0 -1px 1px var(--font-base-clr-02), 0 1px 1px var(--font-base-clr-01), 0 0 1px var(--shadow-ao-clr), 0 2px 5px var(--shadow-clr)
-		--shadow-2: 0 -1px 1px var(--font-base-clr-02), 0 1px 1px var(--font-base-clr-01), 0 0 1px var(--shadow-ao-clr), 0 3px 10px var(--shadow-clr)
-		--shadow-3: 0 -1px 1px var(--font-base-clr-02), 0 1px 1px var(--font-base-clr-01), 0 0 1px var(--shadow-ao-clr), 0 6px 16px var(--shadow-clr)
-		--shadow-4: 0 -1px 1px var(--font-base-clr-02), 0 1px 1px var(--font-base-clr-01), 0 0 1px var(--shadow-ao-clr), 0 8px 20px var(--shadow-clr)
-		--shadow-5: 0 -1px 1px var(--font-base-clr-02), 0 1px 1px var(--font-base-clr-01), 0 0 2px var(--shadow-ao-clr), 0 10px 28px var(--shadow-big-clr)
-		--shadow-6: 0 -1px 1px var(--font-base-clr-02), 0 1px 1px var(--font-base-clr-01), 0 0 2px var(--shadow-ao-clr), 0 12px 36px var(--shadow-big-clr)
-		--shadow-7: 0 -1px 1px var(--font-base-clr-02), 0 1px 1px var(--font-base-clr-01), 0 0 2px var(--shadow-ao-clr), 0 14px 40px var(--shadow-big-clr)
-		--shadow-8: 0 -1px 1px var(--font-base-clr-02), 0 1px 1px var(--font-base-clr-01), 0 0 2px var(--shadow-ao-clr), 0 20px 60px var(--shadow-huge-clr)
-		--shadow-9: 0 -1px 1px var(--font-base-clr-02), 0 1px 1px var(--font-base-clr-01), 0 0 3px var(--shadow-ao-clr), 0 30px 80px var(--shadow-huge-clr)
+		--shadow-bevel: 0 -1px 1px var(--font-base-clr-02), 0 1px 1px var(--font-base-clr-01)
 
 		// Border ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
 		--border-soft: var(--font-base-clr-015)
 		--border-hard: var(--font-base-clr-05)
 		--seperator-top: solid 1px #000
 		--seperator-bot: solid 1px var(--font-base-clr-01)
 
-	@media (prefers-reduced-motion)
-		html
-			--transition-duration: 0
-			scroll-behavior: auto
-		main, header, article, footer, nav, div, input,
-		button, textarea, svg, svg > *, span, a, p, small, form,
-		q, b, i, label, section, h1, h2, h3, h4, h5, h6, img, ul, li,
-		dl, dt, dd, select, optgroup, pre, code
-			transition: none !important
-			animation: none !important
+@media (prefers-reduced-motion)
+	:root
+		--transition-duration: 0
+		scroll-behavior: auto
+	main, header, article, footer, nav, div, input,
+	button, textarea, svg, svg > *, span, a, p, small, form,
+	q, b, i, label, section, h1, h2, h3, h4, h5, h6, img, ul, li,
+	dl, dt, dd, select, optgroup, pre, code
+		transition: none !important
+		animation: none !important
 
-	@media (prefers-contrast: more)
-
+@media (prefers-contrast: more)
+	:root
 		--overlay-bg: rgba(#000, .85)
 
 		--border-soft: var(--font-base-clr-05)
@@ -240,12 +149,7 @@ html
 		--seperator-top: solid 1px var(--font-base-clr)
 		--seperator-bot: none
 
-		$fontBaseClr = #000
-		--font-base-clr-02 rgba($fontBaseClr, .35)
-		--font-base-clr-015 rgba($fontBaseClr, .3)
-		--font-base-clr-01 rgba($fontBaseClr, .2)
-		--font-base-clr-005 rgba($fontBaseClr, .15)
-		--font-base-clr-0025 rgba($fontBaseClr, .1)
+		--font-base-clr-rgb: 0, 0, 0
 
 		--shadow-ao-clr: #000
 		--shadow-clr: rgba(#000, .5)
@@ -259,9 +163,6 @@ html
 		--shadow-4: var(--shadow-contrast), 0 0 1px var(--shadow-ao-clr), 0 8px 20px var(--shadow-clr)
 		--shadow-5: var(--shadow-contrast), 0 0 2px var(--shadow-ao-clr), 0 10px 28px var(--shadow-big-clr)
 		--shadow-6: var(--shadow-contrast), 0 0 2px var(--shadow-ao-clr), 0 12px 36px var(--shadow-big-clr)
-		--shadow-7: var(--shadow-contrast), 0 0 2px var(--shadow-ao-clr), 0 14px 40px var(--shadow-big-clr)
-		--shadow-8: var(--shadow-contrast), 0 0 2px var(--shadow-ao-clr), 0 20px 60px var(--shadow-huge-clr)
-		--shadow-9: var(--shadow-contrast), 0 0 3px var(--shadow-ao-clr), 0 30px 80px var(--shadow-huge-clr)
 		@media (prefers-color-scheme: dark)
 			--shadow-ao-clr: #fff
 			--overlay-bg: rgba(#000, .9)
@@ -271,16 +172,8 @@ html
 			--seperator-top: solid 1px #000
 			--seperator-bot: solid 1px var(--font-base-clr)
 
-			$fontHeadingClr = #fff
-			--font-heading-clr: $fontHeadingClr
-
-			$fontBaseClr = #fff
-			--font-base-clr $fontBaseClr
-			--font-base-clr-02 rgba($fontBaseClr, .35)
-			--font-base-clr-015 rgba($fontBaseClr, .3)
-			--font-base-clr-01 rgba($fontBaseClr, .25)
-			--font-base-clr-005 rgba($fontBaseClr, .15)
-			--font-base-clr-0025 rgba($fontBaseClr, .1)
+			--font-base-clr-rgb: 255, 255, 255
+			--font-heading-clr-rgb: 255, 255, 255
 
 			--shadow-0: var(--shadow-contrast), 0 0 1px var(--shadow-ao-clr), 0 1px 2px var(--shadow-clr)
 			--shadow-1: var(--shadow-contrast), 0 0 1px var(--shadow-ao-clr), 0 2px 5px var(--shadow-clr)
@@ -289,7 +182,4 @@ html
 			--shadow-4: var(--shadow-contrast), 0 0 1px var(--shadow-ao-clr), 0 8px 20px var(--shadow-clr)
 			--shadow-5: var(--shadow-contrast), 0 0 2px var(--shadow-ao-clr), 0 10px 28px var(--shadow-big-clr)
 			--shadow-6: var(--shadow-contrast), 0 0 2px var(--shadow-ao-clr), 0 12px 36px var(--shadow-big-clr)
-			--shadow-7: var(--shadow-contrast), 0 0 2px var(--shadow-ao-clr), 0 14px 40px var(--shadow-big-clr)
-			--shadow-8: var(--shadow-contrast), 0 0 2px var(--shadow-ao-clr), 0 20px 60px var(--shadow-huge-clr)
-			--shadow-9: var(--shadow-contrast), 0 0 3px var(--shadow-ao-clr), 0 30px 80px var(--shadow-huge-clr)
 

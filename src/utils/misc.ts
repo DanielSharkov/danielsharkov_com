@@ -4,10 +4,10 @@ function fallbackCopyToClipboard(data: string): boolean {
 
 	// Avoid scrolling to bottom
 	tempEl.style.position = 'fixed'
-	tempEl.classList.add('hidden')
+	tempEl.style.display = 'hidden !important'
 
 	document.body.appendChild(tempEl)
-	tempEl.focus()
+	tempEl.focus({preventScroll: true})
 	tempEl.select()
 
 	try {
@@ -21,8 +21,9 @@ function fallbackCopyToClipboard(data: string): boolean {
 }
 
 export async function copyToClipboard(data: string): Promise<boolean> {
-	if (!window.navigator?.clipboard) return fallbackCopyToClipboard(data)
-
+	if (!window.navigator?.clipboard) {
+		return fallbackCopyToClipboard(data)
+	}
 	try {
 		await navigator.clipboard.writeText(data)
 		return true
@@ -37,7 +38,9 @@ export function vibrate(duration?: number|number[]): void {
 	}
 }
 
-export function vibrateLink(node, opts?: {duration?: number|number[]}) {
+export function vibrateLink(
+	node: HTMLElement, opts?: {duration?: number|number[]},
+) {
 	let _hasVibrated = false
 
 	function _click(event) {
@@ -46,8 +49,7 @@ export function vibrateLink(node, opts?: {duration?: number|number[]}) {
 			_hasVibrated = true
 			vibrate(opts?.duration)
 			node.click()
-		}
-		else {
+		} else {
 			_hasVibrated = false
 		}
 	}
@@ -58,4 +60,28 @@ export function vibrateLink(node, opts?: {duration?: number|number[]}) {
 			node.removeEventListener('click', _click)
 		}
 	}
+}
+
+export function randNum(max: number, min?: number) {
+	const x = Math.floor(Math.random() * max)
+	if (!Number.isNaN(Number(min)) && x < min) {
+		return min
+	}
+	return x
+}
+
+export function randString(max: number, min?: number, base?: number) {
+	let len = randNum(max)
+	if (min && len < min) len = min
+	if (len > max) len = max
+
+	let arr = new Uint8Array(len / 2)
+	window.crypto.getRandomValues(arr)
+	return Array.from(arr, (dec)=> (
+		dec.toString(base || 36).padStart(2, '0')
+	)).join('')
+}
+
+export function randID(len: number = 8) {
+	return randString(len, len, 36)
 }

@@ -1,79 +1,135 @@
-import type {Readable, Writable} from 'svelte/store'
-import {writable} from 'svelte/store'
+import type {Action, ActionReturn} from 'svelte/action'
 
-export enum LazyLoadStatus {LOADING, DONE, ERR}
+export async function lazyLoad(url): Promise<string> {
+	const _img = document.createElement('img')
 
-type T_Store_LazyLoad = {
-	status: LazyLoadStatus
+	let resolve: (url: string)=> void
+	let reject: (reason: Error|ErrorEvent|UIEvent)=> void
+	const loader = new Promise<string>((res, rej)=> {
+		resolve = res
+		reject = rej
+	})
+
+	if (document.readyState === 'complete') {
+		_load()
+	} else {
+		window.addEventListener('load', _load, {once: true})
+	}
+
+	function _load() {
+		_img.addEventListener('load', _finish)
+		_img.addEventListener('error', _fail)
+		_img.addEventListener('abort', _fail)
+		_img.src = url
+		if (_img.complete) {
+			if (_img.naturalWidth === 0) {
+				_fail(new Error('width is 0px'))
+			} else if (_img.naturalHeight === 0) {
+				_fail(new Error('height is 0px'))
+			} else {
+				_finish()
+			}
+		}
+	}
+
+	function _finish() {
+		_removeListeners()
+		resolve(url)
+	}
+
+	function _fail(reason: Error|ErrorEvent|UIEvent) {
+		_removeListeners()
+		reject(reason)
+	}
+
+	function _removeListeners() {
+		_img.removeEventListener('load', _finish)
+		_img.removeEventListener('error', _fail)
+		_img.removeEventListener('abort', _fail)
+	}
+
+	return loader
 }
 
-export class LazyLoader implements Readable<T_Store_LazyLoad> {
-	#store: Writable<T_Store_LazyLoad> = writable({
-		status: LazyLoadStatus.LOADING,
-	})
-	public readonly subscribe = this.#store.subscribe
+interface lazyLoadActionParams {
+	thumb: string
+	source: string
+}
 
-	private _mediaSrc: string
-	private _imgEl: HTMLImageElement
-
-	constructor(src: string) {
-		this.changeSource(src)
+export const lazyLoadAction: Action<
+	HTMLImageElement, lazyLoadActionParams
+> =(node, {thumb, source}): ActionReturn<lazyLoadActionParams>=> {
+	let _thumb = thumb
+	let _source = source
+	node.src = _thumb
+	function _load(url: string) {
+		node.setAttribute('lazyloading', url)
+		lazyLoad(url)
+			.then((url)=> {
+				node.src = url
+				node.removeAttribute('lazyloading')
+			})
+			.catch((reason)=> {console.dir(reason)})
 	}
-
-	private _removeListeners(): void {
-		this._imgEl.removeEventListener('load', this._doneLoading.bind(this))
-		this._imgEl.removeEventListener('error', this._failedToLoad.bind(this))
-		this._imgEl.removeEventListener('abort', this._failedToLoad.bind(this))
-	}
-
-	private _doneLoading(): void {
-		this.#store.update((store)=> {
-			store.status = LazyLoadStatus.DONE
-			return store
-		})
-		this._removeListeners()
-	}
-
-	private _failedToLoad(): void {
-		console.error('LazyLoader: failed to load', this._mediaSrc)
-		this.#store.update((store)=> {
-			store.status = LazyLoadStatus.ERR
-			return store
-		})
-		this._removeListeners()
-	}
-
-	private _load():void {
-		this._imgEl.addEventListener('load', this._doneLoading.bind(this), { passive: true })
-		this._imgEl.addEventListener('error', this._failedToLoad.bind(this), { passive: true })
-		this._imgEl.addEventListener('abort', this._failedToLoad.bind(this), { passive: true })
-		this._imgEl.src = this._mediaSrc
-		if (this._imgEl.complete) {
-			if (this._imgEl.naturalWidth === 0 || this._imgEl.naturalHeight === 0) {
-				return this._failedToLoad()
+	_load(_source)
+	return {
+		update({source}) {
+			if (source !== _source) {
+				_source = source
+				_load(_source)
 			}
-			return this._doneLoading()
-		}
+		},
 	}
+}
 
-	public load(): void {
-		if (document.readyState === 'complete') {
-			this._load()
-		}
-		else window.addEventListener(
-			'load', this._load.bind(this),
-			{once: true, passive: true},
-		)
+export const lazyLoadSVGImgAction: Action<
+	SVGImageElement, lazyLoadActionParams
+> =(node, {thumb, source}): ActionReturn<lazyLoadActionParams>=> {
+	let _thumb = thumb
+	let _source = source
+	node.setAttributeNS('http://www.w3.org/1999/xlink', 'href', _thumb)
+	function _load(url: string) {
+		node.setAttribute('lazyloading', url)
+		lazyLoad(url)
+			.then((url)=> {
+				node.setAttributeNS('http://www.w3.org/1999/xlink', 'href', url)
+				node.removeAttribute('lazyloading')
+			})
+			.catch((reason)=> {console.dir(reason)})
 	}
-
-	public changeSource(newSrc: string): void {
-		this._mediaSrc = newSrc
-		this._imgEl = document.createElement('img')
+	_load(_source)
+	return {
+		update({source}) {
+			if (source !== _source) {
+				_source = source
+				_load(_source)
+			}
+		},
 	}
+}
 
-	public destroy() {
-		if (!this._imgEl) return
-		this._removeListeners()
-		this._imgEl.remove()
+export const lazyLoadBgAction: Action<
+	HTMLElement, lazyLoadActionParams
+> =(node, {thumb, source}): ActionReturn<lazyLoadActionParams>=> {
+	let _thumb = thumb
+	let _source = source
+	node.style.backgroundImage = 'url('+ _thumb +')'
+	function _load(url: string) {
+		node.setAttribute('lazyloading', url)
+		lazyLoad(url)
+			.then((url)=> {
+				node.style.backgroundImage = 'url('+ url +')'
+				node.removeAttribute('lazyloading')
+			})
+			.catch((reason)=> {console.dir(reason)})
+	}
+	_load(_source)
+	return {
+		update({source}) {
+			if (source !== _source) {
+				_source = source
+				_load(_source)
+			}
+		},
 	}
 }

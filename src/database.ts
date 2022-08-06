@@ -1,4 +1,4 @@
-import {Locale} from './i18n'
+import {Language} from './i18n'
 
 export const careerBegin: number = 2012
 
@@ -223,7 +223,7 @@ export type Project = {
 	usedTechnologies: Array<string>
 	about:            boolean
 	gradient?:        Array<string>
-	locale:           Array<Locale>
+	lang:             Array<Language>
 	aboutWritten?:    Date
 	prjImpl?:         Date
 	prjUpdt?:         Date
@@ -242,7 +242,7 @@ export const projects: Array<Project> = [
 		],
 		about: true,
 		gradient: ['#fcb6b6', '#f6df88'],
-		locale: [Locale.DE, Locale.EN],
+		lang: [Language.DE, Language.EN],
 		prjImpl: new Date('1 May 2021'),
 	},
 	{
@@ -257,7 +257,7 @@ export const projects: Array<Project> = [
 		],
 		about: true,
 		gradient: ['#b5ffdd', '#65C7F7', '#0066ff'],
-		locale: [Locale.DE, Locale.EN],
+		lang: [Language.DE, Language.EN],
 		prjImpl: new Date('1 July 2019'),
 		prjUpdt: new Date('1 February 2022'),
 	},
@@ -273,7 +273,7 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['VueJS', 'Stylus', 'VSC'],
 		about: true,
 		gradient: ['#ff51ea', '#fe9840', '#42ffc2', '#b870fa', '#54ff32'],
-		locale: [Locale.DE],
+		lang: [Language.DE],
 		aboutWritten: new Date('1 June 2021'),
 		prjImpl: new Date('1 March 2018'),
 	},
@@ -289,7 +289,7 @@ export const projects: Array<Project> = [
 		],
 		about: true,
 		gradient: ['#1488CC', '#2B32B2'],
-		locale: [Locale.DE, Locale.EN],
+		lang: [Language.DE, Language.EN],
 		prjImpl: new Date('1 December 2020'),
 	},
 	{
@@ -300,7 +300,7 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'Figma', 'VSC'],
 		about: true,
 		gradient: ['#093028', '#344740'],
-		locale: [Locale.DE, Locale.EN],
+		lang: [Language.DE, Language.EN],
 		aboutWritten: new Date('2 June 2021'),
 		prjImpl: new Date('1 July 2019'),
 	},
@@ -313,7 +313,7 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['Svelte', 'JavaScript', 'TypeScript', 'VSC', 'Figma'],
 		about: true,
 		gradient: ['#ffc73e', '#ff6505'],
-		locale: [Locale.DE],
+		lang: [Language.DE],
 		aboutWritten: new Date('19 January 2022'),
 		prjImpl: new Date('12 June 2019'),
 		prjUpdt: new Date('11 February 2022'),
@@ -327,7 +327,7 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['Svelte', 'JavaScript', 'TypeScript', 'VSC', 'Figma'],
 		about: true,
 		gradient: ['#ff4081', '#ff6e40'],
-		locale: [Locale.DE],
+		lang: [Language.DE],
 		aboutWritten: new Date('22 January 2022'),
 		prjImpl: new Date('21 November 2021'),
 		prjUpdt: new Date('8 February 2022'),
@@ -340,7 +340,7 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['Svelte', 'JavaScript', 'TypeScript', 'VSC', 'Figma'],
 		about: true,
 		gradient: ['#000000', '#000000', '#f71d44', '#4bb05a', '#3bbbeb', '#000000', '#000000'],
-		locale: [Locale.DE],
+		lang: [Language.DE],
 		aboutWritten: new Date('28 February 2022'),
 		prjImpl: new Date('10 December 2021'),
 		prjUpdt: new Date('19 January 2022'),
@@ -354,7 +354,7 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['Svelte', 'VSC'],
 		about: true,
 		gradient: ['#f399d3', '#a7276e', '#2c9c88', '#713dc3', '#00bfff'],
-		locale: [Locale.DE, Locale.EN],
+		lang: [Language.DE, Language.EN],
 		aboutWritten: new Date('31 May 2021'),
 		prjImpl: new Date('1 August 2019'),
 	},
@@ -366,7 +366,7 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['Figma', 'SVG', 'VSC'],
 		about: true,
 		gradient: ['#FA8BFF', '#2BD2FF', '#2BFF88'],
-		locale: [Locale.DE],
+		lang: [Language.DE],
 		aboutWritten: new Date('31 May 2021'),
 		prjImpl: new Date('1 March 2019'),
 	},
@@ -380,7 +380,7 @@ export const projects: Array<Project> = [
 		],
 		about: true,
 		gradient: ['#FAACA8', '#DDD6F3'],
-		locale: [],
+		lang: [],
 	},
 	{
 		id: 'dgraph_graphql_go_svelte',
@@ -389,7 +389,7 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'VSC'],
 		about: true,
 		gradient: ['#0062ff', '#cbf6ff'],
-		locale: [Locale.DE, Locale.EN],
+		lang: [Language.DE, Language.EN],
 		aboutWritten: new Date('31 May 2021'),
 		prjImpl: new Date('1 May 2018'),
 	},
@@ -402,7 +402,7 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'VSC'],
 		about: true,
 		gradient: ['#a1c4fd', '#c2e9fb'],
-		locale: [Locale.DE, Locale.EN],
+		lang: [Language.DE, Language.EN],
 		aboutWritten: new Date('31 May 2021'),
 		prjImpl: new Date('1 December 2018'),
 	},
@@ -415,7 +415,7 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'Nginx', 'Figma', 'VSC'],
 		about: true,
 		gradient: ['#ffffff', '#63d0ff', '#ffffff', '#ffdd7d', '#ffffff'],
-		locale: [Locale.DE, Locale.EN],
+		lang: [Language.DE, Language.EN],
 		aboutWritten: new Date('31 May 2021'),
 		prjImpl: new Date('1 February 2019'),
 	},
@@ -435,7 +435,7 @@ export const projects: Array<Project> = [
 		],
 		about: true,
 		gradient: ['#1F1C2C', '#928DAB'],
-		locale: [Locale.DE, Locale.EN],
+		lang: [Language.DE, Language.EN],
 		prjImpl: new Date('1 November 2019'),
 	},
 	{
@@ -446,7 +446,7 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['HTML', 'CSS', 'JavaScript', 'VSC'],
 		about: true,
 		gradient: ['#a02828', '#ff5b5b'],
-		locale: [Locale.DE],
+		lang: [Language.DE],
 		aboutWritten: new Date('31 May 2021'),
 		prjImpl: new Date('1 February 2019'),
 	},
@@ -459,7 +459,7 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['VueJS', 'Stylus', 'VSC'],
 		about: true,
 		gradient: ['#08AEEA', '#2AF598'],
-		locale: [Locale.DE, Locale.EN],
+		lang: [Language.DE, Language.EN],
 		aboutWritten: new Date('1 July 2021'),
 		prjImpl: new Date('28 February 2018'),
 	},
@@ -471,7 +471,7 @@ export const projects: Array<Project> = [
 		usedTechnologies: [],
 		about: true,
 		gradient: ['#08AEEA', '#2AF598'],
-		locale: [Locale.DE, Locale.EN],
+		lang: [Language.DE, Language.EN],
 		prjImpl: new Date('1 December 2018'),
 	},
 	{
@@ -481,16 +481,13 @@ export const projects: Array<Project> = [
 		usedTechnologies: ['PowerDirector15', 'GIMP', 'OBS'],
 		about: true,
 		gradient: ['#a7a5a4', '#695747'],
-		locale: [Locale.DE, Locale.EN],
-		aboutWritten: new Date('July 2021'),
+		lang: [Language.DE, Language.EN],
+		aboutWritten: new Date('1 July 2021'),
 		prjImpl: new Date('1 December 2016'),
 	},
 ]
 
-export type T_projectByID = { [key: string]: number }
-export const projectsIndexByID: T_projectByID = {}
-for (const p in projects) projectsIndexByID[projects[p].id] = Number(p)
-
-export function getProjectByID(id) {
-	return projects[projectsIndexByID[id]]
+export const projectsIdxMap: {[key: string]: number} = {}
+for (const p in projects) {
+	projectsIdxMap[projects[p].id] = Number(p)
 }

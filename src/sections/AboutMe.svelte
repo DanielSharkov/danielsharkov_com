@@ -13,28 +13,27 @@
 
 
 <script>
-	import {_} from 'svelte-i18n'
+import {_} from 'svelte-i18n'
 </script>
 
 
 
 <style lang='stylus'>
-	section
-		padding: 2rem
-		grid-gap: 2rem
-		@media screen and (max-width: 600px)
-			padding: 1rem
+section
+	padding: 2rem
+	grid-gap: 2rem
+	@media screen and (max-width: 600px)
+		padding: 1rem
 
-	p
-		margin-bottom: 1rem
-		font-size: 1.15rem
+p
+	margin-bottom: 1rem
+	font-size: 1.15rem
 
-	article, .header
-		max-width: 900px
-		width: 100%
-		margin: auto
+article, .header
+	max-width: 900px
+	width: 100%
+	margin: auto
 
-	.article-title
-		margin-bottom: .75rem
-
+.article-title
+	margin-bottom: .75rem
 </style>

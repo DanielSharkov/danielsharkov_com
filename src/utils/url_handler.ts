@@ -24,7 +24,7 @@ export function removeQuery(queryName: string): void {
 				.split('&')
 		) {
 			let [key, val] = qrs.split('=')
-			if (key != queryName) query[key] = val
+			if (key != queryName) {query[key] = val}
 		}
 	}
 	if (window.history?.pushState) {
@@ -57,7 +57,7 @@ export function getQuery(queryName: string): string|undefined {
 				.split('&')
 		) {
 			let [key, val] = qrs.split('=')
-			if (key == queryName) return val
+			if (key == queryName) {return val}
 		}
 	}
 	return undefined

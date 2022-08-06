@@ -3,6 +3,7 @@
 	"my_name": "Daniel Sharkov",
 	"about_me": "Hi there! I'm a fullstack software engineer focusing on web app frontend and backend systems. TypeScript, Svelte, Stylus, Vue.js, Go and many more tools are part of my professional arsenal. 5 years of experience in UX & UI design make me a great allround developer. Next stop: DevOps & beyond!",
 	"profile_pic_alt": "Me, Myself and I",
+	"failed_to_load_image": "Failed to load image",
 
 	"close": "Close",
 	"open": "Open",
@@ -14,13 +15,6 @@
 				"fullstack_webdev": "FullStack Web-Dev.",
 				"ux_ui_designer": "UX & UI Designer",
 				"junior_devop": "Junior DevOp"
-			},
-			"question": {
-				"projects": "Which projects are you working on or have you ever done?",
-				"skills": "What's your stack? (skills)",
-				"worked-with": "In which companies have your already worked in?",
-				"about": "Tell me something about you.",
-				"contact": "I would like to get in touch with you."
 			}
 		},
 		"projects": {
@@ -29,6 +23,7 @@
 		"skills": {
 			"title": "Skills",
 			"description": "Programming languages which I speak in and technologies which I know and use - shown in a timeline, since when I started.",
+			"aria_open_site": "Open website of {x}",
 			"technology_type": {
 				"software": "Software",
 				"language": "Language",
@@ -45,7 +40,7 @@
 			}
 		},
 		"contact": {
-			"title": "You would like to get in touch with me?",
+			"title": "Stay in touch",
 			"social_open_app": "Open in App",
 			"social_open_link": "Open link"
 		}

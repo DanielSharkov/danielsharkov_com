@@ -1,9 +1,11 @@
-<svg
-class='icon' viewBox='0 0 120 120' fill='none'
-aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'
-class:failed={failed}
-class:succeeded={succeeded}
-class:loading={loading && !failed && !succeeded}>
+<script lang='ts'>
+export let failed = false
+export let succeeded = false
+export let loading = false
+</script>
+
+<svg class='icon' viewBox='0 0 120 120' fill='none' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'
+class:failed class:succeeded class:loading={loading && !failed && !succeeded}>
 	<style>
 		svg:not(.failed) .cross,
 		svg:not(.succeeded) .check {
@@ -42,14 +44,14 @@ class:loading={loading && !failed && !succeeded}>
 		}
 
 		svg.failed .circle-bg {
-			stroke: var(--color-crit-01)
+			stroke: var(--clr-red-01)
 		}
 		svg.failed .circle {
 			stroke-dasharray: 290;
 			stroke-dashoffset: 0;
 			-webkit-animation: failedCircle 1s linear;
 			animation: failedCircle 1s linear;
-			stroke: var(--color-crit);
+			stroke: var(--clr-red);
 		}
 		@keyframes failedCircle {
 			0% {
@@ -64,13 +66,13 @@ class:loading={loading && !failed && !succeeded}>
 			100% {
 				transform: rotate(720deg);
 				stroke-dashoffset: 0;
-				stroke: var(--color-crit);
+				stroke: var(--clr-red);
 			}
 		}
 		svg.failed .cross_1 {
 			stroke-dasharray: 90;
 			stroke-dashoffset: 204;
-			stroke: var(--color-crit);
+			stroke: var(--clr-red);
 			-webkit-animation: cross_1 .75s both cubic-bezier(.22, .61, .36, 1);
 			animation: cross_1 .75s both cubic-bezier(.22, .61, .36, 1);
 			-webkit-animation-delay: .3s;
@@ -84,7 +86,7 @@ class:loading={loading && !failed && !succeeded}>
 		svg.failed .cross_2 {
 			stroke-dasharray: 93;
 			stroke-dashoffset: 212;
-			stroke: var(--color-crit);
+			stroke: var(--clr-red);
 			-webkit-animation: cross_2 .4s both cubic-bezier(.22, .61, .36, 1);
 			animation: cross_2 .4s both cubic-bezier(.22, .61, .36, 1);
 			-webkit-animation-delay: .55s;
@@ -97,14 +99,14 @@ class:loading={loading && !failed && !succeeded}>
 		}
 
 		svg.succeeded .circle-bg {
-			stroke: var(--color-success-01)
+			stroke: var(--clr-green-01)
 		}
 		svg.succeeded .circle {
 			stroke-dasharray: 290;
 			stroke-dashoffset: 0;
 			-webkit-animation: succeededCircle 1s linear;
 			animation: succeededCircle 1s linear;
-			stroke: var(--color-success);
+			stroke: var(--clr-green);
 		}
 		@keyframes succeededCircle {
 			0% {
@@ -119,13 +121,13 @@ class:loading={loading && !failed && !succeeded}>
 			100% {
 				transform: rotate(720deg);
 				stroke-dashoffset: 0;
-				stroke: var(--color-success);
+				stroke: var(--clr-green);
 			}
 		}
 		svg.succeeded .check {
 			stroke-dasharray: 105;
 			stroke-dashoffset: 105;
-			stroke: var(--color-success);
+			stroke: var(--clr-green);
 			-webkit-animation: check .75s both var(--transition-easing);
 			animation: check .75s both var(--transition-easing);
 			-webkit-animation-delay: .35s;
@@ -140,17 +142,9 @@ class:loading={loading && !failed && !succeeded}>
 			}
 		}
 	</style>
-	<path class='circle-bg' d='M60 106C85.4051 106 106 85.4051 106 60C106 34.5949 85.4051 14 60 14C34.5949 14 14 34.5949 14 60C14 85.4051 34.5949 106 60 106Z' stroke-width='.1rem' stroke-linecap='round' stroke-linejoin='round'/>
-	<path class='circle' d='M60 106C85.4051 106 106 85.4051 106 60C106 34.5949 85.4051 14 60 14C34.5949 14 14 34.5949 14 60C14 85.4051 34.5949 106 60 106Z' stroke-width='.1rem' stroke-linecap='round' stroke-linejoin='round'/>
-	<path class='check' d='M83.5614 43L48.9583 77.8633L36.0001 64.9051C23.5949 52.5 11.5001 58 17.0003 76.5' stroke-width='.1rem' stroke-linecap='round' stroke-linejoin='round'/>
-	<path class='cross cross_1' d='M82.9993 83L37.0003 37.001C29.4993 29.5 24.5 28 19 39' stroke-width='.1rem' stroke-linecap='round' stroke-linejoin='round'/>
-	<path class='cross cross_2' d='M37.0001 82.9386L82.9991 36.9397C91.5 28.4388 83.9999 19 75.9999 17' stroke-width='.1rem' stroke-linecap='round' stroke-linejoin='round'/>
+	<path class='circle-bg' d='M60 106C85.4051 106 106 85.4051 106 60C106 34.5949 85.4051 14 60 14C34.5949 14 14 34.5949 14 60C14 85.4051 34.5949 106 60 106Z' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>
+	<path class='circle' d='M60 106C85.4051 106 106 85.4051 106 60C106 34.5949 85.4051 14 60 14C34.5949 14 14 34.5949 14 60C14 85.4051 34.5949 106 60 106Z' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>
+	<path class='check' d='M83.5614 43L48.9583 77.8633L36.0001 64.9051C23.5949 52.5 11.5001 58 17.0003 76.5' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>
+	<path class='cross cross_1' d='M82.9993 83L37.0003 37.001C29.4993 29.5 24.5 28 19 39' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>
+	<path class='cross cross_2' d='M37.0001 82.9386L82.9991 36.9397C91.5 28.4388 83.9999 19 75.9999 17' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/>
 </svg>
-
-
-
-<script lang='ts'>
-	export let failed: boolean = false
-	export let succeeded: boolean = false
-	export let loading: boolean = false
-</script>
