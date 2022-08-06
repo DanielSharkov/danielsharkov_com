@@ -10,7 +10,6 @@
 	<div id='Project_Details_Modal'
 	class='grid' role='article'
 	transition:projectModalAnim
-	class:no-about={props.project.about === null}
 	bind:this={thisEl} tabindex='-1'>
 		<button on:click={closeThis} class='close-modal flex flex-center' aria-label={$_('close')}>
 			<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
@@ -20,10 +19,10 @@
 
 		<div class='image-container flex flex-center block-select'
 		role='img'
-		class:no-image={!props.project.cover}
-		class:dark-theme={props.project.darkTheme}
+		class:no-image={props.project.hasNoCover}
+		class:dark-theme={props.project.darkThemed}
 		style={customGradientBG}>
-			{#if props.project.cover}
+			{#if !props.project.hasNoCover}
 				<div class='flex flex-center'>
 					{#await lazyLoader}
 						<div
@@ -59,10 +58,6 @@
 						</div>
 					{/await}
 				</div>
-			{:else if props.project.about === null}
-				<svg class='icon no-image' aria-hidden='true' focusable='false' role='presentation'>
-					<use xlink:href='#Icon_NoImage'/>
-				</svg>
 			{/if}
 		</div>
 		<div class='header grid gap-2'>
@@ -79,15 +74,15 @@
 									class='color'
 									style='background-color: {technologies[techno].color}'
 								/>
-								{#if technologies[techno].icon}
+								{#if technologies[techno].hasIcon}
 									<svg class='logo' aria-hidden='true' focusable='false' role='presentation'>
 										<title>{techno} Logo</title>
 										<use xlink:href='#Logo_{techno}'/>
 									</svg>
-								{:else if technologies[techno].image}
+								{:else if technologies[techno].hasImage}
 									<img
 										class='logo'
-										src='technologies/logo_{techno}.png'
+										src='technologies/{techno}.png'
 										alt='{techno} Logo'
 									/>
 								{/if}
@@ -144,178 +139,176 @@
 				{/if}
 			</div>
 		</div>
-		{#if props.project.about}
-			<div class='about flex flex-col'>
-				<hr class='seperator top'/>
-				{#if !aboutTranslationUnavailable && (props.project.lang.length > 1 || articleHasMetaSet)}
-					<div class='about-header grid gap-1'>
-						{#if props.project.lang.length > 1}
-							<div class='load-different-lang flex flex-center-y'>
-								<div class='disclosure'>
-									<button on:click={toggleTranslationSelection}
-									class='loaded-translation flex nowrap flex-center-y gap-05'
-									class:active={isSelectingTranslation}
-									aria-haspopup='true'>
-										<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
-											<use xlink:href='#Icon_Translation'/>
-										</svg>
-										<span class='label'>{$_('project_load_different_translation')}</span>
-										<svg class='icon icon-075' aria-hidden='true' focusable='false' role='presentation'>
-											<use xlink:href='#Icon_Chevron'/>
-										</svg>
-									</button>
-									{#if isSelectingTranslation}
-										<div class='options grid gap-05' transition:disclosureTransition>
-											{#each props.project.lang as lang}
-												{#if lang !== loadedTranslation}
-													<button class='option flex nowrap flex-center-y gap-05' on:click={()=> selectDifferentTranslation(lang)}>
-														<svg class='flag icon icon-175' aria-hidden='true' focusable='false' role='presentation'>
-															<title>{LanguageFullName[lang]} Flag</title>
-															<use xlink:href='#Flag_{lang}'/>
-														</svg>
-														<span class='label'>{LanguageFullName[lang]}</span>
-													</button>
-												{/if}
-											{/each}
-										</div>
-									{/if}
+		<div class='about flex flex-col'>
+			<hr class='seperator top'/>
+			{#if !articleTranslationUnavailable && (props.project.lang.length > 1 || articleHasMetaSet)}
+				<div class='about-header grid gap-1'>
+					{#if props.project.lang.length > 1}
+						<div class='load-different-lang flex flex-center-y'>
+							<div class='disclosure'>
+								<button on:click={toggleTranslationSelection}
+								class='loaded-translation flex nowrap flex-center-y gap-05'
+								class:active={isSelectingTranslation}
+								aria-haspopup='true'>
+									<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
+										<use xlink:href='#Icon_Translation'/>
+									</svg>
+									<span class='label'>{$_('project_load_different_translation')}</span>
+									<svg class='icon icon-075' aria-hidden='true' focusable='false' role='presentation'>
+										<use xlink:href='#Icon_Chevron'/>
+									</svg>
+								</button>
+								{#if isSelectingTranslation}
+									<div class='options grid gap-05' transition:disclosureTransition>
+										{#each props.project.lang as lang}
+											{#if lang !== loadedTranslation}
+												<button class='option flex nowrap flex-center-y gap-05' on:click={()=> selectDifferentTranslation(lang)}>
+													<svg class='flag icon icon-175' aria-hidden='true' focusable='false' role='presentation'>
+														<title>{LanguageFullName[lang]} Flag</title>
+														<use xlink:href='#Flag_{lang}'/>
+													</svg>
+													<span class='label'>{LanguageFullName[lang]}</span>
+												</button>
+											{/if}
+										{/each}
+									</div>
+								{/if}
+							</div>
+						</div>
+					{/if}
+					{#if articleHasMetaSet}
+						<div class='metadata flex gap-05'>
+							{#if props.project.articleWritten !== undefined}
+								<div class='flex'>
+									<span>{$_('project_article_written')}:</span>
+									<span>{$_date(props.project.articleWritten, {month: 'long', year: 'numeric'})}</span>
 								</div>
-							</div>
-						{/if}
-						{#if articleHasMetaSet}
-							<div class='metadata flex gap-05'>
-								{#if props.project.aboutWritten !== undefined}
-									<div class='flex'>
-										<span>{$_('project_article_written')}:</span>
-										<span>{$_date(props.project.aboutWritten, {month: 'long', year: 'numeric'})}</span>
-									</div>
-								{/if}
-								{#if props.project.prjImpl !== undefined}
-									<div class='flex'>
-										<span>{$_('project_implemented')}:</span>
-										<span>{$_date(props.project.prjImpl, {month: 'long', year: 'numeric'})}</span>
-									</div>
-								{/if}
-								{#if props.project.prjUpdt !== undefined}
-									<div class='flex'>
-										<span>{$_('project_updated')}:</span>
-										<span>{$_date(props.project.prjUpdt, {month: 'long', year: 'numeric'})}</span>
-									</div>
-								{/if}
-							</div>
-						{/if}
+							{/if}
+							{#if props.project.prjImpl !== undefined}
+								<div class='flex'>
+									<span>{$_('project_implemented')}:</span>
+									<span>{$_date(props.project.prjImpl, {month: 'long', year: 'numeric'})}</span>
+								</div>
+							{/if}
+							{#if props.project.prjUpdt !== undefined}
+								<div class='flex'>
+									<span>{$_('project_updated')}:</span>
+									<span>{$_date(props.project.prjUpdt, {month: 'long', year: 'numeric'})}</span>
+								</div>
+							{/if}
+						</div>
+					{/if}
+				</div>
+			{/if}
+			{#if articleTranslationUnavailable && about === null}
+				<div class='lang-unavailable flex-base-size-variable grid grid-center'>
+					{#if props.project.lang.length < 1}
+						<p class='no-translations'>
+							{$_('project_about_unavailable')}
+						</p>
+					{:else}
+						<p>{$_('project_about_only_available_in')}</p>
+						<div class='options flex flex-center-y gap-1'>
+							{#each props.project.lang as lang}
+								<button on:click={()=> fetchArticle(lang)} class='option flex nowrap flex-center-y gap-05'>
+									<svg class='flag icon icon-175' aria-hidden='true' focusable='false' role='presentation'>
+										<title>{LanguageFullName[lang]} Flag</title>
+										<use xlink:href='#Flag_{lang}'/>
+									</svg>
+									<span class='label'>{LanguageFullName[lang]}</span>
+								</button>
+							{/each}
+						</div>
+					{/if}
+				</div>
+			{:else if about !== null}
+				{#await about}
+					<div class='placeholder' aria-hidden='true'>
+						<h1>______________</h1>
+						<hr class='h1-border'/>
+						<p class='i'>_</p>
+						<h3>_</h3>
+						<p class='ii'>_</p>
+						<p class='iii'>_</p>
 					</div>
-				{/if}
-				{#if aboutTranslationUnavailable && about === null}
-					<div class='lang-unavailable flex-base-size-variable grid grid-center'>
-						{#if props.project.lang.length < 1}
-							<p class='no-translations'>
-								{$_('project_about_unavailable')}
-							</p>
+				{:then rtfContent}
+					<article class='rtf-content'>{@html rtfContent}</article>
+				{:catch}
+					<div class='placeholder error'>
+						<h1>{$_('project_about_failed')}</h1>
+						<hr class='h1-border' aria-hidden='true'/>
+						<p class='i' aria-hidden='true'>_</p>
+						<!-- svelte-ignore a11y-hidden -->
+						<h3 aria-hidden='true'>_</h3>
+						<p class='ii' aria-hidden='true'>_</p>
+						<p class='iii' aria-hidden='true'>_</p>
+					</div>
+				{/await}
+			{/if}
+			<hr class='seperator bot'/>
+		</div>
+		<div class='footer flex flex-center-y gap-05'>
+			<button on:click={shareURL}
+			class='share-option flex flex-center gap-05 nowrap'
+			class:is-sharing={userIsSharingURL}>
+				<div class='status grid gap-05 grid-center-x' role='alert' class:active={userIsSharingURL}>
+					<span class='label'>
+						{#if shareURLWasCanceled}
+							{$_('copy_url_failed')}
+						{:else if shareURLWasSuccess}
+							{$_('copy_url_success')}
 						{:else}
-							<p>{$_('project_about_only_available_in')}</p>
-							<div class='options flex flex-center-y gap-1'>
-								{#each props.project.lang as lang}
-									<button on:click={()=> fetchAbout(lang)} class='option flex nowrap flex-center-y gap-05'>
-										<svg class='flag icon icon-175' aria-hidden='true' focusable='false' role='presentation'>
-											<title>{LanguageFullName[lang]} Flag</title>
-											<use xlink:href='#Flag_{lang}'/>
-										</svg>
-										<span class='label'>{LanguageFullName[lang]}</span>
-									</button>
-								{/each}
-							</div>
+							{$_('copy_url_inprocess')}
 						{/if}
-					</div>
-				{:else if about !== null}
-					{#await about}
-						<div class='placeholder' aria-hidden='true'>
-							<h1>______________</h1>
-							<hr class='h1-border'/>
-							<p class='i'>_</p>
-							<h3>_</h3>
-							<p class='ii'>_</p>
-							<p class='iii'>_</p>
-						</div>
-					{:then rtfContent}
-						<article class='rtf-content'>{@html rtfContent}</article>
-					{:catch}
-						<div class='placeholder error'>
-							<h1>{$_('project_about_failed')}</h1>
-							<hr class='h1-border' aria-hidden='true'/>
-							<p class='i' aria-hidden='true'>_</p>
-							<!-- svelte-ignore a11y-hidden -->
-							<h3 aria-hidden='true'>_</h3>
-							<p class='ii' aria-hidden='true'>_</p>
-							<p class='iii' aria-hidden='true'>_</p>
-						</div>
-					{/await}
-				{/if}
-				<hr class='seperator bot'/>
-			</div>
-			<div class='footer flex flex-center-y gap-05'>
-				<button on:click={shareURL}
+					</span>
+					<StatusIcon
+						loading={userIsSharingURL}
+						failed={shareURLWasCanceled}
+						succeeded={shareURLWasSuccess}
+					/>
+				</div>
+				<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
+					<use xlink:href='#Icon_Chain'/>
+				</svg>
+				<span class='label'>{$_('copy_url')}</span>
+			</button>
+
+			{#if isSharingSupported}
+				<button on:click={shareThis}
 				class='share-option flex flex-center gap-05 nowrap'
-				class:is-sharing={userIsSharingURL}>
-					<div class='status grid gap-05 grid-center-x' role='alert' class:active={userIsSharingURL}>
+				class:is-sharing={userIsSharing}>
+					<div class='status grid gap-05 grid-center-x' role='alert' class:active={userIsSharing}>
 						<span class='label'>
-							{#if shareURLWasCanceled}
-								{$_('copy_url_failed')}
-							{:else if shareURLWasSuccess}
-								{$_('copy_url_success')}
+							{#if shareNotSupported}
+								{$_('share_not_supported')}
+							{:else if shareWasCanceled}
+								{$_('share_canceled')}
+							{:else if shareWasSuccess}
+								{$_('shared')}
 							{:else}
-								{$_('copy_url_inprocess')}
+								{$_('sharing')}
 							{/if}
 						</span>
 						<StatusIcon
-							loading={userIsSharingURL}
-							failed={shareURLWasCanceled}
-							succeeded={shareURLWasSuccess}
+							loading={userIsSharing}
+							failed={shareWasCanceled || shareNotSupported}
+							succeeded={shareWasSuccess}
 						/>
 					</div>
 					<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
-						<use xlink:href='#Icon_Chain'/>
+						<use xlink:href='#Icon_Share'/>
 					</svg>
-					<span class='label'>{$_('copy_url')}</span>
+					<span class='label'>{$_('share_with')}</span>
 				</button>
+			{/if}
 
-				{#if isSharingSupported}
-					<button on:click={shareThis}
-					class='share-option flex flex-center gap-05 nowrap'
-					class:is-sharing={userIsSharing}>
-						<div class='status grid gap-05 grid-center-x' role='alert' class:active={userIsSharing}>
-							<span class='label'>
-								{#if shareNotSupported}
-									{$_('share_not_supported')}
-								{:else if shareWasCanceled}
-									{$_('share_canceled')}
-								{:else if shareWasSuccess}
-									{$_('shared')}
-								{:else}
-									{$_('sharing')}
-								{/if}
-							</span>
-							<StatusIcon
-								loading={userIsSharing}
-								failed={shareWasCanceled || shareNotSupported}
-								succeeded={shareWasSuccess}
-							/>
-						</div>
-						<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
-							<use xlink:href='#Icon_Share'/>
-						</svg>
-						<span class='label'>{$_('share_with')}</span>
-					</button>
-				{/if}
-
-				<button class='close flex flex-center-y flex-self-right gap-1 nowrap' on:click={closeThis}>
-					<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
-						<use xlink:href='#Icon_Cross'/>
-					</svg>
-					<span class='label'>{$_('close')}</span>
-				</button>
-			</div>
-		{/if}
+			<button class='close flex flex-center-y flex-self-right gap-1 nowrap' on:click={closeThis}>
+				<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
+					<use xlink:href='#Icon_Cross'/>
+				</svg>
+				<span class='label'>{$_('close')}</span>
+			</button>
+		</div>
 	</div>
 </div>
 
@@ -358,12 +351,12 @@ const thumbDarkSrc = `projects/${props.project.id}/thumbnail_dark.jpg`
 const coverDarkSrc = `projects/${props.project.id}/cover_dark.png`
 
 $:_thumbSrc = (
-	$appState.a11y.isDarkTheme && props.project.darkTheme ?
+	$appState.a11y.isDarkTheme && props.project.darkThemed ?
 		thumbDarkSrc : thumbSrc
 )
 
 $:articleHasMetaSet = (
-	props.project.aboutWritten !== undefined ||
+	props.project.articleWritten !== undefined ||
 	props.project.prjImpl !== undefined ||
 	props.project.prjUpdt !== undefined
 )
@@ -386,10 +379,10 @@ $:customGradientBG = (
 
 let about: Promise<any> = null
 let loadedTranslation: Language = $i18n
-$:aboutTranslationUnavailable = (
+$:articleTranslationUnavailable = (
 	props.project.lang.indexOf(loadedTranslation) === -1
 )
-async function fetchAbout(lang: Language): Promise<void> {
+async function fetchArticle(lang: Language): Promise<void> {
 	about = null
 	about = new Promise(async (resolve, reject)=> {
 		try {
@@ -397,7 +390,7 @@ async function fetchAbout(lang: Language): Promise<void> {
 				throw new Error(`invalid language (${lang}) provided`)
 			}
 			const resp = await fetch(
-				`projects/${props.project.id}/about/${lang}.md`
+				`projects/${props.project.id}/article/${lang}.md`
 			)
 			if (resp.status !== 200) {
 				throw new Error('404')
@@ -426,13 +419,13 @@ function toggleTranslationSelection() {
 
 function selectDifferentTranslation(lang: Language): void {
 	isSelectingTranslation = false
-	fetchAbout(lang)
+	fetchArticle(lang)
 }
 
 let lazyLoader: Promise<string>
 function loadCoverImg() {
-	if (props.project.cover) {
-		if (props.project.darkTheme && $appState.a11y.isDarkTheme) {
+	if (!props.project.hasNoCover) {
+		if (props.project.darkThemed && $appState.a11y.isDarkTheme) {
 			lazyLoader = lazyLoad(coverDarkSrc)
 		} else {
 			lazyLoader = lazyLoad(coverSrc)
@@ -451,8 +444,8 @@ onMount(()=> {
 		},
 		$_('project.' + props.project.id),
 	)
-	if (props.project.about && !aboutTranslationUnavailable) {
-		fetchAbout($i18n)
+	if (props.project.lang.length > 0 && !articleTranslationUnavailable) {
+		fetchArticle($i18n)
 	}
 	loadCoverImg()
 })
@@ -607,8 +600,8 @@ $aboutContentWidth = 900px
 	> .close-modal
 		z-index: 100
 		position: absolute
-		top: 1rem
-		right: 1rem
+		top: 1.5rem
+		right: 1.5rem
 		padding: 1rem
 		background-color: var(--page-bg)
 		border: solid 1px var(--font-base-clr)
@@ -702,9 +695,6 @@ $aboutContentWidth = 900px
 		&.no-image
 			height: 6rem
 			min-height: unset
-		> .no-image
-			width: 25%
-			height: 25%
 	> .header
 		padding: 2rem
 		grid-template-columns: auto auto
@@ -1123,11 +1113,6 @@ $aboutContentWidth = 900px
 				color: #fff
 				.icon
 					--icon: #fff
-	&.no-about
-		grid-template-rows: 1fr auto
-		margin-bottom: 0
-		> .image-container
-			height: auto
 
 @media (prefers-color-scheme: dark)
 	#Project_Details_Modal

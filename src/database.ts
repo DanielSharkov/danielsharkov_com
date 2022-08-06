@@ -12,9 +12,9 @@ export enum TechnologyType {
 export type Technology = {
 	name:       string
 	color:      string
-	icon?:      boolean
 	link:       string
-	image?:     boolean
+	hasIcon?:   boolean // svg symbol in #AppIcons by id "#Logo_{project_id}"
+	hasImage?:  boolean // located in "/public/technologies/{project_id}.png"
 	type:       TechnologyType
 	// careerSpan = begin Year, end Year or Null (stil using)
 	careerSpan: Array<[number, number|null]>
@@ -23,7 +23,9 @@ export type TechnologyList = {[key: string]: Technology}
 
 export const technologies: TechnologyList = {
 	Svelte: {
-		name: 'Svelte', color: '#FF3E00', icon: true,
+		name: 'Svelte',
+		color: '#FF3E00',
+		hasIcon: true,
 		type: TechnologyType.Framework,
 		link: 'https://svelte.dev',
 		careerSpan: [
@@ -31,7 +33,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	TypeScript: {
-		name: 'TypeScript', color: '#007ACC', icon: true,
+		name: 'TypeScript',
+		color: '#007ACC',
+		hasIcon: true,
 		type: TechnologyType.Language,
 		link: 'https://www.typescriptlang.org',
 		careerSpan: [
@@ -39,7 +43,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	JavaScript: {
-		name: 'JavaScript', color: '#F0DB4F', icon: true,
+		name: 'JavaScript',
+		color: '#F0DB4F',
+		hasIcon: true,
 		type: TechnologyType.Language,
 		link: 'https://www.javascript.com',
 		careerSpan: [
@@ -47,7 +53,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	VueJS: {
-		name: 'Vue.js', color: '#4DBA87', icon: true,
+		name: 'Vue.js',
+		color: '#4DBA87',
+		hasIcon: true,
 		type: TechnologyType.Framework,
 		link: 'https://vuejs.org',
 		careerSpan: [
@@ -55,7 +63,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	Go: {
-		name: 'Go', color: '#01ADD8', icon: true,
+		name: 'Go',
+		color: '#01ADD8',
+		hasIcon: true,
 		type: TechnologyType.Language,
 		link: 'https://go.dev',
 		careerSpan: [
@@ -63,7 +73,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	SVG: {
-		name: 'SVG', color: '#FFB13B', icon: true,
+		name: 'SVG',
+		color: '#FFB13B',
+		hasIcon: true,
 		type: TechnologyType.Language,
 		link: 'https://developer.mozilla.org/en-US/docs/Web/SVG',
 		careerSpan: [
@@ -71,7 +83,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	Docker: {
-		name: 'Docker', color: '#0091E2', icon: true,
+		name: 'Docker',
+		color: '#0091E2',
+		hasIcon: true,
 		type: TechnologyType.Software,
 		link: 'https://www.docker.com/company',
 		careerSpan: [
@@ -79,7 +93,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	Nginx: {
-		name: 'Nginx', color: '#009639', icon: true,
+		name: 'Nginx',
+		color: '#009639',
+		hasIcon: true,
 		type: TechnologyType.Software,
 		link: 'https://nginx.org/en/',
 		careerSpan: [
@@ -87,7 +103,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	SQL: {
-		name: 'SQL', color: '#FFAB00', icon: true,
+		name: 'SQL',
+		color: '#FFAB00',
+		hasIcon: true,
 		type: TechnologyType.Language,
 		link: 'https://en.wikipedia.org/wiki/SQL',
 		careerSpan: [
@@ -95,7 +113,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	PostgreSQL: {
-		name: 'PostgreSQL', color: '#336790', icon: true,
+		name: 'PostgreSQL',
+		color: '#336790',
+		hasIcon: true,
 		type: TechnologyType.Software,
 		link: 'https://www.postgresql.org/',
 		careerSpan: [
@@ -103,7 +123,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	VSC: {
-		name: 'VS Code', color: '#3B99D4', icon: true,
+		name: 'VS Code',
+		color: '#3B99D4',
+		hasIcon: true,
 		type: TechnologyType.Software,
 		link: 'https://code.visualstudio.com/',
 		careerSpan: [
@@ -111,7 +133,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	Stylus: {
-		name: 'Stylus', color: '#FF6347', icon: true,
+		name: 'Stylus',
+		color: '#FF6347',
+		hasIcon: true,
 		type: TechnologyType.Language,
 		link: 'https://stylus-lang.com',
 		careerSpan: [
@@ -119,7 +143,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	SASS_SCSS: {
-		name: 'SASS / SCSS', color: '#cf659a', icon: true,
+		name: 'SASS / SCSS',
+		color: '#cf659a',
+		hasIcon: true,
 		type: TechnologyType.Language,
 		link: 'https://sass-lang.com/',
 		careerSpan: [
@@ -127,7 +153,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	LESS: {
-		name: 'LESS', color: '#1d365d', image: true,
+		name: 'LESS',
+		color: '#1d365d',
+		hasImage: true,
 		type: TechnologyType.Language,
 		link: 'https://lesscss.org/',
 		careerSpan: [
@@ -135,7 +163,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	HTML: {
-		name: 'HTML5', color: '#EC652B', icon: true,
+		name: 'HTML5',
+		color: '#EC652B',
+		hasIcon: true,
 		type: TechnologyType.Language,
 		link: 'https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5',
 		careerSpan: [
@@ -143,7 +173,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	CSS: {
-		name: 'CSS3', color: '#1F60AA', icon: true,
+		name: 'CSS3',
+		color: '#1F60AA',
+		hasIcon: true,
 		type: TechnologyType.Language,
 		link: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
 		careerSpan: [
@@ -151,7 +183,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	d3js: {
-		name: 'D3.js', color: '#f89d42', icon: true,
+		name: 'D3.js',
+		color: '#f89d42',
+		hasIcon: true,
 		type: TechnologyType.Library,
 		link: 'https://d3js.org/',
 		careerSpan: [
@@ -159,7 +193,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	Liquid: {
-		name: 'Liquid', color: '#000099', icon: true,
+		name: 'Liquid',
+		color: '#000099',
+		hasIcon: true,
 		type: TechnologyType.Language,
 		link: 'https://shopify.github.io/liquid/',
 		careerSpan: [
@@ -167,7 +203,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	Shopify: {
-		name: 'Shopify', color: '#96bf46', icon: true,
+		name: 'Shopify',
+		color: '#96bf46',
+		hasIcon: true,
 		type: TechnologyType.Software,
 		link: 'https://www.shopify.de/',
 		careerSpan: [
@@ -175,7 +213,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	Figma: {
-		name: 'Figma', color: '#0ACF83', icon: true,
+		name: 'Figma',
+		color: '#0ACF83',
+		hasIcon: true,
 		type: TechnologyType.Software,
 		link: 'https://www.figma.com',
 		careerSpan: [
@@ -183,7 +223,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	PowerDirector15: {
-		name: 'Power Director 15', color: '#402E77', image: true,
+		name: 'Power Director 15',
+		color: '#402E77',
+		hasImage: true,
 		type: TechnologyType.Software,
 		link: 'https://de.cyberlink.com/products/powerdirector-video-editing-software/overview_de_DE.html',
 		careerSpan: [
@@ -191,7 +233,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	OBS: {
-		name: 'Open Broadcaster Software', color: '#333333', icon: true,
+		name: 'Open Broadcaster Software',
+		color: '#333333',
+		hasIcon: true,
 		type: TechnologyType.Software,
 		link: 'https://obsproject.com/',
 		careerSpan: [
@@ -199,7 +243,9 @@ export const technologies: TechnologyList = {
 		],
 	},
 	GIMP: {
-		name: 'GIMP', color: '#615A48', image: true,
+		name: 'GIMP',
+		color: '#615A48',
+		hasImage: true,
 		type: TechnologyType.Software,
 		link: 'https://www.gimp.org',
 		careerSpan: [
@@ -208,23 +254,17 @@ export const technologies: TechnologyList = {
 	},
 }
 
-type ProjectLink = {
-	name: string
-	url:  string
-}
-
 export type Project = {
 	id:               string
-	cover?:           boolean
-	darkTheme?:       boolean
+	hasNoCover?:      boolean
+	darkThemed?:      boolean
 	projectUrl:       string|null
-	codeUrl?:         string|null
-	otherLinks?:      Array<ProjectLink>
+	codeUrl?:         string|null // null means closed source
+	otherLinks?:      Array<{name: string, url: string}>
 	usedTechnologies: Array<string>
-	about:            boolean
 	gradient?:        Array<string>
 	lang:             Array<Language>
-	aboutWritten?:    Date
+	articleWritten?:  Date
 	prjImpl?:         Date
 	prjUpdt?:         Date
 }
@@ -232,30 +272,26 @@ export type Project = {
 export const projects: Array<Project> = [
 	{
 		id: 'danielsharkov_com',
-		cover: true,
-		darkTheme: true,
+		darkThemed: true,
 		projectUrl: null,
 		codeUrl: 'https://github.com/DanielSharkov/danielsharkov_com',
 		usedTechnologies: [
 			'Svelte', 'TypeScript', 'SVG', 'Stylus', 'Docker', 'Nginx',
 			'Figma', 'VSC',
 		],
-		about: true,
 		gradient: ['#fcb6b6', '#f6df88'],
 		lang: [Language.DE, Language.EN],
 		prjImpl: new Date('1 May 2021'),
 	},
 	{
 		id: 'timetabler',
-		cover: true,
-		darkTheme: true,
+		darkThemed: true,
 		projectUrl: 'COMING_SOON',//'https://danielsharkov.github.io/timetabler',
 		codeUrl: null,
 		usedTechnologies: [
 			'Svelte', 'SVG', 'Go', 'Stylus', 'Docker', 'Nginx', 'Figma',
 			'VSC', 'SQL', 'PostgreSQL',
 		],
-		about: true,
 		gradient: ['#b5ffdd', '#65C7F7', '#0066ff'],
 		lang: [Language.DE, Language.EN],
 		prjImpl: new Date('1 July 2019'),
@@ -263,166 +299,143 @@ export const projects: Array<Project> = [
 	},
 	{
 		id: 'gronkh_de_concept',
-		cover: true,
-		darkTheme: true,
+		darkThemed: true,
 		projectUrl: 'https://danielsharkov.github.io/gronkh_de_concept',
 		codeUrl: 'https://github.com/DanielSharkov/gronkh_de_concept',
 		otherLinks: [
-			{ name: 'Gronkh.tv', url: 'https://gronkh.tv' },
+			{name: 'Gronkh.tv', url: 'https://gronkh.tv'},
 		],
 		usedTechnologies: ['VueJS', 'Stylus', 'VSC'],
-		about: true,
 		gradient: ['#ff51ea', '#fe9840', '#42ffc2', '#b870fa', '#54ff32'],
 		lang: [Language.DE],
-		aboutWritten: new Date('1 June 2021'),
+		articleWritten: new Date('1 June 2021'),
 		prjImpl: new Date('1 March 2018'),
 	},
 	{
 		id: 'org_graph',
-		cover: true,
-		darkTheme: true,
+		darkThemed: true,
 		projectUrl: null,
 		codeUrl: null,
 		usedTechnologies: [
 			'Svelte', 'SVG', 'TypeScript', 'Go', 'Stylus', 'Docker',
 			'Nginx', 'Figma', 'VSC', 'SQL', 'PostgreSQL',
 		],
-		about: true,
 		gradient: ['#1488CC', '#2B32B2'],
 		lang: [Language.DE, Language.EN],
 		prjImpl: new Date('1 December 2020'),
 	},
 	{
 		id: 'svelte_chess',
-		cover: true,
 		projectUrl: 'https://danielsharkov.github.io/svelte-chess',
 		codeUrl: 'https://github.com/DanielSharkov/svelte-chess',
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'Figma', 'VSC'],
-		about: true,
 		gradient: ['#093028', '#344740'],
 		lang: [Language.DE, Language.EN],
-		aboutWritten: new Date('2 June 2021'),
+		articleWritten: new Date('2 June 2021'),
 		prjImpl: new Date('1 July 2019'),
 	},
 	{
 		id: 'svelte_router',
-		cover: true,
-		darkTheme: true,
+		darkThemed: true,
 		projectUrl: 'https://www.npmjs.com/package/@danielsharkov/svelte-router',
 		codeUrl: 'https://github.com/danielsharkov/svelte-router',
 		usedTechnologies: ['Svelte', 'JavaScript', 'TypeScript', 'VSC', 'Figma'],
-		about: true,
 		gradient: ['#ffc73e', '#ff6505'],
 		lang: [Language.DE],
-		aboutWritten: new Date('19 January 2022'),
+		articleWritten: new Date('19 January 2022'),
 		prjImpl: new Date('12 June 2019'),
 		prjUpdt: new Date('11 February 2022'),
 	},
 	{
 		id: 'svelte_router_example',
-		cover: true,
-		darkTheme: true,
+		darkThemed: true,
 		projectUrl: 'https://danielsharkov.github.io/svelte-router-examples/',
 		codeUrl: 'https://github.com/danielsharkov/svelte-router-examples',
 		usedTechnologies: ['Svelte', 'JavaScript', 'TypeScript', 'VSC', 'Figma'],
-		about: true,
 		gradient: ['#ff4081', '#ff6e40'],
 		lang: [Language.DE],
-		aboutWritten: new Date('22 January 2022'),
+		articleWritten: new Date('22 January 2022'),
 		prjImpl: new Date('21 November 2021'),
 		prjUpdt: new Date('8 February 2022'),
 	},
 	{
 		id: 'animation_creator',
-		cover: true,
 		projectUrl: 'https://danielsharkov.github.io/animation-creator/',
 		codeUrl: 'https://github.com/danielsharkov/animation-creator',
 		usedTechnologies: ['Svelte', 'JavaScript', 'TypeScript', 'VSC', 'Figma'],
-		about: true,
 		gradient: ['#000000', '#000000', '#f71d44', '#4bb05a', '#3bbbeb', '#000000', '#000000'],
 		lang: [Language.DE],
-		aboutWritten: new Date('28 February 2022'),
+		articleWritten: new Date('28 February 2022'),
 		prjImpl: new Date('10 December 2021'),
 		prjUpdt: new Date('19 January 2022'),
 	},
 	{
 		id: 'pattern_visualizer',
-		cover: true,
-		darkTheme: true,
+		darkThemed: true,
 		projectUrl: 'https://danielsharkov.github.io/PatternVisualizer/',
 		codeUrl: 'https://github.com/DanielSharkov/PatternVisualizer',
 		usedTechnologies: ['Svelte', 'VSC'],
-		about: true,
 		gradient: ['#f399d3', '#a7276e', '#2c9c88', '#713dc3', '#00bfff'],
 		lang: [Language.DE, Language.EN],
-		aboutWritten: new Date('31 May 2021'),
+		articleWritten: new Date('31 May 2021'),
 		prjImpl: new Date('1 August 2019'),
 	},
 	{
 		id: 'logo_redesign_proposal',
-		cover: true,
-		darkTheme: true,
+		darkThemed: true,
 		projectUrl: null,
 		usedTechnologies: ['Figma', 'SVG', 'VSC'],
-		about: true,
 		gradient: ['#FA8BFF', '#2BD2FF', '#2BFF88'],
 		lang: [Language.DE],
-		aboutWritten: new Date('31 May 2021'),
+		articleWritten: new Date('31 May 2021'),
 		prjImpl: new Date('1 March 2019'),
 	},
 	{
 		id: 'cowo_space',
-		cover: true,
 		projectUrl: 'COMING_SOON',//'https://danielsharkov.github.io/cowo-space',
 		codeUrl: 'https://github.com/DanielSharkov/cowo-space',
 		usedTechnologies: [
 			'Svelte', 'SVG', 'Stylus', 'Docker', 'Nginx', 'Figma', 'VSC',
 		],
-		about: true,
 		gradient: ['#FAACA8', '#DDD6F3'],
 		lang: [],
 	},
 	{
 		id: 'dgraph_graphql_go_svelte',
+		hasNoCover: true,
 		projectUrl: null,
 		codeUrl: 'https://github.com/DanielSharkov/dgraph_graphql_go_svelte',
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'VSC'],
-		about: true,
 		gradient: ['#0062ff', '#cbf6ff'],
 		lang: [Language.DE, Language.EN],
-		aboutWritten: new Date('31 May 2021'),
+		articleWritten: new Date('31 May 2021'),
 		prjImpl: new Date('1 May 2018'),
 	},
 	{
 		id: 'infocenter',
-		cover: true,
-		darkTheme: true,
+		darkThemed: true,
 		projectUrl: null,//'https://danielsharkov.github.io/eod_infocenter',
 		codeUrl: null,
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'VSC'],
-		about: true,
 		gradient: ['#a1c4fd', '#c2e9fb'],
 		lang: [Language.DE, Language.EN],
-		aboutWritten: new Date('31 May 2021'),
+		articleWritten: new Date('31 May 2021'),
 		prjImpl: new Date('1 December 2018'),
 	},
 	{
 		id: 'fitcat_app',
-		cover: true,
-		darkTheme: true,
+		darkThemed: true,
 		projectUrl: 'COMING_SOON',//'https://danielsharkov.github.io/fitcat',
 		codeUrl: 'https://github.com/DanielSharkov/fitcat-frontend',
 		usedTechnologies: ['Svelte', 'Stylus', 'SVG', 'Nginx', 'Figma', 'VSC'],
-		about: true,
 		gradient: ['#ffffff', '#63d0ff', '#ffffff', '#ffdd7d', '#ffffff'],
 		lang: [Language.DE, Language.EN],
-		aboutWritten: new Date('31 May 2021'),
+		articleWritten: new Date('31 May 2021'),
 		prjImpl: new Date('1 February 2019'),
 	},
 	{
 		id: 'shopify_cyber_theme',
-		cover: true,
-		darkTheme: true,
+		darkThemed: true,
 		projectUrl: 'https://cyber-theme.myshopify.com',
 		codeUrl: null,
 		// codeUrl: 'https://github.com/DanielSharkov/shopify-cyber_theme',
@@ -433,56 +446,47 @@ export const projects: Array<Project> = [
 			'JavaScript', 'Liquid', 'Shopify', 'Stylus', 'SVG', 'Figma',
 			'SASS_SCSS', 'VSC',
 		],
-		about: true,
 		gradient: ['#1F1C2C', '#928DAB'],
 		lang: [Language.DE, Language.EN],
 		prjImpl: new Date('1 November 2019'),
 	},
 	{
 		id: 'vivobarefoot_redesign_proposal',
-		cover: true,
 		projectUrl: 'https://danielsharkov.github.io/vivobarefoot_redesign_proposal',
 		codeUrl: 'https://github.com/DanielSharkov/vivobarefoot_redesign_proposal',
 		usedTechnologies: ['HTML', 'CSS', 'JavaScript', 'VSC'],
-		about: true,
 		gradient: ['#a02828', '#ff5b5b'],
 		lang: [Language.DE],
-		aboutWritten: new Date('31 May 2021'),
+		articleWritten: new Date('31 May 2021'),
 		prjImpl: new Date('1 February 2019'),
 	},
 	{
 		id: 'chrome_redesign_inspiration',
-		cover: true,
-		darkTheme: true,
+		darkThemed: true,
 		projectUrl: 'https://codepen.io/DanielSharkov/full/gvZgQN',
 		codeUrl: 'https://codepen.io/DanielSharkov/pen/gvZgQN',
 		usedTechnologies: ['VueJS', 'Stylus', 'VSC'],
-		about: true,
 		gradient: ['#08AEEA', '#2AF598'],
 		lang: [Language.DE, Language.EN],
-		aboutWritten: new Date('1 July 2021'),
+		articleWritten: new Date('1 July 2021'),
 		prjImpl: new Date('28 February 2018'),
 	},
 	{
 		id: 'dev_documentation',
-		cover: true,
-		darkTheme: true,
+		darkThemed: true,
 		projectUrl: null,
 		usedTechnologies: [],
-		about: true,
 		gradient: ['#08AEEA', '#2AF598'],
 		lang: [Language.DE, Language.EN],
 		prjImpl: new Date('1 December 2018'),
 	},
 	{
 		id: 'lost_santos_teaser',
-		cover: true,
 		projectUrl: 'https://youtu.be/uWZoT4Nvd3I',
 		usedTechnologies: ['PowerDirector15', 'GIMP', 'OBS'],
-		about: true,
 		gradient: ['#a7a5a4', '#695747'],
 		lang: [Language.DE, Language.EN],
-		aboutWritten: new Date('1 July 2021'),
+		articleWritten: new Date('1 July 2021'),
 		prjImpl: new Date('1 December 2016'),
 	},
 ]

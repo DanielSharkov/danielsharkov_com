@@ -254,14 +254,13 @@ function openBigProfilePicture() {
 			&:hover, &:focus
 				opacity: 1
 				transform: scale(1.5)
-			@media screen and (max-width: 600px)
-				&:not(:last-child)
-					margin-right: .5rem
 	.text-block
 		width: 100%
 		animation: nameInAnim var(--transition-easing) 2s
 		line-height: 1.75
 		font-size: 1.25rem
+		@media screen and (max-width: 600px)
+			text-align: center
 		@media screen and (min-width: 1200px)
 			max-width: 60%
 		@media screen and (min-width: 700px)

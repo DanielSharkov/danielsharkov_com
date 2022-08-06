@@ -1,11 +1,11 @@
 <script lang='ts'>
-import {onDestroy, onMount} from 'svelte'
+import {_} from 'svelte-i18n'
 import {projects} from '../database'
 import {vibrate} from '../utils/misc'
-import {_} from 'svelte-i18n'
+import {openModal} from './Modals.svelte'
+import {onDestroy, onMount} from 'svelte'
 import {lazyLoad} from '../utils/lazy_loader'
 import {appState, colorSchemaMediaQuery} from '../App.svelte'
-import {openModal} from './Modals.svelte'
 
 export let projectIndex: number
 const project = projects[projectIndex]
@@ -16,7 +16,7 @@ const thumbDarkSrc = `projects/${project.id}/thumbnail_dark.jpg`
 const previewDarkSrc = `projects/${project.id}/preview_dark.jpg`
 
 $:_thumbSrc = (
-	$appState.a11y.isDarkTheme && project.darkTheme ?
+	$appState.a11y.isDarkTheme && project.darkThemed ?
 		thumbDarkSrc : thumbSrc
 )
 
@@ -27,8 +27,8 @@ function openThisProject() {
 
 let lazyLoader: Promise<string>
 function loadPreviewImg() {
-	if (project.cover) {
-		if (project.darkTheme && $appState.a11y.isDarkTheme) {
+	if (!project.hasNoCover) {
+		if (project.darkThemed && $appState.a11y.isDarkTheme) {
 			lazyLoader = lazyLoad(previewDarkSrc)
 		} else {
 			lazyLoader = lazyLoad(previewSrc)
@@ -56,8 +56,8 @@ $:customGradientBG = (
 class='project grid'
 style='animation-delay: {1000 + projectIndex * 100}ms'
 aria-haspopup='dialog'>
-	<div class='preview block-select' role='img' class:dark-theme={project.darkTheme}>
-		{#if project.cover}
+	<div class='preview block-select' role='img' class:dark-theme={project.darkThemed}>
+		{#if !project.hasNoCover}
 			<div class='image-container'>
 				{#await lazyLoader}
 					<img src={_thumbSrc}

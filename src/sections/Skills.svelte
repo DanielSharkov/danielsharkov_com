@@ -21,15 +21,15 @@
 		{#each Object.keys(technologies) as techno}
 			<li class='techno'>
 				<div class='header flex flex-center-y'>
-					{#if technologies[techno].icon}
+					{#if technologies[techno].hasIcon}
 						<svg class='logo flex-base-size' aria-hidden='true' focusable='false' role='presentation'>
 							<title>{techno} Logo</title>
 							<use xlink:href='#Logo_{techno}'/>
 						</svg>
-					{:else if technologies[techno].image}
+					{:else if technologies[techno].hasImage}
 						<img
 							class='logo'
-							src='technologies/logo_{techno}.png'
+							src='technologies/{techno}.png'
 							alt='{techno} Logo'
 						/>
 					{:else}
