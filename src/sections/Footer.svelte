@@ -11,14 +11,14 @@ const currentYear = new Date().getFullYear()
 	<div class='get-in-touch grid grid-center'>
 		<h1 id='contact'>{$_('section.contact.title')}</h1>
 	
-		<div role='listbox' tabindex='-1' class='social-media flex flex-center gap-1'>
+		<div role='listbox' tabindex='-1' class='social-media flex flex-center gap-15'>
 			{#each socialMedia as {name, url, app}}
 				{#if app}
 					<button role='listitem'
 					class='btn flex flex-center'
 					aria-haspopup='dialog'
 					on:click={()=> openModal({name: 'socialMedia', props: {name, url, app}})}>
-						<svg class='icon icon-175' aria-hidden='true' focusable='false' role='presentation'>
+						<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
 							<title>{name}</title>
 							<use xlink:href='#Logo_{name}'/>
 						</svg>
@@ -27,7 +27,7 @@ const currentYear = new Date().getFullYear()
 					<a href={url} target='_blank' role='listitem'
 					class='btn flex flex-center'
 					use:vibrateLink>
-						<svg class='icon icon-175' aria-hidden='true' focusable='false' role='presentation'>
+						<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
 							<title>{name}</title>
 							<use xlink:href='#Logo_{name}'/>
 						</svg>
@@ -57,9 +57,11 @@ footer
 			text-align: center
 	.social-media
 		margin-top: 2rem
-		padding: 1rem 1.5rem
+		padding: 1.5rem 2rem
 		font-size: 1.5rem
 		border-radius: 1.5rem
+		@media screen and (max-width: 600px)
+			padding: 1rem .5rem
 		@media (prefers-contrast: more)
 			border: solid 1px var(--font-base-clr)
 		> .btn
@@ -69,7 +71,7 @@ footer
 			transition: var(--transition)
 			transition-property: opacity
 			will-change: opacity
-			opacity: .5
+			font-size: 2.5rem
 			> svg
 				position: absolute
 				top: auto
@@ -79,15 +81,13 @@ footer
 				transition-property: font-size
 				will-change: font-size
 				--icon: var(--font-heading-clr)
-			&:hover, &:focus
-				opacity: 1
-				> svg
-					font-size: 2rem
-		&:hover > .btn:not(:hover):not(:focus) > svg
-			font-size: .75rem
-		@media screen and (max-width: 799px)
-			> .btn:hover > svg
-				font-size: 1.75rem
+			@media screen and (min-width: 600px)
+				&:hover, &:focus
+					font-size: 3.5rem
+		@media screen and (min-width: 600px)
+			&:hover > .btn:not(:hover):not(:focus)
+				opacity: .75
+				font-size: 2rem
 	.copyright
 		margin-top: auto
 		padding: .5rem
