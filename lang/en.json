@@ -3,6 +3,7 @@
 	"my_name": "Daniel Sharkov",
 	"about_me": "Hi there! I'm a fullstack software engineer focusing on web app frontend and backend systems. TypeScript, Svelte, Stylus, Vue.js, Go and many more tools are part of my professional arsenal. 5 years of experience in UX & UI design make me a great allround developer. Next stop: DevOps & beyond!",
 	"profile_pic_alt": "Me, Myself and I",
+	"failed_to_load_image": "Failed to load image",
 
 	"close": "Close",
 	"open": "Open",
@@ -14,13 +15,6 @@
 				"fullstack_webdev": "FullStack Web-Dev.",
 				"ux_ui_designer": "UX & UI Designer",
 				"junior_devop": "Junior DevOp"
-			},
-			"question": {
-				"projects": "Which projects are you working on or have you ever done?",
-				"skills": "What's your tech stack? (skills)",
-				"worked-with": "In which companies have your already worked in?",
-				"about": "Tell me something about you.",
-				"contact": "I would like to get in touch with you."
 			}
 		},
 		"projects": {
@@ -29,6 +23,7 @@
 		"skills": {
 			"title": "Skills",
 			"description": "Programming languages which I speak in and technologies which I know and use - shown in a timeline, since when I started.",
+			"aria_open_site": "Open website of {x}",
 			"technology_type": {
 				"software": "Software",
 				"language": "Language",
@@ -36,8 +31,16 @@
 				"library": "Library"
 			}
 		},
+		"about_me": {
+			"title": "Hi there, that's me!",
+			"designer": {
+				"title": "Designer",
+				"block_1": "I love to draft user experience designs and the way it gives me hope for better software for people. Many times me and many other people had to experience bad designs, which are making a software degenerate into more work, where it actually should ease your work. It's an appreciation to see a human smiling because of a well designed UX.",
+				"block_2": "A beautiful user interface mustn't also not be off place, to provide the right mood related to the topic. Like when it's about more serious topics like finanzials, where you may have a more greyish color palette. Or having a more vibrant colorful look to provide a more relaxed and ease look of a entertaning software. That's why I also love designing user interfaces, by living out free creativity."
+			}
+		},
 		"contact": {
-			"title": "You would like to get in touch with me?",
+			"title": "Stay in touch",
 			"social_open_app": "Open in App",
 			"social_open_link": "Open link"
 		}
@@ -89,9 +92,8 @@
 		"chrome_redesign_inspiration": "Chrome Redesign Inspiration",
 		"dev_documentation": "Web-dev. Doc. for Amateurs",
 		"logo_redesign_proposal": "Logo Redesign Proposal",
-		"lost_santos_teaser": "\"Lost Santos\" Series Teaser",
-		"black_russian_training_video": "\"BRT\" Video"
+		"lost_santos_teaser": "\"Lost Santos\" Series Teaser"
 	},
 
-	"copyright": "Copyright © {year} Daniel Sharkov All Rights Reserved."
+	"copyright": "Copyright © {year} Daniel Scharkov All Rights Reserved."
 }

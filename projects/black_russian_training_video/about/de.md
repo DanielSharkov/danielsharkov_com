@@ -1,3 +1,0 @@
-# Hierzu gibt's nicht viel zu erzählen...
-Ein Video in dem ich mich beim trainieren von „quick-scoping“ gegen Bots aufgenommen habe.
-Hauptsächlich geht es hierbei um den Videoschnitt und nicht um das Spiel oder auch meine Spielweise!
