@@ -102,7 +102,7 @@ function openBigProfilePicture() {
 			</button>
 
 			<div class='grid gap-05'>
-				<h1 class='name'>{$_('my_name')}</h1>
+				<h1 class='name'>Daniel Scharkov</h1>
 
 				<div class='professions flex flex-center-y gap-05'>
 					{#each professions as pfsn, idx}
