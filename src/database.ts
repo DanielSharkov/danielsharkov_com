@@ -59,7 +59,7 @@ export const technologies: TechnologyList = {
 		type: TechnologyType.Framework,
 		link: 'https://vuejs.org',
 		careerSpan: [
-			[2016, null],
+			[2016, 2021],
 		],
 	},
 	Go: {
