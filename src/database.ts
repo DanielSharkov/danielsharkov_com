@@ -192,6 +192,16 @@ export const technologies: TechnologyList = {
 			[2020, null],
 		],
 	},
+	FFmpeg: {
+		name: 'FFmpeg',
+		color: '#337522',
+		hasIcon: true,
+		type: TechnologyType.Library,
+		link: 'https://ffmpeg.org/',
+		careerSpan: [
+			[2020, null],
+		],
+	},
 	Liquid: {
 		name: 'Liquid',
 		color: '#000099',
