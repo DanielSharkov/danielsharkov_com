@@ -2,7 +2,7 @@
 import {_} from 'svelte-i18n'
 import {socialMedia} from '../App.svelte'
 import {openModal} from '../components/Modals.svelte'
-import {vibrateLink} from '../utils/misc'
+import {vibrateLink, vibrateAction} from '../utils/misc'
 const currentYear = new Date().getFullYear()
 </script>
 
@@ -17,6 +17,7 @@ const currentYear = new Date().getFullYear()
 					<button role='listitem'
 					class='btn flex flex-center'
 					aria-haspopup='dialog'
+					use:vibrateAction
 					on:click={()=> openModal({name: 'socialMedia', props: {name, url, app}})}>
 						<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
 							<title>{name}</title>

@@ -62,6 +62,16 @@ export function vibrateLink(
 	}
 }
 
+export function vibrateAction(
+	node: HTMLElement, opts?: {duration?: number|number[]},
+) {
+	function _click() {vibrate(opts?.duration)}
+	node.addEventListener('click', _click, {passive: false})
+	return {
+		destroy: ()=> node.removeEventListener('click', _click),
+	}
+}
+
 export function randNum(max: number, min?: number) {
 	const x = Math.floor(Math.random() * max)
 	if (!Number.isNaN(Number(min)) && x < min) {
