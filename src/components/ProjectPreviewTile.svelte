@@ -2,6 +2,7 @@
 import {_} from 'svelte-i18n'
 import {projects} from '../database'
 import {vibrate} from '../utils/misc'
+import {fade} from '../utils/transitions'
 import {openModal} from './Modals.svelte'
 import {onDestroy, onMount} from 'svelte'
 import {lazyLoad} from '../utils/lazy_loader'
@@ -54,17 +55,17 @@ $:customGradientBG = (
 
 <button on:click={openThisProject}
 class='project grid'
-style='animation-delay: {1000 + projectIndex * 100}ms'
+style:animation-delay='{projectIndex * 75}ms'
 aria-haspopup='dialog'>
 	<div class='preview block-select' role='img' class:dark-theme={project.darkThemed}>
 		{#if !project.hasNoCover}
 			<div class='image-container'>
 				{#await lazyLoader}
-					<img src={_thumbSrc}
+					<img src={_thumbSrc} transition:fade={{duration: 1000}}
 						alt={`Daniel Scharkov's project ${$_('project.' + project.id)} thumbnail`}
 						class='thumb'
 					/>
-					<div class='lazyload-overlay flex flex-center'>
+					<div class='lazyload-overlay flex flex-center' transition:fade={{duration: 1000}}>
 						<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
 							<use xlink:href='#Icon_Loader'/>
 						</svg>
@@ -115,6 +116,7 @@ aria-haspopup='dialog'>
 	transition: var(--transition)
 	transition-property: transform, box-shadow
 	will-change: transform, box-shadow
+	animation: projectInAnim var(--transition-easing) 1s backwards
 	contain: content
 	@supports (-webkit-backdrop-filter: blur(0px))
 		overflow: hidden
@@ -197,6 +199,11 @@ aria-haspopup='dialog'>
 			0 12px 36px var(--shadow-big-clr)
 		> .contents
 			transform: translate(0,0)
+
+
+@keyframes projectInAnim
+	from {opacity: 0; transform: translateY(-4rem);}
+	to   {opacity: 1; transform: translateY(0);}
 
 @media (prefers-color-scheme: dark)
 	.project > .preview > .no-image > .bg

@@ -2,7 +2,7 @@
 	<div
 		class='background'
 		aria-hidden='true'
-		transition:modalBgTransition={{duration: 600}}
+		transition:fade={{duration: 600}}
 		on:click={()=> {
 			if (escapable) {closeThis()}
 		}}
@@ -330,7 +330,7 @@ import {appState, colorSchemaMediaQuery} from '../../App.svelte'
 import {vibrate, vibrateLink, copyToClipboard} from '../../utils/misc'
 import StatusIcon from '../StatusIcon.svelte'
 import {_, date as _date} from 'svelte-i18n'
-import {projectModalAnim, modalBgTransition, disclosureTransition} from '../../utils/transitions'
+import {projectModalAnim, fade, disclosureTransition} from '../../utils/transitions'
 import {i18n, Language, LanguageFullName, LanguageList} from '../../i18n'
 import {lazyLoad} from '../../utils/lazy_loader'
 import {removeQuery, setQuery} from '../../utils/url_handler'

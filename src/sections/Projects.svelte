@@ -1,6 +1,6 @@
 <script type='ts'>
-import {projects} from '../database'
 import ProjectPreviewTile from '../components/ProjectPreviewTile.svelte'
+import {projects} from '../database'
 import {_} from 'svelte-i18n'
 </script>
 
@@ -18,21 +18,23 @@ import {_} from 'svelte-i18n'
 
 
 <style lang='stylus'>
-h1
-	padding: 1rem 3rem 0 3rem
-	@media screen and (max-width: 600px)
-		padding: 1rem
-
-.projects
+section
+	animation: sectionInAnim var(--transition-easing) 1s
 	margin-bottom: 4rem
-	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr))
-	grid-gap: 2rem
-	@media screen and (min-width: 1600px)
+	@media screen and (min-width: 1000px)
 		padding: 3rem
-	@media screen and (max-width: 1600px)
-		padding: 3rem
-	@media screen and (max-width: 1200px)
+	@media screen and (max-width: 1000px)
 		padding: 1.5rem
 	@media screen and (max-width: 600px)
 		padding: 1rem
+		margin-bottom: 2rem
+	h1
+		margin-bottom: 2rem
+	.projects
+		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr))
+		grid-gap: 2rem
+
+@keyframes sectionInAnim
+	from {transform: translateY(-4rem)}
+	to   {transform: translateY(0)}
 </style>

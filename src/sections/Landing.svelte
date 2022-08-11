@@ -267,28 +267,28 @@ function openBigProfilePicture() {
 			max-width: 90%
 
 @keyframes pictureInAnim
-	0%   {opacity: 0; transform: translate(-2rem, -2rem);}
-	100% {opacity: 1; transform: translate(0,0);}
+	from {opacity: 0; transform: translate(-2rem, -2rem);}
+	to   {opacity: 1; transform: translate(0,0);}
 
 @keyframes nameInAnim
-	0%   {opacity: 0; transform: translate(-2rem, 0);}
-	100% {opacity: 1; transform: translate(0,0);}
+	from {opacity: 0; transform: translate(-2rem, 0);}
+	to   {opacity: 1; transform: translate(0,0);}
 
 @keyframes questionsInAnim
-	0%   {opacity: 0; transform: translate(-10rem, 0);}
-	100% {opacity: 1; transform: translate(0,0);}
+	from {opacity: 0; transform: translate(-10rem, 0);}
+	to   {opacity: 1; transform: translate(0,0);}
 
 @keyframes socialMediaInAnim
-	0%   {opacity: 0; transform: translate(4rem, 0);}
-	100% {opacity: .5; transform: translate(0,0);}
+	from {opacity: 0; transform: translate(4rem, 0);}
+	to   {opacity: .5; transform: translate(0,0);}
 
 @keyframes professionInAnim
-	0%   {opacity: 0; transform: translate(4rem, 0);}
-	100% {opacity: 1; transform: translate(0,0);}
+	from {opacity: 0; transform: translate(4rem, 0);}
+	to   {opacity: 1; transform: translate(0,0);}
 
 @keyframes codeBgInAnim
-	0%   {opacity: 0; transform: translate(10rem, 0);}
-	100% {opacity: 1; transform: translate(0,0);}
+	from {opacity: 0; transform: translate(10rem, 0);}
+	to   {opacity: 1; transform: translate(0,0);}
 
 @media (prefers-contrast: more)
 	.contents .social-media > a

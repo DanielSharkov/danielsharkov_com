@@ -2,7 +2,7 @@
 	<div
 		class='background'
 		aria-hidden='true'
-		transition:modalBgTransition
+		transition:fade
 		on:click={()=> {
 			if (escapable) {closeThis()}
 		}}
@@ -37,7 +37,7 @@ export type Props = {
 <script lang='ts'>
 import {_} from 'svelte-i18n'
 import {onMount, createEventDispatcher} from 'svelte'
-import {modalBgTransition, modalTransition} from '../../utils/transitions'
+import {fade, modalTransition} from '../../utils/transitions'
 const dispatch = createEventDispatcher<{close: void, mounted: HTMLElement}>()
 
 let thisEl: HTMLElement

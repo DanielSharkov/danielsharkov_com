@@ -2,7 +2,7 @@
 	<div
 		class='background'
 		on:click={()=> {dispatch('close')}}
-		transition:modalBgTransition={{duration: 400}}
+		transition:fade={{duration: 400}}
 	/>
 	<img
 		bind:this={thisEl}
@@ -19,7 +19,7 @@
 
 
 <script lang='ts'>
-import {modalBgTransition} from '../../utils/transitions'
+import {fade} from '../../utils/transitions'
 import type {TransitionConfig} from 'svelte/transition'
 import {lazyLoadAction} from '../../utils/lazy_loader'
 import {createEventDispatcher, onMount} from 'svelte'
