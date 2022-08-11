@@ -60,8 +60,8 @@
 				</div>
 			{/if}
 		</div>
-		<div class='header grid gap-2'>
-			<div class='left-piece grid gap-1'>
+		<div class='header flex gap-2 nowrap'>
+			<div class='left-wrapper'>
 				<h1 class='name'>{$_('project.' + props.project.id)}</h1>
 				{#if props.project.usedTechnologies.length > 0}
 					<div class='used-technologies flex gap-05' role='listbox'>
@@ -94,7 +94,7 @@
 					</div>
 				{/if}
 			</div>
-			<div class='right-piece flex' class:single-btn={anyHeaderBtnActive} class:no-btn={noHeaderBtn}>
+			<div class='right-wrapper flex-center-y flex gap-05'>
 				{#if Array.isArray(props.project.otherLinks)}
 					{#each props.project.otherLinks as link}
 						<a href={link.url} role='button' class='other-link flex flex-center gap-05' target='_blank' use:vibrateLink>
@@ -154,7 +154,7 @@
 										<use xlink:href='#Icon_Translation'/>
 									</svg>
 									<span class='label'>{$_('project_load_different_translation')}</span>
-									<svg class='icon icon-075' aria-hidden='true' focusable='false' role='presentation'>
+									<svg class='icon icon-075 flex-self-right' aria-hidden='true' focusable='false' role='presentation'>
 										<use xlink:href='#Icon_Chevron'/>
 									</svg>
 								</button>
@@ -247,8 +247,9 @@
 			{/if}
 			<hr class='seperator bot'/>
 		</div>
-		<div class='footer flex flex-center-y gap-05'>
+		<div class='footer flex flex-center-y gap-05' class:sharing-not-supported={!isSharingSupported}>
 			<button on:click={shareURL}
+			style:grid-area='copy-url'
 			class='share-option flex flex-center gap-05 nowrap'
 			class:is-sharing={userIsSharingURL}>
 				<div class='status grid gap-05 grid-center-x' role='alert' class:active={userIsSharingURL}>
@@ -275,6 +276,7 @@
 
 			{#if isSharingSupported}
 				<button on:click={shareThis}
+				style:grid-area='share-with'
 				class='share-option flex flex-center gap-05 nowrap'
 				class:is-sharing={userIsSharing}>
 					<div class='status grid gap-05 grid-center-x' role='alert' class:active={userIsSharing}>
@@ -302,7 +304,8 @@
 				</button>
 			{/if}
 
-			<button class='close flex flex-center-y flex-self-right gap-1 nowrap' on:click={closeThis}>
+			<button on:click={closeThis} style:grid-area='close'
+			class='close flex flex-center flex-self-right gap-05 nowrap'>
 				<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
 					<use xlink:href='#Icon_Cross'/>
 				</svg>
@@ -359,15 +362,6 @@ $:articleHasMetaSet = (
 	props.project.articleWritten !== undefined ||
 	props.project.prjImpl !== undefined ||
 	props.project.prjUpdt !== undefined
-)
-
-$:anyHeaderBtnActive = (
-	props.project.codeUrl !== undefined && props.project.projectUrl === undefined ||
-	props.project.codeUrl === undefined && props.project.projectUrl !== undefined
-)
-
-$:noHeaderBtn = (
-	props.project.codeUrl === undefined && props.project.projectUrl === null
 )
 
 $:customGradientBG = (
@@ -600,8 +594,8 @@ $aboutContentWidth = 900px
 	> .close-modal
 		z-index: 100
 		position: absolute
-		top: 1.5rem
 		right: 1.5rem
+		top: 1.5rem
 		padding: 1rem
 		background-color: var(--page-bg)
 		border: solid 1px var(--font-base-clr)
@@ -620,6 +614,9 @@ $aboutContentWidth = 900px
 		&:active
 			box-shadow: var(--shadow-0)
 			transform: scale(0.95)
+		@media screen and (max-width: 600px)
+			right: 1rem
+			top: 1rem
 	> .image-container
 		height: auto
 		min-height: 75vh
@@ -695,29 +692,29 @@ $aboutContentWidth = 900px
 		&.no-image
 			height: 6rem
 			min-height: unset
+			@media screen and (max-width: 600px)
+				height: 5rem
 	> .header
 		padding: 2rem
-		grid-template-columns: auto auto
 		@media (prefers-contrast: more)
 			border-top: solid 1px var(--border-hard)
 		@media screen and (max-width: 600px)
-			grid-template-columns: 1fr
+			flex-wrap: wrap
 			padding: 1rem
-		> .left-piece .name
-			letter-spacing: 0
-		> .right-piece
-			justify-content: flex-end
-			align-content: center
-			align-items: center
-			gap: .5em
+		> .left-wrapper, > .right-wrapper
+			flex: 1 1 50%
 			@media screen and (max-width: 600px)
-				display: grid
-				grid-template-columns: 1fr 1fr
-				grid-gap: .5rem
-				&.single-btn
-					grid-template-columns: 1fr
-				&.no-btn
-					display: none
+				flex: 1 1 100%
+		> .left-wrapper > .name
+			margin-bottom: 1rem
+			letter-spacing: 0
+		> .right-wrapper
+			justify-content: flex-end
+			@media screen and (max-width: 600px)
+				flex-flow: nowrap column-reverse
+				> *
+					flex: 0 0 auto
+					width: 100%
 		.used-technologies
 			.techno
 				z-index: 0
@@ -777,7 +774,7 @@ $aboutContentWidth = 900px
 			transition: var(--transition)
 			transition-property: opacity, background-color
 			background-color: var(--font-base-clr-005)
-			color: var(--font-base-clr-075)
+			color: var(--font-base-clr)
 			&:hover, &:focus
 				background-color: var(--font-base-clr-015)
 				color: var(--font-heading-clr)
@@ -785,7 +782,7 @@ $aboutContentWidth = 900px
 					background-color: var(--font-base-clr-015)
 		.closed-source
 			padding: .5rem 1rem
-			color: var(--font-base-clr-035)
+			color: var(--font-base-clr-05)
 			border-radius: 2rem
 			font-size: 1rem
 			> .icon
@@ -794,6 +791,8 @@ $aboutContentWidth = 900px
 				color: var(--font-base-clr)
 				> .icon
 					--icon: var(--font-base-clr)
+			@media screen and (max-width: 600px)
+				padding: 1rem
 		.closed-source, .open-source-code
 			@media screen and (max-width: 600px)
 				margin: 0
@@ -855,6 +854,8 @@ $aboutContentWidth = 900px
 			padding-bottom: 0
 			> .load-different-lang > .disclosure
 				position: relative
+				@media screen and (max-width: 600px)
+					width: 100%
 				> .loaded-translation
 					padding: .5em 1em
 					background-color: var(--box-bg)
@@ -862,8 +863,9 @@ $aboutContentWidth = 900px
 					box-shadow: var(--shadow-0)
 					transition: var(--transition)
 					transition-property: background-color, color
-					.label
-						margin-right: .5em
+					@media screen and (max-width: 600px)
+						width: 100%
+						padding: 1em 1.5em
 					.icon
 						font-size: 1.25em
 					&:hover, &:focus, &:active, &.active
@@ -1020,7 +1022,6 @@ $aboutContentWidth = 900px
 				font-size: 1rem
 	> .footer
 		padding: 2rem
-		justify-content: space-between
 		border-radius: inherit
 		border-top-left-radius: 0
 		border-top-right-radius: 0
@@ -1028,15 +1029,6 @@ $aboutContentWidth = 900px
 			padding: 1rem
 		.share-option
 			position: relative
-			padding: .5rem 1rem
-			background-color: var(--font-base-clr-01)
-			border-radius: 2rem
-			font-size: 1.15rem
-			transition: var(--transition)
-			transition-property: background-color, transform, box-shadow
-			@media screen and (max-width: 600px)
-				margin-right: 0 !important
-				padding: 1rem 1.5rem
 			.status
 				z-index: 10
 				position: absolute
@@ -1068,8 +1060,6 @@ $aboutContentWidth = 900px
 					bottom: -2rem
 					border: solid 1rem transparent
 					border-top-color: var(--box-bg)
-			&:not(:last-child)
-				margin-right: .5rem
 			&:hover, &:active, &:focus, &.is-sharing
 				background-color: var(--clr-accent)
 				transform: translateY(-.25rem)
@@ -1091,14 +1081,7 @@ $aboutContentWidth = 900px
 				.icon
 					--icon: var(--page-bg)
 		.close
-			padding: .5rem 1rem
 			border-radius: 2rem
-			font-size: 1.15rem
-			background-color: var(--font-base-clr-01)
-			transition: var(--transition)
-			transition-property: transform, box-shadow, background-color
-			@media screen and (max-width: 600px)
-				padding: 1rem 1.5rem
 			&:hover, &:focus
 				background-color: var(--font-base-clr)
 				transform: translateY(-.25rem)
@@ -1113,6 +1096,25 @@ $aboutContentWidth = 900px
 				color: #fff
 				.icon
 					--icon: #fff
+		.share-option, .close
+			padding: .5rem 1rem
+			background-color: var(--font-base-clr-01)
+			border-radius: 2rem
+			font-size: 1.15rem
+			transition: var(--transition)
+			transition-property: background-color, transform, box-shadow
+			@media screen and (max-width: 600px)
+				padding: .75rem 1.25rem
+				font-size: 1rem
+		@media screen and (max-width: 600px)
+			display: grid
+			grid-template-columns: 1fr 1fr
+			grid-template-areas: 'close close' 'copy-url share-with'
+			gap: 1rem
+			.close
+				margin-left: unset
+			&.sharing-not-supported
+				grid-template-areas: 'close copy-url'
 
 @media (prefers-color-scheme: dark)
 	#Project_Details_Modal
