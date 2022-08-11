@@ -141,6 +141,8 @@ aria-haspopup='dialog'>
 			background-repeat: no-repeat
 			background-size: cover
 			filter: blur(4px)
+			user-select: none
+			pointer-events: none
 		img, > .no-image
 			width: 100%
 			height: 100%
@@ -148,6 +150,8 @@ aria-haspopup='dialog'>
 			object-fit: cover
 			object-position: center
 			border-radius: .5rem .5rem 0 0
+			user-select: none
+			pointer-events: none
 		> .no-image
 			> .bg
 				z-index: -1

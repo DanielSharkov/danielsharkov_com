@@ -154,7 +154,7 @@ function openBigProfilePicture() {
 	@media screen and (max-width: 1000px)
 		padding: 1.5rem
 	@media screen and (max-width: 600px)
-		padding: 1rem 1rem 2rem 1rem
+		margin-bottom: 2rem
 
 #LandingCodingBG
 	position: absolute

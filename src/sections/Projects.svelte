@@ -26,13 +26,14 @@ section
 	@media screen and (max-width: 1000px)
 		padding: 1.5rem
 	@media screen and (max-width: 600px)
-		padding: 1rem
 		margin-bottom: 2rem
 	h1
 		margin-bottom: 2rem
 	.projects
 		grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr))
 		grid-gap: 2rem
+		@media screen and (max-width: 600px)
+			grid-gap: 1.5rem
 
 @keyframes sectionInAnim
 	from {transform: translateY(-4rem)}

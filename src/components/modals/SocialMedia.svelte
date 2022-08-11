@@ -56,6 +56,11 @@ function closeThis() {
 
 
 <style lang='stylus'>
+.modal-container
+	padding: 1rem
+	@media screen and (max-width: 600px)
+		padding: 2rem
+
 .modal
 	margin: auto
 	width: 100%
