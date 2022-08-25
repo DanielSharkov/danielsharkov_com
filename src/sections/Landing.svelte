@@ -9,9 +9,6 @@ const professions = [
 	'software_engineer', 'fullstack_webdev',
 	'ux_ui_designer', 'junior_devop',
 ]
-const questions = [
-	'projects', 'skills', 'contact', //'about',
-]
 
 let showBigProfilePicture = false
 function openBigProfilePicture() {
@@ -272,10 +269,6 @@ function openBigProfilePicture() {
 
 @keyframes nameInAnim
 	from {opacity: 0; transform: translate(-2rem, 0);}
-	to   {opacity: 1; transform: translate(0,0);}
-
-@keyframes questionsInAnim
-	from {opacity: 0; transform: translate(-10rem, 0);}
 	to   {opacity: 1; transform: translate(0,0);}
 
 @keyframes socialMediaInAnim
