@@ -8,8 +8,8 @@
 		bind:this={thisEl}
 		alt='Daniel Scharkov'
 		use:lazyLoadAction={{
-			thumb: 'me-myself-and-i-thumb.jpg',
-			source: 'me-myself-and-i.jpg',
+			thumb: 'me-myself-and-i-thumb.webp',
+			source: 'me-myself-and-i.webp',
 		}}
 		out:bigPicTransition={{isOut: true}}
 		in:bigPicTransition={{isOut: false}}

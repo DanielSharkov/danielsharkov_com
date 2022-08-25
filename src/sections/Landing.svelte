@@ -39,7 +39,7 @@ function openBigProfilePicture() {
 		<defs>
 			<pattern id='code_bg_image' patternContentUnits='objectBoundingBox' width='1' height='1'>
 				<image
-					use:lazyLoadSVGImgAction={{thumb: 'code-bg-thumb.png', source: 'code-bg.png'}}
+					use:lazyLoadSVGImgAction={{thumb: 'code-bg-thumb.webp', source: 'code-bg.webp'}}
 					id='image0' width='1024' height='2146' transform='translate(-0.0478835) scale(0.00102516 0.000465983)'
 				/>
 			</pattern>
@@ -91,8 +91,8 @@ function openBigProfilePicture() {
 				<img
 					class='block-select'
 					use:lazyLoadAction={{
-						thumb: 'me-myself-and-i-thumb.jpg',
-						source: 'me-myself-and-i.jpg',
+						thumb: 'me-myself-and-i-thumb.webp',
+						source: 'me-myself-and-i.webp',
 					}}
 					alt='{$_('profile_pic_alt')}'
 				/>
