@@ -333,7 +333,7 @@ onMount(()=> {
 {:else}
 	<main id='App'>
 		<div id='AppLangSelect' class:active={selectingLang} tabindex={selectingLang ? 1:-1}>
-			<button on:click={toggleLangSelect} class='selected gap-1 flex flex-center' aria-hidden={selectingLang}>
+			<button on:click={toggleLangSelect} aria-haspopup='listbox' class='selected gap-1 flex flex-center' aria-hidden={selectingLang}>
 				<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
 					<use xlink:href='#Icon_Translation'/>
 				</svg>
@@ -343,10 +343,11 @@ onMount(()=> {
 				</svg>
 			</button>
 			{#if selectingLang}
-				<div class='options grid gap-05' transition:disclosureTransition>
+				<div id='AppLangOptions' class='options grid gap-05' role='listbox' transition:disclosureTransition>
 					{#each LanguageList as locale}
 						<button on:click={()=> selectLang(locale)}
 						class='option flex nowrap flex-center-y gap-1'
+						aria-selected={locale === $i18n}
 						class:active={locale === $i18n}>
 							<svg class='flag icon icon-175' aria-hidden='true' focusable='false' role='presentation'>
 								<title>{LanguageFullName[locale]} Flag</title>

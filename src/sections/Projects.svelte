@@ -8,7 +8,7 @@ import {_} from 'svelte-i18n'
 
 <section>
 	<h1 id='projects' class='display-3'>{$_('section.projects.title')}</h1>
-	<div class='projects grid' role='feed'>
+	<div class='projects grid' role='list'>
 		{#each projects as _, idx}
 			<ProjectPreviewTile projectIndex={idx}/>
 		{/each}

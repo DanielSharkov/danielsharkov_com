@@ -54,6 +54,7 @@ $:customGradientBG = (
 
 
 <button on:click={openThisProject}
+role='listitem'
 class='project grid'
 style:animation-delay='{projectIndex * 75}ms'
 aria-haspopup='dialog'>

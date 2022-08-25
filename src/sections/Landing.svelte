@@ -109,7 +109,7 @@ function openBigProfilePicture() {
 					{/each}
 				</div>
 
-				<div tabindex='-1' role='listbox' class='social-media flex flex-center-y gap-1'>
+				<div tabindex='-1' role='list' class='social-media flex flex-center-y gap-1'>
 					{#each socialMedia as {name, app, url}, idx}
 						{#if app}
 							<button role='listitem'

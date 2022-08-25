@@ -11,7 +11,7 @@ const currentYear = new Date().getFullYear()
 	<div class='get-in-touch grid grid-center'>
 		<h1 id='contact'>{$_('section.contact.title')}</h1>
 	
-		<div role='listbox' tabindex='-1' class='social-media flex flex-center gap-15'>
+		<div role='list' tabindex='-1' class='social-media flex flex-center gap-15'>
 			{#each socialMedia as {name, url, app}}
 				{#if app}
 					<button role='listitem'
