@@ -1,9 +1,9 @@
 {
     "recommendations": [
-        "sysoev.language-stylus",
         "lokalise.i18n-ally",
         "svelte.svelte-vscode",
         "ms-vscode.vscode-typescript-tslint-plugin",
-        "dbaeumer.vscode-eslint"
+        "dbaeumer.vscode-eslint",
+        "syler.sass-indented"
     ]
 }
