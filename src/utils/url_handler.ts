@@ -3,7 +3,10 @@ const thisBaseURL = (
 )
 
 function queryObjToString(queryObj: {[key: string]: string}): string {
-	let str = ''
+	if (Object.keys(queryObj).length < 1) {
+		return ''
+	}
+	let str = '?'
 	let itr = 0
 	for (const key of Object.keys(queryObj)) {
 		str += key +'='+ queryObj[key]
@@ -29,7 +32,7 @@ export function removeQuery(queryName: string): void {
 	}
 	if (window.history?.pushState) {
 		window.history.pushState(null, '', (
-			thisBaseURL +'?'+ queryObjToString(query) + window.location.hash
+			thisBaseURL + queryObjToString(query) + window.location.hash
 		))
 	}
 }
@@ -72,13 +75,13 @@ export function setQuery(
 	if (replaceState && window.history?.replaceState) {
 		window.history.replaceState(
 			state, title,
-			thisBaseURL +'?'+ queryObjToString(queryObj) + window.location.hash,
+			thisBaseURL + queryObjToString(queryObj) + window.location.hash,
 		)
 	}
 	else if (window.history?.pushState) {
 		window.history.pushState(
 			state, title,
-			thisBaseURL +'?'+ queryObjToString(queryObj) + window.location.hash,
+			thisBaseURL + queryObjToString(queryObj) + window.location.hash,
 		)
 	}
 }
