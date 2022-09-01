@@ -79,7 +79,8 @@ function technoCareerSpan(techno, [begin, end]) {
 	return (
 		`background-color: ${techno.color};` +
 		`grid-column-start: ${begin - careerBegin + 1};` +
-		`grid-column-end: ${endPos};`
+		`grid-column-end: ${endPos};` +
+		`box-shadow: 0 2px 10px -0.75px ${techno.color};`
 	)
 }
 
@@ -195,7 +196,6 @@ section
 				position: relative
 				top: -3px
 				height: 3px
-				box-shadow: 0 0 1px  var(--page-bg),0 1px 10px var(--shadow-clr)
 
 @media screen and (max-width: 1000px)
 	.section-header
