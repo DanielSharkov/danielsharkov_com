@@ -55,7 +55,7 @@ function closeThis() {
 
 
 
-<style lang='stylus'>
+<style lang='sass'>
 .modal-container
 	padding: 1rem
 	@media screen and (max-width: 600px)
@@ -70,17 +70,17 @@ function closeThis() {
 	border-radius: 1rem
 	box-shadow: var(--shadow-4)
 	> .name
-		margin-bottom: .5rem
+		margin-bottom: 0.5rem
 		font-size: 2.5rem
 		text-align: center
 	> .btn
-		border-radius: .5rem
-		padding: .5rem
+		border-radius: 0.5rem
+		padding: 0.5rem
 		transition: var(--transition)
 		transition-property: background-color, color, transform
 		&.open-link
 			background-color: var(--font-base-clr-01)
-			padding: .5rem
+			padding: 0.5rem
 			text-decoration: none
 			&:hover, &:focus
 				background-color: var(--clr-accent-01)
@@ -102,17 +102,17 @@ function closeThis() {
 				transform: scale(1.05)
 			&:hover:active
 				box-shadow: var(--shadow-0)
-				transform: scale(.95)
+				transform: scale(0.95)
 				background-color: var(--clr-accent-dark)
 		&.close
 			margin-top: 1rem
 			background-color: var(--font-base-clr-01)
 			&:hover, &:focus
-				transform: translateY(-.15rem)
+				transform: translateY(-0.15rem)
 				background-color: var(--font-base-clr)
 				color: var(--page-bg)
 			&:active
-				transform: translateY(.15rem)
+				transform: translateY(0.15rem)
 				background-color: var(--font-heading-clr)
 				color: var(--page-bg)
 </style>

@@ -198,7 +198,7 @@ function openBigProfilePicture() {
 					transform: scale(1.1)
 					border-radius: 10%
 		&.big-preview img
-			transition-duration: .6s
+			transition-duration: 0.6s
 			opacity: 0
 			transform: translateY(6rem) scale(1.25)
 			@media screen and (min-width: 600px)
@@ -217,7 +217,7 @@ function openBigProfilePicture() {
 			font-size: 2.15rem
 	.professions
 		@media screen and (min-width: 600px)
-			margin-left: .35rem
+			margin-left: 0.35rem
 		@media screen and (max-width: 599px)
 			justify-content: center
 			justify-items: center
@@ -226,7 +226,7 @@ function openBigProfilePicture() {
 			animation: professionInAnim var(--transition-easing) 1s alternate backwards
 			&:not(:last-child):after
 				content: ''
-				margin-left: .5rem
+				margin-left: 0.5rem
 				width: 1rem
 				height: 1px
 				background-color: var(--font-base-clr-015)
@@ -234,7 +234,7 @@ function openBigProfilePicture() {
 				color: var(--font-base-clr)
 	.social-media
 		@media screen and (min-width: 600px)
-			margin-left: -.25rem
+			margin-left: -0.25rem
 		@media screen and (max-width: 599px)
 			justify-content: center
 			justify-items: center
@@ -255,7 +255,8 @@ function openBigProfilePicture() {
 		width: 100%
 		animation: nameInAnim var(--transition-easing) 2s
 		line-height: 1.75
-		font-size: 1.25rem
+		font-size: 1.15rem
+		font-family: 'Open Sans'
 		@media screen and (max-width: 600px)
 			text-align: center
 		@media screen and (min-width: 1200px)
@@ -264,24 +265,44 @@ function openBigProfilePicture() {
 			max-width: 90%
 
 @keyframes pictureInAnim
-	from {opacity: 0; transform: translate(-2rem, -2rem);}
-	to   {opacity: 1; transform: translate(0,0);}
+	from
+		opacity: 0
+		transform: translate(-2rem, -2rem)
+	to
+		opacity: 1
+		transform: translate(0,0)
 
 @keyframes nameInAnim
-	from {opacity: 0; transform: translate(-2rem, 0);}
-	to   {opacity: 1; transform: translate(0,0);}
+	from
+		opacity: 0
+		transform: translate(-2rem, 0)
+	to
+		opacity: 1
+		transform: translate(0,0)
 
 @keyframes socialMediaInAnim
-	from {opacity: 0; transform: translate(4rem, 0);}
-	to   {opacity: .5; transform: translate(0,0);}
+	from
+		opacity: 0
+		transform: translate(4rem, 0)
+	to
+		opacity: 0.5
+		transform: translate(0,0)
 
 @keyframes professionInAnim
-	from {opacity: 0; transform: translate(4rem, 0);}
-	to   {opacity: 1; transform: translate(0,0);}
+	from
+		opacity: 0
+		transform: translate(4rem, 0)
+	to
+		opacity: 1
+		transform: translate(0,0)
 
 @keyframes codeBgInAnim
-	from {opacity: 0; transform: translate(10rem, 0);}
-	to   {opacity: 1; transform: translate(0,0);}
+	from
+		opacity: 0
+		transform: translate(10rem, 0)
+	to
+		opacity: 1
+		transform: translate(0,0)
 
 @media (prefers-contrast: more)
 	.contents .social-media > a

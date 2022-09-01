@@ -66,26 +66,26 @@
 		justify-content: center
 		justify-items: center
 
-for $i in (2..12)
-	.grid-{$i}
+@for $i from 2 through 12
+	.grid-#{$i}
 		grid-template-columns: repeat($i, minmax(0, 1fr))
 
 @media (min-width: 1200px)
-	for $i in (2..12)
-		.grid-large-{$i}
+	@for $i from 2 through 12
+		.grid-large-#{$i}
 			grid-template-columns: repeat($i, minmax(0, 1fr))
 
 @media (max-width: 1200px)
-	for $i in (2..12)
-		.grid-normal-{$i}
+	@for $i from 2 through 12
+		.grid-normal-#{$i}
 			grid-template-columns: repeat($i, minmax(0, 1fr))
 
 @media (max-width: 768px)
-	for $i in (2..12)
-		.grid-medium-{$i}
+	@for $i from 2 through 12
+		.grid-medium-#{$i}
 			grid-template-columns: repeat($i, minmax(0, 1fr))
 
 @media (max-width: 425px)
-	for $i in (2..12)
-		.grid-small-{$i}
+	@for $i from 2 through 12
+		.grid-small-#{$i}
 			grid-template-columns: repeat($i, minmax(0, 1fr))

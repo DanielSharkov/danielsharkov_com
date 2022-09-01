@@ -17,7 +17,7 @@ import {_} from 'svelte-i18n'
 
 
 
-<style lang='stylus'>
+<style lang='sass'>
 section
 	animation: sectionInAnim var(--transition-easing) 1s
 	margin-bottom: 4rem
@@ -36,6 +36,8 @@ section
 			grid-gap: 1.5rem
 
 @keyframes sectionInAnim
-	from {transform: translateY(-4rem)}
-	to   {transform: translateY(0)}
+	from
+		transform: translateY(-4rem)
+	to
+		transform: translateY(0)
 </style>

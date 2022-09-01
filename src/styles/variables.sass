@@ -1,10 +1,7 @@
-rgbaVar(name, opa = 1)
-	s("rgba(var(%s), %s)", name, opa)
-
 :root
 	// Misc ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	--transition-duration: 300ms
-	--transition-easing: cubic-bezier(.22, .61, .36, 1)
+	--transition-easing: cubic-bezier(0.22, 0.61, 0.36, 1)
 	--transition: var(--transition-duration) var(--transition-easing)
 
 	--ghost-loader: var(--font-base-clr-01)
@@ -15,25 +12,25 @@ rgbaVar(name, opa = 1)
 
 	// Back- & Foreground ::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	--page-bg-rgb: 245, 245, 245
-	--page-bg: rgbaVar(--page-bg-rgb)
-	--page-bg-085: rgbaVar(--page-bg-rgb, .85)
-	--page-bg-075: rgbaVar(--page-bg-rgb, .75)
-	--page-bg-05: rgbaVar(--page-bg-rgb, .5)
-	--page-bg-025: rgbaVar(--page-bg-rgb, .25)
+	--page-bg: rgb(var(--page-bg-rgb))
+	--page-bg-085: rgba(var(--page-bg-rgb), 0.85)
+	--page-bg-075: rgba(var(--page-bg-rgb), 0.75)
+	--page-bg-05: rgba(var(--page-bg-rgb), 0.5)
+	--page-bg-025: rgba(var(--page-bg-rgb), 0.25)
 
 	--box-bg-rgb: 255, 255, 255
-	--box-bg: rgbaVar(--box-bg-rgb)
+	--box-bg: rgb(var(--box-bg-rgb))
 
-	--overlay-bg: rgba(#222, .6)
-	--preview-tile-content-bg: rgbaVar(--box-bg-rgb, .95)
+	--overlay-bg: rgba(34,34,34, 0.6)
+	--preview-tile-content-bg: rgba(var(--box-bg-rgb), 0.95)
 	--project-modal-bg: var(--box-bg)
 
 	// Shadow ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	/* --shadow-ao-clr = Shadow ambient occlusion color */
-	--shadow-ao-clr: rgba(#000, .2)
-	--shadow-clr: rgba(#000, .2)
-	--shadow-big-clr: rgba(#000, .2)
-	--shadow-huge-clr: rgba(#000, .3)
+	--shadow-ao-clr: rgba(0,0,0, 0.2)
+	--shadow-clr: rgba(0,0,0, 0.2)
+	--shadow-big-clr: rgba(0,0,0, 0.2)
+	--shadow-huge-clr: rgba(0,0,0, 0.3)
 	--shadow-contrast: 0 0 0
 	--shadow-bevel: 0 0 0 transparent
 	--shadow-0: var(--shadow-bevel), 0 0 1px var(--shadow-ao-clr), 0 1px 2px var(--shadow-clr)
@@ -51,65 +48,64 @@ rgbaVar(name, opa = 1)
 	--seperator-bot: none
 
 	// Font Base :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+	$fontFallback: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif
 	--font-base-size: 1rem
 	--font-base-weight: 400
 	--font-base-line-height: 1.75
-	--font-base-stack: 'Montserrat', -apple-system, BlinkMacSystemFont,
-		'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-		'Open Sans', 'Helvetica Neue', sans-serif
+	--font-base-stack: 'Open Sans', #{$fontFallback}
 
 	--font-base-clr-rgb: 69, 73, 80
-	--font-base-clr: rgbaVar(--font-base-clr-rgb)
-	--font-base-clr-075: rgbaVar(--font-base-clr-rgb, .75)
-	--font-base-clr-05: rgbaVar(--font-base-clr-rgb, .5)
-	--font-base-clr-035: rgbaVar(--font-base-clr-rgb, .35)
-	--font-base-clr-025: rgbaVar(--font-base-clr-rgb, .25)
-	--font-base-clr-015: rgbaVar(--font-base-clr-rgb, .15)
-	--font-base-clr-02: rgbaVar(--font-base-clr-rgb, .2)
-	--font-base-clr-01: rgbaVar(--font-base-clr-rgb, .1)
-	--font-base-clr-005: rgbaVar(--font-base-clr-rgb, .05)
-	--font-base-clr-0025: rgbaVar(--font-base-clr-rgb, .025)
+	--font-base-clr: rgb(var(--font-base-clr-rgb))
+	--font-base-clr-075: rgba(var(--font-base-clr-rgb), 0.75)
+	--font-base-clr-05: rgba(var(--font-base-clr-rgb), 0.5)
+	--font-base-clr-035: rgba(var(--font-base-clr-rgb), 0.35)
+	--font-base-clr-025: rgba(var(--font-base-clr-rgb), 0.25)
+	--font-base-clr-015: rgba(var(--font-base-clr-rgb), 0.15)
+	--font-base-clr-02: rgba(var(--font-base-clr-rgb), 0.2)
+	--font-base-clr-01: rgba(var(--font-base-clr-rgb), 0.1)
+	--font-base-clr-005: rgba(var(--font-base-clr-rgb), 0.05)
+	--font-base-clr-0025: rgba(var(--font-base-clr-rgb), 0.025)
 
 	@media screen and (max-width: 1000px)
-		--font-base-size: .9rem
+		--font-base-size: 0.9rem
 
 	// Font Heading ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-	--font-heading-stack: var(--font-base-stack)
+	--font-heading-stack: 'Montserrat', #{$fontFallback}
 	--font-heading-weight: 400
 	--font-heading-line-height: 1.25
 
 	--font-heading-clr-rgb: 0, 0, 0
-	--font-heading-clr: rgbaVar(--font-heading-clr-rgb)
-	--font-heading-clr-05: rgbaVar(--font-heading-clr-rgb, .5)
+	--font-heading-clr: rgb(var(--font-heading-clr-rgb))
+	--font-heading-clr-05: rgba(var(--font-heading-clr-rgb), 0.5)
 
 	// Color :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 	--clr-accent-rgb: 0, 85, 255
-	--clr-accent: rgbaVar(--clr-accent-rgb)
-	--clr-accent-05: rgbaVar(--clr-accent-rgb, .5)
-	--clr-accent-025: rgbaVar(--clr-accent-rgb, .25)
-	--clr-accent-01: rgbaVar(--clr-accent-rgb, .1)
+	--clr-accent: rgb(var(--clr-accent-rgb))
+	--clr-accent-05: rgba(var(--clr-accent-rgb), 0.5)
+	--clr-accent-025: rgba(var(--clr-accent-rgb), 0.25)
+	--clr-accent-01: rgba(var(--clr-accent-rgb), 0.1)
 
 	--clr-accent-dark-rgb: 39, 70, 155
-	--clr-accent-dark: rgbaVar(--clr-accent-dark-rgb)
+	--clr-accent-dark: rgb(var(--clr-accent-dark-rgb))
 
 	--clr-complementary-rgb: 184, 166, 106
-	--clr-complementary: rgbaVar(--clr-complementary-rgb)
+	--clr-complementary: rgb(var(--clr-complementary-rgb))
 
 	--clr-red-rgb: 213, 0, 0
-	--clr-red: rgbaVar(--clr-red-rgb)
-	--clr-red-01: rgbaVar(--clr-red-rgb, .1)
+	--clr-red: rgb(var(--clr-red-rgb))
+	--clr-red-01: rgba(var(--clr-red-rgb), 0.1)
 
 	--clr-green-rgb: 79, 175, 18
-	--clr-green: rgbaVar(--clr-green-rgb)
-	--clr-green-01: rgbaVar(--clr-green-rgb, .1)
+	--clr-green: rgb(var(--clr-green-rgb))
+	--clr-green-01: rgba(var(--clr-green-rgb), 0.1)
 
 	@media (prefers-color-scheme: dark)
 		--ghost-loader: var(--font-base-clr-01)
 
 		--page-bg-rgb: 15, 15, 15
 		--box-bg-rgb: 35, 35, 35
-		--overlay-bg: rgbaVar(--page-bg-rgb, .9)
-		--preview-tile-content-bg: rgbaVar(--page-bg-rgb, .95)
+		--overlay-bg: rgba(var(--page-bg-rgb), 0.9)
+		--preview-tile-content-bg: rgba(var(--page-bg-rgb), 0.95)
 		--project-modal-bg: var(--page-bg)
 
 		--font-base-clr-rgb: 167, 192, 205
@@ -142,7 +138,7 @@ rgbaVar(name, opa = 1)
 
 @media (prefers-contrast: more)
 	:root
-		--overlay-bg: rgba(#000, .85)
+		--overlay-bg: rgba(0,0,0, 0.85)
 
 		--border-soft: var(--font-base-clr-05)
 		--border-hard: var(--font-base-clr)
@@ -152,9 +148,9 @@ rgbaVar(name, opa = 1)
 		--font-base-clr-rgb: 0, 0, 0
 
 		--shadow-ao-clr: #000
-		--shadow-clr: rgba(#000, .5)
-		--shadow-big-clr: rgba(#000, .5)
-		--shadow-huge-clr: rgba(#000, .5)
+		--shadow-clr: rgba(0,0,0, 0.5)
+		--shadow-big-clr: rgba(0,0,0, 0.5)
+		--shadow-huge-clr: rgba(0,0,0, 0.5)
 		--shadow-contrast: 0 0 0 1px var(--border-hard)
 		--shadow-0: var(--shadow-contrast), 0 0 1px var(--shadow-ao-clr), 0 1px 2px var(--shadow-clr)
 		--shadow-1: var(--shadow-contrast), 0 0 1px var(--shadow-ao-clr), 0 2px 5px var(--shadow-clr)
@@ -165,7 +161,7 @@ rgbaVar(name, opa = 1)
 		--shadow-6: var(--shadow-contrast), 0 0 2px var(--shadow-ao-clr), 0 12px 36px var(--shadow-big-clr)
 		@media (prefers-color-scheme: dark)
 			--shadow-ao-clr: #fff
-			--overlay-bg: rgba(#000, .9)
+			--overlay-bg: rgba(0,0,0, 0.9)
 
 			--border-soft: var(--font-base-clr-05)
 			--border-hard: var(--font-base-clr)

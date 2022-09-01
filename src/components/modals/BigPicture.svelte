@@ -45,7 +45,7 @@ function bigPicTransition(_, {isOut}: {isOut: boolean}): TransitionConfig {
 				return (
 					`opacity: ${t};` +
 					`transform: `+
-						`scale(${.8 + .2 * t}) `+
+						`scale(${0.8 + 0.2 * t}) `+
 						`translate(-${10-10 * t}em, -${2-2 * t}em);`
 				)
 			},
@@ -57,7 +57,7 @@ function bigPicTransition(_, {isOut}: {isOut: boolean}): TransitionConfig {
 			t = easing(t)
 			return (
 				`opacity: ${t};` +
-				`transform: scale(${.75 + .25 * t}) translateY(-${5-5 * t}em);`
+				`transform: scale(${0.75 + 0.25 * t}) translateY(-${5-5 * t}em);`
 			)
 		},
 	}
@@ -66,12 +66,12 @@ function bigPicTransition(_, {isOut}: {isOut: boolean}): TransitionConfig {
 
 
 
-<style lang='stylus'>
+<style lang='sass'>
 .modal-container
 	padding: 2rem
 
 .background
-	background-color: rgba(#000, .85)
+	background-color: rgba(0,0,0, 0.85)
 
 img
 	width: auto
@@ -80,9 +80,7 @@ img
 	max-height: 100%
 	aspect-ratio: 3/4
 	border-radius: 1rem
-	box-shadow: var(--shadow-bevel),
-		0 0 1px var(--shadow-ao-clr),
-		0 20px 40px -20px var(--shadow-huge-clr)
+	box-shadow: var(--shadow-bevel), 0 0 1px var(--shadow-ao-clr), 0 20px 40px -20px var(--shadow-huge-clr)
 	background-color: var(--page-bg)
 	background-position: center
 	background-repeat: no-repeat

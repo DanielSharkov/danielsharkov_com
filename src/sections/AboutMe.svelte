@@ -18,7 +18,7 @@ import {_} from 'svelte-i18n'
 
 
 
-<style lang='stylus'>
+<style lang='sass'>
 section
 	padding: 2rem
 	grid-gap: 2rem
@@ -35,5 +35,5 @@ article, .header
 	margin: auto
 
 .article-title
-	margin-bottom: .75rem
+	margin-bottom: 0.75rem
 </style>

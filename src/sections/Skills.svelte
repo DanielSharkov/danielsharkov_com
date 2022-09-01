@@ -93,7 +93,7 @@ function showHeaderYear(idx: number): boolean {
 }
 </script>
 
-<style lang='stylus'>
+<style lang='sass'>
 section
 	margin-bottom: 4rem
 
@@ -195,9 +195,7 @@ section
 				position: relative
 				top: -3px
 				height: 3px
-				box-shadow:
-					0 0 1px var(--page-bg),
-					0 1px 10px var(--shadow-clr)
+				box-shadow: 0 0 1px  var(--page-bg),0 1px 10px var(--shadow-clr)
 
 @media screen and (max-width: 1000px)
 	.section-header

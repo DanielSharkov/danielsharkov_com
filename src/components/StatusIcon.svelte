@@ -4,7 +4,8 @@ export let succeeded = false
 export let loading = false
 </script>
 
-<svg class='icon' viewBox='0 0 120 120' fill='none' aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'
+<svg class='icon' viewBox='0 0 120 120' fill='none'
+aria-hidden='true' focusable='false' role='presentation' xmlns='http://www.w3.org/2000/svg'
 class:failed class:succeeded class:loading={loading && !failed && !succeeded}>
 	<style>
 		svg:not(.failed) .cross,
@@ -73,10 +74,10 @@ class:failed class:succeeded class:loading={loading && !failed && !succeeded}>
 			stroke-dasharray: 90;
 			stroke-dashoffset: 204;
 			stroke: var(--clr-red);
-			-webkit-animation: cross_1 .75s both cubic-bezier(.22, .61, .36, 1);
-			animation: cross_1 .75s both cubic-bezier(.22, .61, .36, 1);
-			-webkit-animation-delay: .3s;
-			animation-delay: .3s;
+			-webkit-animation: cross_1 0.75s both cubic-bezier(0.22, 0.61, 0.36, 1);
+			animation: cross_1 0.75s both cubic-bezier(0.22, 0.61, 0.36, 1);
+			-webkit-animation-delay: 0.3s;
+			animation-delay: 0.3s;
 		}
 		@keyframes cross_1 {
 			from {
@@ -87,10 +88,10 @@ class:failed class:succeeded class:loading={loading && !failed && !succeeded}>
 			stroke-dasharray: 93;
 			stroke-dashoffset: 212;
 			stroke: var(--clr-red);
-			-webkit-animation: cross_2 .4s both cubic-bezier(.22, .61, .36, 1);
-			animation: cross_2 .4s both cubic-bezier(.22, .61, .36, 1);
-			-webkit-animation-delay: .55s;
-			animation-delay: .55s;
+			-webkit-animation: cross_2 .4s both cubic-bezier(0.22, 0.61, 0.36, 1);
+			animation: cross_2 0.4s both cubic-bezier(0.22, 0.61, 0.36, 1);
+			-webkit-animation-delay: 0.55s;
+			animation-delay: 0.55s;
 		}
 		@keyframes cross_2 {
 			from {
@@ -128,10 +129,10 @@ class:failed class:succeeded class:loading={loading && !failed && !succeeded}>
 			stroke-dasharray: 105;
 			stroke-dashoffset: 105;
 			stroke: var(--clr-green);
-			-webkit-animation: check .75s both var(--transition-easing);
-			animation: check .75s both var(--transition-easing);
-			-webkit-animation-delay: .35s;
-			animation-delay: .35s;
+			-webkit-animation: check 0.75s both var(--transition-easing);
+			animation: check 0.75s both var(--transition-easing);
+			-webkit-animation-delay: 0.35s;
+			animation-delay: 0.35s;
 		}
 		@keyframes check {
 			from {

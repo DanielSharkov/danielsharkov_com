@@ -105,10 +105,10 @@ aria-haspopup='dialog'>
 
 
 
-<style lang='stylus'>
+<style lang='sass'>
 .project
 	position: relative
-	border-radius: .5rem
+	border-radius: 0.5rem
 	box-shadow: var(--shadow-1)
 	align-content: start
 	text-align: left
@@ -150,7 +150,7 @@ aria-haspopup='dialog'>
 		img
 			object-fit: cover
 			object-position: center
-			border-radius: .5rem .5rem 0 0
+			border-radius: 0.5rem 0.5rem 0 0
 			user-select: none
 			pointer-events: none
 		> .no-image
@@ -178,7 +178,7 @@ aria-haspopup='dialog'>
 			.fail-msg
 				margin-top: 1rem
 				flex: 1 1 100%
-				font-size: .85rem
+				font-size: 0.85rem
 				text-align: center
 	> .contents
 		z-index: 1
@@ -189,28 +189,35 @@ aria-haspopup='dialog'>
 		padding: 1rem
 		background-color: var(--preview-tile-content-bg)
 		box-shadow: var(--shadow-1)
-		border-radius: 0 0 .5rem .5rem
+		border-radius: 0 0 0.5rem 0.5rem
 		transition: var(--transition)
 		transition-property: transform
 		will-change: transform
 		transform: translate(0, 102%)
+		@supports (-webkit-backdrop-filter: blur(1px))
+			-webkit-backdrop-filter: blur(10px) saturate(3)
 		> .name
 			display: block
 			font-size: 1rem
+			font-family: var(--font-heading-stack)
+			font-weight: 500
+			color: var(--font-heading-clr)
 	&:hover, &:focus
 		transform: translate(0, -1rem) scale(1.05)
-		box-shadow: var(--shadow-bevel),
-			0 0 2px var(--shadow-ao-clr),
-			0 12px 36px var(--shadow-big-clr)
+		box-shadow: var(--shadow-bevel), 0 0 2px var(--shadow-ao-clr), 0 12px 36px var(--shadow-big-clr)
 		> .contents
 			transform: translate(0,0)
 
 
 @keyframes projectInAnim
-	from {opacity: 0; transform: translateY(-4rem);}
-	to   {opacity: 1; transform: translateY(0);}
+	from
+		opacity: 0
+		transform: translateY(-4rem)
+	to
+		opacity: 1
+		transform: translateY(0)
 
 @media (prefers-color-scheme: dark)
 	.project > .preview > .no-image > .bg
-		opacity: .5
+		opacity: 0.5
 </style>

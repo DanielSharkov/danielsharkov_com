@@ -370,4 +370,4 @@ onMount(()=> {
 	<Modals/>
 {/if}
 
-<style lang='stylus' global>@import './styles/index.styl';</style>
+<style lang='sass' global>@use 'styles/index'</style>

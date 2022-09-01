@@ -136,7 +136,7 @@ function _modalMounted(id: string, el: HTMLElement) {
 
 
 
-<style lang='stylus'>
+<style lang='sass'>
 #AppModals
 	z-index: var(--idx-modals)
 	position: fixed

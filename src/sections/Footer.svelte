@@ -45,7 +45,7 @@ const currentYear = new Date().getFullYear()
 
 
 
-<style lang='stylus'>
+<style lang='sass'>
 footer
 	min-height: 60vh
 	background-color: #FA8BFF
@@ -62,7 +62,7 @@ footer
 		font-size: 1.5rem
 		border-radius: 1.5rem
 		@media screen and (max-width: 600px)
-			padding: 1rem .5rem
+			padding: 1rem 0.5rem
 		@media (prefers-contrast: more)
 			border: solid 1px var(--font-base-clr)
 		> .btn
@@ -87,13 +87,13 @@ footer
 					font-size: 3.5rem
 		@media screen and (min-width: 600px)
 			&:hover > .btn:not(:hover):not(:focus)
-				opacity: .75
+				opacity: 0.75
 				font-size: 2rem
 	.copyright
 		margin-top: auto
-		padding: .5rem
+		padding: 0.5rem
 		text-align: center
-		font-size: .85rem
+		font-size: 0.85rem
 	.social-media, .copyright
 		background-color: var(--page-bg-075)
 

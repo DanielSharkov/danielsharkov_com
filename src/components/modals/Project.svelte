@@ -558,8 +558,8 @@ const isSharingSupported = window.navigator?.share !== undefined
 
 
 
-<style lang='stylus'>
-$aboutContentWidth = 900px
+<style lang='sass'>
+$aboutContentWidth: 900px
 
 .modal-container
 	@media screen and (min-width: 600px)
@@ -581,7 +581,7 @@ $aboutContentWidth = 900px
 	@media screen and (min-width: 600px)
 		margin-bottom: 5rem
 		box-shadow: var(--shadow-2)
-		border-radius: .5rem
+		border-radius: 0.5rem
 	@media screen and (min-width: 1400px)
 		margin-bottom: 10rem
 		box-shadow: var(--shadow-4)
@@ -621,7 +621,7 @@ $aboutContentWidth = 900px
 		height: auto
 		min-height: 75vh
 		max-height: 75vh
-		border-bottom: solid .25rem var(--page-bg-025)
+		border-bottom: solid 0.25rem var(--page-bg-025)
 		border-radius: inherit
 		border-bottom-left-radius: 0
 		border-bottom-right-radius: 0
@@ -663,7 +663,7 @@ $aboutContentWidth = 900px
 			z-index: 1
 			background-size: cover
 			background-position: top
-			opacity: .1
+			opacity: 0.1
 			position: absolute
 			top: 0
 			left: 0
@@ -672,7 +672,7 @@ $aboutContentWidth = 900px
 			background-position: center
 			background-repeat: no-repeat
 			@media screen and (min-width: 600px)
-				border-radius: .5rem .5rem 0 0
+				border-radius: 0.5rem 0.5rem 0 0
 		.image
 			height: auto
 			max-height: 100%
@@ -680,10 +680,7 @@ $aboutContentWidth = 900px
 			max-width: 100%
 			margin: auto
 			z-index: 3
-			box-shadow:
-				var(--shadow-contrast),
-				0 0 1px var(--shadow-ao-clr),
-				0 18px 30px -20px var(--shadow-huge-clr)
+			box-shadow: var(--shadow-contrast), 0 0 1px var(--shadow-ao-clr), 0 18px 30px -20px var(--shadow-huge-clr)
 			background-size: contain
 			border-radius: .5rem
 		.image, .bg-cover
@@ -719,7 +716,7 @@ $aboutContentWidth = 900px
 			.techno
 				z-index: 0
 				position: relative
-				padding: .25rem .75rem
+				padding: 0.25rem 0.75rem
 				line-height: 1
 				text-decoration: none
 				border-radius: 1rem
@@ -735,7 +732,7 @@ $aboutContentWidth = 900px
 					width: 100%
 					height: 100%
 					border-radius: 1rem
-					opacity: .1
+					opacity: 0.1
 					transition: var(--transition)
 					transition-property: opacity, background-color
 				> .logo
@@ -745,24 +742,23 @@ $aboutContentWidth = 900px
 					object-fit: contain
 					object-position: center
 				> .name
-					font-size: .85rem
+					font-size: 0.85rem
 				&:hover, &:focus
-					transform: translate(0, -.25rem)
-					box-shadow:
-						0 0 1px var(--shadow-ao-clr),
-						0 10px 20px -10px var(--shadow-huge-clr)
+					transform: translate(0, -0.25rem)
+					box-shadow: 0 0 1px var(--shadow-ao-clr), 0 10px 20px -10px var(--shadow-huge-clr)
 					> .color
-						opacity: .25
+						opacity: 0.25
 				@media (prefers-color-scheme: dark)
 					> .color
-						opacity: .25
+						opacity: 0.25
 					&:hover > .color
-						opacity: .4
+						opacity: 0.4
 		.open-project, .open-project-soon, .open-source-code, .other-link
-			padding: .5rem 1rem
+			padding: 0.5rem 1rem
 			border-radius: 2rem
 			text-decoration: none
 			font-size: 1.15rem
+			font-family: var(--font-heading-stack)
 			color: var(--font-heading-clr)
 			@media screen and (max-width: 600px)
 				padding: 1rem
@@ -781,7 +777,7 @@ $aboutContentWidth = 900px
 				@media (prefers-color-scheme: dark)
 					background-color: var(--font-base-clr-015)
 		.closed-source
-			padding: .5rem 1rem
+			padding: 0.5rem 1rem
 			color: var(--font-base-clr-05)
 			border-radius: 2rem
 			font-size: 1rem
@@ -799,35 +795,35 @@ $aboutContentWidth = 900px
 		.open-project
 			position: relative
 			background-color: var(--clr-accent)
-			color: #FFF
+			color: #fff
 			overflow: hidden
 			transition: var(--transition)
 			transition-property: transform, box-shadow, color
 			contain: content
 			.icon
-				--icon: #FFF
+				--icon: #fff
 			.shine
 				position: absolute
 				left: 0
 				top: 0
 				height: 100%
 				width: 100%
-				background: rgb(#FFF)
-				background: -moz-linear-gradient(90deg, rgba(#FFF,0) 30%, rgba(#FFF,.15) 30%, rgba(#FFF,.15) 70%, rgba(#FFF,0) 70%)
-				background: -webkit-linear-gradient(90deg, rgba(#FFF,0) 30%, rgba(#FFF,.15) 30%, rgba(#FFF,.15) 70%, rgba(#FFF,0) 70%)
-				background: linear-gradient(90deg, rgba(#FFF,0) 30%, rgba(#FFF,.15) 30%, rgba(#FFF,.15) 70%, rgba(#FFF,0) 70%)
+				background: #fff
+				$transparent: rgba(255,255,255, 0)
+				$fill: rgba(255,255,255, 0.15)
+				background: -moz-linear-gradient(90deg, $transparent 30%, $fill 30%, $fill 70%, $transparent 70%)
+				background: -webkit-linear-gradient(90deg, $transparent 30%, $fill 30%, $fill 70%, $transparent 70%)
+				background: linear-gradient(90deg, $transparent 30%, $fill 30%, $fill 70%, $transparent 70%)
 				transform: skew(35deg) translate(-100%,0)
 				transition: var(--transition)
 				transition-property: transform, box-shadow, color
 				will-change: transform, box-shadow, color
 			&:hover, &:focus
-				box-shadow:
-					0 0 1px var(--shadow-ao-clr),
-					0 5px 20px -8px var(--clr-accent)
+				box-shadow: 0 0 1px var(--shadow-ao-clr), 0 5px 20px -8px var(--clr-accent)
 				transform: scale(1.05)
 				.shine
 					transition-duration: 1s
-					transform: skew(35deg) translate(100%,0)
+					transform: skew(35deg) translate(100%, 0)
 		.open-project-soon
 			cursor: default
 			background-color: var(--font-base-clr-01)
@@ -857,7 +853,7 @@ $aboutContentWidth = 900px
 				@media screen and (max-width: 600px)
 					width: 100%
 				> .loaded-translation
-					padding: .5em 1em
+					padding: 0.5em 1em
 					background-color: var(--box-bg)
 					border-radius: 2em
 					box-shadow: var(--shadow-0)
@@ -883,35 +879,32 @@ $aboutContentWidth = 900px
 					top: auto
 					right: auto
 					min-width: 100%
-					padding: .5em
-					border-radius: .5em
+					padding: 0.5em
+					border-radius: 0.5em
 					box-shadow: var(--shadow-4)
 					background-color: var(--box-bg)
 					.option
-						padding: .5em 1em
-						border-radius: .25em
+						padding: 0.5em 1em
+						border-radius: 0.25em
 						transition: var(--transition)
 						transition-property: background-color, color
 						> .label
-							margin-right: .5em
+							margin-right: 0.5em
 						&:hover, &:focus
 							background-color: var(--font-base-clr-01)
 						&:active
 							background-color: var(--font-base-clr-025)
 			> .metadata
-				font-size: .85em
+				font-size: 0.85em
 				> div
-					border-radius: .5rem
+					border-radius: 0.5rem
 					background-color: var(--box-bg)
-					box-shadow:
-						0 0 1px var(--shadow-ao-clr),
-						0 3px 6px -4px var(--shadow-big-clr),
-						var(--shadow-contrast)
+					box-shadow: 0 0 1px var(--shadow-ao-clr), 0 3px 6px -4px var(--shadow-big-clr), var(--shadow-contrast)
 					> span
-						padding: .5em
+						padding: 0.5em
 					> span:first-child
 						background-color: var(--font-base-clr-005)
-						border-radius: .5rem 0 0 .5rem
+						border-radius: 0.5rem 0 0 0.5rem
 					> span:last-child
 						color: var(--font-heading-clr)
 		> .lang-unavailable
@@ -921,31 +914,26 @@ $aboutContentWidth = 900px
 			> p
 				max-width: 500px
 				margin-bottom: 1em
-				font-size: 1.25em
 				&.no-translations
 					color: var(--font-base-clr-05)
 			> .options
 				> .option
-					padding: .5em
-					border-radius: .5em
+					padding: 0.5em
+					border-radius: 0.5em
 					background-color: var(--box-bg)
 					box-shadow: var(--shadow-1)
 					transition: var(--transition)
 					transition-property: background-color, box-shadow, color, transform
 					&:hover, &:focus
-						box-shadow: var(--shadow-bevel),
-							0 0 1px var(--shadow-ao-clr),
-							0 6px 16px var(--clr-accent-05)
-						transform: translateY(-.25em)
+						box-shadow: var(--shadow-bevel), 0 0 1px var(--shadow-ao-clr), 0 6px 16px var(--clr-accent-05)
+						transform: translateY(-0.25em)
 						background-color: var(--clr-accent)
 						color: #fff
 						@media (prefers-color-scheme: dark)
-							box-shadow: var(--shadow-bevel),
-								0 0 1px var(--shadow-ao-clr),
-								0 6px 16px var(--clr-accent-025)
+							box-shadow: var(--shadow-bevel), 0 0 1px var(--shadow-ao-clr), 0 6px 16px var(--clr-accent-025)
 					&:active, &:focus
 						box-shadow: var(--shadow-1)
-						transform: translateY(.15em)
+						transform: translateY(0.15em)
 						background-color: var(--clr-accent-dark)
 						color: #fff
 		> .placeholder
@@ -956,7 +944,7 @@ $aboutContentWidth = 900px
 				margin-bottom: 1rem
 				background-color: var(--font-base-clr-005)
 				overflow: hidden
-				border-radius: .5rem
+				border-radius: 0.5rem
 				color: transparent
 				&:after
 					content: ''
@@ -969,12 +957,12 @@ $aboutContentWidth = 900px
 			h1
 				display: inline-block
 				margin: 0
-				padding: 0 .25rem
+				padding: 0 0.25rem
 				line-height: 1.25
 				font-size: 2.5em
 			.h1-border
 				width: 100%
-				margin: .25rem 0 1rem 0
+				margin: 0.25rem 0 1rem 0
 				border: solid var(--border-soft)
 				border-width: 1px 0 0
 			h3
@@ -1006,9 +994,10 @@ $aboutContentWidth = 900px
 						height: 100%
 						animation: textLoading 2s linear infinite
 						background: transparent
-						background: -moz-linear-gradient(90deg, rgba(#FFF, 0) 0%, var(--ghost-loader) 50%, rgba(#FFF, 0) 100%)
-						background: -webkit-linear-gradient(90deg, rgba(#FFF, 0) 0%, var(--ghost-loader) 50%, rgba(#FFF, 0) 100%)
-						background: linear-gradient(90deg, rgba(#FFF, 0) 0%, var(--ghost-loader) 50%, rgba(#FFF, 0) 100%)
+						$transparent: rgba(255,255,255, 0)
+						background: -moz-linear-gradient(90deg, $transparent 0%, var(--ghost-loader) 50%, $transparent 100%)
+						background: -webkit-linear-gradient(90deg, $transparent 0%, var(--ghost-loader) 50%, $transparent 100%)
+						background: linear-gradient(90deg, $transparent 0%, var(--ghost-loader) 50%, $transparent 100%)
 		> .rtf-content, > .placeholder, > .error
 			width: 100%
 			max-width: $aboutContentWidth
@@ -1016,10 +1005,6 @@ $aboutContentWidth = 900px
 			padding: 2rem
 			@media screen and (max-width: 1000px)
 				padding: 2rem 1rem
-		> .rtf-content
-			font-size: 1.15rem
-			@media screen and (max-width: 1000px)
-				font-size: 1rem
 	> .footer
 		padding: 2rem
 		border-radius: inherit
@@ -1037,10 +1022,8 @@ $aboutContentWidth = 900px
 				margin: 0
 				padding: 1rem
 				background-color: var(--box-bg)
-				box-shadow:
-					0 0 1px var(--shadow-ao-clr),
-					0 10px 40px 0 var(--shadow-huge-clr)
-				border-radius: .5rem
+				box-shadow: 0 0 1px var(--shadow-ao-clr), 0 10px 40px 0 var(--shadow-huge-clr)
+				border-radius: 0.5rem
 				transition: var(--transition)
 				transition-property: opacity, transform
 				pointer-events: none
@@ -1050,7 +1033,7 @@ $aboutContentWidth = 900px
 					opacity: 0
 					transform: translateY(2rem)
 				> .label
-					font-size: .85rem
+					font-size: 0.85rem
 				:global > .icon
 					width: 6rem
 					height: 6rem
@@ -1062,21 +1045,18 @@ $aboutContentWidth = 900px
 					border-top-color: var(--box-bg)
 			&:hover, &:active, &:focus, &.is-sharing
 				background-color: var(--clr-accent)
-				transform: translateY(-.25rem)
-				box-shadow: 0 0 2px var(--shadow-ao-clr),
-					0 8px 20px var(--clr-accent-05)
+				transform: translateY(-0.25rem)
+				box-shadow: 0 0 2px var(--shadow-ao-clr), 0 8px 20px var(--clr-accent-05)
 				color: #fff
 				.icon
 					--icon: #fff
 				@media (prefers-color-scheme: dark)
-					box-shadow: 0 0 2px var(--shadow-ao-clr),
-						0 8px 20px var(--clr-accent-025)
+					box-shadow: 0 0 2px var(--shadow-ao-clr), 0 8px 20px var(--clr-accent-025)
 			&:active, &:focus
-				transform: translateY(.15rem)
+				transform: translateY(0.15rem)
 			&.is-sharing
 				background-color: var(--font-base-clr)
-				box-shadow: 0 0 2px var(--shadow-ao-clr),
-					0 8px 20px var(--shadow-clr)
+				box-shadow: 0 0 2px var(--shadow-ao-clr), 0 8px 20px var(--shadow-clr)
 				color: var(--page-bg)
 				.icon
 					--icon: var(--page-bg)
@@ -1084,27 +1064,26 @@ $aboutContentWidth = 900px
 			border-radius: 2rem
 			&:hover, &:focus
 				background-color: var(--font-base-clr)
-				transform: translateY(-.25rem)
+				transform: translateY(-0.25rem)
 				box-shadow: var(--shadow-4)
 				color: var(--page-bg)
 				.icon
 					--icon: var(--page-bg)
 			&:active
 				background-color: var(--font-heading-clr)
-				transform: translateY(.15rem)
+				transform: translateY(0.15rem)
 				box-shadow: var(--shadow-3)
 				color: #fff
 				.icon
 					--icon: #fff
 		.share-option, .close
-			padding: .5rem 1rem
+			padding: 0.75rem 1rem
 			background-color: var(--font-base-clr-01)
 			border-radius: 2rem
-			font-size: 1.15rem
 			transition: var(--transition)
 			transition-property: background-color, transform, box-shadow
 			@media screen and (max-width: 600px)
-				padding: .75rem 1.25rem
+				padding: 0.75rem 1.25rem
 				font-size: 1rem
 		@media screen and (max-width: 600px)
 			display: grid
