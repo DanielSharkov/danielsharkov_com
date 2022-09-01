@@ -69,6 +69,7 @@
 							<a href={technologies[techno].link} target='_blank'
 							class='techno flex flex-center gap-05'
 							role='listitem'
+							style:--shadow-clr={technologies[techno].color}
 							use:vibrateLink>
 								<div
 									class='color'
@@ -745,7 +746,7 @@ $aboutContentWidth: 900px
 					font-size: 0.85rem
 				&:hover, &:focus
 					transform: translate(0, -0.25rem)
-					box-shadow: 0 0 1px var(--shadow-ao-clr), 0 10px 20px -10px var(--shadow-huge-clr)
+					box-shadow: 0 0 1px var(--shadow-ao-clr), 0 10px 20px -11px var(--shadow-clr)
 					> .color
 						opacity: 0.25
 				@media (prefers-color-scheme: dark)
