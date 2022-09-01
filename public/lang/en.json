@@ -20,7 +20,7 @@
 		},
 		"skills": {
 			"title": "Skills",
-			"description": "Programming languages which I speak in and technologies which I know and use - shown in a timeline, since when I started.",
+			"description": "Programming languages which I write and technologies which I know and use - shown in a timeline, since when I started with them and from when until when I continued to use them.",
 			"aria_open_site": "Open website of {x}",
 			"technology_type": {
 				"software": "Software",

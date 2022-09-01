@@ -20,7 +20,7 @@
 		},
 		"skills": {
 			"title": "Fertigkeiten",
-			"description": "Programmiersprachen die ich spreche und Technologien die ich kenne und benutze - in einem Zeitstrahl dargestellt, seit wann ich damit angefangen habe.",
+			"description": "Programmiersprachen in denen ich schreiben und Technologien die ich kenne und benutze - in einem Zeitstrahl dargestellt, seit wann ich damit angefangen habe, und von wann bis wann ich mit denen weitergearbeitet habe.",
 			"aria_open_site": "Website von {x} öffnen",
 			"technology_type": {
 				"software": "Software",
