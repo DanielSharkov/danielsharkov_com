@@ -164,10 +164,6 @@
 										{#each props.project.lang as lang}
 											{#if lang !== loadedTranslation}
 												<button class='option flex nowrap flex-center-y gap-05' on:click={()=> selectDifferentTranslation(lang)}>
-													<svg class='flag icon icon-175' aria-hidden='true' focusable='false' role='presentation'>
-														<title>{LanguageFullName[lang]} Flag</title>
-														<use xlink:href='#Flag_{lang}'/>
-													</svg>
 													<span class='label'>{LanguageFullName[lang]}</span>
 												</button>
 											{/if}
@@ -212,10 +208,6 @@
 						<div class='options flex flex-center-y gap-1'>
 							{#each props.project.lang as lang}
 								<button on:click={()=> fetchArticle(lang)} class='option flex nowrap flex-center-y gap-05'>
-									<svg class='flag icon icon-175' aria-hidden='true' focusable='false' role='presentation'>
-										<title>{LanguageFullName[lang]} Flag</title>
-										<use xlink:href='#Flag_{lang}'/>
-									</svg>
 									<span class='label'>{LanguageFullName[lang]}</span>
 								</button>
 							{/each}
@@ -885,7 +877,7 @@ $aboutContentWidth: 900px
 					box-shadow: var(--shadow-4)
 					background-color: var(--box-bg)
 					.option
-						padding: 0.5em 1em
+						padding: 0.75em 1rem
 						border-radius: 0.25em
 						transition: var(--transition)
 						transition-property: background-color, color
@@ -919,8 +911,10 @@ $aboutContentWidth: 900px
 					color: var(--font-base-clr-05)
 			> .options
 				> .option
-					padding: 0.5em
+					padding: 0.75em 1rem
 					border-radius: 0.5em
+					font-family: var(--font-heading-stack)
+					font-weight: 500
 					background-color: var(--box-bg)
 					box-shadow: var(--shadow-1)
 					transition: var(--transition)

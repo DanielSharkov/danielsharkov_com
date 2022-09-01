@@ -49,15 +49,13 @@ main#App
 	animation: localeSelectIn var(--transition-easing) 1.5s alternate backwards
 	contain: layout
 	.selected
-		padding: 0.5rem 1rem
+		padding: 0.75rem
 		background-color: var(--box-bg)
 		border-radius: 0.5rem
 		box-shadow: var(--shadow-2)
 		transition: var(--transition)
 		.label
 			margin-right: 0.5rem
-		.icon
-			font-size: 1.25rem
 		&:hover, &:focus
 			background-color: var(--clr-accent)
 			color: #fff
@@ -66,7 +64,8 @@ main#App
 	.options
 		position: absolute
 		right: 0
-		min-width: 100%
+		min-width: 150px
+		max-width: 100%
 		padding: 0.5rem
 		border-radius: 0.5rem
 		box-shadow: var(--shadow-4)
@@ -74,7 +73,8 @@ main#App
 		transition: var(--transition)
 		transition-property: transform, opacity
 		.option
-			padding: 0.5rem 1rem
+			padding: 0.75rem 1.25rem
+			font-weight: 500
 			border-radius: 0.25rem
 			transition: var(--transition)
 			transition-property: background-color, color
@@ -82,6 +82,7 @@ main#App
 				margin-right: 0.5rem
 			&:hover, &:focus
 				background-color: var(--font-base-clr-015)
+				color: var(--font-heading-clr)
 			&:active
 				background-color: var(--font-base-clr-025)
 			&.active
@@ -116,7 +117,7 @@ main#App
 
 #AppLoader
 	background-color: #fff
-	font-size: 4rem
+	font-size: 3rem
 	.icon
 		--icon: var(--font-heading-clr)
 	@media (prefers-color-scheme: dark)
@@ -124,21 +125,28 @@ main#App
 
 #InvalidLocaleSelect
 	font-size: 1.25em
-	> .option
-		padding: 0.5rem
-		border-radius: 0.5rem
-		background-color: var(--box-bg)
-		box-shadow: var(--shadow-1)
-		transition: var(--transition)
-		transition-property: background-color, box-shadow, color, transform
-		&:hover
-			box-shadow: var(--shadow-3)
-			transform: translateY(-0.25em)
-		&:active, &:focus
-			box-shadow: var(--shadow-1)
-			transform: translateY(0.15em)
-			background-color: var(--clr-accent)
-			color: #fff
+	> .centered-content
+		> .icon
+			font-size: 4rem
+			--icon: var(--font-heading-clr)
+		> .options > .option
+			padding: 0.75rem 1rem
+			border-radius: 0.5rem
+			font-weight: 500
+			font-family: var(--font-heading-stack)
+			background-color: var(--box-bg)
+			box-shadow: var(--shadow-0)
+			transition: var(--transition)
+			transition-property: background-color, box-shadow, color, transform
+			&:hover
+				box-shadow: var(--shadow-3)
+				color: var(--font-heading-clr)
+				transform: translateY(-0.25em)
+			&:active, &:focus
+				box-shadow: var(--shadow-1)
+				transform: translateY(0.15em)
+				background-color: var(--clr-accent)
+				color: #fff
 
 @keyframes localeSelectIn
 	0%

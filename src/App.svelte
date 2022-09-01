@@ -319,27 +319,26 @@ onMount(()=> {
 		</svg>
 	</div>
 {:else if $isInvalidLanguage}
-	<div id='InvalidLocaleSelect' class='flex flex-center gap-1'>
-		{#each LanguageList as locale}
-			<button class='option flex nowrap flex-center-y gap-05' on:click={()=> selectLang(locale)}>
-				<svg class='flag icon icon-175' aria-hidden='true' focusable='false' role='presentation'>
-					<title>{LanguageFullName[locale]} Flag</title>
-					<use xlink:href='#Flag_{locale}'/>
-				</svg>
-				<span class='label'>{LanguageFullName[locale]}</span>
-			</button>
-		{/each}
+	<div id='InvalidLocaleSelect' class='flex flex-center'>
+		<div class='centered-content grid gap-2 grid-center-x'>
+			<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
+				<use xlink:href='#Icon_Translation'/>
+			</svg>
+			<div class='options flex flex-center gap-1'>
+				{#each LanguageList as locale}
+					<button on:click={()=> selectLang(locale)} class='option flex nowrap flex-center-y gap-05'>
+						<span class='label'>{LanguageFullName[locale]}</span>
+					</button>
+				{/each}
+			</div>
+		</div>
 	</div>
 {:else}
 	<main id='App'>
 		<div id='AppLangSelect' class:active={selectingLang} tabindex={selectingLang ? 1:-1}>
 			<button on:click={toggleLangSelect} aria-haspopup='listbox' class='selected gap-1 flex flex-center' aria-hidden={selectingLang}>
-				<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
+				<svg class='icon icon-15' aria-hidden='true' focusable='false' role='presentation'>
 					<use xlink:href='#Icon_Translation'/>
-				</svg>
-				<svg class='flag icon icon-175' aria-hidden='true' focusable='false' role='presentation'>
-					<title>{LanguageFullName[$i18n]}</title>
-					<use xlink:href='#Flag_{$i18n}'/>
 				</svg>
 			</button>
 			{#if selectingLang}
@@ -349,10 +348,6 @@ onMount(()=> {
 						class='option flex nowrap flex-center-y gap-1'
 						aria-selected={locale === $i18n}
 						class:active={locale === $i18n}>
-							<svg class='flag icon icon-175' aria-hidden='true' focusable='false' role='presentation'>
-								<title>{LanguageFullName[locale]} Flag</title>
-								<use xlink:href='#Flag_{locale}'/>
-							</svg>
 							<span class='label'>{LanguageFullName[locale]}</span>
 						</button>
 					{/each}
