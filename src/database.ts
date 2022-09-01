@@ -19,12 +19,42 @@ export type Technology = {
 	// careerSpan = begin Year, end Year or Null (stil using)
 	careerSpan: Array<[number, number|null]>
 }
-export type TechnologyList = {[key: string]: Technology}
+export interface TechnologyList {
+	Svelte:          Technology,
+	TypeScript:      Technology,
+	JavaScript:      Technology,
+	VueJS:           Technology,
+	React:           Technology,
+	Redux:           Technology,
+	Go:              Technology,
+	NodeJs:          Technology,
+	GraphQL:         Technology,
+	Deno:            Technology,
+	SVG:             Technology,
+	SASS_SCSS:       Technology,
+	PostgreSQL:      Technology,
+	SQL:             Technology,
+	Docker:          Technology,
+	Nginx:           Technology,
+	VSC:             Technology,
+	Figma:           Technology,
+	Stylus:          Technology,
+	HTML:            Technology,
+	CSS:             Technology,
+	d3js:            Technology,
+	FFmpeg:          Technology,
+	LESS:            Technology,
+	Liquid:          Technology,
+	Shopify:         Technology,
+	PowerDirector15: Technology,
+	OBS:             Technology,
+	GIMP:            Technology,
+}
 
 export const technologies: TechnologyList = {
 	Svelte: {
 		name: 'Svelte',
-		color: '#FF3E00',
+		color: '#ff3e00',
 		hasIcon: true,
 		type: TechnologyType.Framework,
 		link: 'https://svelte.dev',
@@ -34,7 +64,7 @@ export const technologies: TechnologyList = {
 	},
 	TypeScript: {
 		name: 'TypeScript',
-		color: '#007ACC',
+		color: '#007acc',
 		hasIcon: true,
 		type: TechnologyType.Language,
 		link: 'https://www.typescriptlang.org',
@@ -44,7 +74,7 @@ export const technologies: TechnologyList = {
 	},
 	JavaScript: {
 		name: 'JavaScript',
-		color: '#F0DB4F',
+		color: '#f0db4f',
 		hasIcon: true,
 		type: TechnologyType.Language,
 		link: 'https://www.javascript.com',
@@ -54,7 +84,7 @@ export const technologies: TechnologyList = {
 	},
 	VueJS: {
 		name: 'Vue.js',
-		color: '#4DBA87',
+		color: '#4dba87',
 		hasIcon: true,
 		type: TechnologyType.Framework,
 		link: 'https://vuejs.org',
@@ -62,9 +92,29 @@ export const technologies: TechnologyList = {
 			[2016, 2021],
 		],
 	},
+	React: {
+		name: 'React',
+		color: '#61dafb',
+		hasIcon: true,
+		type: TechnologyType.Framework,
+		link: 'https://reactjs.org/',
+		careerSpan: [
+			[2021, null],
+		],
+	},
+	Redux: {
+		name: 'Redux',
+		color: '#764abc',
+		hasIcon: true,
+		type: TechnologyType.Library,
+		link: 'https://redux.js.org/',
+		careerSpan: [
+			[2021, null],
+		],
+	},
 	Go: {
 		name: 'Go',
-		color: '#01ADD8',
+		color: '#01add8',
 		hasIcon: true,
 		type: TechnologyType.Language,
 		link: 'https://go.dev',
@@ -72,9 +122,39 @@ export const technologies: TechnologyList = {
 			[2016, null],
 		],
 	},
+	NodeJs: {
+		name: 'Node.js',
+		color: '#44883e',
+		hasIcon: true,
+		type: TechnologyType.Framework,
+		link: 'https://nodejs.org/',
+		careerSpan: [
+			[2015, null],
+		],
+	},
+	GraphQL: {
+		name: 'GraphQL',
+		color: '#e535ab',
+		hasIcon: true,
+		type: TechnologyType.Framework,
+		link: 'https://graphql.org/',
+		careerSpan: [
+			[2017, null],
+		],
+	},
+	Deno: {
+		name: 'Deno',
+		color: '#333333',
+		hasIcon: true,
+		type: TechnologyType.Framework,
+		link: 'https://deno.land/',
+		careerSpan: [
+			[2022, null],
+		],
+	},
 	SVG: {
 		name: 'SVG',
-		color: '#FFB13B',
+		color: '#ffb13b',
 		hasIcon: true,
 		type: TechnologyType.Language,
 		link: 'https://developer.mozilla.org/en-US/docs/Web/SVG',
@@ -82,9 +162,39 @@ export const technologies: TechnologyList = {
 			[2018, null],
 		],
 	},
+	SASS_SCSS: {
+		name: 'SASS / SCSS',
+		color: '#cf659a',
+		hasIcon: true,
+		type: TechnologyType.Language,
+		link: 'https://sass-lang.com/',
+		careerSpan: [
+			[2019, null],
+		],
+	},
+	PostgreSQL: {
+		name: 'PostgreSQL',
+		color: '#336790',
+		hasIcon: true,
+		type: TechnologyType.Software,
+		link: 'https://www.postgresql.org/',
+		careerSpan: [
+			[2018, null],
+		],
+	},
+	SQL: {
+		name: 'SQL',
+		color: '#ffab00',
+		hasIcon: true,
+		type: TechnologyType.Language,
+		link: 'https://en.wikipedia.org/wiki/SQL',
+		careerSpan: [
+			[2016, null],
+		],
+	},
 	Docker: {
 		name: 'Docker',
-		color: '#0091E2',
+		color: '#0091e2',
 		hasIcon: true,
 		type: TechnologyType.Software,
 		link: 'https://www.docker.com/company',
@@ -102,29 +212,9 @@ export const technologies: TechnologyList = {
 			[2018, null],
 		],
 	},
-	SQL: {
-		name: 'SQL',
-		color: '#FFAB00',
-		hasIcon: true,
-		type: TechnologyType.Language,
-		link: 'https://en.wikipedia.org/wiki/SQL',
-		careerSpan: [
-			[2016, null],
-		],
-	},
-	PostgreSQL: {
-		name: 'PostgreSQL',
-		color: '#336790',
-		hasIcon: true,
-		type: TechnologyType.Software,
-		link: 'https://www.postgresql.org/',
-		careerSpan: [
-			[2018, null],
-		],
-	},
 	VSC: {
 		name: 'VS Code',
-		color: '#3B99D4',
+		color: '#3b99d4',
 		hasIcon: true,
 		type: TechnologyType.Software,
 		link: 'https://code.visualstudio.com/',
@@ -132,39 +222,29 @@ export const technologies: TechnologyList = {
 			[2016, null],
 		],
 	},
+	Figma: {
+		name: 'Figma',
+		color: '#0acf83',
+		hasIcon: true,
+		type: TechnologyType.Software,
+		link: 'https://www.figma.com',
+		careerSpan: [
+			[2015, null],
+		],
+	},
 	Stylus: {
 		name: 'Stylus',
-		color: '#FF6347',
+		color: '#ff6347',
 		hasIcon: true,
 		type: TechnologyType.Language,
 		link: 'https://stylus-lang.com',
 		careerSpan: [
-			[2018, null],
-		],
-	},
-	SASS_SCSS: {
-		name: 'SASS / SCSS',
-		color: '#cf659a',
-		hasIcon: true,
-		type: TechnologyType.Language,
-		link: 'https://sass-lang.com/',
-		careerSpan: [
-			[2019, null],
-		],
-	},
-	LESS: {
-		name: 'LESS',
-		color: '#1d365d',
-		hasImage: true,
-		type: TechnologyType.Language,
-		link: 'https://lesscss.org/',
-		careerSpan: [
-			[2019, 2020],
+			[2018, 2022],
 		],
 	},
 	HTML: {
 		name: 'HTML5',
-		color: '#EC652B',
+		color: '#ec652b',
 		hasIcon: true,
 		type: TechnologyType.Language,
 		link: 'https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5',
@@ -174,7 +254,7 @@ export const technologies: TechnologyList = {
 	},
 	CSS: {
 		name: 'CSS3',
-		color: '#1F60AA',
+		color: '#1f60aa',
 		hasIcon: true,
 		type: TechnologyType.Language,
 		link: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
@@ -202,6 +282,16 @@ export const technologies: TechnologyList = {
 			[2020, null],
 		],
 	},
+	LESS: {
+		name: 'LESS',
+		color: '#1d365d',
+		hasImage: true,
+		type: TechnologyType.Language,
+		link: 'https://lesscss.org/',
+		careerSpan: [
+			[2019, 2020],
+		],
+	},
 	Liquid: {
 		name: 'Liquid',
 		color: '#000099',
@@ -209,7 +299,7 @@ export const technologies: TechnologyList = {
 		type: TechnologyType.Language,
 		link: 'https://shopify.github.io/liquid/',
 		careerSpan: [
-			[2019, null],
+			[2019, 2022],
 		],
 	},
 	Shopify: {
@@ -219,22 +309,12 @@ export const technologies: TechnologyList = {
 		type: TechnologyType.Software,
 		link: 'https://www.shopify.de/',
 		careerSpan: [
-			[2019, null],
-		],
-	},
-	Figma: {
-		name: 'Figma',
-		color: '#0ACF83',
-		hasIcon: true,
-		type: TechnologyType.Software,
-		link: 'https://www.figma.com',
-		careerSpan: [
-			[2015, null],
+			[2019, 2022],
 		],
 	},
 	PowerDirector15: {
 		name: 'Power Director 15',
-		color: '#402E77',
+		color: '#402e77',
 		hasImage: true,
 		type: TechnologyType.Software,
 		link: 'https://de.cyberlink.com/products/powerdirector-video-editing-software/overview_de_DE.html',
@@ -254,7 +334,7 @@ export const technologies: TechnologyList = {
 	},
 	GIMP: {
 		name: 'GIMP',
-		color: '#615A48',
+		color: '#615a48',
 		hasImage: true,
 		type: TechnologyType.Software,
 		link: 'https://www.gimp.org',
@@ -271,7 +351,7 @@ export type Project = {
 	projectUrl:       string|null
 	codeUrl?:         string|null // null means closed source
 	otherLinks?:      Array<{name: string, url: string}>
-	usedTechnologies: Array<string>
+	usedTechnologies: Array<keyof typeof technologies>
 	gradient?:        Array<string>
 	lang:             Array<Language>
 	articleWritten?:  Date
@@ -287,7 +367,7 @@ export const projects: Array<Project> = [
 		codeUrl: 'https://github.com/DanielSharkov/danielsharkov_com',
 		usedTechnologies: [
 			'Svelte', 'TypeScript', 'SVG', 'Stylus', 'Docker', 'Nginx',
-			'Figma', 'VSC',
+			'Figma', 'VSC', 'SASS_SCSS',
 		],
 		gradient: ['#fcb6b6', '#f6df88'],
 		lang: [Language.DE, Language.EN],
@@ -300,7 +380,7 @@ export const projects: Array<Project> = [
 		codeUrl: null,
 		usedTechnologies: [
 			'Svelte', 'SVG', 'Go', 'Stylus', 'Docker', 'Nginx', 'Figma',
-			'VSC', 'SQL', 'PostgreSQL',
+			'VSC', 'SQL', 'PostgreSQL', 'GraphQL', 'SASS_SCSS',
 		],
 		gradient: ['#b5ffdd', '#65C7F7', '#0066ff'],
 		lang: [Language.DE, Language.EN],
@@ -328,7 +408,7 @@ export const projects: Array<Project> = [
 		codeUrl: null,
 		usedTechnologies: [
 			'Svelte', 'SVG', 'TypeScript', 'Go', 'Stylus', 'Docker',
-			'Nginx', 'Figma', 'VSC', 'SQL', 'PostgreSQL',
+			'Nginx', 'Figma', 'VSC', 'SQL', 'PostgreSQL', 'GraphQL', 'd3js',
 		],
 		gradient: ['#1488CC', '#2B32B2'],
 		lang: [Language.DE, Language.EN],
@@ -384,7 +464,7 @@ export const projects: Array<Project> = [
 		darkThemed: true,
 		projectUrl: 'https://danielsharkov.github.io/PatternVisualizer/',
 		codeUrl: 'https://github.com/DanielSharkov/PatternVisualizer',
-		usedTechnologies: ['Svelte', 'VSC'],
+		usedTechnologies: ['Svelte', 'VSC', 'Stylus'],
 		gradient: ['#f399d3', '#a7276e', '#2c9c88', '#713dc3', '#00bfff'],
 		lang: [Language.DE, Language.EN],
 		articleWritten: new Date('31 May 2021'),
