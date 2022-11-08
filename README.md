@@ -1,1 +1,1 @@
-# [DanielSharkov.com](https://danielsharkov.github.io/danielsharkov_com/)
+# [Daniel-Scharkov.engineer](https://daniel-scharkov.engineer/)
