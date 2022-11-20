@@ -137,7 +137,7 @@ export function lockScroll(id: string): void {
 		}
 		$.push(id)
 		if ($.length > 0) {
-			document.scrollingElement.setAttribute('lock-scroll', 'true')
+			document.scrollingElement?.setAttribute('lock-scroll', 'true')
 		}
 		return $
 	})
@@ -160,7 +160,7 @@ export function unlockScroll(id: string): void {
 		}
 		$.splice(idx, 1)
 		if ($.length < 1) {
-			document.scrollingElement.removeAttribute('lock-scroll')
+			document.scrollingElement?.removeAttribute('lock-scroll')
 		}
 		return $
 	})
@@ -289,7 +289,7 @@ function selectLang(lang: Language) {
 
 onMount(()=> {
 	let queryProjectID = getQuery('project')
-	if (queryProjectID in projectsIdxMap) {
+	if (queryProjectID && queryProjectID in projectsIdxMap) {
 		openModal({
 			name: 'project', props: {
 				project: projects[projectsIdxMap[queryProjectID]],
@@ -335,7 +335,7 @@ onMount(()=> {
 	</div>
 {:else}
 	<main id='App'>
-		<div id='AppLangSelect' class:active={selectingLang} tabindex={selectingLang ? 1:-1}>
+		<div id='AppLangSelect' class:active={selectingLang}>
 			<button on:click={toggleLangSelect} aria-haspopup='listbox' class='selected gap-1 flex flex-center' aria-hidden={selectingLang}>
 				<svg class='icon icon-15' aria-hidden='true' focusable='false' role='presentation'>
 					<use xlink:href='#Icon_Translation'/>
@@ -365,4 +365,124 @@ onMount(()=> {
 	<Modals/>
 {/if}
 
-<style lang='sass' global>@use 'styles/index'</style>
+<style lang='sass'>
+main#App
+	background-color: var(--page-bg)
+	:global(> section:not(.auto-height))
+		min-height: 100%
+		width: 100%
+
+#AppLangSelect
+	z-index: 40
+	position: fixed
+	right: 1rem
+	animation: localeSelectIn var(--transition-easing) 1.5s alternate backwards
+	contain: layout
+	.selected
+		padding: 0.75rem
+		background-color: var(--box-bg)
+		border-radius: 0.5rem
+		box-shadow: var(--shadow-2)
+		transition: var(--transition)
+		.label
+			margin-right: 0.5rem
+		&:hover, &:focus
+			background-color: var(--clr-accent)
+			color: #fff
+			.icon
+				--icon: #fff
+	.options
+		position: absolute
+		right: 0
+		min-width: 150px
+		max-width: 100%
+		padding: 0.5rem
+		border-radius: 0.5rem
+		box-shadow: var(--shadow-4)
+		background-color: var(--box-bg)
+		transition: var(--transition)
+		transition-property: transform, opacity
+		.option
+			padding: 0.75rem 1.25rem
+			font-weight: 500
+			border-radius: 0.25rem
+			transition: var(--transition)
+			transition-property: background-color, color
+			> .label
+				margin-right: 0.5rem
+			&:hover, &:focus
+				background-color: var(--font-base-clr-015)
+				color: var(--font-heading-clr)
+			&:active
+				background-color: var(--font-base-clr-025)
+			&.active
+				background-color: var(--clr-accent)
+				color: #fff
+				&:hover, &:focus
+					background-color: var(--clr-accent-dark)
+	&.active .selected
+		visibility: hidden
+	@media screen and (min-width: 1200px)
+		top: 1rem
+		right: 1rem
+		.options
+			top: 0
+		&:not(.active) .options
+			transform: translateY(-0.5rem)
+	@media screen and (max-width: 1199px)
+		bottom: 1.5rem
+		right: 1.5rem
+		.options
+			bottom: 0
+		&:not(.active) .options
+			transform: translateY(0.5rem)
+
+#AppLoader, #InvalidLocaleSelect
+	position: fixed
+	top: 0
+	right: 0
+	bottom: 0
+	left: 0
+	contain: strict
+
+#AppLoader
+	background-color: #fff
+	font-size: 3rem
+	.icon
+		--icon: var(--font-heading-clr)
+	@media (prefers-color-scheme: dark)
+		background-color: #000
+
+#InvalidLocaleSelect
+	font-size: 1.25em
+	> .centered-content
+		> .icon
+			font-size: 4rem
+			--icon: var(--font-heading-clr)
+		> .options > .option
+			padding: 0.75rem 1rem
+			border-radius: 0.5rem
+			font-weight: 500
+			font-family: var(--font-heading-stack)
+			background-color: var(--box-bg)
+			box-shadow: var(--shadow-0)
+			transition: var(--transition)
+			transition-property: background-color, box-shadow, color, transform
+			&:hover
+				box-shadow: var(--shadow-3)
+				color: var(--font-heading-clr)
+				transform: translateY(-0.25em)
+			&:active, &:focus
+				box-shadow: var(--shadow-1)
+				transform: translateY(0.15em)
+				background-color: var(--clr-accent)
+				color: #fff
+
+@keyframes localeSelectIn
+	0%
+		opacity: 0
+		transform: translate(-2em, 0)
+	100%
+		opacity: 1
+		transform: translate(0, 0)
+</style>

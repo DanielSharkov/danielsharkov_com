@@ -112,7 +112,7 @@ function openBigProfilePicture() {
 				<div tabindex='-1' role='list' class='social-media flex flex-center-y gap-1'>
 					{#each socialMedia as {name, app, url}, idx}
 						{#if app}
-							<button role='listitem'
+							<button
 							class='btn flex flex-center'
 							style='animation-delay: {50 + idx * 100}ms'
 							on:click={()=> openModal({name: 'socialMedia', props: {name, url, app}})}>
@@ -122,7 +122,7 @@ function openBigProfilePicture() {
 								</svg>
 							</button>
 						{:else}
-							<a href={url} target='_blank' role='listitem'
+							<a href={url} target='_blank' rel='noreferrer'
 							class='btn flex flex-center'
 							style='animation-delay: {50 + idx * 100}ms'
 							use:vibrateLink>
@@ -143,7 +143,7 @@ function openBigProfilePicture() {
 
 
 
-<style lang='stylus'>
+<style lang='sass'>
 #LandingSection
 	overflow: hidden
 	@media screen and (min-width: 1000px)

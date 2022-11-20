@@ -14,7 +14,7 @@ const currentYear = new Date().getFullYear()
 		<div role='list' tabindex='-1' class='social-media flex flex-center gap-15'>
 			{#each socialMedia as {name, url, app}}
 				{#if app}
-					<button role='listitem'
+					<button
 					class='btn flex flex-center'
 					aria-haspopup='dialog'
 					use:vibrateAction
@@ -25,7 +25,7 @@ const currentYear = new Date().getFullYear()
 						</svg>
 					</button>
 				{:else}
-					<a href={url} target='_blank' role='listitem'
+					<a href={url} target='_blank' rel='noreferrer'
 					class='btn flex flex-center'
 					use:vibrateLink>
 						<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>

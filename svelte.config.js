@@ -1,12 +1,11 @@
-const sveltePreprocess = require('svelte-preprocess')
-const autoprefixer = require('autoprefixer')
+import sveltePreprocess from 'svelte-preprocess'
+import autoprefixer from 'autoprefixer'
 
-module.exports = {
+export default {
 	preprocess: sveltePreprocess({
 		sourceMap: true,
 		preprocess: sveltePreprocess({
 			sourceMap: true,
-			stylus: {includePaths: ['src']},
 			preprocess: {
 				plugins: [autoprefixer()],
 			},

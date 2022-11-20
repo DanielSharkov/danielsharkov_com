@@ -18,15 +18,15 @@
 				{/if}
 			{/each}
 		</div>
-		{#each Object.keys(technologies) as techno}
+		{#each Object.values(technologies) as techno}
 			<li class='techno'>
 				<div class='header flex flex-center-y'>
-					{#if technologies[techno].hasIcon}
+					{#if techno.hasIcon}
 						<svg class='logo flex-base-size' aria-hidden='true' focusable='false' role='presentation'>
 							<title>{techno} Logo</title>
 							<use xlink:href='#Logo_{techno}'/>
 						</svg>
-					{:else if technologies[techno].hasImage}
+					{:else if techno.hasImage}
 						<img
 							class='logo'
 							src='technologies/{techno}.png'
@@ -37,15 +37,15 @@
 					{/if}
 					<div class='naming'>
 						<span class='name flex-base-size'>
-							{technologies[techno].name}
+							{techno.name}
 						</span>
 						<span class='type flex-base-size'>
-							{$_('section.skills.technology_type.' + technologies[techno].type)}
+							{$_('section.skills.technology_type.' + techno.type)}
 						</span>
 					</div>
-					<a href={technologies[techno].link} target='_blank'
+					<a href={techno.link} target='_blank' rel='noreferrer'
 					class='link flex flex-center'
-					aria-label={$_('section.skills.aria_open_site', {values: {x: technologies[techno].name}})}
+					aria-label={$_('section.skills.aria_open_site', {values: {x: techno.name}})}
 					use:vibrateLink>
 						<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
 							<use xlink:href='#Icon_Link'/>
@@ -53,10 +53,10 @@
 					</a>
 				</div>
 				<div class='time-span grid' style='grid-template-columns: repeat({currentYear - careerBegin}, 1fr);'>
-					{#each technologies[techno].careerSpan as period}
+					{#each techno.careerSpan as period}
 						<div
 							class='period'
-							style={technoCareerSpan(technologies[techno], period)}
+							style={technoCareerSpan(techno, period)}
 						/>
 					{/each}
 				</div>

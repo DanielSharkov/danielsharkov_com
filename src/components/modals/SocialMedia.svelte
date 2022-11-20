@@ -10,11 +10,11 @@
 	<div class='modal grid gap-05' bind:this={thisEl} tabindex='-1' transition:modalTransition>
 		<h1 class='name'>{props.name}</h1>
 
-		<a href={props.app} target='_blank' class='btn open-app flex flex-center'>
+		<a href={props.app} target='_blank' rel='noreferrer' class='btn open-app flex flex-center'>
 			{$_('section.contact.social_open_app')}
 		</a>
 
-		<a href={props.url} target='_blank' class='btn open-link flex flex-center'>
+		<a href={props.url} target='_blank' rel='noreferrer' class='btn open-link flex flex-center'>
 			{$_('section.contact.social_open_link')}
 		</a>
 

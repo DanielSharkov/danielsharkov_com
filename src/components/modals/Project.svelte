@@ -66,9 +66,8 @@
 				{#if props.project.usedTechnologies.length > 0}
 					<div class='used-technologies flex gap-05' role='listbox'>
 						{#each props.project.usedTechnologies as techno}
-							<a href={technologies[techno].link} target='_blank'
+							<a href={technologies[techno].link} target='_blank' rel='noreferrer'
 							class='techno flex flex-center gap-05'
-							role='listitem'
 							style:--shadow-clr={technologies[techno].color}
 							use:vibrateLink>
 								<div
@@ -98,7 +97,7 @@
 			<div class='right-wrapper flex-center-y flex gap-05'>
 				{#if Array.isArray(props.project.otherLinks)}
 					{#each props.project.otherLinks as link}
-						<a href={link.url} role='button' class='other-link flex flex-center gap-05' target='_blank' use:vibrateLink>
+						<a href={link.url} role='button' class='other-link flex flex-center gap-05' target='_blank' rel='noreferrer' use:vibrateLink>
 							<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
 								<use xlink:href='#Icon_Chain'/>
 							</svg>
@@ -107,7 +106,7 @@
 					{/each}
 				{/if}
 				{#if props.project.codeUrl}
-					<a href={props.project.codeUrl} role='button' class='open-source-code flex flex-center gap-05' target='_blank' use:vibrateLink>
+					<a href={props.project.codeUrl} role='button' class='open-source-code flex flex-center gap-05' target='_blank' rel='noreferrer' use:vibrateLink>
 						<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
 							<use xlink:href='#Icon_Code'/>
 						</svg>
@@ -123,7 +122,7 @@
 					</div>
 				{/if}
 				{#if props.project.projectUrl !== null && props.project.projectUrl !== 'COMING_SOON'}
-					<a href={props.project.projectUrl} role='button' class='open-project flex flex-center gap-05' target='_blank' use:vibrateLink>
+					<a href={props.project.projectUrl} role='button' class='open-project flex flex-center gap-05' target='_blank' rel='noreferrer' use:vibrateLink>
 						<div class='shine'/>
 						<span class='label'>{$_('open_project')}</span>
 						<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>

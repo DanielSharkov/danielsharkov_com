@@ -366,7 +366,7 @@ export const projects: Array<Project> = [
 		projectUrl: null,
 		codeUrl: 'https://github.com/DanielSharkov/danielsharkov_com',
 		usedTechnologies: [
-			'Svelte', 'TypeScript', 'SVG', 'Stylus', 'Docker', 'Nginx',
+			'Svelte', 'TypeScript', 'SVG', 'Stylus', 'SASS_SCSS', 'Docker', 'Nginx',
 			'Figma', 'VSC', 'SASS_SCSS',
 		],
 		gradient: ['#fcb6b6', '#f6df88'],
@@ -379,7 +379,7 @@ export const projects: Array<Project> = [
 		projectUrl: 'COMING_SOON',//'https://danielsharkov.github.io/timetabler',
 		codeUrl: null,
 		usedTechnologies: [
-			'Svelte', 'SVG', 'Go', 'Stylus', 'Docker', 'Nginx', 'Figma',
+			'Svelte', 'SVG', 'Go', 'Stylus', 'SASS_SCSS', 'Docker', 'Nginx', 'Figma',
 			'VSC', 'SQL', 'PostgreSQL', 'GraphQL', 'SASS_SCSS',
 		],
 		gradient: ['#b5ffdd', '#65C7F7', '#0066ff'],
@@ -464,7 +464,7 @@ export const projects: Array<Project> = [
 		darkThemed: true,
 		projectUrl: 'https://danielsharkov.github.io/PatternVisualizer/',
 		codeUrl: 'https://github.com/DanielSharkov/PatternVisualizer',
-		usedTechnologies: ['Svelte', 'VSC', 'Stylus'],
+		usedTechnologies: ['Svelte', 'VSC', 'Stylus', 'SASS_SCSS'],
 		gradient: ['#f399d3', '#a7276e', '#2c9c88', '#713dc3', '#00bfff'],
 		lang: [Language.DE, Language.EN],
 		articleWritten: new Date('31 May 2021'),
