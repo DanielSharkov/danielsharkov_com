@@ -18,19 +18,19 @@
 				{/if}
 			{/each}
 		</div>
-		{#each Object.values(technologies) as techno}
+		{#each Object.entries(technologies) as [technoID, techno]}
 			<li class='techno'>
 				<div class='header flex flex-center-y'>
 					{#if techno.hasIcon}
 						<svg class='logo flex-base-size' aria-hidden='true' focusable='false' role='presentation'>
-							<title>{techno} Logo</title>
-							<use xlink:href='#Logo_{techno}'/>
+							<title>{techno.name} Logo</title>
+							<use xlink:href='#Logo_{technoID}'/>
 						</svg>
 					{:else if techno.hasImage}
 						<img
 							class='logo'
-							src='technologies/{techno}.png'
-							alt='{techno} Logo'
+							src='technologies/{technoID}.png'
+							alt='{techno.name} Logo'
 						/>
 					{:else}
 						<div class='logo placeholder'/>
