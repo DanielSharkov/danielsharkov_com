@@ -130,7 +130,7 @@
 						</svg>
 					</a>
 				{:else if props.project.projectUrl === 'COMING_SOON'}
-					<div href={props.project.projectUrl} class='open-project-soon flex flex-center gap-05'>
+					<div class='open-project-soon flex flex-center gap-05'>
 						<span class='label'>{$_('project_coming_soon')}</span>
 						<svg class='icon' aria-hidden='true' focusable='false' role='presentation'>
 							<use xlink:href='#Icon_Time'/>
