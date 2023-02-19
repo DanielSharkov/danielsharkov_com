@@ -18,7 +18,7 @@ $:isValidSubscribeForm = emailRegex.test(userSubEmail.trim()) === true
 window['newsletter'] = {
 	enableForm() {
 		showMailSubForm = true
-		return ''
+		return showMailSubForm ? 'form enabled' : 'form disabled'
 	},
 	toggleInvalidReCaptcha() {
 		sendInvalidReCapToken = !sendInvalidReCapToken
@@ -27,8 +27,10 @@ window['newsletter'] = {
 	debugSetFormStatus(status: string) {
 		if (status === 'userInput' || status === 'sending' || status === 'subscribed' || status === 'failed') {
 			emailSubStatus = status
+			return `form status is now: "${status}"`
 		} else {
 			console.error(`invalid form status "${status}"`)
+			return `"${status}" is not a invalid status`
 		}
 	},
 }
@@ -53,7 +55,7 @@ async function submitForm(event: Event & { currentTarget: HTMLFormElement}) {
 	form.set('html_type', 'simple')
 
 	const resp = await fetch(
-		'https://459fb692.sibforms.com/serve/MUIEACzb3-kbZ0omwsFLpwcdy5VsKRfSrzhYFWuD44xrp7FhbgPzN3TrSlb1lj6sdnnaOvVrmWVlyTKBtcHjYmsfVJ00xUAseI50v28-7LAl67GcLxq6YWV5d5oZyzMp_xLUgQBQCf-k9vAIRPBcl2Ysou5UhGFLprLJwZg7VaswRJCXs4fupydN9tmi2KEsg8s6L7kJ-kTPXKqX',
+		'https://459fb692.sibforms.com/serve/MUIEAPhiCvx6m4RdEzC4sCwwBxWwGpjS6jKVKEHQgAhUanDP_yv1CtvQXMDyY0h0Fnft2b2hreMRLBtALxFVZBqvJ95IMnfMYlsmQMfvretsxUGwyxg8WiB1vUJTd4JpAb0mMGfCP-IzPaiQeGpQhe4_dnz4p9LgbCHQZ0NIjfWNdvgoh4Drcb-L8TVZLl2v_iXLoC2ov1zlp_hn',
 		{method: 'POST', body: form},
 	)
 	const json = await resp.json()
