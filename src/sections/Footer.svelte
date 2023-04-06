@@ -35,6 +35,9 @@ window['newsletter'] = {
 	},
 }
 
+const sendInBlueAccountID = '459fb692'
+const sendInBlueAccountFormKey = 'MUIEAN2gTLTZtIu4QMoTgM28TbzyRhWAl-j3ZaZ1v7ET9KqpS0pCVIFMpHcOK28daa0gsB_Q1FaQE9KR82NGRjiY72Wp_BTL42kvaL0uloq0ggs5SbYpuWUtCPNRBpbkt09F2STN1FSeN_mCsJoV7WSFUoFgmj---40v_R6dxL-PQsInZQRWdqptuIGAlzaP5abLD8vCSvGII2EG'
+
 async function submitForm(event: Event & { currentTarget: HTMLFormElement}) {
 	event.preventDefault()
 	let reCaptchaToken = 'invalid-token'
@@ -55,7 +58,7 @@ async function submitForm(event: Event & { currentTarget: HTMLFormElement}) {
 	form.set('html_type', 'simple')
 
 	const resp = await fetch(
-		'https://459fb692.sibforms.com/serve/MUIEAPhiCvx6m4RdEzC4sCwwBxWwGpjS6jKVKEHQgAhUanDP_yv1CtvQXMDyY0h0Fnft2b2hreMRLBtALxFVZBqvJ95IMnfMYlsmQMfvretsxUGwyxg8WiB1vUJTd4JpAb0mMGfCP-IzPaiQeGpQhe4_dnz4p9LgbCHQZ0NIjfWNdvgoh4Drcb-L8TVZLl2v_iXLoC2ov1zlp_hn',
+		`https://${sendInBlueAccountID}.sibforms.com/serve/${sendInBlueAccountFormKey}`,
 		{method: 'POST', body: form},
 	)
 	const json = await resp.json()
