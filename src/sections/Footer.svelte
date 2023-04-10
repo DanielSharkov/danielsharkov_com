@@ -59,7 +59,7 @@ async function submitForm(event: Event & { currentTarget: HTMLFormElement}) {
 
 	const resp = await fetch(
 		`https://${sendInBlueAccountID}.sibforms.com/serve/${sendInBlueAccountFormKey}`,
-		{method: 'POST', body: form},
+		{method: 'POST', mode: 'no-cors', body: form},
 	)
 	const json = await resp.json()
 	if (resp.status === 200 && json['success'] === true) {
